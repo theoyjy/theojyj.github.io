@@ -208,3 +208,64 @@ int main(){
   return 0;
 }
 ```
+## stat AND lstat
+
+<img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156625775-889cdfc9-1749-4949-8415-07a2020a3f48.png">
+
+<img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156625834-2f4d2043-4c18-43bb-ba41-b1545f70d8cc.png">
+- st_mode是八进制，以0开始为标志
+- 要**获取文件类**：st_mode & S_IFMT
+	- S_IFMT = 0170000 =0b1111 0000 0000 0000
+	- 将与的结果与具体的文件类型的宏去与
+	- e.g. S_IFSOCK & (st_mode & S_IFMT) 判断是否是套接字
+- 要获取文件访问权限：想知道哪个就和哪个宏与
+	- e.g. 想知道用户是否有写权限(S_IRUSER: is read user?):st_mode & S_IRUSR
+
+### int stat(const char * pathname,struct stat * statbuf);
+```
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<unistd.h>
+/*
+参数：
+	statbuf：结构体变量，传出参数，用于保存文件信息
+返回值：
+	成功：返回0
+	失败：返回-1，设置errno
+*/
+int stat(const char * pathname,struct stat * statbuf);
+```
+### 作用：获取文件相关的信息
+```
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<unistd.h>
+#include<stdio.h>
+
+int main(){
+	struct stat statbuf;
+	int ret = stat("a.txt",&statbuf);
+	if(ret == -1){
+		perror("stat");
+		return -1;
+	}
+	printf("size: %ld\n", statbuf.st_size);
+	return 0;
+}
+```
+### int lstat(const char * pathname,struct stat * statbuf);
+```
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<unistd.h>
+/*
+参数：
+	statbuf：结构体变量，传出参数，用于保存文件信息
+返回值：
+	成功：返回0
+	失败：返回-1，设置errno
+*/
+int lstat(const char * pathname,struct stat * statbuf);
+```
+### 作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
+### 创建软链接`ln -s a.txt b.txt`，b.txt是a.txt的软链接
