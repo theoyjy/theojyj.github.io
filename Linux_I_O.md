@@ -43,11 +43,11 @@ int open(const char * pathname,int flags, mode_t mode);
 
 ### void perror(const char *s)
 ```
-/*
-  errno：属于linux系统函数库，库里的一个全局变量，记录的是最近的错误号
-*/
 #include<stdio.h>
-//  s : 用户描述，比如hello，实际最终输出内容：hello：xxx（实际错误描述）
+/*
+	errno：属于linux系统函数库，库里的一个全局变量，记录的是最近的错误号
+	s : 用户描述，比如hello，实际最终输出内容：hello：xxx（实际错误描述）
+*/
 void perror(const char *s);//用来打印errno对应的错误
 ```
 
@@ -85,7 +85,7 @@ int main(){
 }
 ```
 
-## read  write
+## read AND write
 ### ssize_t read(int fd,void * buf, size_t count)
 ```
 #include<unistd.h>
@@ -148,6 +148,63 @@ int main(){
   close(srcfd);
   close(destfd);
   
+  return 0;
+}
+```
+
+## lseek 与 fseek
+### off_t lseek(int fd, off_t offset, int whence);
+```
+//LINUX 系统函数
+#include<unistd.h>
+#include<sys/types.h>
+/*
+   参数：
+      - fd
+      - offset：偏移量
+      - whence：
+          - SEEK_SET
+              从文件起始地方开始偏移offset
+          - SEEK_CUR
+              当前位置+第二个参数offset的值
+          - SEEK_END
+              文件大小+第二个参数
+   返回：指针所指的offset
+*/
+off_t lseek(int fd, off_t offset, int whence);
+
+//标准C库
+#include<stdio.h>
+int fseek(FILE * stream,long offset, int whence);
+```
+### 作用：
+1. 移动文件指针到文件头`lseek(fd,0,SEEK_SET);`
+2. 获取当前文件指针的位置`lseek(fd,0,SEEK_CUR);`
+3. 获取当前文件长度`lseek(fd,0,SEEK_END);`
+4. **拓展文件的长度，当前文件10b，增加100个字节`lseek(fd,100,SEEK_END);`:用来为大型文件占空间**
+```
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<stdio.h>
+int main(){
+  int fd = open("a.txt",O_RDWR);
+  if(fd==-1){
+    perror("open");
+    return -1;
+  }
+  
+  //拓展文件长度
+  int ret = lseek(fd,100,SEEK_END);
+  if(ret==-1){
+  	  perror("lseek");
+	  return -1;
+  }
+  //写入一个空数据才能拓展成功
+  write(fd," ",1);
+  
+  close(fd);
   return 0;
 }
 ```
