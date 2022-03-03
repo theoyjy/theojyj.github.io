@@ -40,6 +40,7 @@ int open(const char * pathname,int flags);
 */
 int open(const char * pathname,int flags, mode_t mode);
 ```
+
 ### void perror(const char *s)
 ```
 /*
@@ -49,11 +50,13 @@ int open(const char * pathname,int flags, mode_t mode);
 //  s : 用户描述，比如hello，实际最终输出内容：hello：xxx（实际错误描述）
 void perror(const char *s);//用来打印errno对应的错误
 ```
+
 ### void close(int fd);
 ```
 #include<unistd.h>
 void close(int fd);
 ```
+
 ## 打开已经存在的文件 open(pathname,flags);
 ```
 int main(){
@@ -65,6 +68,7 @@ int main(){
   return 0;
 }
 ```
+
 ## 创建新文件 open(pathname,flags,mode)
 ### int open(const char * pathname,int flags, mode_t mode);
 ```
@@ -78,5 +82,72 @@ int main(){
   if(fd==-1)
     perror("open");
     close(fd);
+}
+```
+
+## read  write
+### ssize_t read(int fd,void * buf, size_t count)
+```
+#include<unistd.h>
+/*
+    参数：
+      - fd： open得到的
+      - buf：需要读取数据存放的地方，数组的地址（传出参数）
+      - count：指定的数组的大小
+    返回值：
+      - >0:返回实际读取到的字节数
+      - =0:文件已经读取玩
+      - -1:失败
+*/
+
+ssize_t read(int fd, void * fd,size_t count);
+```
+
+### ssize_t write(int fd,const void * buf,size_t count)
+```
+#include<unistd.h>
+/*
+    参数：
+      - fd： open得到的
+      - buf：需要读取数据存放的地方，数组的地址（传出参数）
+      - count：指定的数组的大小
+    返回值：
+      - >0:返回实际读取到的字节数
+      - =0:文件已经读取玩
+      - -1:失败
+*/
+ssize_t write(int fd,const void * buf,size_t count);
+```
+## 拷贝文件
+```
+#include<unistd.h>
+#include<stdio.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+int main(){
+  //1.open 要读的文件
+  int srcfd = open("a.txt",O_RDONLY);
+  if(src==-1){
+    perror("open");
+    return -1;
+  }
+  //2.创建一个新的文件去写
+  int destfd = open("b.txt",O_WRONLY|_O_CREATE,0664);
+  if(destfd==-1){
+    perror("open");
+    return -1;
+  }
+  //3.频繁的读写
+  char buf[1024] = {0};
+  int len = 0;
+  while((len= read(srcfd,buf,sizeof(buf))) > 0){
+    write(destfd,buf,len);
+  }
+  //4.关闭文件
+  close(srcfd);
+  close(destfd);
+  
+  return 0;
 }
 ```
