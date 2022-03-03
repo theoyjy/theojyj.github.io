@@ -271,3 +271,32 @@ int lstat(const char * pathname,struct stat * statbuf);
 ```
 ### 作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
 ### 创建软链接`ln -s a.txt b.txt`，b.txt是a.txt的软链接
+
+# [ls-l 模拟实现](./ls-l.cpp)
+### 调用函数：
+```
+#include<pwd.h>	//struct passwd * getpwuid(st.st_uid);
+#include<grp.h>	//struct ... * getgrgid(st.st_gid);
+#include<time.h> //char * ctime(&st.st_mtime);
+#include<string.h> //strncpy(char * dest, char * src, length);
+		   //sprintf(char * dest, "formation", argument lists);
+
+//文件所有者
+char * fileUser = getpwuid(st.st_uid) -> pw_name;
+
+//文件所在组
+char * fileGroup = getgrgid(st.st_gid)->gr_name;
+
+//文件大小
+long int fileSize = st.st_size;
+
+//获取修改时间
+char * time = ctime(&st.st_mtime);//自带回车
+//去掉回车
+char mtime[512] = {0};
+strncpy(mtime, time,strlen(time)-1);
+
+char buf[1024];
+sprintf(buf,"%s %d %s %s %d %s %s",perms,linkNum,fileUser,fileGroup,fileSize,time,argv[1]);
+printf("%s\n",buf);
+```
