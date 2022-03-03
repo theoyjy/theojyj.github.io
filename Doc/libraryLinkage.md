@@ -1,3 +1,5 @@
+_[homepage](../index.md)_
+
 # 静态链接：
 ```
 g++ -c file.cpp //生成目标文件
