@@ -1,9 +1,7 @@
 ---
-
 layout: page
 permalink: /Doc/
 title: GDB Instruction
-
 ---
 
 # GDB
