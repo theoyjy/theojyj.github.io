@@ -1,4 +1,7 @@
-# GDB
+layout: page
+title: "GDB"
+permalink: theoyjy.github.io/Doc/
+
 **关闭-o优化，打开-g调试，打开-Wall提示所有warning**
 
 **-g是在可执行文件中嵌入源代码，但不是整个放入，而是可以知道源代码的第几行对应机器指令的第几行。因此gdb需要可以找到源代码**
