@@ -1,6 +1,4 @@
-layout: page
-title: "GDB"
-permalink: theoyjy.github.io/Doc/
+# GDB
 
 **关闭-o优化，打开-g调试，打开-Wall提示所有warning**
 
