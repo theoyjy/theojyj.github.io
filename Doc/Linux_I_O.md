@@ -272,7 +272,7 @@ int lstat(const char * pathname,struct stat * statbuf);
 ### 作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
 ### 创建软链接`ln -s a.txt b.txt`，b.txt是a.txt的软链接
 
-# [ls-l 模拟实现](./ls-l.cpp)
+## [ls-l 模拟实现](./ls-l.cpp)
 ### 调用函数：
 ```
 #include<pwd.h>	//struct passwd * getpwuid(st.st_uid);
@@ -300,3 +300,126 @@ char buf[1024];
 sprintf(buf,"%s %d %s %s %d %s %s",perms,linkNum,fileUser,fileGroup,fileSize,time,argv[1]);
 printf("%s\n",buf);
 ```
+
+# 文件属性操作函数
+## int access(const char * pathname,int mode); 
+### 判断对文件的权限或者文件是否存在
+```
+#include<unistd.h>
+/*
+	mode:
+		R_OK,W_OK,X_OK
+		F_OK:判断文件是否存在
+	return val:
+		0  success
+		-1 failure
+*/
+int access(const char * pathname,int mode);
+```
+## int chmod(const char * pathname, mode_t mode);
+修改文件权限
+```
+#include<sys/stat.h>
+/*
+	mode : 需要修改的权限值，八进制数
+	return val : 
+		0  success
+		-1 failure
+*/
+int chmod(const char * pathname, mode_t mode);
+```
+## int chown(const char * pathname, uid_t owner,gid_t group);
+修改文件所属的用户或组
+
+## int truncate(const char * path, off_t length)
+### 作用：缩减或者扩展文件的尺寸至指定大小
+```
+#include<unistd.h>
+#include<sys/types.h>
+/*
+	length：文件最终变成的大小
+	return:
+		0  success
+		-1 failure
+*/
+int truncate(const char * path, off_t length);
+
+int main(){
+	int ret = truncate("a.txt", 5);
+	if(ret==-1){
+		perror("truncate");
+		return -1;
+	}
+	return 0;
+}
+```
+
+# 目录操作函数
+## int mkdir(const char * path, mode_t mode)等价于指令mkdir
+### 用户必须有目录的可执行权限 才可以进入目录
+创建目录
+```
+#include<sys/stat.h>
+#Include<sys/types.h>
+// mode 八进制值
+// return 0 success -1 failure
+int mkdir(const char * path, mode_t mode);
+
+int main(){
+	int ret = mkdir("aaa",0777);
+	//perror
+	return 0;
+}
+```
+## int rmdir(const char * path)
+删除空目录
+
+## int rename(const char * oldpath, const char * newpath)
+```
+#include<stdio.h>
+int main(){
+	int res = rename("aaa","bbb");
+	//perror
+	return 0;
+}
+```
+## int chdir(const char * path)
+### 修改**进程**的工作目录
+## char * getcwd(char * buf, size_t size)
+### 得到进程当前工作目录
+```
+#include<unistd.h>
+
+int chdir(const char * path);
+// return: 返回指向的一块内存，就是buf的地址
+char * getcwd(char * buf, size_t size);
+
+int main(){
+	//获取当前目录
+	char * buf[128] = {0};
+	getcwd(buf,sizeof(buf));
+	printf("当前工作目录是：%s",buf);
+	
+	//修改工作目录
+	int ret = chdir("home/Linux/lesson13");
+	if(ret==-1){
+		perror("chidir");
+		return -1;
+	}
+	
+	//创建一个新文件,在新目录下
+	int fd = open("chdir.txt", O_CREATE | O_RDWR, 0664);
+	if(fd==-1){
+		perror("open");
+		return -1;
+	}
+	
+	//获取当前目录
+	char * buf2[128] = {0};
+	getcwd(buf2,sizeof(buf2));
+	printf("当前工作目录是：%s",buf2);
+	return 0;
+}
+
+```
+
