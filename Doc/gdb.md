@@ -1,9 +1,3 @@
----
-layout: page
-permalink: /Doc/
-title: GDB Instruction
----
-
 # GDB
 
 **关闭-o优化，打开-g调试，打开-Wall提示所有warning**
