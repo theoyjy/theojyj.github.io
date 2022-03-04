@@ -425,7 +425,7 @@ int main(){
 }
 
 ```
-## DIR *opendir(const char *name);
+## DIR * opendir(const char * name);
 作用：打开一个目录 
 ```
 // 打开一个目录
@@ -439,9 +439,8 @@ int main(){
             错误返回NULL
 	    
     DIR *opendir(const char *name);
-        
 ```
-## struct dirent *readdir(DIR *dirp)
+## struct dirent * readdir(DIR * dirp)
 作用：读取目录中的数据
 ```
 
@@ -453,14 +452,14 @@ int main(){
             struct dirent，代表读取到的文件的信息
             读取到了末尾或者失败了，返回NULL
 ```
-## int closedir(DIR *dirp)
+## int closedir(DIR * dirp)
 作用：关闭目录
 ```
 #include <sys/types.h>
 #include <dirent.h>
 int closedir(DIR *dirp);
-
 ```
+
 - 使用
 ```
 #include <sys/types.h>
