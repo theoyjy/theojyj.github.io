@@ -74,7 +74,5 @@ int main(){
   - on  调试当前进程时，其他进程继续
   - off 调试当前进程时，其他进程被挂起
 - info inferiors 显示所有被调试的进程
-<br>
-
-
-
+  - inferior 编号 转去调试另一个进程  
+- 使进程脱离GDB调试 detach inferiors 编号
