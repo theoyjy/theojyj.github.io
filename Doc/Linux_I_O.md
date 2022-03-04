@@ -256,6 +256,7 @@ int main(){
 	return 0;
 }
 ```
+
 ### int lstat(const char * pathname,struct stat * statbuf);
 作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
 ```
@@ -282,24 +283,24 @@ int lstat(const char * pathname,struct stat * statbuf);
 #include<string.h> //strncpy(char * dest, char * src, length);
 		   //sprintf(char * dest, "formation", argument lists);
 
-//文件所有者
-char * fileUser = getpwuid(st.st_uid) -> pw_name;
+	//文件所有者
+	char * fileUser = getpwuid(st.st_uid) -> pw_name;
 
-//文件所在组
-char * fileGroup = getgrgid(st.st_gid)->gr_name;
+	//文件所在组
+	char * fileGroup = getgrgid(st.st_gid)->gr_name;
 
-//文件大小
-long int fileSize = st.st_size;
+	//文件大小
+	long int fileSize = st.st_size;
 
-//获取修改时间
-char * time = ctime(&st.st_mtime);//自带回车
-//去掉回车
-char mtime[512] = {0};
-strncpy(mtime, time,strlen(time)-1);
+	//获取修改时间
+	char * time = ctime(&st.st_mtime);//自带回车
+	//去掉回车
+	char mtime[512] = {0};
+	strncpy(mtime, time,strlen(time)-1);
 
-char buf[1024];
-sprintf(buf,"%s %d %s %s %d %s %s",perms,linkNum,fileUser,fileGroup,fileSize,time,argv[1]);
-printf("%s\n",buf);
+	char buf[1024];
+	sprintf(buf,"%s %d %s %s %d %s %s",perms,linkNum,fileUser,fileGroup,fileSize,time,argv[1]);
+	printf("%s\n",buf);
 ```
 
 # 文件属性操作函数
@@ -333,7 +334,7 @@ int chmod(const char * pathname, mode_t mode);
 修改文件所属的用户或组
 
 ## int truncate(const char * path, off_t length)
-### 作用：缩减或者扩展文件的尺寸至指定大小
+作用：缩减或者扩展文件的尺寸至指定大小
 ```
 #include<unistd.h>
 #include<sys/types.h>
@@ -385,9 +386,10 @@ int main(){
 }
 ```
 ## int chdir(const char * path)
-### 修改**进程**的工作目录
+修改**进程**的工作目录
+
 ## char * getcwd(char * buf, size_t size)
-### 得到进程当前工作目录
+得到进程当前工作目录
 ```
 #include<unistd.h>
 
