@@ -422,4 +422,284 @@ int main(){
 }
 
 ```
+## DIR *opendir(const char *name);
+打开一个目录 
+```
+// 打开一个目录
+    #include <sys/types.h>
+    #include <dirent.h>
+    
+    参数：
+            - name: 需要打开的目录的名称
+        返回值：
+            DIR * 类型，理解为目录流
+            错误返回NULL
+	    
+    DIR *opendir(const char *name);
+        
+```
+## struct dirent *readdir(DIR *dirp)
+// 读取目录中的数据
+```
 
+    
+    #include <dirent.h>
+    struct dirent *readdir(DIR *dirp);
+        - 参数：dirp是opendir返回的结果
+        - 返回值：
+            struct dirent，代表读取到的文件的信息
+            读取到了末尾或者失败了，返回NULL
+```
+## int closedir(DIR *dirp)
+关闭目录
+```
+#include <sys/types.h>
+#include <dirent.h>
+int closedir(DIR *dirp);
+
+```
+- 使用
+```
+#include <sys/types.h>
+#include <dirent.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int getFileNum(const char * path);
+
+// 读取某个目录下所有的普通文件的个数
+int main(int argc, char * argv[]) {
+
+    if(argc < 2) {
+        printf("%s path\n", argv[0]);
+        return -1;
+    }
+
+    int num = getFileNum(argv[1]);
+
+    printf("普通文件的个数为：%d\n", num);
+
+    return 0;
+}
+
+// 用于获取目录下所有普通文件的个数
+int getFileNum(const char * path) {
+
+    // 1.打开目录
+    DIR * dir = opendir(path);
+
+    if(dir == NULL) {
+        perror("opendir");
+        exit(0);
+    }
+
+    struct dirent *ptr;
+
+    // 记录普通文件的个数
+    int total = 0;
+
+    while((ptr = readdir(dir)) != NULL) {
+
+        // 获取名称
+        char * dname = ptr->d_name;
+
+        // 忽略掉. 和..
+        if(strcmp(dname, ".") == 0 || strcmp(dname, "..") == 0) {
+            continue;
+        }
+
+        // 判断是否是普通文件还是目录
+        if(ptr->d_type == DT_DIR) {
+            // 目录,需要继续读取这个目录
+            char newpath[256];
+            sprintf(newpath, "%s/%s", path, dname);
+            total += getFileNum(newpath);
+        }
+
+        if(ptr->d_type == DT_REG) {
+            // 普通文件
+            total++;
+        }
+
+
+    }
+
+    // 关闭目录
+    closedir(dir);
+
+    return total;
+}
+```
+## int dup(int oldfd)
+作用：复制一个新的文件描述符
+```
+#include <unistd.h>
+
+fd=3, int fd1 = dup(fd),
+fd指向的是a.txt, fd1也是指向a.txt
+从空闲的文件描述符表中找一个最小的，作为新的拷贝的文件描述符
+
+int dup(int oldfd);
+
+```
+- 应用
+```
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <string.h>
+
+int main() {
+
+    int fd = open("a.txt", O_RDWR | O_CREAT, 0664);
+
+    int fd1 = dup(fd);
+
+    if(fd1 == -1) {
+        perror("dup");
+        return -1;
+    }
+
+    printf("fd : %d , fd1 : %d\n", fd, fd1);
+
+    close(fd);
+
+    char * str = "hello,world";
+    int ret = write(fd1, str, strlen(str));
+    if(ret == -1) {
+        perror("write");
+        return -1;
+    }
+
+    close(fd1);
+
+    return 0;
+}
+```
+## int dup2(int oldfd, int newfd)
+作用：重定向文件描述符
+```
+#include <unistd.h>
+	oldfd 指向 a.txt, newfd 指向 b.txt
+	调用函数成功后：newfd 和 b.txt 做close, newfd 指向了 a.txt
+	oldfd 必须是一个有效的文件描述符
+	oldfd和newfd值相同，相当于什么都没有做
+int dup2(int oldfd, int newfd);
+```
+- 应用
+fd2 = fd1 != fd 但都指向同一个文件
+```
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
+
+int main() {
+
+    int fd = open("1.txt", O_RDWR | O_CREAT, 0664);
+    if(fd == -1) {
+        perror("open");
+        return -1;
+    }
+
+    int fd1 = open("2.txt", O_RDWR | O_CREAT, 0664);
+    if(fd1 == -1) {
+        perror("open");
+        return -1;
+    }
+
+    printf("fd : %d, fd1 : %d\n", fd, fd1);
+
+    int fd2 = dup2(fd, fd1);
+    if(fd2 == -1) {
+        perror("dup2");
+        return -1;
+    }
+
+    // 通过fd1去写数据，实际操作的是1.txt，而不是2.txt
+    char * str = "hello, dup2";
+    int len = write(fd1, str, strlen(str));
+
+    if(len == -1) {
+        perror("write");
+        return -1;
+    }
+
+    printf("fd : %d, fd1 : %d, fd2 : %d\n", fd, fd1, fd2);
+
+    close(fd);
+    close(fd1);
+
+    return 0;
+}
+```
+## int fcntl(int fd, int cmd, ...);
+```
+#include <unistd.h>
+#include <fcntl.h>
+
+int fcntl(int fd, int cmd, ...);
+参数：
+	fd : 表示需要操作的文件描述符
+	cmd: 表示对文件描述符进行如何操作
+		- F_DUPFD : 复制文件描述符,复制的是第一个参数fd，得到一个新的文件描述符（返回值）
+			int ret = fcntl(fd, F_DUPFD);
+
+		- F_GETFL : 获取指定的文件描述符文件状态flag
+		  获取的flag和我们通过open函数传递的flag是一个东西。
+
+		- F_SETFL : 设置文件描述符文件状态flag
+		  必选项：O_RDONLY, O_WRONLY, O_RDWR 不可以被修改
+		  可选性：O_APPEND, O)NONBLOCK
+			O_APPEND  表示追加数据
+			O_NONBLOK 设置成非阻塞
+
+	阻塞和非阻塞：描述的是函数调用的行为。
+```
+-  应用
+```
+#include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+
+    // 1.复制文件描述符
+    // int fd = open("1.txt", O_RDONLY);
+    // int ret = fcntl(fd, F_DUPFD);
+
+    // 2.修改或者获取文件状态flag
+    int fd = open("1.txt", O_RDWR);
+    if(fd == -1) {
+        perror("open");
+        return -1;
+    }
+
+    // 获取文件描述符状态flag
+    int flag = fcntl(fd, F_GETFL);
+    if(flag == -1) {
+        perror("fcntl");
+        return -1;
+    }
+    flag |= O_APPEND;   // flag = flag | O_APPEND
+
+    // 修改文件描述符状态的flag，给flag加入O_APPEND这个标记
+    int ret = fcntl(fd, F_SETFL, flag);
+    if(ret == -1) {
+        perror("fcntl");
+        return -1;
+    }
+
+    char * str = "nihao";
+    write(fd, str, strlen(str));
+
+    close(fd);
+
+    return 0;
+}
+```
