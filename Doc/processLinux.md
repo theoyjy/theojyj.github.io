@@ -69,5 +69,12 @@ int main(){
 
 ## GDB多进程调试
 
+- 默认只调试父进程,增加调试子进程：set follow-fork-mode parent|child
+- 设置调试模式  ： set detach-on-fork on|off:
+  - on  调试当前进程时，其他进程继续
+  - off 调试当前进程时，其他进程被挂起
+- info inferiors 显示所有被调试的进程
+<br>
+
 
 
