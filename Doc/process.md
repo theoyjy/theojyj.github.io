@@ -45,3 +45,20 @@ _[homepage](../index.md)_
 	- *用户 id 和组 id*
 	- *会话（Session）和进程组*
 	- 进程可以使用的*资源上限（Resource Limit）*
+
+## 进程的状态
+<img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156754769-65853b64-a87b-45af-a084-c0d97f99e05f.png">
+<img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156754972-d9374baa-cf05-4b81-9bde-9644d29d6adc.png">
+
+### 查看进程 `ps aux / ajx` 
+- a:显示终端上的所有进程，包括其他用户的进程 
+- u:显示进程的详细信息 STAT 进程状态
+- x:显示没有控制终端的进程 
+- j:列出与作业控制相关的信息,会显示父进程PPID
+
+- top 可以实时的更新进程信息，-d 每几秒更新一次，还可以对现实结果进行排序：
+	- M	根据内存使用量
+	- P CUP占有率
+	- T 进程运行时长
+	- U 用户名筛选进程
+	- K 杀死指定的PID进程
