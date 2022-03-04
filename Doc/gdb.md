@@ -24,3 +24,26 @@ _[homepage](../index.md)_
     - `l 文件名：函数名`
 显示代码时显示行数： `set nu`
 设置一次显示多少行： `set listsize 20`
+
+- b 10 在第十行增加breakpoint
+- b func
+- b file : func
+- b file : line
+- d 断点编号
+- dis/disable 断电编号
+- ena/enable 断点编号
+- b 10 if i==5 设置条件断点
+- i b 显示所有断点
+- r 运行程序
+- c/continue
+- n next 逐行调试
+- p/print var 打印变量
+- ptype var  打印变量类型
+- s/step 向下单步调试
+- finish 跳出函数体
+- dispaly var 自动打印变量值
+- i/info diplay
+- undisplay 编号
+- until 跳出循环
+
+
