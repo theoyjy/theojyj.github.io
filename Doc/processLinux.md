@@ -76,3 +76,7 @@ int main(){
 - info inferiors 显示所有被调试的进程
   - inferior 编号 转去调试另一个进程  
 - 使进程脱离GDB调试 detach inferiors 编号
+
+## 进程退出
+
+[进程退出、孤儿进程、僵尸进程](https://github.com/theoyjy/theojyj.github.io/files/8186173/2.7.pdf)
