@@ -156,6 +156,7 @@ int main(){
 
 ## lseek 与 fseek
 ### off_t lseek(int fd, off_t offset, int whence);
+
 ```
 //LINUX 系统函数
 #include<unistd.h>
@@ -179,11 +180,13 @@ off_t lseek(int fd, off_t offset, int whence);
 #include<stdio.h>
 int fseek(FILE * stream,long offset, int whence);
 ```
+
 - 作用：
 	1. 移动文件指针到文件头`lseek(fd,0,SEEK_SET);`
 	2. 获取当前文件指针的位置`lseek(fd,0,SEEK_CUR);`
 	3. 获取当前文件长度`lseek(fd,0,SEEK_END);`
-	4. **拓展文件的长度，当前文件10b，增加100个字节`lseek(fd,100,SEEK_END);`:用来为大型文件占空间**
+	4. **拓展文件的长度，当前文件10b，增加100个字节`lseek(fd,100,SEEK_END);`:用来为大型文件占空间**。
+
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
