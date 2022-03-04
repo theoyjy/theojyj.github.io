@@ -423,7 +423,7 @@ int main(){
 
 ```
 ## DIR *opendir(const char *name);
-打开一个目录 
+作用：打开一个目录 
 ```
 // 打开一个目录
     #include <sys/types.h>
@@ -439,7 +439,7 @@ int main(){
         
 ```
 ## struct dirent *readdir(DIR *dirp)
-// 读取目录中的数据
+作用：读取目录中的数据
 ```
 
     
@@ -451,7 +451,7 @@ int main(){
             读取到了末尾或者失败了，返回NULL
 ```
 ## int closedir(DIR *dirp)
-关闭目录
+作用：关闭目录
 ```
 #include <sys/types.h>
 #include <dirent.h>
@@ -639,6 +639,10 @@ int main() {
 }
 ```
 ## int fcntl(int fd, int cmd, ...);
+作用:
+	1.复制文件描述符
+	2.获取指定的文件描述符文件状态flag
+	3.设置文件描述符文件状态flag,要与原先的flag或，不然会丢失之前的状态
 ```
 #include <unistd.h>
 #include <fcntl.h>
@@ -655,7 +659,7 @@ int fcntl(int fd, int cmd, ...);
 
 		- F_SETFL : 设置文件描述符文件状态flag
 		  必选项：O_RDONLY, O_WRONLY, O_RDWR 不可以被修改
-		  可选性：O_APPEND, O)NONBLOCK
+		  可选性：O_APPEND, O_NONBLOCK
 			O_APPEND  表示追加数据
 			O_NONBLOK 设置成非阻塞
 
