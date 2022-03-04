@@ -179,11 +179,11 @@ off_t lseek(int fd, off_t offset, int whence);
 #include<stdio.h>
 int fseek(FILE * stream,long offset, int whence);
 ```
-### 作用：
-1. 移动文件指针到文件头`lseek(fd,0,SEEK_SET);`
-2. 获取当前文件指针的位置`lseek(fd,0,SEEK_CUR);`
-3. 获取当前文件长度`lseek(fd,0,SEEK_END);`
-4. **拓展文件的长度，当前文件10b，增加100个字节`lseek(fd,100,SEEK_END);`:用来为大型文件占空间**
+- 作用：
+	1. 移动文件指针到文件头`lseek(fd,0,SEEK_SET);`
+	2. 获取当前文件指针的位置`lseek(fd,0,SEEK_CUR);`
+	3. 获取当前文件长度`lseek(fd,0,SEEK_END);`
+	4. **拓展文件的长度，当前文件10b，增加100个字节`lseek(fd,100,SEEK_END);`:用来为大型文件占空间**
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -224,6 +224,7 @@ int main(){
 	- e.g. 想知道用户是否有写权限(S_IRUSER: is read user?):st_mode & S_IRUSR
 
 ### int stat(const char * pathname,struct stat * statbuf);
+作用：获取文件相关的信息
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -237,7 +238,7 @@ int main(){
 */
 int stat(const char * pathname,struct stat * statbuf);
 ```
-### 作用：获取文件相关的信息
+- 应用
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -256,6 +257,7 @@ int main(){
 }
 ```
 ### int lstat(const char * pathname,struct stat * statbuf);
+作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -268,8 +270,7 @@ int main(){
 	失败：返回-1，设置errno
 */
 int lstat(const char * pathname,struct stat * statbuf);
-```
-### 作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
+``` 
 ### 创建软链接`ln -s a.txt b.txt`，b.txt是a.txt的软链接
 
 ## [ls-l 模拟实现](./ls-l.cpp)
