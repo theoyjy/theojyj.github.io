@@ -443,8 +443,11 @@ int main(){
 	    
     DIR *opendir(const char *name);
 ```
+
 ## struct dirent * readdir(DIR * dirp)
+
 作用：读取目录中的数据
+
 ```
 
     
@@ -455,8 +458,11 @@ int main(){
             struct dirent，代表读取到的文件的信息
             读取到了末尾或者失败了，返回NULL
 ```
+
 ## int closedir(DIR * dirp)
+
 作用：关闭目录
+
 ```
 #include <sys/types.h>
 #include <dirent.h>
@@ -464,6 +470,7 @@ int closedir(DIR *dirp);
 ```
 
 - 使用
+
 ```
 #include <sys/types.h>
 #include <dirent.h>
@@ -536,8 +543,11 @@ int getFileNum(const char * path) {
     return total;
 }
 ```
+
 ## int dup(int oldfd)
+
 作用：复制一个新的文件描述符
+
 ```
 #include <unistd.h>
 
@@ -548,7 +558,9 @@ fd指向的是a.txt, fd1也是指向a.txt
 int dup(int oldfd);
 
 ```
+
 - 应用
+
 ```
 #include <unistd.h>
 #include <stdio.h>
@@ -584,8 +596,11 @@ int main() {
     return 0;
 }
 ```
+
 ## int dup2(int oldfd, int newfd)
+
 作用：重定向文件描述符
+
 ```
 #include <unistd.h>
 	oldfd 指向 a.txt, newfd 指向 b.txt
@@ -594,8 +609,11 @@ int main() {
 	oldfd和newfd值相同，相当于什么都没有做
 int dup2(int oldfd, int newfd);
 ```
+
 - 应用
+
 fd2 = fd1 != fd 但都指向同一个文件
+
 ```
 #include <unistd.h>
 #include <stdio.h>
@@ -643,11 +661,14 @@ int main() {
     return 0;
 }
 ```
+
 ## int fcntl(int fd, int cmd, ...);
+
 作用:
 	1.复制文件描述符
 	2.获取指定的文件描述符文件状态flag
 	3.设置文件描述符文件状态flag,要与原先的flag或，不然会丢失之前的状态
+
 ```
 #include <unistd.h>
 #include <fcntl.h>
@@ -670,7 +691,9 @@ int fcntl(int fd, int cmd, ...);
 
 	阻塞和非阻塞：描述的是函数调用的行为。
 ```
+
 -  应用
+
 ```
 #include <fcntl.h>
 #include <stdio.h>
