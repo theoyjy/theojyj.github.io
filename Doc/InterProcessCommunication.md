@@ -799,10 +799,11 @@ int main() {
     // 内存拷贝 memcpy(dest, src, length)
     memcpy(ptr1, ptr, len);
     
-    // 释放资源
+    // 释放资源 后打开先释放
     munmap(ptr1, len);
     munmap(ptr, len);
-
+	
+	// 后打开先关闭
     close(fd1);
     close(fd);
 
