@@ -40,9 +40,6 @@
 - 因为父子进程之间共享文件描述符，可以访问同一管道。
 <img width="754" alt="image" src="https://user-images.githubusercontent.com/41602569/156878133-0381d317-9aab-4317-b4af-aeda1e014105.png">
 
-![pipe](https://user-images.githubusercontent.com/41602569/156878341-33b28e53-44f7-4979-ad7f-3cf33acfe03b.jpg)
-
-
 ### 管道的数据结构
 
 循环队列
@@ -50,4 +47,114 @@
 <img width="741" alt="image" src="https://user-images.githubusercontent.com/41602569/156878203-f0ffdbbf-4f02-4a27-9d9d-ecf7f9e5d923.png">
 
 ### 匿名管道的使用
+
+![pipe](https://user-images.githubusercontent.com/41602569/156878341-33b28e53-44f7-4979-ad7f-3cf33acfe03b.jpg)
+
+#### int pipe(int pipefd[2])
+
+- 管道默认是**阻塞**的：如果管道中**没有数据，read阻塞，如果管道满了，write阻塞**
+- 注意：匿名管道只能用于具有关系的进程之间的通信（父子进程，兄弟进程）
+
+```
+#include <unistd.h>
+/*
+	功能：创建一个匿名管道，用来进程间通信。
+	参数：int pipefd[2] 这个数组是一个传出参数。
+		pipefd[0] 对应的是管道的读端
+		pipefd[1] 对应的是管道的写端
+	返回值：
+		成功 0
+		失败 -1
+*/
+int pipe(int pipefd[2]);
+```
+
+- 应用
+
+```
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+
+    // 在fork之前创建管道
+    int pipefd[2];
+    int ret = pipe(pipefd);
+    if(ret == -1) {
+        perror("pipe");
+        exit(0);
+    }
+
+    // 创建子进程
+    pid_t pid = fork();
+    if(pid > 0) {
+        // 父进程
+        printf("i am parent process, pid : %d\n", getpid());
+
+        // 关闭写端
+        close(pipefd[1]);
+        
+        // 从管道的读取端读取数据
+        char buf[1024] = {0};
+        while(1) {
+            int len = read(pipefd[0], buf, sizeof(buf));
+            printf("parent recv : %s, pid : %d\n", buf, getpid());
+            
+            // 向管道中写入数据
+            //char * str = "hello,i am parent";
+            //write(pipefd[1], str, strlen(str));
+            //sleep(1);
+        }
+
+    } else if(pid == 0){
+        // 子进程
+        printf("i am child process, pid : %d\n", getpid());
+        // 关闭读端
+        close(pipefd[0]);
+        // char buf[1024] = {0};
+        while(1) {
+            // 向管道中写入数据
+            char * str = "hello,i am child";
+            write(pipefd[1], str, strlen(str));
+            //sleep(1);
+
+            // int len = read(pipefd[0], buf, sizeof(buf));
+            // printf("child recv : %s, pid : %d\n", buf, getpid());
+            // bzero(buf, 1024);
+        }
+        
+    }
+    return 0;
+}
+```
+### 查看默认管道大小
+
+- `ulimit -a` 
+
+-  long size = fpathconf(pipefd[0], \_PC_PIPE_BUF);
+
+```
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+
+    int pipefd[2];
+
+    int ret = pipe(pipefd);
+
+    // 获取管道的大小
+    long size = fpathconf(pipefd[0], _PC_PIPE_BUF);
+
+    printf("pipe size : %ld\n", size);
+
+    return 0;
+}
+```
 
