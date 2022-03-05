@@ -21,8 +21,11 @@ _[homepage](../index.md)_
 -  Linux中一切皆文件，标准输入/输出/错误，是对应当前到终端的(同一个终端，即对应同一个文件)===> **多个文件描述可以对应同一个文件(图中的0，1，2)**
 
 # LIUNX I/O 系统调用
+
 ## open
+
 ### int open(const char * pathname,int flags);
+
 ```
 #include<sys/types.h>
 #include<sys/stat.h>  //flags 被定义成宏，在sys/stat.h里
@@ -44,6 +47,7 @@ int open(const char * pathname,int flags, mode_t mode);
 ```
 
 ### void perror(const char *s)
+
 ```
 #include<stdio.h>
 /*
@@ -54,12 +58,14 @@ void perror(const char *s);//用来打印errno对应的错误
 ```
 
 ### void close(int fd);
+
 ```
 #include<unistd.h>
 void close(int fd);
 ```
 
 ## 打开已经存在的文件 open(pathname,flags);
+
 ```
 int main(){
   int fd = open("a.txt",O_RDONLY);
@@ -72,7 +78,9 @@ int main(){
 ```
 
 ## 创建新文件 open(pathname,flags,mode)
+
 ### int open(const char * pathname,int flags, mode_t mode);
+
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -88,7 +96,9 @@ int main(){
 ```
 
 ## read AND write
+
 ### ssize_t read(int fd,void * buf, size_t count)
+
 ```
 #include<unistd.h>
 /*
@@ -106,6 +116,7 @@ ssize_t read(int fd, void * fd,size_t count);
 ```
 
 ### ssize_t write(int fd,const void * buf,size_t count)
+
 ```
 #include<unistd.h>
 /*
@@ -120,7 +131,9 @@ ssize_t read(int fd, void * fd,size_t count);
 */
 ssize_t write(int fd,const void * buf,size_t count);
 ```
+
 ## 拷贝文件
+
 ```
 #include<unistd.h>
 #include<stdio.h>
@@ -155,6 +168,7 @@ int main(){
 ```
 
 ## lseek 与 fseek
+
 ### off_t lseek(int fd, off_t offset, int whence);
 
 ```
@@ -218,6 +232,7 @@ int main(){
 <img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156625775-889cdfc9-1749-4949-8415-07a2020a3f48.png">
 
 <img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156625834-2f4d2043-4c18-43bb-ba41-b1545f70d8cc.png">
+
 - st_mode是八进制，以0开始为标志
 - 要**获取文件类**：st_mode & S_IFMT
 	- S_IFMT = 0170000 =0b1111 0000 0000 0000
@@ -227,7 +242,9 @@ int main(){
 	- e.g. 想知道用户是否有写权限(S_IRUSER: is read user?):st_mode & S_IRUSR
 
 ### int stat(const char * pathname,struct stat * statbuf);
+
 作用：获取文件相关的信息
+
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -241,7 +258,9 @@ int main(){
 */
 int stat(const char * pathname,struct stat * statbuf);
 ```
+
 - 应用
+
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -261,7 +280,9 @@ int main(){
 ```
 
 ### int lstat(const char * pathname,struct stat * statbuf);
+
 作用：获取软链接文件的信息（stat会获取软链接所指向文件的信息）
+
 ```
 #include<sys/types.h>
 #include<sys/stat.h>
@@ -275,10 +296,13 @@ int main(){
 */
 int lstat(const char * pathname,struct stat * statbuf);
 ``` 
+
 ### 创建软链接`ln -s a.txt b.txt`，b.txt是a.txt的软链接
 
 ## [ls-l 模拟实现](./ls-l.cpp)
+
 ### 调用函数：
+
 ```
 #include<pwd.h>	//struct passwd * getpwuid(st.st_uid);
 #include<grp.h>	//struct ... * getgrgid(st.st_gid);
@@ -307,8 +331,11 @@ int lstat(const char * pathname,struct stat * statbuf);
 ```
 
 # 文件属性操作函数
+
 ## int access(const char * pathname,int mode); 
+
 ### 判断对文件的权限或者文件是否存在
+
 ```
 #include<unistd.h>
 /*
@@ -321,8 +348,11 @@ int lstat(const char * pathname,struct stat * statbuf);
 */
 int access(const char * pathname,int mode);
 ```
+
 ## int chmod(const char * pathname, mode_t mode);
+
 修改文件权限
+
 ```
 #include<sys/stat.h>
 /*
@@ -333,11 +363,15 @@ int access(const char * pathname,int mode);
 */
 int chmod(const char * pathname, mode_t mode);
 ```
+
 ## int chown(const char * pathname, uid_t owner,gid_t group);
+
 修改文件所属的用户或组
 
 ## int truncate(const char * path, off_t length)
+
 作用：缩减或者扩展文件的尺寸至指定大小
+
 ```
 #include<unistd.h>
 #include<sys/types.h>
@@ -360,9 +394,13 @@ int main(){
 ```
 
 # 目录操作函数
+
 ## int mkdir(const char * path, mode_t mode)等价于指令mkdir
+
 ### 用户必须有目录的可执行权限 才可以进入目录
+
 创建目录
+
 ```
 #include<sys/stat.h>
 #Include<sys/types.h>
@@ -376,10 +414,13 @@ int main(){
 	return 0;
 }
 ```
+
 ## int rmdir(const char * path)
+
 删除空目录
 
 ## int rename(const char * oldpath, const char * newpath)
+
 ```
 #include<stdio.h>
 int main(){
@@ -388,11 +429,15 @@ int main(){
 	return 0;
 }
 ```
+
 ## int chdir(const char * path)
+
 修改**进程**的工作目录
 
 ## char * getcwd(char * buf, size_t size)
+
 得到进程当前工作目录
+
 ```
 #include<unistd.h>
 
@@ -428,8 +473,11 @@ int main(){
 }
 
 ```
+
 ## DIR * opendir(const char * name);
+
 作用：打开一个目录 
+
 ```
 // 打开一个目录
     #include <sys/types.h>
