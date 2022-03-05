@@ -584,35 +584,45 @@ int main() {
 #include <sys/mman.h>
 /*
 	- 参数：
-	    - void *addr: NULL, 由内核指定
-	    - length : 要映射的数据的长度，这个值不能为0。建议使用文件的长度。
-		    获取文件的长度：stat lseek
-	    - prot : 对申请的内存映射区的操作权限
-		-PROT_EXEC ：可执行的权限
-		-PROT_READ ：读权限
-		-PROT_WRITE ：写权限
-		-PROT_NONE ：没有权限
+		- void *addr: NULL, 由内核指定
+
+		- length : 要映射的数据的长度，这个值不能为0。建议使用文件的长度。
+			获取文件的长度：
+			1. long int size = lseek(fd, 0, SEEK_END);
+			2. struct stat statbuf; stat("a.txt",&statbuf); size = statbuf.st_size;
+
+		- prot : 对申请的内存映射区的操作权限[protection]
+		- PROT_EXEC ：可执行的权限
+		- PROT_READ ：读权限
+		- PROT_WRITE ：写权限
+		- PROT_NONE ：没有权限
 		要操作映射内存，必须要有读的权限。
-		PROT_READ、PROT_READ|PROT_WRITE
-	    - flags :
+		一般PROT_READ 或 PROT_READ|PROT_WRITE
+
+		- flags :
 		- MAP_SHARED : 映射区的数据会自动和磁盘文件进行同步，进程间通信，必须要设置这个选项
 		- MAP_PRIVATE ：不同步，内存映射区的数据改变了，对原来的文件不会修改，会重新创建一个新的文件。（copy on write）
-	    - fd: 需要映射的那个文件的文件描述符
+
+		- fd: 需要映射的那个文件的文件描述符
 		- 通过open得到，open的是一个磁盘文件
-		- 注意：文件的大小不能为0，open指定的权限不能和prot参数有冲突。
-		    prot: PROT_READ                open:只读/读写 
-		    prot: PROT_READ | PROT_WRITE   open:读写
-	    - offset：偏移量，一般不用。必须指定的是4k的整数倍，0表示不便宜。
+		- 注意：文件的大小不能为0，open指定的权限不能和prot参数有冲突。open时的权限要>=prot的权限
+			prot: PROT_READ                open:只读/读写 
+			prot: PROT_READ | PROT_WRITE   open:读写
+
+		- offset：偏移量，一般不用。必须指定的是4k的整数倍，0表示不偏移，表示从文件开头开始映射。
+
 	- 返回值：返回创建的内存的首地址
-	    失败返回MAP_FAILED，(void *) -1
+		失败返回MAP_FAILED = (void *) -1
 */
 void * mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
 ```
 
 ### int munmap(void * addr, size_t length);
+
 功能：释放内存映射
 
 ```
+#include <sys/mman.h>
 /*
 	- 参数：
 		- addr : 要释放的内存的首地址
@@ -622,4 +632,110 @@ int munmap(void *addr, size_t length);
 ```
 
 
+### 使用内存映射实现进程间通信：
+1.有关系的进程（父子进程）
+	1. 还没有子进程的时候
+		- 通过唯一的父进程，先创建内存映射区
+	2. 有了内存映射区以后，创建子进程
+	3. 父子进程共享创建的内存映射区
+
+2.没有关系的进程间通信
+	1. 准备一个大小不是0的磁盘文件
+	2. 进程1 通过磁盘文件创建内存映射区
+		- 得到一个操作这块内存的指针
+	3. 进程2 通过磁盘文件创建内存映射区
+		- 得到一个操作这块内存的指针
+	4. 使用内存映射区通信
+
+**注意：内存映射区通信，是非阻塞**
+
+### 应用:使用内存映射实现没有关系的进程间的通信。
+
+没有关系的进程间的通信：将父子进程的操作写在两个不同进程里两个进程
+
+```
+#include <stdio.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <wait.h>
+
+// 作业:使用内存映射实现没有关系的进程间的通信。
+int main() {
+
+    // 1.打开一个文件
+    int fd = open("test.txt", O_RDWR);
+    int size = lseek(fd, 0, SEEK_END);  // 获取文件的大小
+
+    // 2.创建内存映射区
+    void *ptr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    if(ptr == MAP_FAILED) {
+        perror("mmap");
+        exit(0);
+    }
+
+    // 3.创建子进程
+    pid_t pid = fork();
+    if(pid > 0) {
+        wait(NULL);	// 阻塞等待
+        // 父进程
+        char buf[64];
+        strcpy(buf, (char *)ptr);
+        printf("read data : %s\n", buf);
+       
+    }else if(pid == 0){
+        // 子进程 
+        strcpy((char *)ptr, "nihao a, son!!!");
+    }
+
+    // 关闭内存映射区
+    munmap(ptr, size);
+
+    return 0;
+}
+```
+
+### 内存映射注意事项
+
+1.如果对mmap的返回值(ptr)做++操作(ptr++), munmap是否能够成功?<br>
+
+	void * ptr = mmap(...);
+	ptr++;  可以对其进行++操作
+	munmap(ptr, len);   // 错误,要传递内存的首地址
+
+2.如果open时O_RDONLY, mmap时prot参数指定PROT_READ | PROT_WRITE会怎样?<br>
+
+	错误，返回MAP_FAILED
+	open()函数中的权限建议和prot参数的权限保持一致。
+
+3.如果文件偏移量为1000会怎样?<br>
+
+	**偏移量必须是4K的整数倍**，返回MAP_FAILED
+
+4.mmap什么情况下会调用失败?<br>
+    - 第二个参数：要映射的数据长度 length = 0
+    - 第三个参数：prot
+        - 只指定了写权限，至少要有读权限
+        - prot PROT_READ | PROT_WRITE
+          第5个参数fd 通过open函数时指定的 O_RDONLY 或 O_WRONLY
+
+5.可以open的时候O_CREAT一个新文件来创建映射区吗?<br>
+    - 可以的，但是创建的文件的大小如果为0的话，肯定不行
+    - 可以对新的文件进行扩展
+        - int ret = lseek(fd,100,SEEK_END);	//扩展100write(fd," ");
+        - truncate(“a.txt”,100);//总长度100
+
+6.mmap后关闭文件描述符，对mmap映射有没有影响？<br>
+    int fd = open("XXX");
+    mmap(,,,,fd,0);
+    close(fd); 
+    映射区还存在，创建映射区的fd被关闭，没有任何影响。
+
+7.对ptr越界操作会怎样？<br>
+	void * ptr = mmap(NULL, 100,,,,,);//映射了100字节
+	访问4K: 越界操作操作的是非法的内存 -> 段错误
+	
 
