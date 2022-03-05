@@ -26,7 +26,7 @@
   - `wc` 默认从终端读取，现在从管道读取
   - `|` 创建了一个管道
 
-### 管道的特质
+### 匿名管道的特质
 
 - 管道其实是一个在**内核内存中维护的缓冲器**，这个缓冲器的存储能力是有限的，不同的 操作系统大小不一定相同。
 -  管道拥**有文件的特质:读操作、写操作**，**匿名管道没有文件实体，有名管道有文件实体**，但**不存储数据**。可以按照操作文件的方式对管道进行操作。
@@ -40,7 +40,7 @@
 - 因为父子进程之间共享文件描述符，可以访问同一管道。
 <img width="754" alt="image" src="https://user-images.githubusercontent.com/41602569/156878133-0381d317-9aab-4317-b4af-aeda1e014105.png">
 
-### 管道的数据结构
+### 匿名管道的数据结构
 
 循环队列
 
@@ -174,7 +174,7 @@ int main() {
     父进程：获取到数据，过滤
     pipe()
     execlp()
-    子进程将标准输出 stdout_fileno 重定向到管道的写端。  dup2
+    子进程将标准输出 stdout_fileno 重定向到管道的写端。  dup2(fd[1],stdout_fileno)
 */
 
 #include <unistd.h>
@@ -234,3 +234,343 @@ int main() {
     return 0;
 }
 ```
+
+### 匿名管道的读写特点：
+
+使用管道时，需要注意以下几种特殊的情况（假设都是阻塞I/O操作）
+1. 所有的**指向管道写端的文件描述符都关闭**了（管道写端引用计数为0），有进程从管道的读端读数据，那么**管道中剩余的数据被读取以后，再次read会返回0，就像读到文件末尾一样**。
+
+2. 如果有指向管道**写端的文件描述符没有关闭**（管道的写端引用计数大于0），而持有管道写端的进程也**没有往管道中写数据，这个时候有进程从管道中读取数据**，那么管道中剩余的数据被读取后，
+再次**read会阻塞，直到管道中有数据可以读了才读取数据并返回**。
+
+3. 如果**所有指向管道读端的文件描述符都关闭**了（管道的读端引用计数为0），这个时候有进程
+向管道中**写数据，那么该进程会收到一个信号SIGPIPE, 通常会导致进程异常终止**。
+
+4. 如果有指向管道读端的文件描述符没有关闭（管道的读端引用计数大于0），而持有管道读端的进程
+也没有从管道中读数据，这时有进程向管道中写数据，那么在管道**被写满的时候再次write会阻塞，
+直到管道中有空位置才能再次写入数据并返回**。
+
+#### 总结：
+    - 读管道：
+        - 管道中有数据，read返回实际读到的字节数。
+        - 管道中无数据：
+            - 写端被全部关闭，read返回0（相当于读到文件的末尾）
+            - 写端没有完全关闭，read阻塞等待
+
+    - 写管道：
+        - 管道读端全部被关闭，进程异常终止（进程收到SIGPIPE信号）
+        - 管道读端没有全部关闭：
+            - 管道已满，write阻塞
+            - 管道没有满，write将数据写入，并返回实际写入的字节数
+
+### 非阻塞管道的读写
+
+```
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+/*
+    设置仅读端管道非阻塞
+    int flags = fcntl(fd[0], F_GETFL);  // 获取原来的flag
+    flags |= O_NONBLOCK;            // 修改flag的值
+    fcntl(fd[0], F_SETFL, flags);   // 设置新的flag
+*/
+int main() {
+
+    // 在fork之前创建管道
+    int pipefd[2];
+    int ret = pipe(pipefd);
+    if(ret == -1) {
+        perror("pipe");
+        exit(0);
+    }
+
+    // 创建子进程
+    pid_t pid = fork();
+    if(pid > 0) {
+        // 父进程
+        printf("i am parent process, pid : %d\n", getpid());
+
+        // 关闭写端
+        close(pipefd[1]);
+        
+        // 从管道的读取端读取数据
+        char buf[1024] = {0};
+
+        int flags = fcntl(pipefd[0], F_GETFL);  // 获取原来的flag
+        flags |= O_NONBLOCK;            // 修改flag的值
+        fcntl(pipefd[0], F_SETFL, flags);   // 设置新的flag
+
+        while(1) {
+            int len = read(pipefd[0], buf, sizeof(buf));
+	    //管道为空，return len = -1
+            printf("len : %d\n", len);
+	    
+            printf("parent recv : %s, pid : %d\n", buf, getpid());
+            memset(buf, 0, 1024);//清空buff
+            sleep(1);
+        }
+
+    } else if(pid == 0){
+        // 子进程
+        printf("i am child process, pid : %d\n", getpid());
+        // 关闭读端
+        close(pipefd[0]);
+        char buf[1024] = {0};
+        while(1) {
+            // 向管道中写入数据
+            char * str = "hello,i am child";
+            write(pipefd[1], str, strlen(str));
+            sleep(5);
+        }
+        
+    }
+    return 0;
+}
+```
+
+## 有名管道 FIFO
+
+- 匿名管道，由于没有名字，只能用于亲缘关系的进程间通信。为了克服这个缺点，提 出了有名管道(FIFO)，也叫命名管道、FIFO文件。
+- 有名管道(FIFO)不同于匿名管道之处在于它**提供了一个路径名与之关联，以 FIFO 的文件形式存在于文件系统中**，并且其打开方式与打开一个普通文件是一样的，这样即使与 FIFO 的创建进程不存在亲缘关系的进程，**只要可以访问该路径，就能够彼此通过 FIFO 相互通信，因此，通过 FIFO 不相关的进程也能交换数据。**
+- 一旦打开了 FIFO，就能在它上面使用与操作匿名管道和其他文件的系统调用一样的 I/O系统调用了(如read()、write()和close())。与管道一样，FIFO 也有一个写入端和读取端，并且从管道中读取数据的顺序与写入的顺序是一样的。FIFO 的名称也由此而来:**先入先出**。
+
+## 有名管道(FIFO)和匿名管道(pipe)，不同点:
+	1. FIFO 在文件系统中作为一个特殊文件存在，但 FIFO 中的内容却存放**在内存中**。 
+	2. 当**使用 FIFO 的进程退出后，FIFO 文件将继续保存在文件系统中以便以后使用**。 
+	3. FIFO 有名字，**不相关的进程可以通过打开有名管道进行通信**。
+
+### 创建FIFO文件
+
+1.通过命令： 命令行 `mkfifo 名字`
+2.通过函数：int mkfifo(const char * pathname, mode_t mode);
+	- 一旦使用 mkfifo 创建了一个 FIFO，就可以使用 open 打开它，常见的文件 I/O 函数都可用于 fifo。如:close、read、write、unlink 等。
+	- FIFO 严格遵循先进先出(First in First out)，对管道及 FIFO 的读总是从开始处返回数据，对它们的写则把数据添加到末尾。它们不支持诸如 lseek() 等文件定位操作。
+```
+#include <sys/types.h>
+#include <sys/stat.h>
+/*
+	参数：
+		- pathname: 管道名称的路径
+		- mode: 文件的权限 和 open 的 mode 是一样的
+				是一个八进制的数
+	返回值：成功返回0，失败返回-1，并设置错误号
+*/
+int mkfifo(const char *pathname, mode_t mode);
+```
+
+- 应用 mkfifo
+
+```
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+    // 判断文件是否存在
+    int ret = access("fifo1", F_OK);
+    if(ret == -1) {
+	
+        printf("管道不存在，创建管道\n");
+        
+        ret = mkfifo("fifo1", 0664);
+
+        if(ret == -1) {
+            perror("mkfifo");
+            exit(0);
+        }       
+    }
+    return 0;
+}
+```
+
+### 有名管道读写：
+
+- 有名管道的注意事项：
+	1.为只读而打开管道的进程会阻塞，直到另外一个进程为只写打开管道
+	2.为只写而打开管道的进程会阻塞，直到另外一个进程为只读打开管道
+
+- 读管道：
+	- 管道中有数据，read返回实际读到的字节数
+	- 管道中无数据：
+		- 管道写端被全部关闭，read返回0，（相当于读到文件末尾）
+		- 写端没有全部被关闭，read阻塞等待
+
+- 写管道：
+	- 管道读端被全部关闭，进行异常终止（收到一个SIGPIPE信号）
+	- 管道读端没有全部关闭：
+		- 管道已经满了，write会阻塞
+		- 管道没有满，write将数据写入，并返回实际写入的字节数。
+
+#### 写入FIFO
+
+```
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+
+int main() {
+
+    // 1.判断文件是否存在
+    int ret = access("test", F_OK);
+    if(ret == -1) {
+        printf("管道不存在，创建管道\n");
+        
+        // 2.创建管道文件
+        ret = mkfifo("test", 0664);
+
+        if(ret == -1) {
+            perror("mkfifo");
+            exit(0);
+        }       
+
+    }
+
+    // 3.以只写的方式打开管道
+    int fd = open("test", O_WRONLY);
+    if(fd == -1) {
+        perror("open");
+        exit(0);
+    }
+
+    // 写数据
+    for(int i = 0; i < 100; i++) {
+        char buf[1024];
+        sprintf(buf, "hello, %d\n", i);
+        printf("write data : %s\n", buf);
+        write(fd, buf, strlen(buf));
+        sleep(1);
+    }
+
+    close(fd);
+
+    return 0;
+}
+```
+
+#### 从FIFO中读取
+
+```
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+// 从管道中读取数据
+int main() {
+
+    // 1.打开管道文件
+    int fd = open("test", O_RDONLY);
+    if(fd == -1) {
+        perror("open");
+        exit(0);
+    }
+
+    // 读数据
+    while(1) {
+        char buf[1024] = {0};
+        int len = read(fd, buf, sizeof(buf));
+        if(len == 0) {
+            printf("写端断开连接了...\n");
+            break;
+        }
+        printf("recv buf : %s\n", buf);
+    }
+
+    close(fd);
+
+    return 0;
+}
+```
+
+### 有名管道实现简单聊天功能
+
+通过两个FIFO，两个进程都对一个只读另一个只写
+chatA.c:
+
+```
+int main() {
+
+    // 1.判断有名管道文件是否存在
+    int ret = access("fifo1", F_OK);
+    if(ret == -1) {
+        // 文件不存在
+        printf("管道不存在，创建对应的有名管道\n");
+        ret = mkfifo("fifo1", 0664);
+        if(ret == -1) {
+            perror("mkfifo");
+            exit(0);
+        }
+    }
+
+    ret = access("fifo2", F_OK);
+    if(ret == -1) {
+        // 文件不存在
+        printf("管道不存在，创建对应的有名管道\n");
+        ret = mkfifo("fifo2", 0664);
+        if(ret == -1) {
+            perror("mkfifo");
+            exit(0);
+        }
+    }
+
+    // 2.以只写的方式打开管道fifo1
+    int fdw = open("fifo1", O_WRONLY);
+    if(fdw == -1) {
+        perror("open");
+        exit(0);
+    }
+    printf("打开管道fifo1成功，等待写入...\n");
+    // 3.以只读的方式打开管道fifo2
+    int fdr = open("fifo2", O_RDONLY);
+    if(fdr == -1) {
+        perror("open");
+        exit(0);
+    }
+    printf("打开管道fifo2成功，等待读取...\n");
+
+    char buf[128];
+
+    // 4.循环的写读数据
+    while(1) {
+        memset(buf, 0, 128);
+        // 获取标准输入的数据
+        fgets(buf, 128, stdin);
+        // 写数据
+        ret = write(fdw, buf, strlen(buf));
+        if(ret == -1) {
+            perror("write");
+            exit(0);
+        }
+
+        // 5.读管道数据
+        memset(buf, 0, 128);
+        ret = read(fdr, buf, 128);
+        if(ret <= 0) {
+            perror("read");
+            break;
+        }
+        printf("buf: %s\n", buf);
+    }
+
+    // 6.关闭文件描述符
+    close(fdr);
+    close(fdw);
+
+    return 0;
+}
+```
+
+## 内存映射
+
