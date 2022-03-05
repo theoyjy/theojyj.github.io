@@ -339,9 +339,10 @@ int main() {
 - 一旦打开了 FIFO，就能在它上面使用与操作匿名管道和其他文件的系统调用一样的 I/O系统调用了(如read()、write()和close())。与管道一样，FIFO 也有一个写入端和读取端，并且从管道中读取数据的顺序与写入的顺序是一样的。FIFO 的名称也由此而来:**先入先出**。
 
 ## 有名管道(FIFO)和匿名管道(pipe)，不同点:
-	1. FIFO 在文件系统中作为一个特殊文件存在，但 FIFO 中的内容却存放**在内存中**。 
-	2. 当**使用 FIFO 的进程退出后，FIFO 文件将继续保存在文件系统中以便以后使用**。 
-	3. FIFO 有名字，**不相关的进程可以通过打开有名管道进行通信**。
+
+1. FIFO 在文件系统中作为一个特殊文件存在，但 FIFO 中的内容却存放**在内存中**。 
+2. 当**使用 FIFO 的进程退出后，FIFO 文件将继续保存在文件系统中以便以后使用**。 
+3. FIFO 有名字，**不相关的进程可以通过打开有名管道进行通信**。
 
 ### 创建FIFO文件
 
@@ -349,6 +350,7 @@ int main() {
 2.通过函数：int mkfifo(const char * pathname, mode_t mode);
 	- 一旦使用 mkfifo 创建了一个 FIFO，就可以使用 open 打开它，常见的文件 I/O 函数都可用于 fifo。如:close、read、write、unlink 等。
 	- FIFO 严格遵循先进先出(First in First out)，对管道及 FIFO 的读总是从开始处返回数据，对它们的写则把数据添加到末尾。它们不支持诸如 lseek() 等文件定位操作。
+
 ```
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -701,42 +703,39 @@ int main() {
 ### 内存映射注意事项
 
 1.如果对mmap的返回值(ptr)做++操作(ptr++), munmap是否能够成功?<br>
+void * ptr = mmap(...);
+ptr++;  可以对其进行++操作
+munmap(ptr, len);   // 错误,要传递内存的首地址
 
-	void * ptr = mmap(...);
-	ptr++;  可以对其进行++操作
-	munmap(ptr, len);   // 错误,要传递内存的首地址
-
-2.如果open时O_RDONLY, mmap时prot参数指定PROT_READ | PROT_WRITE会怎样?<br>
-
-	错误，返回MAP_FAILED
-	open()函数中的权限建议和prot参数的权限保持一致。
+2.如果open时O\_RDONLY, mmap时prot参数指定PROT\_READ | PROT\_WRITE会怎样?<br>
+错误，返回MAP\_FAILED
+open()函数中的权限建议和prot参数的权限保持一致。
 
 3.如果文件偏移量为1000会怎样?<br>
-
-	**偏移量必须是4K的整数倍**，返回MAP_FAILED
+**偏移量必须是4K的整数倍**，返回MAP_FAILED
 
 4.mmap什么情况下会调用失败?<br>
-    - 第二个参数：要映射的数据长度 length = 0
-    - 第三个参数：prot
-        - 只指定了写权限，至少要有读权限
-        - prot PROT_READ | PROT_WRITE
-          第5个参数fd 通过open函数时指定的 O_RDONLY 或 O_WRONLY
+- 第二个参数：要映射的数据长度 length = 0
+- 第三个参数：prot
+	- 只指定了写权限，至少要有读权限
+	- prot PROT_READ \| PROT_WRITE
+	  第5个参数fd 通过open函数时指定的 O\_RDONLY 或 O\_WRONLY
 
 5.可以open的时候O_CREAT一个新文件来创建映射区吗?<br>
-    - 可以的，但是创建的文件的大小如果为0的话，肯定不行
-    - 可以对新的文件进行扩展
-        - int ret = lseek(fd,100,SEEK_END);	//扩展100write(fd," ");
-        - truncate(“a.txt”,100);//总长度100
+- 可以的，但是创建的文件的大小如果为0的话，肯定不行
+- 可以对新的文件进行扩展
+	- int ret = lseek(fd,100,SEEK_END);	//扩展100write(fd," ");
+	- truncate(“a.txt”,100);//总长度100
 
 6.mmap后关闭文件描述符，对mmap映射有没有影响？<br>
-    int fd = open("XXX");
-    mmap(,,,,fd,0);
-    close(fd); 
-    映射区还存在，创建映射区的fd被关闭，没有任何影响。
+int fd = open("XXX");
+mmap(,,,,fd,0);
+close(fd); 
+映射区还存在，创建映射区的fd被关闭，没有任何影响。
 
 7.对ptr越界操作会怎样？<br>
-	void * ptr = mmap(NULL, 100,,,,,);//映射了100字节
-	访问4K: 越界操作操作的是非法的内存 -> 段错误
+void * ptr = mmap(NULL, 100,,,,,);//映射了100字节
+访问4K: 越界操作操作的是非法的内存 -> 段错误
 	
 - 应用： 内存映射实现文件拷贝
 
@@ -814,10 +813,10 @@ int main() {
 
 ### 匿名映射 实现父子进程之间通信
 
-void * ptr = mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED | **MAP_ANONYMOUS**, **-1**, 0);
+void * ptr = mmap(NULL, len, PROT_READ \| PROT_WRITE, MAP_SHARED \| **MAP\_ANONYMOUS**, **-1**, 0);
 
-	- falgs | MAP_ANONYMOUS 
-	- fd = -1 不存在实体文件
+- falgs | MAP\_ANONYMOUS 
+- fd = -1 不存在实体文件
 	
 	
 ```
