@@ -37,3 +37,107 @@
 	- Cont 继续执行当前被暂停的进程
 - 信号的几种状态:产生、未决、递达
 - SIGKILL 和 SIGSTOP 信号不能被捕捉、阻塞或者忽略，只能执行默认动作。
+
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+
+    char * buf;	// 野指针
+
+    strcpy(buf, "hello");	// 段错误，会生成core文件
+
+    return 0;
+}
+```
+- ulimit -a 发现 core file size 默认是0，ulimite -c 1024 设置
+- 要成功生成core，编译文件时`gcc test.cpp -g` 生成错误信息
+- 运行./a.out
+- gdc ./a.out
+- core-file core 就可以查看core信息
+
+## int kill(pid_t pid, int sig);
+
+功能：给任何的进程或者进程组pid, 发送任何的信号 sig
+
+```
+#include <sys/types.h>
+#include <signal.h>
+/*  
+
+	- 参数：
+		- pid ：
+			> 0 : 将信号发送给指定的进程
+			= 0 : 将信号发送给当前的进程组
+			= -1 : 将信号发送给每一个有权限接收这个信号的进程
+			< -1 : 这个pid=某个进程组的ID取反 （-12345）
+		- sig : 需要发送的信号的编号或者是宏值，0表示不发送任何信号
+
+	kill(getppid(), 9);	// 给父进程
+	kill(getpid(), 9);  // 给自己进程
+*/
+int kill(pid_t pid, int sig);
+```
+
+## int raise(int sig);
+
+功能：给当前进程发送信号
+
+```
+/*
+	- 
+	- 参数：
+		- sig : 要发送的信号
+	- 返回值：
+		- 成功 0
+		- 失败 非0
+	- 等价于 kill(getpid(), sig);   
+*/
+int raise(int sig);
+```
+
+## void abort(void)
+
+功能： 发送SIGABRT信号给当前的进程，杀死当前进程
+
+```
+/* 
+	等价于 kill(getpid(), SIGABRT);
+*/
+void abort(void);
+```
+
+- 应用
+
+```
+#include <stdio.h>
+#include <sys/types.h>
+#include <signal.h>
+#include <unistd.h>
+
+int main() {
+
+    pid_t pid = fork();
+
+    if(pid == 0) {
+        // 子进程
+        int i = 0;
+        for(i = 0; i < 5; i++) {
+            printf("child process，%d\n",i);
+            sleep(1);
+        }
+
+    } else if(pid > 0) {
+        // 父进程
+        printf("parent process\n");
+        sleep(2);
+        printf("kill child process now\n");
+		// 子进程没有运行完成就被kill
+        kill(pid, SIGINT);
+    }
+
+    return 0;
+}
+
+```
