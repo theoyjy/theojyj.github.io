@@ -18,4 +18,12 @@
 
 ## 匿名管道
 
+- `ls | wc -l`: 统计一个目录中文件的数目，shell创建了两个进程分别来执行`ls` 和 `wc`
+
+<img width="1099" alt="image" src="https://user-images.githubusercontent.com/41602569/156877347-1b2ff5ac-20b7-40f4-975e-f5a1eebcff04.png">
+
+  - `ls` 原先写入终端，现在进程将内容输出匿名管道
+  - `wc` 默认从终端读取，现在从管道读取
+  - `|` 创建了一个管道
+
 
