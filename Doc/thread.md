@@ -54,21 +54,24 @@
 - 失败：返回错误号。这个错误号和之前errno不太一样。	
 - 获取错误号的信息：  char * strerror(int errnum);
 
-		#include <pthread.h>
-        - 功能：创建一个子线程
-        - 参数：
-            - thread：传出参数，线程创建成功后，子线程的线程ID被写到该变量中。
-            - attr : 设置线程的属性，一般使用默认值，NULL
-            - start_routine : 函数指针，这个函数是子线程需要处理的逻辑代码
-            - arg : 给第三个参数使用，传参
-        - 返回值：
-            成功：0
-            失败：返回错误号。这个错误号和之前errno不太一样。
-            获取错误号的信息：  char * strerror(int errnum);
-			
-	int pthread_create(pthread_t *thread, const pthread_attr_t *attr, 
-   						void *(*start_routine) (void *), void *arg);
+```
+#include <pthread.h>
+- 功能：创建一个子线程
+- 参数：
+    - thread：传出参数，线程创建成功后，子线程的线程ID被写到该变量中。
+    - attr : 设置线程的属性，一般使用默认值，NULL
+    - start_routine : 函数指针，这个函数是子线程需要处理的逻辑代码
+    - arg : 给第三个参数使用，传参
+- 返回值：
+    成功：0
+    失败：返回错误号。这个错误号和之前errno不太一样。
+    获取错误号的信息：  char * strerror(int errnum);
+
+int pthread_create(pthread_t *thread, const pthread_attr_t * attr, 
+		 void * (* start_routine) (void * ), void * arg);
 						
+```
+
 - 应用
 
 ```
@@ -110,6 +113,7 @@ int main() {
 **main线程、子线程都结束后，该进程结束**
 
 ### 终止线程
+
 让主线程退出,当主线程退出时，不会影响其他正常运行的线程。
 
 ```
@@ -117,9 +121,7 @@ int main() {
 void pthread_exit(void *retval);
 	功能：终止一个线程，在哪个线程中调用，就表示终止哪个线程
 	参数：
-		retval:需要传递一个指针，作为一个返回值，可以在pthread_join()中获取到。
-
-
+		etval:需要传递一个指针，作为一个返回值，可以在pthread_join()中获取到。
 
 pthread_t pthread_self(void);
 	功能：获取当前的线程的线程ID
@@ -162,15 +164,268 @@ int main() {
 
     // 让主线程退出,当主线程退出时，不会影响其他正常运行的线程。
     pthread_exit(NULL);
-
+    
+    // 以下： 主线程已经退出，不会运行
     printf("main thread exit\n");
-
     return 0;   // exit(0);
 }
 ```
 
-## 线程属性
+### 连接已经终止的线程
+
+int pthread\_join(pthread\_t thread, void ** retval);
+
+- 功能：
+	- 和一个已经终止的线程进行连接
+	- 回收子线程的资源
+	- 这个函数是阻塞函数，阻塞等待线程结束，调用一次只能回收一个子线程
+	- 一般在主线程中使用
+
+
+```
+#include <pthread.h>
+	- 参数：
+		- thread：需要回收的子线程的ID
+		- retval: 接收子线程退出时的返回值
+	- 返回值：
+		0 : 成功
+		非0 : 失败，返回的错误号
+int pthread_join(pthread_t thread, void **retval);
+```
+
+```
+#include <stdio.h>
+#include <pthread.h>
+#include <string.h>
+#include <unistd.h>
+
+int value = 10;
+
+void * callback(void * arg) {
+    printf("child thread id : %ld\n", pthread_self());
+    // sleep(3);
+    // return NULL; 
+    // int value = 10; // 局部变量
+    pthread_exit((void *)&value);   // 与 return (void *)&value; 一样
+} 
+
+int main() {
+
+    // 创建一个子线程
+    pthread_t tid;
+    int ret = pthread_create(&tid, NULL, callback, NULL);
+
+    if(ret != 0) {
+        char * errstr = strerror(ret);
+        printf("error : %s\n", errstr);
+    }
+
+    // 主线程
+    for(int i = 0; i < 5; i++) {
+        printf("%d\n", i);
+    }
+
+    printf("tid : %ld, main thread id : %ld\n", tid ,pthread_self());
+
+    // 主线程调用pthread_join()回收子线程的资源
+	// 阻塞等待线程结束
+    int * thread_retval;
+    ret = pthread_join(tid, (void **)&thread_retval);
+
+    if(ret != 0) {
+        char * errstr = strerror(ret);
+        printf("error : %s\n", errstr);
+    }
+
+    printf("exit data : %d\n", *thread_retval);
+
+    printf("回收子线程资源成功！\n");
+
+    // 让主线程退出,当主线程退出时，不会影响其他正常运行的线程。
+    pthread_exit(NULL);
+
+    return 0; 
+}
+```
+# TO BE DONE 。。。
+## 线程属性 。。。
 
 <img width="1171" alt="image" src="https://user-images.githubusercontent.com/41602569/156916718-e807b770-d460-4b53-ada5-8ff9a5da737a.png">
 
+## 线程同步
+
+- 线程的主要优势在于，能够**通过全局变量来共享信息**。不过，这种便捷的共享是有代价的:**必须确保多个线程不会同时修改同一变量，或者某一线程不会读取正在由其他线程修改的变量**。
+- **临界区是指访问某一共享资源的代码片段**，并且**这段代码的执行应为原子操作**，也就是 同时访问同一共享资源的其他线程不应终端该片段的执行。
+- **线程同步**:即当有**一个线程在对内存进行操作时，其他线程都不可以对这个内存地址进行操作**，直到该线程完成操作，其他线程才能对该内存地址进行操作，而**其他线程则处于等待状态**。
+- 为避免线程更新共享变量时出现问题，可以使用**互斥量(mutex 是 mutual exclusion 的缩写)** 来确保同时仅有一个线程可以访问某项共享资源。可以使用互斥量**来保证对任意共享资源的原子访问**。
+- 互斥量有**两种状态**:已锁定(locked)和未锁定(unlocked)。**任何时候，至多只有一个线程可以锁定该互斥量**。**试图对已经锁定的某一互斥量再次加锁，将可能阻塞线程或者报错失败**，具体取决于加锁时使用的方法。
+- **一旦线程锁定互斥量，随即成为该互斥量的所有者，只有所有者才能给互斥量解锁**。一般情 况下，对每一共享资源(可能由多个相关变量组成)会使用不同的互斥量，每一线程在访问同一资源时将采用如下协议:
+	- 针对共享资源锁定互斥量 
+	- 访问共享资源
+	- 对互斥量解锁
+- <img width="1119" alt="image" src="https://user-images.githubusercontent.com/41602569/156918087-8200864d-dc5b-47cf-b6c2-d18d15537e6c.png">
+
+- 应用
+
+```
+#include <stdio.h>
+#include <pthread.h>
+#include <unistd.h>
+
+// 全局变量，所有的线程都共享这一份资源。
+int tickets = 1000;
+
+// 创建一个互斥量
+pthread_mutex_t mutex;
+
+void * sellticket(void * arg) {
+
+    // 卖票
+    while(1) {
+
+        // 加锁
+        pthread_mutex_lock(&mutex);
+
+        if(tickets > 0) {
+            usleep(6000);
+            printf("%ld 正在卖第 %d 张门票\n", pthread_self(), tickets);
+            tickets--;
+        }else {
+            // 解锁
+            pthread_mutex_unlock(&mutex);
+            break;
+        }
+
+        // 解锁
+        pthread_mutex_unlock(&mutex);
+    }
+
+    return NULL;
+}
+
+int main() {
+
+    // 初始化互斥量
+    pthread_mutex_init(&mutex, NULL);
+
+    // 创建3个子线程
+    pthread_t tid1, tid2, tid3;
+    pthread_create(&tid1, NULL, sellticket, NULL);
+    pthread_create(&tid2, NULL, sellticket, NULL);
+    pthread_create(&tid3, NULL, sellticket, NULL);
+
+    // 回收子线程的资源,阻塞
+    pthread_join(tid1, NULL);
+    pthread_join(tid2, NULL);
+    pthread_join(tid3, NULL);
+
+    pthread_exit(NULL); // 退出主线程
+
+    // 释放互斥量资源
+    pthread_mutex_destroy(&mutex);
+
+    return 0;
+}
+```
+
+### 互斥量相关操作函数
+
+<img width="1014" alt="image" src="https://user-images.githubusercontent.com/41602569/156918116-8754dccd-ba24-43d7-b4fa-b88836d3a288.png">
+
+### 死锁
+
+- 有时，一个线程需要同时访问两个或更多不同的共享资源，而每个资源又都由不同的互斥量管理。**当超过一个线程加锁同一组互斥量时，就有可能发生死锁**。
+- 两个或两个以上的进程在执行过程中，因**争夺共享资源而造成的一种互相等待的现象**， 若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁。
+- 死锁的几种场景:
+	- 忘记释放锁
+	- 重复加锁
+		- <img width="491" alt="image" src="https://user-images.githubusercontent.com/41602569/156918840-f33bdabf-bd94-4989-b09c-a3c23c333eee.png">
+	- 多线程多锁，抢占锁资源
+		- <img width="237" alt="image" src="https://user-images.githubusercontent.com/41602569/156918820-72088f8c-984f-4f7d-9b90-ea416a613b9e.png">
+
+
+<img width="609" alt="image" src="https://user-images.githubusercontent.com/41602569/156918204-81a6449a-8839-4b2d-961a-a07af3d27ae0.png">
+
+### 读写锁
+
+- 当有一个线程已经持有互斥锁时，互斥锁将所有试图进入临界区的线程都阻塞住。但是考虑一种情形，当前**持有互斥锁的线程只是要读访问共享资源，而同时有其它几个线程也想读取这个共享资源**，但是由于互斥锁的排它性，所有其它线程都无法获取锁，也就无法读访问共享资源了，但是实际上多个线程同时读访问共享资源并不会导致问题。
+- 在对数据的读写操作中，**更多的是读操作，写操作较少，例如对数据库数据的读写应用**。为了满足当前能够**允许多个读出，但只允许一个写入的需求，线程提供了读写锁来实现**。
+- 读写锁的特点:
+	- 如果有其它线程**读**数据，则**允许其它线程执行读操作，但不允许写操作**。 
+	- 如果有其它线程**写**数据，则**其它线程都不允许读、写操作**。
+	- **写是独占的，写的优先级高**。
+
+#### 读写锁相关函数
+
+<img width="1072" alt="image" src="https://user-images.githubusercontent.com/41602569/156918968-bb7c114e-d53f-4fda-ae47-c246c0913011.png">
+
+- 案例：
+	- 8个线程操作同一个全局变量。
+	- 3个线程不定时写这个全局变量，5个线程不定时的读这个全局变量
+
+```
+#include <stdio.h>
+#include <pthread.h>
+#include <unistd.h>
+
+// 创建一个共享数据
+int num = 1;
+pthread_rwlock_t rwlock;
+
+void * writeNum(void * arg) {
+
+    while(1) {
+        pthread_rwlock_wrlock(&rwlock);
+        num++;
+        printf("++write, tid : %ld, num : %d\n", pthread_self(), num);
+        pthread_rwlock_unlock(&rwlock);
+        usleep(100);
+    }
+
+    return NULL;
+}
+
+void * readNum(void * arg) {
+
+    while(1) {
+        pthread_rwlock_rdlock(&rwlock);
+        printf("===read, tid : %ld, num : %d\n", pthread_self(), num);
+        pthread_rwlock_unlock(&rwlock);
+        usleep(100);
+    }
+
+    return NULL;
+}
+
+int main() {
+
+   pthread_rwlock_init(&rwlock, NULL);
+
+    // 创建3个写线程，5个读线程
+    pthread_t wtids[3], rtids[5];
+    for(int i = 0; i < 3; i++) {
+        pthread_create(&wtids[i], NULL, writeNum, NULL);
+    }
+
+    for(int i = 0; i < 5; i++) {
+        pthread_create(&rtids[i], NULL, readNum, NULL);
+    }
+
+    // 设置线程分离
+    for(int i = 0; i < 3; i++) {
+       pthread_detach(wtids[i]);
+    }
+
+    for(int i = 0; i < 5; i++) {
+         pthread_detach(rtids[i]);
+    }
+
+    pthread_exit(NULL);
+
+    pthread_rwlock_destroy(&rwlock);
+
+    return 0;
+}
+
+```
 
