@@ -14,6 +14,7 @@ This is website reading my brain to show all I know which is this 🤏 much of u
 	1. [Inter Process Communication](/Doc/InterProcessCommunication.md)
 	2. [Signal](/Doc/signal.md)
 	3. [Share Memory](/Doc/shareMemory.md)
+
 8. [Daemon](/Doc/daemon.md) 
 9. ...
 
