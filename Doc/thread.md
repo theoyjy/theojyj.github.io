@@ -690,6 +690,8 @@ customer() {
 
 ### 生产者消费者模型(信号量版)
 
+不用再判断 if(head==NULL)...因为为空或直接阻塞
+
 ```
 #include <stdio.h>
 #include <pthread.h>
@@ -749,8 +751,8 @@ void * customer(void * arg) {
 int main() {
 
     pthread_mutex_init(&mutex, NULL);
-    sem_init(&psem, 0, 8);
-    sem_init(&csem, 0, 0);
+    sem_init(&psem, 0, 8);	// 可以生产8个
+    sem_init(&csem, 0, 0);	// 可以消费0个
 
     // 创建5个生产者线程，和5个消费者线程
     pthread_t ptids[5], ctids[5];
