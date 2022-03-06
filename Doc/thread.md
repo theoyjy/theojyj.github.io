@@ -375,6 +375,7 @@ pthread_rwlock_t rwlock;
 void * writeNum(void * arg) {
 
     while(1) {
+    	// wrlock 写锁
         pthread_rwlock_wrlock(&rwlock);
         num++;
         printf("++write, tid : %ld, num : %d\n", pthread_self(), num);
@@ -388,6 +389,7 @@ void * writeNum(void * arg) {
 void * readNum(void * arg) {
 
     while(1) {
+    	// rdlock读锁
         pthread_rwlock_rdlock(&rwlock);
         printf("===read, tid : %ld, num : %d\n", pthread_self(), num);
         pthread_rwlock_unlock(&rwlock);
@@ -428,4 +430,8 @@ int main() {
 }
 
 ```
+
+pthread_detach(tid) 分离线程 当线程被设置为分离状态后，线程结束时，它的资源会被系统自动的回收， 而不再需要在其它线程中对其进行 pthread_join () 操作。 
+
+##
 
