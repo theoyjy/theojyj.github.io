@@ -433,5 +433,348 @@ int main() {
 
 pthread_detach(tid) 分离线程 当线程被设置为分离状态后，线程结束时，它的资源会被系统自动的回收， 而不再需要在其它线程中对其进行 pthread_join () 操作。 
 
-##
+## 生产者消费者模型
+
+<img width="827" alt="image" src="https://user-images.githubusercontent.com/41602569/156919622-886aab40-2d26-46f8-80f8-cbe85d1ba8ae.png">
+
+生产者消费者模型（粗略的版本）
+
+- 互斥量实现
+
+```
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+// 创建一个互斥量
+pthread_mutex_t mutex;
+
+struct Node{
+    int num;
+    struct Node *next;
+};
+
+// 头结点
+struct Node * head = NULL;
+
+void * producer(void * arg) {
+
+    // 不断的创建新的节点，添加到链表中
+    while(1) {
+        pthread_mutex_lock(&mutex);
+        struct Node * newNode = (struct Node *)malloc(sizeof(struct Node));
+        newNode->next = head;
+        head = newNode;
+        newNode->num = rand() % 1000;
+        printf("add node, num : %d, tid : %ld\n", newNode->num, pthread_self());
+        pthread_mutex_unlock(&mutex);
+        usleep(100);
+    }
+
+    return NULL;
+}
+
+void * customer(void * arg) {
+
+    while(1) {
+        pthread_mutex_lock(&mutex);
+        // 保存头结点的指针
+        struct Node * tmp = head;
+
+        // 判断是否有数据
+        if(head != NULL) {
+            // 有数据
+            head = head->next;
+            printf("del node, num : %d, tid : %ld\n", tmp->num, pthread_self());
+            free(tmp);
+            pthread_mutex_unlock(&mutex);
+            usleep(100);
+        } else {
+            // 没有数据
+            pthread_mutex_unlock(&mutex);
+        }
+    }
+    return  NULL;
+}
+
+int main() {
+
+    pthread_mutex_init(&mutex, NULL);
+
+    // 创建5个生产者线程，和5个消费者线程
+    pthread_t ptids[5], ctids[5];
+
+    for(int i = 0; i < 5; i++) {
+        pthread_create(&ptids[i], NULL, producer, NULL);
+        pthread_create(&ctids[i], NULL, customer, NULL);
+    }
+
+    for(int i = 0; i < 5; i++) {
+        pthread_detach(ptids[i]);
+        pthread_detach(ctids[i]);
+    }
+
+    while(1) {
+        sleep(10);
+    }
+
+    pthread_mutex_destroy(&mutex);
+
+    pthread_exit(NULL);
+
+    return 0;
+}
+```
+
+### 条件变量
+
+**不是锁，只是配合互斥锁，阻塞一些本来会循环等待而浪费资源的线程，直到收到通知**
+
+- 条件变量的类型 pthread_cond_t
+-int pthread\_cond\_init(pthread\_cond_t \*restrictcond, constpthread\_condattr\_t \*restrict attr);
+- int pthread\_cond\_destroy(pthread\_cond\_t \*cond);
+- int pthread\_cond\_wait(pthread\_cond\_t \*restrict cond, pthread\_mutex\_t \*restrict mutex);
+	- 等待，调用了该函数，线程会阻塞。
+	- pthread_cond_wait(&cond, &mutex); // 当这个函数调用阻塞的时候，会对互斥锁进行解锁，并卡在这一步
+		- pthread_mutex_unlock(&mutex); // 当解除阻塞的，继续向下执行，会重新加锁，所以需要再一次解锁
+            
+            
+- int pthread\_cond\_timedwait(pthread\_cond\_t \*restrict cond, pthread\_mutex\_t \*restrict mutex, const struct timespec \*restrict abstime);
+	- 等待多长时间，调用了这个函数，线程会阻塞，直到指定的时间结束。
+- int pthread\_cond\_signal(pthread\_cond\_t \*cond);
+	- 唤醒一个或者多个等待的线程
+- int pthread\_cond\_broadcast(pthread\_cond\_t \*cond);
+	- 唤醒所有的等待的线程
+
+### 生产者消费者模型（增加条件的版本）
+
+- 条件变量实现
+
+```
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+// 创建一个互斥量
+pthread_mutex_t mutex;
+// 创建条件变量
+pthread_cond_t cond;
+
+struct Node{
+    int num;
+    struct Node *next;
+};
+
+// 头结点
+struct Node * head = NULL;
+
+void * producer(void * arg) {
+
+    // 不断的创建新的节点，添加到链表中
+    while(1) {
+        pthread_mutex_lock(&mutex);
+        struct Node * newNode = (struct Node *)malloc(sizeof(struct Node));
+        newNode->next = head;
+        head = newNode;
+        newNode->num = rand() % 1000;
+        printf("add node, num : %d, tid : %ld\n", newNode->num, pthread_self());
+        
+        // 只要生产了一个，就通知消费者消费
+        pthread_cond_signal(&cond);
+
+        pthread_mutex_unlock(&mutex);
+        usleep(100);
+    }
+
+    return NULL;
+}
+
+void * customer(void * arg) {
+
+    while(1) {
+        pthread_mutex_lock(&mutex);
+        // 保存头结点的指针
+        struct Node * tmp = head;
+        // 判断是否有数据
+        if(head != NULL) {
+            // 有数据
+            head = head->next;
+            printf("del node, num : %d, tid : %ld\n", tmp->num, pthread_self());
+            free(tmp);
+            pthread_mutex_unlock(&mutex);
+            usleep(100);
+        } else {
+            // 没有数据，需要等待
+            // 当这个函数调用阻塞的时候，会对互斥锁进行解锁，并卡在这一步
+			// 当解除阻塞的，继续向下执行，会重新加锁，所以需要再一次解锁
+            pthread_cond_wait(&cond, &mutex);
+            pthread_mutex_unlock(&mutex);
+        }
+    }
+    return  NULL;
+}
+
+int main() {
+
+    pthread_mutex_init(&mutex, NULL);
+    pthread_cond_init(&cond, NULL);
+
+    // 创建5个生产者线程，和5个消费者线程
+    pthread_t ptids[5], ctids[5];
+
+    for(int i = 0; i < 5; i++) {
+        pthread_create(&ptids[i], NULL, producer, NULL);
+        pthread_create(&ctids[i], NULL, customer, NULL);
+    }
+
+    for(int i = 0; i < 5; i++) {
+        pthread_detach(ptids[i]);
+        pthread_detach(ctids[i]);
+    }
+
+    while(1) {
+        sleep(10);
+    }
+
+    pthread_mutex_destroy(&mutex);
+    pthread_cond_destroy(&cond);
+
+    pthread_exit(NULL);
+
+    return 0;
+}
+```
+
+### 信号量
+
+```
+信号量的类型 sem_t
+int sem_init(sem_t *sem, int pshared, unsigned int value);
+	- 初始化信号量
+	- 参数：
+		- sem : 信号量变量的地址
+		- pshared : 0 用在线程间 ，非0 用在进程间
+		- value : 信号量中的值
+
+int sem_destroy(sem_t *sem);
+	- 释放资源
+
+int sem_wait(sem_t *sem);
+	- 对信号量加锁，调用一次对信号量的值-1，如果值为0，就阻塞
+
+int sem_trywait(sem_t *sem);
+
+int sem_timedwait(sem_t *sem, const struct timespec *abs_timeout);
+int sem_post(sem_t *sem);
+	- 对信号量解锁，调用一次对信号量的值+1
+
+int sem_getvalue(sem_t *sem, int *sval);
+
+sem_t psem;
+sem_t csem;
+init(psem, 0, 8);
+init(csem, 0, 0);
+
+producer() {
+	sem_wait(&psem);
+	sem_post(&csem)
+}
+
+customer() {
+	sem_wait(&csem);
+	sem_post(&psem)
+}
+```
+
+### 生产者消费者模型(信号量版)
+
+```
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <semaphore.h>
+
+// 创建一个互斥量
+pthread_mutex_t mutex;
+// 创建两个信号量
+sem_t psem;
+sem_t csem;
+
+struct Node{
+    int num;
+    struct Node *next;
+};
+
+// 头结点
+struct Node * head = NULL;
+
+void * producer(void * arg) {
+
+    // 不断的创建新的节点，添加到链表中
+    while(1) {
+        sem_wait(&psem);
+        pthread_mutex_lock(&mutex);
+        struct Node * newNode = (struct Node *)malloc(sizeof(struct Node));
+        newNode->next = head;
+        head = newNode;
+        newNode->num = rand() % 1000;
+        printf("add node, num : %d, tid : %ld\n", newNode->num, pthread_self());
+        pthread_mutex_unlock(&mutex);
+        sem_post(&csem);
+    }
+
+    return NULL;
+}
+
+void * customer(void * arg) {
+
+    while(1) {
+        sem_wait(&csem);
+        pthread_mutex_lock(&mutex);
+        // 保存头结点的指针
+        struct Node * tmp = head;
+        head = head->next;
+        printf("del node, num : %d, tid : %ld\n", tmp->num, pthread_self());
+        free(tmp);
+        pthread_mutex_unlock(&mutex);
+        sem_post(&psem);
+       
+    }
+    return  NULL;
+}
+
+int main() {
+
+    pthread_mutex_init(&mutex, NULL);
+    sem_init(&psem, 0, 8);
+    sem_init(&csem, 0, 0);
+
+    // 创建5个生产者线程，和5个消费者线程
+    pthread_t ptids[5], ctids[5];
+
+    for(int i = 0; i < 5; i++) {
+        pthread_create(&ptids[i], NULL, producer, NULL);
+        pthread_create(&ctids[i], NULL, customer, NULL);
+    }
+
+    for(int i = 0; i < 5; i++) {
+        pthread_detach(ptids[i]);
+        pthread_detach(ctids[i]);
+    }
+
+    while(1) {
+        sleep(10);
+    }
+
+    pthread_mutex_destroy(&mutex);
+
+    pthread_exit(NULL);
+
+    return 0;
+}
+```
+
 
