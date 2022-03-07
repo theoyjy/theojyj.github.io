@@ -16,8 +16,8 @@ This is website reading my brain to show all I know which is this 🤏 much of u
 	3. [Share Memory](/Doc/shareMemory.md)
 
 8. [Daemon](/Doc/daemon.md) 
-9. [Thread](/Doc/thread.md)<br>
-10.[Computer Network](/Doc/cn.md)
+9. [Thread](/Doc/thread.md)
+10. [Computer Network](/Doc/cn.md)
 11. ...
 
 
