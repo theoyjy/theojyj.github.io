@@ -1,6 +1,6 @@
 ## Welcome to THEOYJY Pages
 
-This is website reading my brain to show all I know which is this 🤏 much of useful info.
+This website is reading my brain to show all I know which is this 🤏 much of useful info.
 
 ### Contents:
 
