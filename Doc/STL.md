@@ -1,6 +1,7 @@
 [homepage](../index.md)
 
 # STL源码剖析
+SGI source code: https://github.com/SilverMaple/STLSourceCodeNote/blob/master/
 
 ## Allocator空间配置器
 
@@ -48,4 +49,6 @@ inline void destory(T* pointer){
 #### trivial
 无关痛痒，意为**该类只有默认构造、析构函数，没有用户自定义构造、析构**
 
-To Read pdf p86
+
+
+**To Read pdf p86**
