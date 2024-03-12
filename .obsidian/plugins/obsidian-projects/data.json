@@ -1,0 +1,155 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "/Doc",
+          "recursive": true
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "columns": {
+              "No status": {
+                "weight": 0
+              }
+            },
+            "includeFields": [
+              "finished"
+            ]
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "2b403c03-1747-4335-bb51-2749d0cf3cfb",
+          "name": "Board",
+          "type": "board"
+        },
+        {
+          "config": {
+            "orderFields": [
+              "name",
+              "path",
+              "finished"
+            ],
+            "fieldConfig": {}
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "9d30af5a-cf30-4c3f-a20d-5533671376b2",
+          "name": "Table",
+          "type": "table"
+        }
+      ],
+      "id": "7fba6a94-ea9b-4a6a-9c44-8531efb6d184",
+      "name": "C++"
+    },
+    {
+      "fieldConfig": {
+        "status": {
+          "richText": true
+        }
+      },
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": true,
+      "dataSource": {
+        "kind": "tag",
+        "config": {
+          "tag": "#plan",
+          "hierarchy": true
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "orderFields": [
+              "name",
+              "path",
+              "Due",
+              "status",
+              "Weight"
+            ],
+            "fieldConfig": {
+              "name": {
+                "hide": false
+              }
+            }
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "d094564f-b451-4cc1-bb77-c0f9a62a9d3c",
+          "name": "Table",
+          "type": "table"
+        },
+        {
+          "config": {
+            "columns": {
+              "No status": {
+                "weight": 0
+              }
+            }
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "80006442-a320-4ebc-b2f6-0a17fb096c48",
+          "name": "Board",
+          "type": "board"
+        }
+      ],
+      "id": "f2e43590-2ce9-426f-bec4-1964bc246745",
+      "name": "Improvement"
+    }
+  ],
+  "archives": [],
+  "preferences": {
+    "projectSizeLimit": 1000,
+    "frontmatter": {
+      "quoteStrings": "PLAIN"
+    },
+    "commands": [
+      {
+        "project": "7fba6a94-ea9b-4a6a-9c44-8531efb6d184"
+      }
+    ],
+    "linkBehavior": "open-editor"
+  }
+}
