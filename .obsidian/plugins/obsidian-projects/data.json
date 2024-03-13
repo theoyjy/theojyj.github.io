@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "tag",
+        "config": {
+          "tag": "#cpp",
+          "hierarchy": true
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "orderFields": [
+              "name",
+              "path",
+              "status",
+              "Due",
+              "tags",
+              "Weight"
+            ],
+            "fieldConfig": {}
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "467933f8-499e-42ff-a9dd-a1ddc368ffbd",
+          "name": "Table",
+          "type": "table"
+        },
+        {
+          "config": {
+            "includeFields": [
+              "tags"
+            ],
+            "groupByField": "status"
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "c1a5f643-647e-4334-a83e-84ccc2e7bee4",
+          "name": "Board",
+          "type": "board"
+        }
+      ],
+      "id": "80d0d084-651c-4c55-a973-6cc5920212eb",
+      "name": "C++"
+    }
+  ],
+  "archives": [],
+  "preferences": {
+    "projectSizeLimit": 1000,
+    "frontmatter": {
+      "quoteStrings": "PLAIN"
+    },
+    "commands": [
+      {
+        "project": "7fba6a94-ea9b-4a6a-9c44-8531efb6d184"
+      }
+    ],
+    "linkBehavior": "open-editor"
+  }
+}
