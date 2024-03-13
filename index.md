@@ -1,3 +1,7 @@
+---
+{}
+---
+
 ## Welcome to THEOYJY Pages
 
 This website is reading my brain to show all I know which is this 🤏 much of useful info.
