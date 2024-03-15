@@ -9,15 +9,11 @@ kanban-plugin: basic
 - [ ] [[TinyRender Notes]] [priority:: high]
 
 
-## Plannning
-
-
-
 ## Learning
 
 
 
-## Thinking
+## Plannning
 
 
 

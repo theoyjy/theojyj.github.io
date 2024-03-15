@@ -46,7 +46,15 @@
             "includeFields": [
               "tags"
             ],
-            "groupByField": "status"
+            "groupByField": "status",
+            "columns": {
+              "investgating": {
+                "weight": 0
+              },
+              "planing": {
+                "weight": 1
+              }
+            }
           },
           "filter": {
             "conditions": []
