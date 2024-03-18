@@ -11,8 +11,12 @@
             "id": "8285dc2c907bf3ae",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Knowledge/Spoken.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Knowledge/Spoken.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Knowledge/Spoken.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Knowledge/Spoken.md"
+              }
             }
           }
         ],
@@ -143,6 +151,9 @@
   },
   "active": "8285dc2c907bf3ae",
   "lastOpenFiles": [
+    "WorkTmp/2.7bugs.canvas",
+    "Knowledge/Spoken.md",
+    "Knowledge/UE Errors.md",
     "Doc/STL.md",
     "Doc/signal.md",
     "WorkTmp/2.7bugs.jpg",
@@ -150,7 +161,6 @@
     "Doc/Eight buts.md",
     "Doc/cn.md",
     "Doc/C++ KanBan.md",
-    "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
     "STL源码剖析_快学笔记.docx",
     "WorkTmp/D5MeshSync.md",
