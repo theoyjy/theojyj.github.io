@@ -5,5 +5,9 @@
   "obsidian-projects",
   "obsidian-task-progress-bar",
   "dataview",
-  "obsidian-kanban"
+  "obsidian-kanban",
+  "table-editor-obsidian",
+  "calendar",
+  "obsidian-outliner",
+  "obsidian-minimal-settings"
 ]

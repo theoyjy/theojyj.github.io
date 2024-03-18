@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "654f654932b9dc1c",
+        "id": "47e6542c55faa820",
         "type": "tabs",
         "children": [
           {
-            "id": "8285dc2c907bf3ae",
+            "id": "d816d0174b714154",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -128,9 +129,25 @@
                 "file": "Knowledge/Spoken.md"
               }
             }
+          },
+          {
+            "id": "424951475ac5985a",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "81add41c3ac519a5",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -146,33 +163,36 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "obsidian-projects:Open projects": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8285dc2c907bf3ae",
+  "active": "d816d0174b714154",
   "lastOpenFiles": [
-    "WorkTmp/2.7bugs.canvas",
+    "TinyRender Notes.md",
     "Knowledge/Spoken.md",
+    "README.md",
+    "Plan Kanban.md",
+    "Plan.md",
+    "index.md",
+    "WorkTmp/D5MeshSync.md",
+    "WorkTmp/2.7bugs.canvas",
+    "Resources/欧拉角万向锁.png",
+    "WorkTmp/Pasted image 20240313190802.png",
+    "Resources/Pasted image 20240313192032.png",
+    "WorkTmp/Pasted image 20240313191145.png",
+    "Resources/Pasted image 20240313190951.png",
+    "Resources/2.7bugs.jpg",
     "Knowledge/UE Errors.md",
     "Doc/STL.md",
     "Doc/signal.md",
-    "WorkTmp/2.7bugs.jpg",
     "Doc/processLinux.md",
     "Doc/Eight buts.md",
     "Doc/cn.md",
     "Doc/C++ KanBan.md",
     "~$L源码剖析_快学笔记.docx",
     "STL源码剖析_快学笔记.docx",
-    "WorkTmp/D5MeshSync.md",
-    "WorkTmp/Pasted image 20240313190802.png",
-    "Pasted image 20240313192032.png",
-    "Pasted image 20240313191145.png",
-    "Pasted image 20240313190951.png",
-    "index.md",
     "WorkTmp",
-    "Plan Kanban.md",
-    "TinyRender Notes.md",
-    "Plan.md",
     "Excalidraw/Drawing 2024-03-13 02.20.40.excalidraw.md",
     "Doc/thread.md",
     "Plan/Untitled.md",

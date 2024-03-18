@@ -1,15 +1,37 @@
-# Discuss Solutions
-
-| Clause                                                    | Meaning                                                                                |
-| --------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| **The lesser of two evails**                              | 两权相害取其轻                                                                                |
-| pave the way for sth<br>lay the groundwork for sth        | 为sth铺平道路<br>打下基础                                                                       |
-| take **precautions** against sth<br>preventative measures | 预防措施                                                                                   |
-| *The end justifies the means*                             | 为达目的，不择手段                                                                              |
-| adopt a wait-and-see attitude                             | will just wait and see what will happen                                                |
-| take immediate action                                     | do sth. without delay                                                                  |
+## Solutions
+| Clause                                                    |                                                                                Meaning |
+| :-------------------------------------------------------- | -------------------------------------------------------------------------------------: |
+| **The lesser of two evails**                              |                                                                                两权相害取其轻 |
+| pave the way for sth<br>lay the groundwork for sth        |                                                                       为sth铺平道路<br>打下基础 |
+| take **precautions** against sth<br>preventative measures |                                                                                   预防措施 |
+| *The end justifies the means*                             |                                                                              为达目的，不择手段 |
+| adopt a wait-and-see attitude                             |                                                will just wait and see what will happen |
+| take immediate action                                     |                                                                  do sth. without delay |
 | add fuel to the fire<br>aggravate/ exacerbate sth.        |                                                                                        |
-| **be barking up the wrong tree**<br>a misguide plan       | be wrong about the way to achieve sth                                                  |
-| ==**the last resort**==<br>have no option but to do sth   | sth you will do only after trying everything else                                      |
+| **be barking up the wrong tree**<br>a misguide plan       |                                                  be wrong about the way to achieve sth |
+| ==**the last resort**==<br>have no option but to do sth   |                                      sth you will do only after trying everything else |
 | **It's about/high time**                                  | sth should be done soon because it already past the time when it should have been done |
-| **a desirable ideal rather than an achievable reality**   | 理想很丰满现实很骨感                                                                             |
+| **a desirable ideal rather than an achievable reality**   |                                                                             理想很丰满现实很骨感 |
+
+## Culture
+
+| Clause                                                     |                                                                                                                                                                                                                                                                     Meaning |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| cultural **mosaic**                                        |                                                                                                                                                                                                              multicultural society<br>mosaic: 马赛克，多元的一个抽象集合，同时也是一种欧洲十世纪的艺术画 |
+| **disseminate**                                            |                                                 make info or knowledge available to a lot of people:<br>Temporal hours(小时制), which were first adopted by the Greeks and then the Romans, who **disseminated** them through Europe, remained in use for moew than 2500 years |
+| sth be **customary**<br><br>be **unorthodox**              |                                                                                                                          In the UK **a handshake is customary** when a person is introduced to somebody new<br><br>do not follow the usual rules or beliefs of your society |
+| **Gone are the dats when ...**                             |                                                                                                             people do not do ... any more:<br>**Gone are the days when** music was just a cultural expression<br><br>这是一个完全倒装，正序是 The days when ..(we were young) are gone. |
+| social mores                                               |                                                                                                                                                         Social mores refer to the *socially-approved forms of behavior*, which are generally promoted by *customs and laws* |
+| stem from sth                                              |                                                                                                                           be cause by sth<br>A gradual argicultural revolution in nothern Europe **stemed from** concerts over food supplies at a time of rising population |
+| assimilate into a new culture<br><br>a bonding mechanism   |                                                                                                                                                                                   fit into a new cullture<br><br><br>A shared ideology is a strong social bonding mechanism |
+| be imcompatible with sth<br><br>language barrier           |                                                                                                                                                                                   There are mant ==unspoken rules== that are hard for immigrants to **be compatible with**. |
+| ==primitive==                                              |                                                                                                                                       at a very simple stage of development, before technology:<br>Some **indigenous people** had to cope with primitive living conditions. |
+| remote ancestors                                           |                                                                                                                                                                                                   Their worship of remote ancestors is represented with various rituals(仪式) |
+| remain **intact**                                          |                                                                                                                                                                                                    be complete and in the original state.<br>**Antonym**: have/had vanished |
+| be **nostalgic**                                           |                                                                                                                                                                                                                                                                nostalgia n. |
+| have a **resurgence** in popularity                        | has become popular again:<br>*Acoustic music* has **had a resurgence in popularity** due to the recent popularity of musicians playing without electric amplification on TV<br>surgent: 澎湃的；resurgent:复活的<br>Synonym : **make a comeback** \| **regain its vitality** (生命力) |
+| be/feel ill at ease                                        |                                                                                                                                                                                                                                                                     awkward |
+| lingua franca  un.<br><br>a single international launguage |                                                                                                                                                                                                                         a common language between people<br><br>唯一可以通行的国际语言 |
+| monolingual<br><br>bilingual                               |                                                                                                                                                                                                                                                                             |
+| a close-knit community<br><br>a sense of alienation        |                                                                                                                                                                                                                                                                             |
+
