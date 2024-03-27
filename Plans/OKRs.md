@@ -35,5 +35,5 @@
 	- [ ] Algorithm  [due:: 2024-04-20]
 	- [ ] Functor  [due:: 2024-04-27]
 	- [ ] Adapters  [due:: 2024-05-04]
-- [ ] Learn TinyRender  [start:: 2024-03-23]  [due:: 2024-03-26]
+- [ ] Learn TinyRender  [start:: 2024-03-23]  [due:: 2024-04-03]
 

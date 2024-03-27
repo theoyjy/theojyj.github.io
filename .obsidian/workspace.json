@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "c7d155bd9bdb47e4",
+        "id": "1bc7b03d7d3c256e",
         "type": "tabs",
         "children": [
           {
-            "id": "755abbdbe717fe2a",
+            "id": "291a3f2e5a6557ea",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Knowledge/Spoken.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Knowledge/Spoken.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Knowledge/Spoken.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Knowledge/Spoken.md"
+              }
             }
           },
           {
@@ -138,12 +146,11 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 249.5,
-    "collapsed": true
+    "width": 276.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,26 +165,26 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d478af17e7aea3ca",
+  "active": "291a3f2e5a6557ea",
   "lastOpenFiles": [
+    "Knowledge/Spoken.md",
+    "Task Calendar.md",
+    "TinyRender Notes.md",
+    "Plans/OKRs.md",
     "WorkTmp/2.7bugs.canvas",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
     "TasksCalendar",
-    "Task Calendar.md",
     "Plans/Plan Kanban.md",
-    "Plans/OKRs.md",
     "Plans",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/CMake.md",
     "Plan Kanban.md",
-    "TinyRender Notes.md",
     "README.md",
     "Plan.md",
     "index.md",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Excalidraw",
-    "Knowledge/Spoken.md",
     "Resources/Pasted image 20240313192032.png",
     "Resources/Pasted image 20240313190951.png",
     "Resources/2.7bugs.jpg",
