@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "47e6542c55faa820",
+        "id": "d28ac7c9a18a1bda",
         "type": "tabs",
         "children": [
           {
-            "id": "d816d0174b714154",
+            "id": "79c0ec7f2f7e2ac6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -137,21 +136,13 @@
               "type": "advanced-tables-toolbar",
               "state": {}
             }
-          },
-          {
-            "id": "81add41c3ac519a5",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
-            }
           }
         ],
         "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 346.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -159,47 +150,58 @@
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
+      "daily-notes:Open today's daily note": false,
       "command-palette:Open command palette": false,
-      "obsidian-projects:Open projects": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-projects:Open projects": false
     }
   },
-  "active": "d816d0174b714154",
+  "active": "79c0ec7f2f7e2ac6",
   "lastOpenFiles": [
-    "TinyRender Notes.md",
+    "Knowledge/CMake.md",
     "Knowledge/Spoken.md",
-    "README.md",
-    "Plan Kanban.md",
-    "Plan.md",
-    "index.md",
+    "Knowledge/3D Info.md",
+    "Untitled",
+    "Knowledge/TinyRender Notes.md",
+    "Knowledge/UE Errors.md",
+    "TinyRender.cpp",
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/2.7bugs.canvas",
+    "README.md",
+    "index.md",
+    "Task Calendar.md",
+    "Plans/Plan Kanban.md",
+    "Plans/OKRs.md",
+    "2024-03-15.md",
+    "TasksCalendar/view.js",
+    "TasksCalendar/view.css",
+    "Doc/makefile.md",
+    "Doc/Eight buts.md",
+    "TasksCalendar/view.js.md",
+    "TasksCalendar/view.css.md",
+    "TasksCalendar",
+    "2024-03-23 s.md",
+    "2024-03-23 dasd.md",
+    "3/10.md",
+    "3",
+    "Excalidraw/Drawing 2024-03-23 19.39.12.excalidraw.md",
+    "Invalid date.md",
+    "Templates/OKR.md",
+    "2024-03-30.md",
+    "Plans",
+    "Templates",
+    "Doc/C++ KanBan.md",
+    "Plan.md",
     "Resources/欧拉角万向锁.png",
     "WorkTmp/Pasted image 20240313190802.png",
     "Resources/Pasted image 20240313192032.png",
     "WorkTmp/Pasted image 20240313191145.png",
     "Resources/Pasted image 20240313190951.png",
     "Resources/2.7bugs.jpg",
-    "Knowledge/UE Errors.md",
     "Doc/STL.md",
-    "Doc/signal.md",
-    "Doc/processLinux.md",
-    "Doc/Eight buts.md",
-    "Doc/cn.md",
-    "Doc/C++ KanBan.md",
     "~$L源码剖析_快学笔记.docx",
-    "STL源码剖析_快学笔记.docx",
-    "WorkTmp",
-    "Excalidraw/Drawing 2024-03-13 02.20.40.excalidraw.md",
-    "Doc/thread.md",
-    "Plan/Untitled.md",
-    "Excalidraw/Drawing 2024-03-13 01.41.08.excalidraw.md",
-    "Excalidraw",
-    "Plan",
-    "Doc/shareMemory.md",
-    "Doc/daemon.md"
+    "STL源码剖析_快学笔记.docx"
   ]
 }

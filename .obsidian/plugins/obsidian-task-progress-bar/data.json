@@ -2,7 +2,7 @@
   "addTaskProgressBarToHeading": true,
   "addNumberToProgressBar": true,
   "showPercentage": true,
-  "allowAlternateTaskStatus": true,
+  "allowAlternateTaskStatus": false,
   "alternativeMarks": "(x|X|-)",
-  "countSubLevel": true
+  "countSubLevel": false
 }

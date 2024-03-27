@@ -68,6 +68,23 @@
           "id": "c1a5f643-647e-4334-a83e-84ccc2e7bee4",
           "name": "Board",
           "type": "board"
+        },
+        {
+          "config": {
+            "interval": "month"
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "id": "30905878-6a06-45d8-900b-5a0173a1cee0",
+          "name": "Calendar",
+          "type": "calendar"
         }
       ],
       "id": "80d0d084-651c-4c55-a973-6cc5920212eb",
