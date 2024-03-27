@@ -1,5 +1,5 @@
 ---
-"\rDue": 2024-03-13
+Due: 2024-03-13
 tags:
   - render
   - cpp
