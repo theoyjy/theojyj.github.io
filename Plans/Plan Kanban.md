@@ -6,7 +6,8 @@ kanban-plugin: basic
 
 ## Investgating
 
-- [ ] [[TinyRender Notes]] [priority:: high]
+- [ ] [[TinyRender Notes]]
+- [ ] [[STL]]
 
 
 ## Learning

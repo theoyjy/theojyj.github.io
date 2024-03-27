@@ -158,15 +158,24 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "755abbdbe717fe2a",
+  "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
+    "WorkTmp/2.7bugs.canvas",
+    "TasksCalendar/view.js",
+    "TasksCalendar/view.css",
+    "TasksCalendar",
+    "Task Calendar.md",
+    "Plans/Plan Kanban.md",
+    "Plans/OKRs.md",
+    "Plans",
+    "Knowledge/TinyRender Notes.md",
+    "Knowledge/CMake.md",
     "Plan Kanban.md",
     "TinyRender Notes.md",
     "README.md",
     "Plan.md",
     "index.md",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "WorkTmp/2.7bugs.canvas",
     "Excalidraw",
     "Knowledge/Spoken.md",
     "Resources/Pasted image 20240313192032.png",
@@ -193,7 +202,6 @@
     "Plan/Untitled.md",
     "Excalidraw/Drawing 2024-03-13 01.41.08.excalidraw.md",
     "Plan",
-    "Doc/shareMemory.md",
-    "Doc/daemon.md"
+    "Doc/shareMemory.md"
   ]
 }

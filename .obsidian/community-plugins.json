@@ -1,13 +1,11 @@
 [
   "obsidian-git",
   "obsidian-excalidraw-plugin",
-  "obsidian-tasks-plugin",
   "obsidian-projects",
-  "obsidian-task-progress-bar",
   "dataview",
   "obsidian-kanban",
   "table-editor-obsidian",
-  "calendar",
   "obsidian-outliner",
-  "obsidian-minimal-settings"
+  "obsidian-task-progress-bar",
+  "obsidian-tasks-plugin"
 ]
