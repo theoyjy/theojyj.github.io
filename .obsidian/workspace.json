@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "1bc7b03d7d3c256e",
+        "id": "a65db644d2dd5ce9",
         "type": "tabs",
         "children": [
           {
-            "id": "291a3f2e5a6557ea",
+            "id": "4b09283af2f61890",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "Doc/STL.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ce34d6c496b483c2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Doc/STL.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -64,12 +77,20 @@
               "type": "bookmarks",
               "state": {}
             }
+          },
+          {
+            "id": "0650cf012bd6473e",
+            "type": "leaf",
+            "state": {
+              "type": "periodic-para",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 225.5
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -85,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "Doc/STL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "Doc/STL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/Spoken.md"
+                "file": "Doc/STL.md"
               }
             }
           },
@@ -144,33 +165,60 @@
               "type": "git-history-view",
               "state": {}
             }
+          },
+          {
+            "id": "7266ec7b00b564d8",
+            "type": "leaf",
+            "state": {
+              "type": "side-panel-control-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "77324da2b4d467e1",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 276.5
+    "width": 218.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-projects:Open projects": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-projects:Open projects": false
     }
   },
-  "active": "291a3f2e5a6557ea",
+  "active": "ce34d6c496b483c2",
   "lastOpenFiles": [
-    "Knowledge/Spoken.md",
-    "Task Calendar.md",
-    "TinyRender Notes.md",
+    "Doc/thread.md",
+    "Doc/STL.md",
+    "Doc/signal.md",
+    "2024-03-29.md",
+    "Resources/STL-20240329184717314.webp",
+    "Resources/STL-20240329184439033.webp",
+    "Doc/Untitled Diagram.svg",
+    "Doc/Untitled Diagram 1.svg",
     "Plans/OKRs.md",
+    "Task Calendar.md",
+    "index.md",
+    "README.md",
+    "Knowledge/Spoken.md",
+    "TinyRender Notes.md",
     "WorkTmp/2.7bugs.canvas",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
@@ -180,17 +228,13 @@
     "Knowledge/TinyRender Notes.md",
     "Knowledge/CMake.md",
     "Plan Kanban.md",
-    "README.md",
     "Plan.md",
-    "index.md",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Excalidraw",
     "Resources/Pasted image 20240313192032.png",
     "Resources/Pasted image 20240313190951.png",
     "Resources/2.7bugs.jpg",
     "Knowledge/UE Errors.md",
-    "Doc/STL.md",
-    "Doc/signal.md",
     "WorkTmp/2.7bugs.jpg",
     "Doc/processLinux.md",
     "Doc/Eight buts.md",
@@ -201,11 +245,8 @@
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/Pasted image 20240313190802.png",
     "Pasted image 20240313192032.png",
-    "Pasted image 20240313191145.png",
-    "Pasted image 20240313190951.png",
     "WorkTmp",
     "Excalidraw/Drawing 2024-03-13 02.20.40.excalidraw.md",
-    "Doc/thread.md",
     "Plan/Untitled.md",
     "Excalidraw/Drawing 2024-03-13 01.41.08.excalidraw.md",
     "Plan",

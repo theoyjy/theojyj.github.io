@@ -7,5 +7,7 @@
   "table-editor-obsidian",
   "obsidian-outliner",
   "obsidian-task-progress-bar",
-  "obsidian-tasks-plugin"
+  "obsidian-tasks-plugin",
+  "drawio-obsidian",
+  "image-converter"
 ]
