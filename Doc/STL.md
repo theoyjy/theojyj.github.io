@@ -17,7 +17,7 @@ STL配置器定义于 `<memory>` ，STL allocator将构造/析构与内存分配
 		- **最差**情况下会调用`construct()`
 		- **最优**情况会使用**C标准函数`memmove()`直接进行内存数据移动**
 
-### 2.2.3 构造和析构基本工具 <stl_construct.h>
+### 2.2.3 构造和析构基本工具 `<stl_construct.h>`
 
 ```cpp
 #include <new.h>
@@ -111,18 +111,149 @@ int main()
 #### 第一级配置器 `__malloc_alloc_template`
 
 ```cpp
+#if 0
+
+#include <new>
+#define __THROW_BAD_ALLOC throw bad_alloc
+
+#elif !defined(_THROW_BAD_ALLOC)
+
+#include <iostream>
+#define __THROW_BAD_ALLOC cerr << "out of memory" << endl; exit(1)
+
+#endif
+
+
 template <int inst>
 class __malloc_alloc_template{
 
 private:
 	// 内存不足时调用
+	// oom : out of memory
 	static void * oom_malloc(size_t);
 	static void * oom_realloc(void *, size_t);
 	static void (* __malloc_alloc_oom_handler) ();
 
 public:
+
 	static void * allocate(size_t n)
+	{
+		void * result = malloc(n);
+		// 无法满足需求时，改动oom_malloc()
+		if(0 == result) result = oom_malloc(n);
+		return result;
+	}
 	
+	static void deallocate(void*p, size_t)
+	{
+		free(p); // 第一级配置器 直接使用free
+	}
+
+	static void * reallocate(void* p, size_t old_sz, size_t new_sz)
+	{
+		void * result = realloc(p, new_sz);
+		// 无法满足需求时，改动oom_realloc()
+		if(0 == result) result = oom_realloc(p, new_sz);
+	}
+
+	static void (* set_malloc_handler(void (*f)))()
+	{
+		void (*old) () = __malloc_alloc_oom_handler;
+		__malloc_alloc_oom_handler = f;
+		return old;
+	}
 }
 
+
+void (*__malloc_alloc_template<inst>::__malloc_alloc_oom_handler)() = 0;
+
+template<int inst>
+void *__malloc_alloc_template<inst>::oom_malloc(size n)
+{
+	void (* my_malloc_handler) ();
+	void *result;
+	for(;;)
+	{
+		my_malloc_handler = __malloc_alloc_oom_handler;
+		if(0 == my_malloc_handler) {__THROW_BAD_ALLOC;}
+		result = my_malloc_handler(n);
+		if(result) return (result);
+	}
+}
+
+// oom_realloc(p, n) 同上
 ```
+
+#### 2.2.6 第二级配置器 __default_alloc_template
+
+```mermaid
+---
+title: 索求任何一块内存，都要交"税"给系统
+---
+flowchart LR 
+	memory["cookie,用于记录内存大小
+	-----------------------------
+	object 所需内存
+	"]
+	pa --> memory
+```
+##### memory pool ==自由链表 free list==
+
+> 第二级配置器会主动将任何小额区块的内存需求上调至8的倍数
+
+>[!danger] 核心数据结构
+>```cpp
+>/* free-list 节点构造
+ >* 不同的区块大小会被映射到不同的 free-list 上，这样相同大小的区块就不会使用同一块内存。
+ >* free_list_link 指向下一块空闲的内存块指针
+ >* client_data 它的长度通常被忽略，因为我们不会直接使用它来存储数据，而是将其用作内存
+ >*     块的起始地址。
+ >*/
+>union obj{
+>	union obj * free_list_link;
+>	char client_data[1];
+>}
+>```
+
+
+
+![[STL-20240330164037726.webp|467]]
+
+> [!IMPORTANT] `template<bool threads, int inst>`
+> * `bool threads` 是为了表示是否开启线程安全
+> * `int inst` 通常用来唯一表示模板的不同实力 这在模板的特化和重载中尤其有用，因为它允许创建多个具有不同行为的模板实例。例如，当需要多个不同的默认分配器实例时，可以使用 `inst` 参数来区分它们。通过在模板中引入整数参数，可以创建出多个相同类型但行为不同的实例，而不必为每个不同的行为编写不同的类定义
+
+
+```cpp
+enum {__ALIGN = 8}; // 小型区块上调的边界
+enum {__MAX_BYTES = 128}; // 小型区块的上限
+enum {__NFREELISTS = __MAX_BYTES/_ALIGN}; // free-lists 个数
+
+// 本书不讨论多线程,所以忽视threads参数
+template<bool threads, int inst>
+class __default_alloc_template{
+private:
+	// ~(__ALIGN - 1) 的目的是为了让 大于 8 的位都为1，这样 & 的时候可以获取8的倍数
+	// __ALIGN = 8      = 0b0000 1000
+	// __ALIGN - 1 = 7  = 0b0000 0111
+	// ~(__ALIGN - 1) = = 0b1111 1000
+	static size_t ROUND_UP(size_t bytes)
+	{
+		return ((bytes) + _ALIGN - 1) & ~ (__ALIGN - 1);
+	}
+
+
+	
+private:
+	// 16 个free-lists
+	static obj* volatile free_lists[_NFREELISTS];
+	// 以下函数根据区块大小，决定使用第n号free-list, n从1算起
+	static size_t FREELIST_INDEX(size_t bytes)
+	{
+		return ((bytes) + __ALIGN - 1)/__ALIGN - 1;
+	}
+}
+```
+
+>[!NOTE] volatile
+>用来**告诉编译器**，某个变量的值可能会在**意料之外的情况下发生改变**，因此编译器**不应该对这个变量进行某些优化**，以免导致意外的行为。==通常情况下，编译器会对变量进行一些优化，比如将其缓存到寄存器中，以提高程序的运行效率==。但是，**对于 `volatile` 变量，编译器应该每次都重新读取它的值，以确保程序的正确性**。

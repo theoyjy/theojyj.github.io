@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a65db644d2dd5ce9",
+        "id": "e1b2052a7bc988ba",
         "type": "tabs",
         "children": [
           {
-            "id": "4b09283af2f61890",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/STL.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ce34d6c496b483c2",
+            "id": "a1f5d2ab62c9385c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,7 +170,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -203,17 +190,18 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "ce34d6c496b483c2",
+  "active": "a1f5d2ab62c9385c",
   "lastOpenFiles": [
-    "Doc/thread.md",
+    "STL-20240330164037726.webp",
+    "Plans/OKRs.md",
     "Doc/STL.md",
+    "Doc/thread.md",
     "Doc/signal.md",
     "2024-03-29.md",
     "Resources/STL-20240329184717314.webp",
     "Resources/STL-20240329184439033.webp",
     "Doc/Untitled Diagram.svg",
     "Doc/Untitled Diagram 1.svg",
-    "Plans/OKRs.md",
     "Task Calendar.md",
     "index.md",
     "README.md",
@@ -249,7 +237,6 @@
     "Excalidraw/Drawing 2024-03-13 02.20.40.excalidraw.md",
     "Plan/Untitled.md",
     "Excalidraw/Drawing 2024-03-13 01.41.08.excalidraw.md",
-    "Plan",
-    "Doc/shareMemory.md"
+    "Plan"
   ]
 }
