@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "b38593a7251ce8c5",
+        "id": "e27db05f4de68af1",
         "type": "tabs",
         "children": [
           {
-            "id": "dad358298398b778",
+            "id": "bb4da3458db5f1ce",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "Resources/STL-20240330164037726.webp"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -91,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Resources/STL-20240330164037726.webp",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Resources/STL-20240330164037726.webp",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Resources/STL-20240330164037726.webp"
-              }
+              "state": {}
             }
           },
           {
@@ -166,14 +160,21 @@
               "type": "advanced-tables-toolbar",
               "state": {}
             }
+          },
+          {
+            "id": "6d2ed1e21a73ebe3",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
-    "width": 218.5,
-    "collapsed": true
+    "width": 218.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -188,7 +189,7 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "d478af17e7aea3ca",
+  "active": "bb4da3458db5f1ce",
   "lastOpenFiles": [
     "Plans/OKRs.md",
     "Resources/STL-20240330164037726.webp",

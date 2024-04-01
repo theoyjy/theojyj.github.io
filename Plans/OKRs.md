@@ -11,7 +11,7 @@
 #### Health
 - [ ] Lose weight from 67kg to 55kg  [id:: 4ajq9h]  [start:: 2024-03-23]  [due:: 2024-06-23]
 	- [ ] to 63kg  [start:: 2024-03-23]  [due:: 2024-04-20]
-		- [x] to 66  [due:: 2024-03-30]  [completion:: 2024-03-30]
+		- [x] to 66  [due:: 2024-03-30]  [completion:: 2024-03-33]
 		- [ ] to 65  [due:: 2024-04-06]
 		- [ ] to 64  [due:: 2024-04-13]
 		- [ ] to 63  [due:: 2024-04-20]
@@ -39,3 +39,4 @@
 
 #### TO LEARN
 * [ ] [OS: MIT 6.828 Operating System Lab ](https://github.com/SmallPond/MIT6.828_OS)   ([Lectures](https://pdos.csail.mit.edu/6.828/2018/schedule.html))
+
