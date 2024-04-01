@@ -4,30 +4,16 @@
     "type": "split",
     "children": [
       {
-<<<<<<< Updated upstream
-        "id": "e1b2052a7bc988ba",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a1f5d2ab62c9385c",
-=======
         "id": "b38593a7251ce8c5",
         "type": "tabs",
         "children": [
           {
             "id": "dad358298398b778",
->>>>>>> Stashed changes
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-<<<<<<< Updated upstream
-                "file": "Doc/STL.md",
-=======
-                "file": "Plans/OKRs.md",
->>>>>>> Stashed changes
-                "mode": "source",
-                "source": false
+                "file": "Resources/STL-20240330164037726.webp"
               }
             }
           }
@@ -105,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Plans/OKRs.md",
+                "file": "Resources/STL-20240330164037726.webp",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Plans/OKRs.md",
+                "file": "Resources/STL-20240330164037726.webp",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Plans/OKRs.md"
+                "file": "Resources/STL-20240330164037726.webp"
               }
             }
           },
@@ -182,7 +168,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -202,27 +188,18 @@
       "obsidian-projects:Open projects": false
     }
   },
-<<<<<<< Updated upstream
-  "active": "a1f5d2ab62c9385c",
+  "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
-    "STL-20240330164037726.webp",
     "Plans/OKRs.md",
-    "Doc/STL.md",
-    "Doc/thread.md",
-    "Doc/signal.md",
-=======
-  "active": "dad358298398b778",
-  "lastOpenFiles": [
+    "Resources/STL-20240330164037726.webp",
+    "Plans/Plan Kanban.md",
+    "2024-03-29.md",
     "Knowledge/UE Errors.md",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/Spoken.md",
     "Knowledge/CMake.md",
     "Knowledge/3D Info.md",
-    "Plans/OKRs.md",
-    "Plans/Plan Kanban.md",
     "Untitled.md",
->>>>>>> Stashed changes
-    "2024-03-29.md",
     "Doc/STL.md",
     "Doc/thread.md",
     "Doc/signal.md",
@@ -255,14 +232,8 @@
     "STL源码剖析_快学笔记.docx",
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/Pasted image 20240313190802.png",
-    "Pasted image 20240313192032.png",
     "WorkTmp",
     "Excalidraw/Drawing 2024-03-13 02.20.40.excalidraw.md",
-    "Plan/Untitled.md",
-<<<<<<< Updated upstream
-    "Excalidraw/Drawing 2024-03-13 01.41.08.excalidraw.md",
-=======
->>>>>>> Stashed changes
     "Plan"
   ]
 }
