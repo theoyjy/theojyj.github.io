@@ -11,8 +11,12 @@
             "id": "bb4da3458db5f1ce",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Plans/OKRs.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -89,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Plans/OKRs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Plans/OKRs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Plans/OKRs.md"
+              }
             }
           },
           {
@@ -191,7 +199,10 @@
   },
   "active": "bb4da3458db5f1ce",
   "lastOpenFiles": [
+    "Task Calendar.md",
     "Plans/OKRs.md",
+    "README.md",
+    "index.md",
     "Resources/STL-20240330164037726.webp",
     "Plans/Plan Kanban.md",
     "2024-03-29.md",
@@ -208,9 +219,6 @@
     "Resources/STL-20240329184439033.webp",
     "Doc/Untitled Diagram.svg",
     "Doc/Untitled Diagram 1.svg",
-    "Task Calendar.md",
-    "index.md",
-    "README.md",
     "TinyRender Notes.md",
     "WorkTmp/2.7bugs.canvas",
     "TasksCalendar/view.js",

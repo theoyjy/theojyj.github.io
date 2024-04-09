@@ -11,8 +11,8 @@
 #### Health
 - [ ] Lose weight from 67kg to 55kg  [id:: 4ajq9h]  [start:: 2024-03-23]  [due:: 2024-06-23]
 	- [ ] to 63kg  [start:: 2024-03-23]  [due:: 2024-04-20]
-		- [x] to 66  [due:: 2024-03-30]  [completion:: 2024-03-33]
-		- [ ] to 65  [due:: 2024-04-06]
+		- [x] to 66  [due:: 2024-03-30]  [completion:: 2024-03-30]
+		- [ ] to 65  [due:: 2024-04-12]
 		- [ ] to 64  [due:: 2024-04-13]
 		- [ ] to 63  [due:: 2024-04-20]
 
@@ -22,15 +22,15 @@
 	- [ ] On the Shoulder
 
 #### Spiritual
-- [ ] Finish Reading <<Crime & Punishment>>  [due:: 2024-04-20]
+- [x] Finish Reading <<Crime & Punishment>>  [due:: 2024-04-20]  [completion:: 2024-04-09]
 	- [x] Chapter 3  [due:: 2024-03-31]  [completion:: 2024-03-30]
-	- [ ] Chapter 4  [due:: 2024-04-06]
-	- [ ] Chapter 5  [due:: 2024-04-13]
-	- [ ] Chapter 6  [due:: 2024-04-20]
+	- [x] Chapter 4  [due:: 2024-04-06]  [completion:: 2024-04-09]
+	- [x] Chapter 5  [due:: 2024-04-13]  [completion:: 2024-04-09]
+	- [x] Chapter 6  [due:: 2024-04-20]  [completion:: 2024-04-09]
 
 ### Professional
 - [ ] Finish STL  [priority:: highest]  [due:: 2024-05-04]
-	- [ ] Intro & Allocator  [due:: 2024-03-30]
+	- [ ] Intro & Allocator  [due:: 2024-04-12]
 	- [ ] Iterator & Container  [due:: 2024-04-13]
 	- [ ] Algorithm  [due:: 2024-04-20]
 	- [ ] Functor  [due:: 2024-04-27]
