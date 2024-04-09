@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e27db05f4de68af1",
+        "id": "1b52746d6534fa5b",
         "type": "tabs",
         "children": [
           {
-            "id": "bb4da3458db5f1ce",
+            "id": "aa28791e69876430",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plans/OKRs.md",
+                "file": "Knowledge/Spoken.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Plans/OKRs.md",
+                "file": "Knowledge/Spoken.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Plans/OKRs.md",
+                "file": "Knowledge/Spoken.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Plans/OKRs.md"
+                "file": "Knowledge/Spoken.md"
               }
             }
           },
@@ -178,11 +178,12 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 218.5
+    "width": 218.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,29 +198,29 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "bb4da3458db5f1ce",
+  "active": "aa28791e69876430",
   "lastOpenFiles": [
+    "Knowledge/Spoken.md",
+    "Knowledge/Learn How to Improve.md",
+    "Doc/STL.md",
+    "index.md",
     "Task Calendar.md",
+    "TinyRender Notes.md",
+    "Knowledge/TinyRender Notes.md",
+    "Knowledge/3D Info.md",
     "Plans/OKRs.md",
     "README.md",
-    "index.md",
     "Resources/STL-20240330164037726.webp",
     "Plans/Plan Kanban.md",
     "2024-03-29.md",
     "Knowledge/UE Errors.md",
-    "Knowledge/TinyRender Notes.md",
-    "Knowledge/Spoken.md",
     "Knowledge/CMake.md",
-    "Knowledge/3D Info.md",
-    "Untitled.md",
-    "Doc/STL.md",
     "Doc/thread.md",
     "Doc/signal.md",
     "Resources/STL-20240329184717314.webp",
     "Resources/STL-20240329184439033.webp",
     "Doc/Untitled Diagram.svg",
     "Doc/Untitled Diagram 1.svg",
-    "TinyRender Notes.md",
     "WorkTmp/2.7bugs.canvas",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
