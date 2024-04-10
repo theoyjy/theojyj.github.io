@@ -8,6 +8,7 @@ finished: false
 SGI source code: https://github.com/SilverMaple/STLSourceCodeNote/blob/master/
 
 ## Allocator 空间配置器
+
 STL配置器定义于 `<memory>` ，STL allocator将构造/析构与内存分配/释放区分开来，其包含：
 - `<stl_alloc.h>` : `alloc::allocate()` 分配内存 | `alloc::deallocate()` 释放内存      //负责内存空间的配置与释放
 - `<stl_construct.h>` : `::construct()` | `::destroy()`                                              //*负责对象的构造与析构*
@@ -16,6 +17,7 @@ STL配置器定义于 `<memory>` ，STL allocator将构造/析构与内存分配
 	- 这些函数对于效率都有考量
 		- **最差**情况下会调用`construct()`
 		- **最优**情况会使用**C标准函数`memmove()`直接进行内存数据移动**
+
 
 ### 2.2.3 构造和析构基本工具 `<stl_construct.h>`
 
@@ -202,10 +204,13 @@ flowchart LR
 > 第二级配置器会主动将任何小额区块的内存需求上调至8的倍数
 
 >[!danger] 核心数据结构
+>* free-list 是一个数组
+>* **数组内每一个元素都是一个自由链表，指向同样大小的空闲内存区块**
+>* 数组结构由函数 FREELIST_INDEX 可窥见一二
 >```cpp
 >/* free-list 节点构造
  >* 不同的区块大小会被映射到不同的 free-list 上，这样相同大小的区块就不会使用同一块内存。
- >* free_list_link 指向下一块空闲的内存块指针
+ >* free_list_link 指向下一块 !!! 同样大小 !!! 空闲 !!!的内存块指针
  >* client_data 它的长度通常被忽略，因为我们不会直接使用它来存储数据，而是将其用作内存
  >*     块的起始地址。
  >*/
@@ -232,6 +237,7 @@ enum {__NFREELISTS = __MAX_BYTES/_ALIGN}; // free-lists 个数
 // 本书不讨论多线程,所以忽视threads参数
 template<bool threads, int inst>
 class __default_alloc_template{
+
 private:
 	// ~(__ALIGN - 1) 的目的是为了让 大于 8 的位都为1，这样 & 的时候可以获取8的倍数
 	// __ALIGN = 8      = 0b0000 1000
@@ -242,18 +248,65 @@ private:
 		return ((bytes) + _ALIGN - 1) & ~ (__ALIGN - 1);
 	}
 
-
+private:
+	
+	union obj
+	{
+		union obj * free_list_link;
+		char client_data[1]; 
+	}
 	
 private:
 	// 16 个free-lists
 	static obj* volatile free_lists[_NFREELISTS];
+	
 	// 以下函数根据区块大小，决定使用第n号free-list, n从1算起
 	static size_t FREELIST_INDEX(size_t bytes)
 	{
 		return ((bytes) + __ALIGN - 1)/__ALIGN - 1;
 	}
+	
+	/*
+	* 用户调用 allocate 发现内存池不够，就会调用 refill 请求新的内存块并填充给 free_list
+	* 如果只获得一块，直接返回给用户，如果有多块就补充进 free_list
+	*/
+	static void *refill(size_t n);
+	
+	// allocate a big chunk which can contain n objs with each size of "size",
+	// if unable to allocate all n objs, maybe decrease the number 
+	static char* chunk_alloc(size_t size, int &nobjs);
+
+	// chunk allocation state
+	static char * start_free; // 内存池起始地址，只在
+	static char * end_free;
+	static size_t heap_size;
+	
+	public:
+	static void* allocate(size_t n) {/**/}
+	static void deallocate(size_t n) {/**/}
+	static void* reallocate(size_t n) {/**/}
 }
+
+// initialization
+template<bool threads, int inst>
+char* __default_alloc_template<threads, inst>::start_free = 0;
+
+template<bool threads, int inst>
+char* __default_alloc_template<threads, inst>::end_free = 0;
+
+template<bool threads, int inst>
+size_t __default_alloc_template<threads, inst>::heap_size = 0;
+
+template<bool threads, int inst>
+__default_alloc_template<threads, inst>::obj * volatile __default_alloc_template<threads, inst>::free_list[__NFFREELISTS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 ```
 
 >[!NOTE] volatile
 >用来**告诉编译器**，某个变量的值可能会在**意料之外的情况下发生改变**，因此编译器**不应该对这个变量进行某些优化**，以免导致意外的行为。==通常情况下，编译器会对变量进行一些优化，比如将其缓存到寄存器中，以提高程序的运行效率==。但是，**对于 `volatile` 变量，编译器应该每次都重新读取它的值，以确保程序的正确性**。
+
+>[!INFO] refill & chunk alloc
+> [details explained](https://blog.csdn.net/LINZEYU666/article/details/119966766)
+> 
+> allocate(n)
+> * if not available space in free_list -> refill(n) // 负责连接已分配好的 `chunk` 块，填充自由链表。
+> 	*  call chunk_alloc(n, nobjs) // 负责从内存池中获取空间

@@ -11,15 +11,24 @@
             "id": "aa28791e69876430",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Knowledge/Spoken.md",
-                "mode": "source",
-                "source": false
+                "file": "WorkTmp/Bug Walk Throught.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "a47e6b03d1d33ac9",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "WorkTmp/Bug Walk Throught.excalidraw.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -93,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "WorkTmp/Bug Walk Throught.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "WorkTmp/Bug Walk Throught.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/Spoken.md"
+                "file": "WorkTmp/Bug Walk Throught.excalidraw.md"
               }
             }
           },
@@ -198,16 +207,10 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "aa28791e69876430",
+  "active": "a47e6b03d1d33ac9",
   "lastOpenFiles": [
-    "Knowledge/Spoken.md",
-    "Knowledge/Learn How to Improve.md",
+    "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Doc/STL.md",
-    "index.md",
-    "Task Calendar.md",
-    "TinyRender Notes.md",
-    "Knowledge/TinyRender Notes.md",
-    "Knowledge/3D Info.md",
     "Plans/OKRs.md",
     "README.md",
     "Resources/STL-20240330164037726.webp",
@@ -215,6 +218,8 @@
     "2024-03-29.md",
     "Knowledge/UE Errors.md",
     "Knowledge/CMake.md",
+    "Knowledge/3D Info.md",
+    "Untitled.md",
     "Doc/thread.md",
     "Doc/signal.md",
     "Resources/STL-20240329184717314.webp",
@@ -228,7 +233,6 @@
     "Plans",
     "Plan Kanban.md",
     "Plan.md",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Excalidraw",
     "Resources/Pasted image 20240313192032.png",
     "Resources/Pasted image 20240313190951.png",
