@@ -4,31 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "1b52746d6534fa5b",
+        "id": "7dba0c9297ec82b5",
         "type": "tabs",
         "children": [
           {
-            "id": "aa28791e69876430",
+            "id": "86188b5bc99cf57e",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "canvas",
               "state": {
-                "file": "WorkTmp/Bug Walk Throught.excalidraw.md"
-              }
-            }
-          },
-          {
-            "id": "a47e6b03d1d33ac9",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "WorkTmp/Bug Walk Throught.excalidraw.md"
+                "file": "WorkTmp/2.7bugs.canvas",
+                "viewState": {
+                  "x": -1060,
+                  "y": -87,
+                  "zoom": 0
+                }
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WorkTmp/Bug Walk Throught.excalidraw.md",
+                "file": "WorkTmp/2.7bugs.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "WorkTmp/Bug Walk Throught.excalidraw.md",
+                "file": "WorkTmp/2.7bugs.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WorkTmp/Bug Walk Throught.excalidraw.md"
+                "file": "WorkTmp/2.7bugs.canvas"
               }
             }
           },
@@ -207,9 +201,14 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "a47e6b03d1d33ac9",
+  "active": "86188b5bc99cf57e",
   "lastOpenFiles": [
+    "~$L源码剖析_快学笔记.docx",
+    "Knowledge/Dev Tips.md",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
+    "WorkTmp/2.7bugs.canvas",
+    "Plans/Laptop List.md",
+    "[【ROG幻16】ROG幻16.md",
     "Doc/STL.md",
     "Plans/OKRs.md",
     "README.md",
@@ -219,14 +218,12 @@
     "Knowledge/UE Errors.md",
     "Knowledge/CMake.md",
     "Knowledge/3D Info.md",
-    "Untitled.md",
     "Doc/thread.md",
     "Doc/signal.md",
     "Resources/STL-20240329184717314.webp",
     "Resources/STL-20240329184439033.webp",
     "Doc/Untitled Diagram.svg",
     "Doc/Untitled Diagram 1.svg",
-    "WorkTmp/2.7bugs.canvas",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
     "TasksCalendar",
@@ -242,7 +239,6 @@
     "Doc/Eight buts.md",
     "Doc/cn.md",
     "Doc/C++ KanBan.md",
-    "~$L源码剖析_快学笔记.docx",
     "STL源码剖析_快学笔记.docx",
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/Pasted image 20240313190802.png",
