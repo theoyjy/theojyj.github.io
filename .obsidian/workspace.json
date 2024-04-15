@@ -11,14 +11,11 @@
             "id": "86188b5bc99cf57e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "WorkTmp/2.7bugs.canvas",
-                "viewState": {
-                  "x": -1060,
-                  "y": -87,
-                  "zoom": 0
-                }
+                "file": "Knowledge/Dev Tips.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -96,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WorkTmp/2.7bugs.canvas",
+                "file": "Knowledge/Dev Tips.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "WorkTmp/2.7bugs.canvas",
+                "file": "Knowledge/Dev Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WorkTmp/2.7bugs.canvas"
+                "file": "Knowledge/Dev Tips.md"
               }
             }
           },
@@ -185,8 +182,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.5,
-    "collapsed": true
+    "width": 218.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -203,10 +199,11 @@
   },
   "active": "86188b5bc99cf57e",
   "lastOpenFiles": [
+    "Knowledge/Spoken.md",
+    "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
     "Knowledge/Dev Tips.md",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "WorkTmp/2.7bugs.canvas",
     "Plans/Laptop List.md",
     "[【ROG幻16】ROG幻16.md",
     "Doc/STL.md",
