@@ -182,7 +182,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.5
+    "width": 218.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,13 +200,13 @@
   },
   "active": "86188b5bc99cf57e",
   "lastOpenFiles": [
-    "Knowledge/Dev Tips.md",
+    "Plans/Laptop List.md",
+    "[【ROG幻16】ROG幻16.md",
     "Knowledge/Spoken.md",
+    "Knowledge/Dev Tips.md",
     "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "Plans/Laptop List.md",
-    "[【ROG幻16】ROG幻16.md",
     "Doc/STL.md",
     "Plans/OKRs.md",
     "README.md",

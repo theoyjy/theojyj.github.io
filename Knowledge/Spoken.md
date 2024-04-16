@@ -79,7 +79,7 @@ But they all seems **short-sighted** in some ways, hence the citizens are agains
 | feel homesick                                                        |                                                                                                                                                                      related: a home from home 像家一样温暖的地方<br>I visit that town so often it's become  a home from home to me |
 | have fond memories/==recollections== of sth                          |                                                                                       = remember sth with great pleasure = have sweet memories of ...<br>antonym: leave a bad  taste in one's mouth<br>The way that teacher spoken to the kid left a bad taste in my mouth |
 | household chores                                                     |                                                                                                                                                                                                                        = housework<br>synonym: errands 同样指一些要完成的小事，但通常不是在家 |
-| ==love and devotion==<br><br><br>love, honor and cherish 珍惜          |                                                                               = care and love<br>Sometimes a pet can provide a  person with a new focus for his/her love and devotion<br><br>The couple will love, honor and cherish each other, in good times and in bad. |
+| ==love and devotion==<br><br><br><br>love, honor and cherish 珍惜      |                                                                               = care and love<br>Sometimes a pet can provide a  person with a new focus for his/her love and devotion<br><br>The couple will love, honor and cherish each other, in good times and in bad. |
 | ==absence makes the heart grow fonder==                              |                                                                                     = the time spent apart makes you care for a person even more<br>We find it much easier to get along with our parents when we live a way from home. Absence makes the heart grow fonder |
 | The apple of one's eye                                               |                                                                                                                                                                                                                                        = the person who someone loves most |
 | bring up = raise sb = ==child rearing [Specially for raising kids]== |                                                                                                                                                   = take care of a person until he/she is completely grown<br>Children should be brought up to respect the law应该从小教育小孩遵纪守法 |
@@ -87,8 +87,12 @@ But they all seems **short-sighted** in some ways, hence the citizens are agains
 
 ### Translation Practice
 1. 许多人相信运动天赋 *是遗传的* ，运动基因 *在家庭成员间世代流传*.
+	1. Many people believe that athletic ability is hereditary, the athletic genes run in the family.
 2. 成年儿女 *疏远* 父母，使得不少人经受 *空巢综合征* 的煎熬，他们希望孩子像小时候一样 *依恋* 自己。
-	%% The fact grown-up children estranged from their parents makes lots of seniors suffer from empty-nest syndrome. They wish their children cloud be attachment to them as they were young. %%
+	1. The fact that grown-up children estrange from their parents makes a lot of people suffer from empty-nest syndrome. They hope their children can be attachment to them as they were young. 
 3. 父母养育子女，不仅出于 *亲情*，也处于为人父母的 *责任感*
+	1. The reasons that parents raise their children are not only due to family bonds but also the sense of parents' obligation
 4. *养家糊口的顶梁* 柱承担了非常大的 *经济压力*，但许多小孩 *将之视为理所应当*
+	1. The breadwinners are under huge financial burden, yet many children take it for granted.
 5. 每当我 *想家* 的时候，我就去那个城镇，因为那里 *有着家一样的温暖*，我在那里有许多美好的回忆
+	1. I would go to that town whenever I feel homesick, because it is a home from home for me. I have fond recollections of it. 
