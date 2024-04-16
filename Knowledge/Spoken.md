@@ -96,3 +96,11 @@ But they all seems **short-sighted** in some ways, hence the citizens are agains
 	1. The breadwinners are under huge financial burden, yet many children take it for granted.
 5. 每当我 *想家* 的时候，我就去那个城镇，因为那里 *有着家一样的温暖*，我在那里有许多美好的回忆
 	1. I would go to that town whenever I feel homesick, because it is a home from home for me. I have fond recollections of it. 
+6. 多数家长相信孩子应该多参加像做饭、洗碗、洗衣服等家务劳动。
+	1. Many parents believe that children should anticipate household chores such as cooking, washing dishes and doing laundries.
+7. 这些孩子们已经够岁数去做一些自己的事情了（跑腿）。
+	1. These children are old enough to mind their own business.
+8. 小别胜新婚
+   Absence makes the heart grown fonder.
+9. 人们普遍相信女人拥有母性的本能，这使得她们往往是比爸爸们更好的家长。
+	1. It is wildly believed that women have the maternal instinct, which makes them be better at parenting. 
