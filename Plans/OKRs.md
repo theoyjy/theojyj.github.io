@@ -28,6 +28,7 @@
 	- [x] Chapter 5  [due:: 2024-04-13]  [completion:: 2024-04-09]
 	- [x] Chapter 6  [due:: 2024-04-20]  [completion:: 2024-04-09]
 
+
 ### Professional
 - [ ] Finish STL  [priority:: highest]  [due:: 2024-05-04]
 	- [ ] Intro & Allocator  [due:: 2024-04-12]
@@ -39,4 +40,7 @@
 
 #### TO LEARN
 * [ ] [OS: MIT 6.828 Operating System Lab ](https://github.com/SmallPond/MIT6.828_OS)   ([Lectures](https://pdos.csail.mit.edu/6.828/2018/schedule.html))
+* [ ] docker by myself
 
+#### Game
+1. Cyberpunk 2077
