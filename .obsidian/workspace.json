@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d50a6b6aaf272cfe",
+        "id": "7dba0c9297ec82b5",
         "type": "tabs",
         "children": [
           {
-            "id": "9e178b507ac8f1f7",
+            "id": "86188b5bc99cf57e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 225.5,
-    "collapsed": true
+    "width": 225.5
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -183,8 +182,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.5,
-    "collapsed": true
+    "width": 218.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,17 +197,17 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "9e178b507ac8f1f7",
+  "active": "86188b5bc99cf57e",
   "lastOpenFiles": [
-    "Plans/OKRs.md",
-    "Knowledge/Spoken.md",
     "Knowledge/Dev Tips.md",
+    "Knowledge/Spoken.md",
     "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Plans/Laptop List.md",
     "[【ROG幻16】ROG幻16.md",
     "Doc/STL.md",
+    "Plans/OKRs.md",
     "README.md",
     "Resources/STL-20240330164037726.webp",
     "Plans/Plan Kanban.md",
