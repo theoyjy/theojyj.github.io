@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7dba0c9297ec82b5",
+        "id": "d50a6b6aaf272cfe",
         "type": "tabs",
         "children": [
           {
-            "id": "86188b5bc99cf57e",
+            "id": "9e178b507ac8f1f7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "Plans/Computer.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "Plans/Computer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/Spoken.md",
+                "file": "Plans/Computer.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/Spoken.md"
+                "file": "Plans/Computer.md"
               }
             }
           },
@@ -198,17 +198,18 @@
       "obsidian-projects:Open projects": false
     }
   },
-  "active": "86188b5bc99cf57e",
+  "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
-    "Plans/Laptop List.md",
-    "[【ROG幻16】ROG幻16.md",
+    "Resources/Computer-20240417184538796.webp",
     "Knowledge/Spoken.md",
+    "Plans/OKRs.md",
     "Knowledge/Dev Tips.md",
     "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
+    "Plans/Computer.md",
+    "[【ROG幻16】ROG幻16.md",
     "Doc/STL.md",
-    "Plans/OKRs.md",
     "README.md",
     "Resources/STL-20240330164037726.webp",
     "Plans/Plan Kanban.md",
