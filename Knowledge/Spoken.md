@@ -1,3 +1,4 @@
+# Collocation
 ## Solutions
 | Clause                                                    |                                                                                Meaning |
 | :-------------------------------------------------------- | -------------------------------------------------------------------------------------: |
@@ -104,3 +105,49 @@ But they all seems **short-sighted** in some ways, hence the citizens are agains
    Absence makes the heart grown fonder.
 9. 人们普遍相信女人拥有母性的本能，这使得她们往往是比爸爸们更好的家长。
 	1. It is wildly believed that women have the maternal instinct, which makes them be better at parenting. 
+
+# Phrasal Verbs
+
+### Come
+1. expressing an idea of movement or change of state
+
+| come along        | arrive                                                          |                                                                        |
+| ----------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| come apart        | separated into pieces                                           | The antique picture just came apart in my hands                        |
+| come round/around | become conscious again                                          | A nurse was with me when I came round after the operation              |
+| come out          | disappear or become less strong                                 | Let your shirt soak overnight and the stain will probably come out     |
+| come out          | become public knowledge after it has been kept secret(of truth) | If this story comes out about the Prime Minister, he'll have to resign |
+| come out          | be given to people(of results or information)                   | When do you exam results come out?                                     |
+| come out of       |  leave after a period in a place(of hospital/prison)            | Ava's coming out of hospital at the weekend. She's much better now     |
+2. expressing an idea of happen
+
+| come off   | happen successfully or as planned                  | I was planning to arrange a surprise holiday for her birthday, but I am not sure it's going to come off.     |     |
+| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
+| come about | happened, especially unplanned                     | I've had to organize the school fair again this year - I'm not quite sure how that came about.               |     |
+| come up    | is mentioned or discussed                          | Only if the subject comes up in conversation.                                                                |     |
+| come up    | happened, usually a problem or difficult situation | I nearly told him this morning, but something came up and we had to deal with it straight away.              |     |
+| come up    | become available                                   | Mind you, I don't know if a place on this council is going to come up for a while yet, so perhaps I'll wait. |     |
+
+1. Other
+
+| come up against | encountered or had to deal with(a difficult situation) | I am doing a research project for my degree, but I've come up against a few problems. | encounter |
+| --------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | --------- |
+| come across     | discover(or meet) by chance                            | I came across someone who's done an almost identical study.                           | find out  |
+| come to         | make(a decision about something)                       | so I've got to come to a decision: do I want to continue with it or not?              | make      |
+| come down to    | depend mostly on or be influenced most by              | I guess in the end my decision will come down to what my professor recommends.        | depend on |
+
+### Get
+
+| get together (often + with)<br><br>get on (often + with)       | Get together: people meet in order to do sth or spend time together<br><br>Get on: people like each other and are friendly to each other                                   | It's nice to get together with people you get on with.                                                                                | hang out<br><br>people like each other                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| get on(+ with)<br><br>get behind(+ with)                       | continue doing sth, especially work<br><br>if you get behind with work or with payments, you have not done as much work or paid as much as you should by a particular time | I must get on with my work. I got behind because I spent too much time online                                                         | continue doing<br><br>delayed                                            |
+| get sth over with<br><br>get away                              | do and complete sth difficult or unpleasant that must be done<br><br>leave a place or person, often when the situation makes it difficult for you to do so                 | Let's **get this meeting over with**, or else we'll never **get away** before the rush hour and it will take ages to get home         | finish<br><br>run away                                                   |
+| can't/couldn't get over sth<br><br>get away with sth/doing sth | be very surprised or shocked that sth has happened or that sth is true<br><br>succeed in not being criticized or punished for sth wrong that you've done                   | I can't get over how she manages to get away with doing so little work. It's obvious to everyone, but the boss never seems to notice. | I am confused/ I couldn't understand<br><br>get no punishment from doing |
+|                                                                |                                                                                                                                                                            |                                                                                                                                       |                                                                          |
+| get by                                                         | have **just enough money** to pay for the things I need, but nothing more                                                                                                  | How do you manage to survive without a job?<br>I **get by** with a bit oh help from my parents                                        | survive                                                                  |
+| get around/round                                               | find a way of dealing with or avoiding a problem                                                                                                                           | Don't worry. We'll get around it somehow                                                                                              | deal or avoid the problem                                                |
+| get around/round                                               | do sth that you have intended to do for a long time                                                                                                                        | Sorry, I haven't got around/round it yet, but I'll do it after lunch, I promise                                                       | understand                                                               |
+| get at                                                         | asking sb what do they mean, usually because they have said sth indirectly                                                                                                 | I really think you ought to apologize to you-know-who about you-know-what/<br>I don't know what you're getting at/ Who? What?         | what do you mean                                                         |
+| get away with                                                  | do sth successfully even though it is not the best way of doing it                                                                                                         | Do you think I can get away with not using any handout                                                                                | OK with                                                                  |
+
+

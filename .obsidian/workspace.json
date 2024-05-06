@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d50a6b6aaf272cfe",
+        "id": "21d70cd912f40553",
         "type": "tabs",
         "children": [
           {
-            "id": "9e178b507ac8f1f7",
+            "id": "c70850a9f6eb5b67",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plans/Computer.md",
+                "file": "Knowledge/Spoken.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Plans/Computer.md",
+                "file": "Knowledge/Spoken.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Plans/Computer.md",
+                "file": "Knowledge/Spoken.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Plans/Computer.md"
+                "file": "Knowledge/Spoken.md"
               }
             }
           },
@@ -182,12 +182,10 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.5,
-    "collapsed": true
+    "width": 218.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -195,19 +193,28 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-projects:Open projects": false
+      "obsidian-projects:Open projects": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
   "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
-    "Resources/Computer-20240417184538796.webp",
     "Knowledge/Spoken.md",
+    "WorkTmp/D5MeshSync.md",
+    "WorkTmp/Bug Walk Throught.excalidraw.md",
+    "Resources/3D Info-20240430134641158.webp",
+    "Knowledge/3D Info.md",
+    "Resources/3D Info-20240430135918310.webp",
+    "Resources/3D Info-20240430135551269.webp",
+    "Resources/3D Info-20240430134824853.webp",
+    "Resources/3D Info-20240430134709925.webp",
+    "Plans/Computer.md",
+    "WorkTmp/2.8视频.md",
+    "WorkTmp/2.7bugs.canvas",
+    "Resources/Computer-20240417184538796.webp",
     "Plans/OKRs.md",
     "Knowledge/Dev Tips.md",
-    "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "Plans/Computer.md",
     "[【ROG幻16】ROG幻16.md",
     "Doc/STL.md",
     "README.md",
@@ -216,13 +223,11 @@
     "2024-03-29.md",
     "Knowledge/UE Errors.md",
     "Knowledge/CMake.md",
-    "Knowledge/3D Info.md",
     "Doc/thread.md",
     "Doc/signal.md",
     "Resources/STL-20240329184717314.webp",
     "Resources/STL-20240329184439033.webp",
     "Doc/Untitled Diagram.svg",
-    "Doc/Untitled Diagram 1.svg",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
     "TasksCalendar",
@@ -230,17 +235,11 @@
     "Plan Kanban.md",
     "Plan.md",
     "Excalidraw",
-    "Resources/Pasted image 20240313192032.png",
-    "Resources/Pasted image 20240313190951.png",
-    "Resources/2.7bugs.jpg",
-    "WorkTmp/2.7bugs.jpg",
     "Doc/processLinux.md",
     "Doc/Eight buts.md",
     "Doc/cn.md",
     "Doc/C++ KanBan.md",
     "STL源码剖析_快学笔记.docx",
-    "WorkTmp/D5MeshSync.md",
-    "WorkTmp/Pasted image 20240313190802.png",
     "WorkTmp",
     "Excalidraw/Drawing 2024-03-13 02.20.40.excalidraw.md",
     "Plan"

@@ -552,7 +552,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "每个View的底层数据",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -633,7 +633,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "g2PGRg5t1H_LT-gibJlrf",
 			"originalText": "bSmoothMoveVelocity",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -714,7 +714,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "Rn0pUQKLnam6pZJI15FZM",
 			"originalText": "MoveInTangent",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -795,7 +795,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "zEmGs1kUKdWTmag8pNwqn",
 			"originalText": "MoveOutTangent",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -872,7 +872,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "PiV6cBfDt67LVzBivefdu",
 			"originalText": "true",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -949,7 +949,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "oHV91ISWF_C2hms9ahNdQ",
 			"originalText": "0,0",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1026,7 +1026,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "LxkD21pM9Cy7U7S7tb0i9",
 			"originalText": "1, 1",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1103,7 +1103,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "LN_AGJRxTN6RUX9dNzHoo",
 			"originalText": "false",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1180,7 +1180,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "rVh_9Q8XKIjfp558vA_Jb",
 			"originalText": "0,0",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1257,7 +1257,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "ecIruBwJPUfhFrBmhu57Y",
 			"originalText": "1, 1",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1334,7 +1334,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "IL_ctYgp5Z6rvt_9EuANg",
 			"originalText": "true",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1411,7 +1411,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "yn1x5NQ4HttBv-juwAuB9",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1488,7 +1488,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "obgdO92Qzt9Ju7SHKMzGR",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1565,7 +1565,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "MGXFKwglD3YX_6zIfPL37",
 			"originalText": "true",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1642,7 +1642,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "PZ-iCPnzKHkxNv84T8Jbe",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -1719,12 +1719,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "ypyHIcjor5NxOajqrZnjF",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "arrow",
-			"version": 2352,
-			"versionNonce": 1170182373,
+			"version": 2354,
+			"versionNonce": 1050349088,
 			"isDeleted": false,
 			"id": "HcMl8j5Jji9H7FaYEMdeb",
 			"fillStyle": "solid",
@@ -1749,7 +1749,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906212049,
+			"updated": 1714125207668,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -1778,8 +1778,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 2220,
-			"versionNonce": 824335269,
+			"version": 2222,
+			"versionNonce": 260441632,
 			"isDeleted": false,
 			"id": "gfL_Aiz9g1Ue1mbeUO8sP",
 			"fillStyle": "solid",
@@ -1804,7 +1804,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906212049,
+			"updated": 1714125207670,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -1833,8 +1833,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 2400,
-			"versionNonce": 417429093,
+			"version": 2402,
+			"versionNonce": 1813184032,
 			"isDeleted": false,
 			"id": "TE7tssB-aBjHT_1ESWiei",
 			"fillStyle": "solid",
@@ -1859,7 +1859,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906212049,
+			"updated": 1714125207670,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -1924,7 +1924,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "int smooth_move_velocity;",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2001,7 +2001,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "sc2RIMT8RH4fqpu-qmhem",
 			"originalText": "enum MoveVelocity\n\t{\n\t\tNone = -1,\t// template 和 dcc 轨迹 不展示smooth选项\n\t\tLinear = 0,\t\n\t\tAutoSmooth = 1, // 平滑速度 + 线性时间分布\n\t\tUserSmooth = 2  // 平滑曲线 + 用户时间分布\n\t};",
 			"lineHeight": 1.25,
-			"baseline": 168
+			"baseline": 166
 		},
 		{
 			"type": "rectangle",
@@ -2078,7 +2078,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "NoqMgCUPeunS8r29ERbQv",
 			"originalText": "MoveInTangent",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2155,7 +2155,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "FQ84t_9wWaQMspIqCvKgH",
 			"originalText": "MoveOutTangent",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2232,7 +2232,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "gobnv_8AIhw0TPYxRGtaL",
 			"originalText": "-1,-1",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2309,7 +2309,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "vLJzK5WI3UuPu7kPPZUoA",
 			"originalText": "0,0",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2386,7 +2386,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "3E-g8tkypp-iTskkdYOH7",
 			"originalText": "1, 1",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2463,7 +2463,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "8Ct16djmj0hxOmo8QjxHX",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2540,7 +2540,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "xa7SbIdduTfC9JswXq3q5",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2617,7 +2617,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "MDN2vwx7JWBy4J4rT3cId",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2694,7 +2694,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "0AEVowbvH1mlJwAaVmOKY",
 			"originalText": "x, y",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "text",
@@ -2734,7 +2734,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "给前端",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "rectangle",
@@ -2811,7 +2811,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "FXKCgmAvpGKFbKcPwdlfb",
 			"originalText": "-1,-1",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "text",
@@ -2850,7 +2850,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "......",
 			"lineHeight": 1.25,
-			"baseline": 18
+			"baseline": 16
 		},
 		{
 			"type": "arrow",
@@ -3647,8 +3647,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 1141,
-			"versionNonce": 1955553733,
+			"version": 1142,
+			"versionNonce": 156121632,
 			"isDeleted": false,
 			"id": "cZDU5An6jGS-sJtWEAq_G",
 			"fillStyle": "hachure",
@@ -3673,7 +3673,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906212050,
+			"updated": 1714125207672,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
@@ -5302,12 +5302,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "zSLN1OycRek59E-rZzLA6",
 			"originalText": "AsyncLoadingModelCVs[stdPath];\nAsyncLoadingModelCVMutexs[stdPath];\n\nauto Task = FFunctionGraphTask::CreateAndDispatchWhenReady\n(.....);\nAsyncLoadingModelTasks.emplace(stdPath, task);\nAsyncLoadingModelCVs[stdPath].notify_all();",
 			"lineHeight": 1.2,
-			"baseline": 294
+			"baseline": 293
 		},
 		{
 			"type": "arrow",
-			"version": 407,
-			"versionNonce": 173135685,
+			"version": 411,
+			"versionNonce": 500181536,
 			"isDeleted": false,
 			"id": "Nq-LPcndKHF8qfEFoPTGp",
 			"fillStyle": "hachure",
@@ -5329,7 +5329,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906212052,
+			"updated": 1714125207672,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -5637,7 +5637,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "_W_1CkbzGMBkT5ljEtGpU",
 			"originalText": "std::unique_lock<std::mutex> lock(FurnitureCVMutex);\nwhile(!TaskArr.find(FurnitureLoadingPath))\n    FurnitureCV.wait();\nauto PreTask = TaskArr.find(...) -> second;",
 			"lineHeight": 1.2,
-			"baseline": 208
+			"baseline": 207
 		},
 		{
 			"type": "rectangle",
@@ -5932,616 +5932,36 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "📍FFunctionGraphTask::CreateAndDispatchWhenReady(\n    [[]]{...}, \n    TStatId(), PreTask, \n    ENamedThreads::GameThread);\n)",
 			"lineHeight": 1.2,
-			"baseline": 208
+			"baseline": 207
 		},
 		{
+			"type": "line",
+			"version": 164,
+			"versionNonce": 1435703264,
+			"isDeleted": false,
 			"id": "B1n2aQ7UbVBDXHiqr-a4p",
-			"type": "line",
-			"x": -3662.554474303992,
-			"y": 3163.0216436919127,
-			"width": 697.1428571428573,
-			"height": 215.71428571428578,
-			"angle": 0,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
 			"fillStyle": "hachure",
 			"strokeWidth": 4,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
+			"angle": 0,
+			"x": -3443.465118835242,
+			"y": 2724.8433396554547,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 697.1428571428573,
+			"height": 215.71428571428578,
 			"seed": 72341445,
-			"version": 120,
-			"versionNonce": 924922661,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					224.28571428571468,
-					215.71428571428578
-				],
-				[
-					697.1428571428573,
-					7.142857142856883
-				]
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
 			],
-			"lastCommittedPoint": null,
-			"startBinding": null,
-			"endBinding": null,
-			"startArrowhead": null,
-			"endArrowhead": null
-		},
-		{
-			"id": "oRZ7fqqL",
-			"type": "text",
-			"x": -3769.6973314468482,
-			"y": 3138.7359294061985,
-			"width": 72,
-			"height": 43.199999999999996,
-			"angle": 0,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 4,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": null,
-			"seed": 187249093,
-			"version": 34,
-			"versionNonce": 756727211,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"text": "轨迹",
-			"rawText": "轨迹",
-			"fontSize": 36,
-			"fontFamily": 3,
-			"textAlign": "left",
-			"verticalAlign": "top",
-			"baseline": 35,
-			"containerId": null,
-			"originalText": "轨迹",
-			"lineHeight": 1.2
-		},
-		{
-			"type": "ellipse",
-			"version": 25,
-			"versionNonce": 1429833349,
-			"isDeleted": false,
-			"id": "OgsMlVkk7gZP1P2JPV-uf",
-			"fillStyle": "hachure",
-			"strokeWidth": 4,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"angle": 0,
-			"x": -3580.411617161135,
-			"y": 3282.3073579776274,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"width": 10.000000000000002,
-			"height": 12.857142857142662,
-			"seed": 456578821,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"boundElements": [
-				{
-					"id": "-HxjqAfTMgar9ErRlc87_",
-					"type": "arrow"
-				},
-				{
-					"id": "vz_pHq2Qms_LfggoAVVtw",
-					"type": "arrow"
-				}
-			],
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false
-		},
-		{
-			"type": "ellipse",
-			"version": 23,
-			"versionNonce": 1508626507,
-			"isDeleted": false,
-			"id": "JifFy70QrBHW0MDVT3qCd",
-			"fillStyle": "hachure",
-			"strokeWidth": 4,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"angle": 0,
-			"x": -3330.411617161135,
-			"y": 3345.1645008347705,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"width": 10.000000000000002,
-			"height": 12.857142857142662,
-			"seed": 2043449611,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"boundElements": [
-				{
-					"id": "4S5-JjBB9wX-9DLPd1Zzw",
-					"type": "arrow"
-				},
-				{
-					"id": "UJRGZoYwRAOMVwrSGtqpi",
-					"type": "arrow"
-				}
-			],
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false
-		},
-		{
-			"type": "ellipse",
-			"version": 22,
-			"versionNonce": 1739615717,
-			"isDeleted": false,
-			"id": "kqzqWB62XBPajxZl_ojnK",
-			"fillStyle": "hachure",
-			"strokeWidth": 4,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"angle": 0,
-			"x": -3136.1259028754203,
-			"y": 3250.8787865490567,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"width": 10.000000000000002,
-			"height": 12.857142857142662,
-			"seed": 739693541,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"boundElements": [
-				{
-					"id": "IlEIKFt0U6-7kXgkUbiWA",
-					"type": "arrow"
-				}
-			],
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false
-		},
-		{
-			"id": "-HxjqAfTMgar9ErRlc87_",
-			"type": "arrow",
-			"x": -3463.060233382653,
-			"y": 3507.6502151204845,
-			"width": 102.35747268513342,
-			"height": 203.14234788910335,
-			"angle": 0,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 0.5,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"seed": 192264773,
-			"version": 415,
-			"versionNonce": 2084671211,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					-102.35747268513342,
-					-203.14234788910335
-				]
-			],
-			"lastCommittedPoint": null,
-			"startBinding": {
-				"elementId": "tEq1S9L4",
-				"focus": -0.1224500527739135,
-				"gap": 11.085714285714403
-			},
-			"endBinding": {
-				"elementId": "OgsMlVkk7gZP1P2JPV-uf",
-				"focus": -0.34358075267549915,
-				"gap": 12.687332439444509
-			},
-			"startArrowhead": null,
-			"endArrowhead": "arrow"
-		},
-		{
-			"type": "arrow",
-			"version": 574,
-			"versionNonce": 227764549,
-			"isDeleted": false,
-			"id": "4S5-JjBB9wX-9DLPd1Zzw",
-			"fillStyle": "hachure",
-			"strokeWidth": 0.5,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"angle": 0,
-			"x": -3385.8957042671063,
-			"y": 3503.525617100537,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"width": 58.79554120255352,
-			"height": 138.98855583015074,
-			"seed": 306865733,
-			"groupIds": [],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"startBinding": {
-				"elementId": "tEq1S9L4",
-				"focus": 0.0036850425758052047,
-				"gap": 15.210312305662228
-			},
-			"endBinding": {
-				"elementId": "JifFy70QrBHW0MDVT3qCd",
-				"focus": -0.6653690970460844,
-				"gap": 6.6534745089112555
-			},
-			"lastCommittedPoint": null,
-			"startArrowhead": null,
-			"endArrowhead": "arrow",
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					58.79554120255352,
-					-138.98855583015074
-				]
-			]
-		},
-		{
-			"type": "arrow",
-			"version": 570,
-			"versionNonce": 1453750667,
-			"isDeleted": false,
-			"id": "IlEIKFt0U6-7kXgkUbiWA",
-			"fillStyle": "hachure",
-			"strokeWidth": 0.5,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"angle": 0,
-			"x": -3282.7090620143554,
-			"y": 3514.954188529109,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"width": 149.00219646727692,
-			"height": 235.5955963707529,
-			"seed": 1966958917,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"boundElements": [],
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"startBinding": {
-				"elementId": "tEq1S9L4",
-				"focus": 0.28846315672161094,
-				"gap": 3.781740877090215
-			},
-			"endBinding": {
-				"elementId": "kqzqWB62XBPajxZl_ojnK",
-				"focus": -1.763596450957955,
-				"gap": 15.794502196853616
-			},
-			"lastCommittedPoint": null,
-			"startArrowhead": null,
-			"endArrowhead": "arrow",
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					149.00219646727692,
-					-235.5955963707529
-				]
-			]
-		},
-		{
-			"id": "tEq1S9L4",
-			"type": "text",
-			"x": -3749.6973314468496,
-			"y": 3518.735929406199,
-			"width": 693.84375,
-			"height": 43.199999999999996,
-			"angle": 0,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 0.5,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": null,
-			"seed": 208080587,
-			"version": 262,
-			"versionNonce": 675281061,
-			"isDeleted": false,
-			"boundElements": [
-				{
-					"id": "-HxjqAfTMgar9ErRlc87_",
-					"type": "arrow"
-				},
-				{
-					"id": "IlEIKFt0U6-7kXgkUbiWA",
-					"type": "arrow"
-				},
-				{
-					"id": "4S5-JjBB9wX-9DLPd1Zzw",
-					"type": "arrow"
-				}
-			],
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"text": "线性运动下：位移在25%，50%，75%的位置",
-			"rawText": "线性运动下：位移在25%，50%，75%的位置",
-			"fontSize": 36,
-			"fontFamily": 3,
-			"textAlign": "left",
-			"verticalAlign": "top",
-			"baseline": 35,
-			"containerId": null,
-			"originalText": "线性运动下：位移在25%，50%，75%的位置",
-			"lineHeight": 1.2
-		},
-		{
-			"id": "vz_pHq2Qms_LfggoAVVtw",
-			"type": "arrow",
-			"x": -3565.411617161135,
-			"y": 3274.4502151204847,
-			"width": 60,
-			"height": 78.57142857142844,
-			"angle": 0,
-			"strokeColor": "#1971c2",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"seed": 962887883,
-			"version": 33,
-			"versionNonce": 1985286187,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					60,
-					-78.57142857142844
-				]
-			],
-			"lastCommittedPoint": null,
-			"startBinding": {
-				"elementId": "OgsMlVkk7gZP1P2JPV-uf",
-				"focus": -0.12973890370336705,
-				"gap": 11.491550526792603
-			},
-			"endBinding": null,
-			"startArrowhead": null,
-			"endArrowhead": "arrow"
-		},
-		{
-			"id": "UJRGZoYwRAOMVwrSGtqpi",
-			"type": "arrow",
-			"x": -3319.697331446849,
-			"y": 3330.1645008347705,
-			"width": 50,
-			"height": 115.71428571428578,
-			"angle": 0,
-			"strokeColor": "#1971c2",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"seed": 1146934949,
-			"version": 27,
-			"versionNonce": 291740677,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					-50,
-					-115.71428571428578
-				]
-			],
-			"lastCommittedPoint": null,
-			"startBinding": {
-				"elementId": "JifFy70QrBHW0MDVT3qCd",
-				"focus": 2.6178466575915125,
-				"gap": 15.844001657672031
-			},
-			"endBinding": null,
-			"startArrowhead": null,
-			"endArrowhead": "arrow"
-		},
-		{
-			"id": "gL-A0ySgqvzOj890M9oLv",
-			"type": "arrow",
-			"x": -3132.554474303992,
-			"y": 3234.4502151204847,
-			"width": 71.42857142857156,
-			"height": 77.14285714285734,
-			"angle": 0,
-			"strokeColor": "#1971c2",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"seed": 151961899,
-			"version": 32,
-			"versionNonce": 520136357,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906212054,
-			"link": null,
-			"locked": false,
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					-71.42857142857156,
-					-77.14285714285734
-				]
-			],
-			"lastCommittedPoint": null,
-			"startBinding": null,
-			"endBinding": {
-				"elementId": "2tMkgyo_qH_3xRQiiqVOq",
-				"gap": 9.899118210394477,
-				"focus": -0.6582365003417723
-			},
-			"startArrowhead": null,
-			"endArrowhead": "arrow"
-		},
-		{
-			"id": "Meflpx2B",
-			"type": "text",
-			"x": -3635.4116171611354,
-			"y": 3025.878786549056,
-			"width": 693.84375,
-			"height": 43.199999999999996,
-			"angle": 0,
-			"strokeColor": "#1971c2",
-			"backgroundColor": "transparent",
-			"fillStyle": "hachure",
-			"strokeWidth": 2,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": null,
-			"seed": 443718885,
-			"version": 132,
-			"versionNonce": 284939109,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"text": "线性运动下：旋转在25%，50%，75%的角度",
-			"rawText": "线性运动下：旋转在25%，50%，75%的角度",
-			"fontSize": 36,
-			"fontFamily": 3,
-			"textAlign": "left",
-			"verticalAlign": "top",
-			"baseline": 35,
-			"containerId": null,
-			"originalText": "线性运动下：旋转在25%，50%，75%的角度",
-			"lineHeight": 1.2
-		},
-		{
-			"type": "line",
-			"version": 152,
-			"versionNonce": 1810448747,
-			"isDeleted": false,
-			"id": "iI8q1JRy1MFz8mLMeJE4B",
-			"fillStyle": "hachure",
-			"strokeWidth": 4,
-			"strokeStyle": "solid",
-			"roughness": 2,
-			"opacity": 100,
-			"angle": 0,
-			"x": -3669.4763493039923,
-			"y": 3967.8502151204866,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
-			"width": 697.1428571428573,
-			"height": 215.71428571428578,
-			"seed": 1093026731,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": {
-				"type": 2
-			},
-			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
@@ -6566,28 +5986,30 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "text",
-			"version": 66,
-			"versionNonce": 324411077,
+			"version": 78,
+			"versionNonce": 1387451936,
 			"isDeleted": false,
-			"id": "QPV1wU6d",
+			"id": "oRZ7fqqL",
 			"fillStyle": "hachure",
 			"strokeWidth": 4,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3776.6192064468482,
-			"y": 3943.564500834772,
+			"x": -3550.6079759780982,
+			"y": 2700.5576253697404,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 72,
 			"height": 43.199999999999996,
-			"seed": 781620811,
-			"groupIds": [],
+			"seed": 187249093,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
 			"fontSize": 36,
@@ -6599,12 +6021,620 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "轨迹",
 			"lineHeight": 1.2,
-			"baseline": 35
+			"baseline": 34
 		},
 		{
 			"type": "ellipse",
-			"version": 124,
-			"versionNonce": 196336651,
+			"version": 69,
+			"versionNonce": 119872480,
+			"isDeleted": false,
+			"id": "OgsMlVkk7gZP1P2JPV-uf",
+			"fillStyle": "hachure",
+			"strokeWidth": 4,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3361.322261692385,
+			"y": 2844.1290539411693,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 10.000000000000002,
+			"height": 12.857142857142662,
+			"seed": 456578821,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [
+				{
+					"id": "-HxjqAfTMgar9ErRlc87_",
+					"type": "arrow"
+				},
+				{
+					"id": "vz_pHq2Qms_LfggoAVVtw",
+					"type": "arrow"
+				}
+			],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false
+		},
+		{
+			"type": "ellipse",
+			"version": 67,
+			"versionNonce": 1043534368,
+			"isDeleted": false,
+			"id": "JifFy70QrBHW0MDVT3qCd",
+			"fillStyle": "hachure",
+			"strokeWidth": 4,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3111.322261692385,
+			"y": 2906.9861967983124,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 10.000000000000002,
+			"height": 12.857142857142662,
+			"seed": 2043449611,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [
+				{
+					"id": "4S5-JjBB9wX-9DLPd1Zzw",
+					"type": "arrow"
+				},
+				{
+					"id": "UJRGZoYwRAOMVwrSGtqpi",
+					"type": "arrow"
+				}
+			],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false
+		},
+		{
+			"type": "ellipse",
+			"version": 66,
+			"versionNonce": 1071030240,
+			"isDeleted": false,
+			"id": "kqzqWB62XBPajxZl_ojnK",
+			"fillStyle": "hachure",
+			"strokeWidth": 4,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -2917.0365474066703,
+			"y": 2812.7004825125987,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 10.000000000000002,
+			"height": 12.857142857142662,
+			"seed": 739693541,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [
+				{
+					"id": "IlEIKFt0U6-7kXgkUbiWA",
+					"type": "arrow"
+				}
+			],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false
+		},
+		{
+			"type": "arrow",
+			"version": 547,
+			"versionNonce": 1179373088,
+			"isDeleted": false,
+			"id": "-HxjqAfTMgar9ErRlc87_",
+			"fillStyle": "hachure",
+			"strokeWidth": 0.5,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3243.970877913903,
+			"y": 3069.4719110840265,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 102.35747268513342,
+			"height": 203.14234788910335,
+			"seed": 192264773,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "tEq1S9L4",
+				"focus": -0.12245593246590329,
+				"gap": 11.085714285714403
+			},
+			"endBinding": {
+				"elementId": "OgsMlVkk7gZP1P2JPV-uf",
+				"focus": -0.3435807526754169,
+				"gap": 12.660648991291549
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-102.35747268513342,
+					-203.14234788910335
+				]
+			]
+		},
+		{
+			"type": "arrow",
+			"version": 706,
+			"versionNonce": 1874306016,
+			"isDeleted": false,
+			"id": "4S5-JjBB9wX-9DLPd1Zzw",
+			"fillStyle": "hachure",
+			"strokeWidth": 0.5,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3166.8063487983563,
+			"y": 3065.347313064079,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 58.79554120255352,
+			"height": 138.98855583015074,
+			"seed": 306865733,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "tEq1S9L4",
+				"focus": 0.0036738113950520843,
+				"gap": 15.210312305661773
+			},
+			"endBinding": {
+				"elementId": "JifFy70QrBHW0MDVT3qCd",
+				"focus": -0.6653690970460483,
+				"gap": 6.651418301767452
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					58.79554120255352,
+					-138.98855583015074
+				]
+			]
+		},
+		{
+			"type": "arrow",
+			"version": 702,
+			"versionNonce": 1139608096,
+			"isDeleted": false,
+			"id": "IlEIKFt0U6-7kXgkUbiWA",
+			"fillStyle": "hachure",
+			"strokeWidth": 0.5,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3063.6197065456054,
+			"y": 3076.775884492651,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 149.00219646727692,
+			"height": 235.5955963707529,
+			"seed": 1966958917,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "tEq1S9L4",
+				"focus": 0.288460086985732,
+				"gap": 3.78174087708976
+			},
+			"endBinding": {
+				"elementId": "kqzqWB62XBPajxZl_ojnK",
+				"focus": -1.7635964509579298,
+				"gap": 15.792568275957152
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					149.00219646727692,
+					-235.5955963707529
+				]
+			]
+		},
+		{
+			"type": "text",
+			"version": 306,
+			"versionNonce": 81274848,
+			"isDeleted": false,
+			"id": "tEq1S9L4",
+			"fillStyle": "hachure",
+			"strokeWidth": 0.5,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3530.6079759780996,
+			"y": 3080.557625369741,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 693.84375,
+			"height": 43.199999999999996,
+			"seed": 208080587,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [
+				{
+					"id": "-HxjqAfTMgar9ErRlc87_",
+					"type": "arrow"
+				},
+				{
+					"id": "IlEIKFt0U6-7kXgkUbiWA",
+					"type": "arrow"
+				},
+				{
+					"id": "4S5-JjBB9wX-9DLPd1Zzw",
+					"type": "arrow"
+				}
+			],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"fontSize": 36,
+			"fontFamily": 3,
+			"text": "线性运动下：位移在25%，50%，75%的位置",
+			"rawText": "线性运动下：位移在25%，50%，75%的位置",
+			"textAlign": "left",
+			"verticalAlign": "top",
+			"containerId": null,
+			"originalText": "线性运动下：位移在25%，50%，75%的位置",
+			"lineHeight": 1.2,
+			"baseline": 34
+		},
+		{
+			"type": "arrow",
+			"version": 121,
+			"versionNonce": 1913046560,
+			"isDeleted": false,
+			"id": "vz_pHq2Qms_LfggoAVVtw",
+			"fillStyle": "hachure",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3346.322261692385,
+			"y": 2836.2719110840267,
+			"strokeColor": "#1971c2",
+			"backgroundColor": "transparent",
+			"width": 60,
+			"height": 78.57142857142844,
+			"seed": 962887883,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "OgsMlVkk7gZP1P2JPV-uf",
+				"focus": -0.12973890370336705,
+				"gap": 11.491550526792603
+			},
+			"endBinding": null,
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					60,
+					-78.57142857142844
+				]
+			]
+		},
+		{
+			"type": "arrow",
+			"version": 115,
+			"versionNonce": 726150112,
+			"isDeleted": false,
+			"id": "UJRGZoYwRAOMVwrSGtqpi",
+			"fillStyle": "hachure",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3100.607975978099,
+			"y": 2891.9861967983124,
+			"strokeColor": "#1971c2",
+			"backgroundColor": "transparent",
+			"width": 50,
+			"height": 115.71428571428578,
+			"seed": 1146934949,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "JifFy70QrBHW0MDVT3qCd",
+				"focus": 2.6178466575915125,
+				"gap": 15.844001657672031
+			},
+			"endBinding": null,
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-50,
+					-115.71428571428578
+				]
+			]
+		},
+		{
+			"type": "arrow",
+			"version": 121,
+			"versionNonce": 763953696,
+			"isDeleted": false,
+			"id": "gL-A0ySgqvzOj890M9oLv",
+			"fillStyle": "hachure",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -2913.465118835242,
+			"y": 2796.2719110840267,
+			"strokeColor": "#1971c2",
+			"backgroundColor": "transparent",
+			"width": 71.42857142857156,
+			"height": 77.14285714285734,
+			"seed": 151961899,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": null,
+			"endBinding": {
+				"elementId": "2tMkgyo_qH_3xRQiiqVOq",
+				"focus": -0.6582365003417723,
+				"gap": 9.899118210394477
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-71.42857142857156,
+					-77.14285714285734
+				]
+			]
+		},
+		{
+			"type": "text",
+			"version": 176,
+			"versionNonce": 219656160,
+			"isDeleted": false,
+			"id": "Meflpx2B",
+			"fillStyle": "hachure",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3416.3222616923854,
+			"y": 2587.700482512598,
+			"strokeColor": "#1971c2",
+			"backgroundColor": "transparent",
+			"width": 693.84375,
+			"height": 43.199999999999996,
+			"seed": 443718885,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"fontSize": 36,
+			"fontFamily": 3,
+			"text": "线性运动下：旋转在25%，50%，75%的角度",
+			"rawText": "线性运动下：旋转在25%，50%，75%的角度",
+			"textAlign": "left",
+			"verticalAlign": "top",
+			"containerId": null,
+			"originalText": "线性运动下：旋转在25%，50%，75%的角度",
+			"lineHeight": 1.2,
+			"baseline": 34
+		},
+		{
+			"type": "line",
+			"version": 196,
+			"versionNonce": 895729184,
+			"isDeleted": false,
+			"id": "iI8q1JRy1MFz8mLMeJE4B",
+			"fillStyle": "hachure",
+			"strokeWidth": 4,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3450.3869938352423,
+			"y": 3529.6719110840286,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 697.1428571428573,
+			"height": 215.71428571428578,
+			"seed": 1093026731,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"startBinding": null,
+			"endBinding": null,
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": null,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					224.28571428571468,
+					215.71428571428578
+				],
+				[
+					697.1428571428573,
+					7.142857142856883
+				]
+			]
+		},
+		{
+			"type": "text",
+			"version": 110,
+			"versionNonce": 307672032,
+			"isDeleted": false,
+			"id": "QPV1wU6d",
+			"fillStyle": "hachure",
+			"strokeWidth": 4,
+			"strokeStyle": "solid",
+			"roughness": 2,
+			"opacity": 100,
+			"angle": 0,
+			"x": -3557.5298509780982,
+			"y": 3505.386196798314,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 72,
+			"height": 43.199999999999996,
+			"seed": 781620811,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"fontSize": 36,
+			"fontFamily": 3,
+			"text": "轨迹",
+			"rawText": "轨迹",
+			"textAlign": "left",
+			"verticalAlign": "top",
+			"containerId": null,
+			"originalText": "轨迹",
+			"lineHeight": 1.2,
+			"baseline": 34
+		},
+		{
+			"type": "ellipse",
+			"version": 168,
+			"versionNonce": 1787230752,
 			"isDeleted": false,
 			"id": "0pXSmZrhubBxVIS_NumYH",
 			"fillStyle": "hachure",
@@ -6613,14 +6643,16 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3628.762063589707,
-			"y": 4021.4216436919155,
+			"x": -3409.672708120957,
+			"y": 3583.2433396554575,
 			"strokeColor": "#e03131",
 			"backgroundColor": "transparent",
 			"width": 10.000000000000002,
 			"height": 12.857142857142662,
 			"seed": 1000576235,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
@@ -6635,14 +6667,14 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					"type": "arrow"
 				}
 			],
-			"updated": 1712906132576,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false
 		},
 		{
 			"type": "arrow",
-			"version": 777,
-			"versionNonce": 521141797,
+			"version": 909,
+			"versionNonce": 555038688,
 			"isDeleted": false,
 			"id": "ILc6n5k0rzulMFRGFNrcn",
 			"fillStyle": "hachure",
@@ -6651,31 +6683,33 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3435.7923116375205,
-			"y": 4312.478786549059,
+			"x": -3216.7029561687705,
+			"y": 3874.300482512601,
 			"strokeColor": "#e03131",
 			"backgroundColor": "transparent",
 			"width": 176.34815074522385,
 			"height": 270.2548908212839,
 			"seed": 458201291,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
 			"startBinding": {
 				"elementId": "CUOB1xgb",
-				"focus": -0.12245593246590465,
-				"gap": 11.085714285714403
+				"focus": -0.12196496270606044,
+				"gap": 11.085714285713948
 			},
 			"endBinding": {
 				"elementId": "0pXSmZrhubBxVIS_NumYH",
-				"focus": -0.3435807526754774,
-				"gap": 12.66064899129234
+				"focus": -0.34358075267547766,
+				"gap": 12.630443455778517
 			},
 			"lastCommittedPoint": null,
 			"startArrowhead": null,
@@ -6693,8 +6727,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "text",
-			"version": 364,
-			"versionNonce": 412230315,
+			"version": 408,
+			"versionNonce": 266516000,
 			"isDeleted": false,
 			"id": "CUOB1xgb",
 			"fillStyle": "hachure",
@@ -6703,14 +6737,16 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3756.619206446849,
-			"y": 4323.564500834773,
+			"x": -3537.529850978099,
+			"y": 3885.386196798315,
 			"strokeColor": "#e03131",
 			"backgroundColor": "transparent",
 			"width": 783.28125,
 			"height": 43.199999999999996,
 			"seed": 1681369259,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [
@@ -6723,7 +6759,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					"type": "arrow"
 				}
 			],
-			"updated": 1712906132576,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
 			"fontSize": 36,
@@ -6735,73 +6771,86 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": null,
 			"originalText": "自动平滑运动下：时间到25%时，位移可能的位置",
 			"lineHeight": 1.2,
-			"baseline": 35
+			"baseline": 34
 		},
 		{
-			"id": "HKGhhHQG",
 			"type": "text",
-			"x": -4183.9830457325625,
-			"y": 3708.735929406201,
-			"width": 360,
-			"height": 86.39999999999999,
-			"angle": 0,
-			"strokeColor": "#e03131",
-			"backgroundColor": "transparent",
+			"version": 144,
+			"versionNonce": 1566784480,
+			"isDeleted": false,
+			"id": "HKGhhHQG",
 			"fillStyle": "hachure",
 			"strokeWidth": 2,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
-			"frameId": null,
-			"roundness": null,
-			"seed": 1899626789,
-			"version": 100,
-			"versionNonce": 187602251,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
-			"link": null,
-			"locked": false,
-			"text": "只改变位移的运动模式\n不改变旋转的",
-			"rawText": "只改变位移的运动模式\n不改变旋转的",
-			"fontSize": 36,
-			"fontFamily": 3,
-			"textAlign": "left",
-			"verticalAlign": "top",
-			"baseline": 78,
-			"containerId": null,
-			"originalText": "只改变位移的运动模式\n不改变旋转的",
-			"lineHeight": 1.2
-		},
-		{
-			"id": "HOSa8dc2OKGen5w-fTB79",
-			"type": "arrow",
-			"x": -3798.268760018277,
-			"y": 3538.7359294062016,
-			"width": 220,
-			"height": 805.7142857142853,
 			"angle": 0,
+			"x": -3964.8936902638125,
+			"y": 3270.557625369743,
 			"strokeColor": "#e03131",
 			"backgroundColor": "transparent",
+			"width": 360,
+			"height": 86.39999999999999,
+			"seed": 1899626789,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1714125221579,
+			"link": null,
+			"locked": false,
+			"fontSize": 36,
+			"fontFamily": 3,
+			"text": "只改变位移的运动模式\n不改变旋转的",
+			"rawText": "只改变位移的运动模式\n不改变旋转的",
+			"textAlign": "left",
+			"verticalAlign": "top",
+			"containerId": null,
+			"originalText": "只改变位移的运动模式\n不改变旋转的",
+			"lineHeight": 1.2,
+			"baseline": 77
+		},
+		{
+			"type": "arrow",
+			"version": 226,
+			"versionNonce": 174518816,
+			"isDeleted": false,
+			"id": "HOSa8dc2OKGen5w-fTB79",
 			"fillStyle": "hachure",
 			"strokeWidth": 4,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
+			"angle": 0,
+			"x": -3579.179404549527,
+			"y": 3100.5576253697436,
+			"strokeColor": "#e03131",
+			"backgroundColor": "transparent",
+			"width": 220,
+			"height": 805.7142857142853,
+			"seed": 17453093,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
-			"seed": 17453093,
-			"version": 138,
-			"versionNonce": 1957198053,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906132576,
+			"boundElements": [],
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
+			"startBinding": null,
+			"endBinding": {
+				"elementId": "CUOB1xgb",
+				"focus": -1.0192041657332538,
+				"gap": 15.935267857142208
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
 			"points": [
 				[
 					0,
@@ -6815,21 +6864,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					25.71428571428578,
 					805.7142857142853
 				]
-			],
-			"lastCommittedPoint": null,
-			"startBinding": null,
-			"endBinding": {
-				"elementId": "CUOB1xgb",
-				"focus": -1.019204165733253,
-				"gap": 15.935267857142208
-			},
-			"startArrowhead": null,
-			"endArrowhead": "arrow"
+			]
 		},
 		{
 			"type": "arrow",
-			"version": 73,
-			"versionNonce": 160139979,
+			"version": 207,
+			"versionNonce": 1766899680,
 			"isDeleted": false,
 			"id": "WZb5mvqopaNXyLKJRPoXd",
 			"fillStyle": "hachure",
@@ -6838,31 +6878,33 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3620.0627797673615,
-			"y": 4019.0170176311062,
+			"x": -3400.980218245166,
+			"y": 3580.847610429422,
 			"strokeColor": "#1971c2",
 			"backgroundColor": "transparent",
-			"width": 60,
-			"height": 78.57142857142844,
+			"width": 55.639624954663304,
+			"height": 72.86141363110664,
 			"seed": 80816491,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906223131,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
 			"startBinding": {
 				"elementId": "0pXSmZrhubBxVIS_NumYH",
-				"focus": -0.4347127307541805,
-				"gap": 3.3967427746627212
+				"focus": -0.4347127307541728,
+				"gap": 3.3856511865742975
 			},
 			"endBinding": {
 				"elementId": "C-77uqYdwVw_rDNvtnHTc",
 				"focus": 1.0834780049123922,
-				"gap": 8.8090818132262
+				"gap": 4.364486239226856
 			},
 			"lastCommittedPoint": null,
 			"startArrowhead": null,
@@ -6873,121 +6915,116 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					0
 				],
 				[
-					60,
-					-78.57142857142844
+					55.639624954663304,
+					-72.86141363110664
 				]
 			]
 		},
 		{
-			"id": "qMDNPGsn",
 			"type": "text",
-			"x": -3563.9830457325625,
-			"y": 3738.164500834773,
-			"width": 783.28125,
-			"height": 43.199999999999996,
-			"angle": 0,
-			"strokeColor": "#1971c2",
-			"backgroundColor": "transparent",
+			"version": 183,
+			"versionNonce": 553889312,
+			"isDeleted": false,
+			"id": "qMDNPGsn",
 			"fillStyle": "hachure",
 			"strokeWidth": 4,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
+			"angle": 0,
+			"x": -3344.8936902638125,
+			"y": 3299.986196798315,
+			"strokeColor": "#1971c2",
+			"backgroundColor": "transparent",
+			"width": 783.28125,
+			"height": 43.199999999999996,
+			"seed": 190545803,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": null,
-			"seed": 190545803,
-			"version": 139,
-			"versionNonce": 397440491,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906157372,
+			"boundElements": [],
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
-			"text": "时间在25%的时候，旋转在线性模式下的旋转没变",
-			"rawText": "时间在25%的时候，旋转在线性模式下的旋转没变",
 			"fontSize": 36,
 			"fontFamily": 3,
+			"text": "时间在25%的时候，旋转在线性模式下的旋转没变",
+			"rawText": "时间在25%的时候，旋转在线性模式下的旋转没变",
 			"textAlign": "left",
 			"verticalAlign": "top",
-			"baseline": 35,
 			"containerId": null,
 			"originalText": "时间在25%的时候，旋转在线性模式下的旋转没变",
-			"lineHeight": 1.2
+			"lineHeight": 1.2,
+			"baseline": 34
 		},
 		{
-			"id": "g0gaZ6joRtgJYROkEPyS_",
 			"type": "ellipse",
-			"x": -3629.9830457325625,
-			"y": 3158.164500834773,
-			"width": 206,
-			"height": 216,
-			"angle": 0,
-			"strokeColor": "#f08c00",
-			"backgroundColor": "transparent",
+			"version": 76,
+			"versionNonce": 619561952,
+			"isDeleted": false,
+			"id": "g0gaZ6joRtgJYROkEPyS_",
 			"fillStyle": "hachure",
 			"strokeWidth": 4,
 			"strokeStyle": "dotted",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
+			"angle": 0,
+			"x": -3410.8936902638125,
+			"y": 2719.986196798315,
+			"strokeColor": "#f08c00",
+			"backgroundColor": "transparent",
+			"width": 206,
+			"height": 216,
+			"seed": 330532613,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
-			"seed": 330532613,
-			"version": 32,
-			"versionNonce": 903583307,
-			"isDeleted": false,
 			"boundElements": [
 				{
 					"id": "mTYX_0l42z0euDM6f7B0T",
 					"type": "arrow"
 				}
 			],
-			"updated": 1712906144834,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false
 		},
 		{
-			"id": "mTYX_0l42z0euDM6f7B0T",
 			"type": "arrow",
-			"x": -3557.9830457325625,
-			"y": 3374.164500834773,
-			"width": 16,
-			"height": 526,
-			"angle": 0,
-			"strokeColor": "#f08c00",
-			"backgroundColor": "transparent",
+			"version": 226,
+			"versionNonce": 1017702944,
+			"isDeleted": false,
+			"id": "mTYX_0l42z0euDM6f7B0T",
 			"fillStyle": "hachure",
 			"strokeWidth": 2,
 			"strokeStyle": "dotted",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
+			"angle": 0,
+			"x": -3338.8936902638125,
+			"y": 2935.986196798315,
+			"strokeColor": "#f08c00",
+			"backgroundColor": "transparent",
+			"width": 16,
+			"height": 526,
+			"seed": 996700069,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
-			"seed": 996700069,
-			"version": 94,
-			"versionNonce": 1395904683,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906156014,
+			"boundElements": [],
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
-			"points": [
-				[
-					0,
-					0
-				],
-				[
-					-16,
-					526
-				]
-			],
-			"lastCommittedPoint": null,
 			"startBinding": {
 				"elementId": "g0gaZ6joRtgJYROkEPyS_",
 				"focus": 0.26893924989853535,
@@ -6998,13 +7035,24 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"focus": 0.004575177251669418,
 				"gap": 8.07527834179028
 			},
+			"lastCommittedPoint": null,
 			"startArrowhead": null,
-			"endArrowhead": "arrow"
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-16,
+					526
+				]
+			]
 		},
 		{
 			"type": "ellipse",
-			"version": 75,
-			"versionNonce": 2069545163,
+			"version": 119,
+			"versionNonce": 1850361824,
 			"isDeleted": false,
 			"id": "aYwwAroEfeLR6MJH2Eqa3",
 			"fillStyle": "hachure",
@@ -7013,14 +7061,16 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3680.9830457325625,
-			"y": 3908.164500834773,
+			"x": -3461.8936902638125,
+			"y": 3469.986196798315,
 			"strokeColor": "#f08c00",
 			"backgroundColor": "transparent",
 			"width": 206,
 			"height": 216,
 			"seed": 1641856907,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
@@ -7031,34 +7081,36 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					"type": "arrow"
 				}
 			],
-			"updated": 1712906155203,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false
 		},
 		{
-			"id": "2tMkgyo_qH_3xRQiiqVOq",
 			"type": "diamond",
-			"x": -3571.9830457325625,
-			"y": 3080.164500834773,
-			"width": 418.0000000000001,
-			"height": 108,
-			"angle": 0,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
+			"version": 251,
+			"versionNonce": 675718688,
+			"isDeleted": false,
+			"id": "2tMkgyo_qH_3xRQiiqVOq",
 			"fillStyle": "hachure",
 			"strokeWidth": 2,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
+			"angle": 0,
+			"x": -3352.8936902638125,
+			"y": 2641.986196798315,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 418.0000000000001,
+			"height": 108,
+			"seed": 1790401611,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
 			},
-			"seed": 1790401611,
-			"version": 207,
-			"versionNonce": 727680485,
-			"isDeleted": false,
 			"boundElements": [
 				{
 					"type": "text",
@@ -7069,51 +7121,53 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					"type": "arrow"
 				}
 			],
-			"updated": 1712906210133,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false
 		},
 		{
-			"id": "faFFkZRs",
 			"type": "text",
-			"x": -3434.9830457325625,
-			"y": 3112.5645008347733,
-			"width": 144,
-			"height": 43.199999999999996,
-			"angle": 0,
-			"strokeColor": "#1e1e1e",
-			"backgroundColor": "transparent",
+			"version": 182,
+			"versionNonce": 1635142624,
+			"isDeleted": false,
+			"id": "faFFkZRs",
 			"fillStyle": "hachure",
 			"strokeWidth": 2,
 			"strokeStyle": "solid",
 			"roughness": 2,
 			"opacity": 100,
-			"groupIds": [],
+			"angle": 0,
+			"x": -3215.8936902638125,
+			"y": 2674.3861967983153,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 144,
+			"height": 43.199999999999996,
+			"seed": 1725147403,
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": null,
-			"seed": 1725147403,
-			"version": 138,
-			"versionNonce": 407453451,
-			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1712906209989,
+			"boundElements": [],
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
-			"text": "观测物体",
-			"rawText": "观测物体",
 			"fontSize": 36,
 			"fontFamily": 3,
+			"text": "观测物体",
+			"rawText": "观测物体",
 			"textAlign": "center",
 			"verticalAlign": "middle",
-			"baseline": 35,
 			"containerId": "2tMkgyo_qH_3xRQiiqVOq",
 			"originalText": "观测物体",
-			"lineHeight": 1.2
+			"lineHeight": 1.2,
+			"baseline": 34
 		},
 		{
 			"type": "diamond",
-			"version": 265,
-			"versionNonce": 1158019435,
+			"version": 309,
+			"versionNonce": 1355604512,
 			"isDeleted": false,
 			"id": "C-77uqYdwVw_rDNvtnHTc",
 			"fillStyle": "hachure",
@@ -7122,14 +7176,16 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3546.9830457325625,
-			"y": 3892.164500834773,
+			"x": -3327.8936902638125,
+			"y": 3453.986196798315,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 418.0000000000001,
 			"height": 108,
 			"seed": 273250347,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": {
 				"type": 2
@@ -7144,14 +7200,14 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					"type": "arrow"
 				}
 			],
-			"updated": 1712906223131,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false
 		},
 		{
 			"type": "text",
-			"version": 196,
-			"versionNonce": 1391837349,
+			"version": 240,
+			"versionNonce": 411160544,
 			"isDeleted": false,
 			"id": "874OoTKB",
 			"fillStyle": "hachure",
@@ -7160,18 +7216,20 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3409.9830457325625,
-			"y": 3924.5645008347733,
+			"x": -3190.8936902638125,
+			"y": 3486.3861967983153,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
 			"width": 144,
 			"height": 43.199999999999996,
 			"seed": 207567563,
-			"groupIds": [],
+			"groupIds": [
+				"vrToY5sSLFzJJ1978IJqP"
+			],
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [],
-			"updated": 1712906219889,
+			"updated": 1714125221579,
 			"link": null,
 			"locked": false,
 			"fontSize": 36,
@@ -7183,7 +7241,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"containerId": "C-77uqYdwVw_rDNvtnHTc",
 			"originalText": "观测物体",
 			"lineHeight": 1.2,
-			"baseline": 35
+			"baseline": 34
 		}
 	],
 	"appState": {
@@ -7201,10 +7259,10 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		"currentItemTextAlign": "left",
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
-		"scrollX": 5022.7330457325625,
-		"scrollY": -2511.523875834773,
+		"scrollX": 4922.0695450080275,
+		"scrollY": -1777.5234494098183,
 		"zoom": {
-			"value": 0.39999999999999997
+			"value": 0.44999999999999996
 		},
 		"currentItemRoundness": "round",
 		"gridSize": null,

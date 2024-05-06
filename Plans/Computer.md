@@ -3,6 +3,8 @@
 | Name                                                        | CPU       | GPU       | Memory | SSD | Weight |
 | ----------------------------------------------------------- | --------- | --------- | ------ | --- | ------ |
 | [ROG 幻16](https://item.jd.com/100043674220.html#crumb-wrap) | i9-13900H | 4060 120W | 16GB   | 1T  | 2      |
+| 2023 r9000p                                                 | R9        | 4060      |        |     |        |
+| y7000p                                                      | i7        | 4060      |        |     |        |
 
 # DIY PC
 [Compare Hardware Web](https://www.cpubenchmark.net/compare/5055vs5299vs5027/Intel-i9-13900KF-vs-AMD-Ryzen-7-7800X3D-vs-AMD-Ryzen-9-7900X)
