@@ -39,8 +39,13 @@
 - [ ] Learn TinyRender  [start:: 2024-03-23]  [due:: 2024-04-03]
 
 #### TO LEARN
-* [ ] [OS: MIT 6.828 Operating System Lab ](https://github.com/SmallPond/MIT6.828_OS)   ([Lectures](https://pdos.csail.mit.edu/6.828/2018/schedule.html))
+																													* [ ] [OS: MIT 6.828 Operating System Lab ](https://github.com/SmallPond/MIT6.828_OS)   ([Lectures](https://pdos.csail.mit.edu/6.828/2018/schedule.html))
+	* [ ] [2023版本课程](https://pdos.csail.mit.edu/6.828/2023/tools.html)
+* [ ] https://raytracing.github.io/books/RayTracingInOneWeekend.html
 * [ ] docker by myself
+* [ ] [CMU 计算机选课上有什么特别好的课程推荐？](https://www.zhihu.com/question/28249230)
+* [ ] [CS143: Compilers (stanford.edu)](https://web.stanford.edu/class/cs143/)
+* [ ] [6.5840 Schedule: Spring 2024 (mit.edu)](https://pdos.csail.mit.edu/6.824/schedule.html)
 
 #### Game
 1. Cyberpunk 2077
