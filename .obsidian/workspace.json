@@ -11,9 +11,11 @@
             "id": "ab8e34555bfdffe6",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md"
+                "file": "Knowledge/MIT OS Engineering.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -91,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md"
+                "file": "Knowledge/MIT OS Engineering.md"
               }
             }
           },
@@ -196,11 +198,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d478af17e7aea3ca",
+  "active": "ab8e34555bfdffe6",
   "lastOpenFiles": [
+    "WorkTmp/生长动画.excalidraw.md",
     "WorkTmp/2.8视频.md",
     "Knowledge/MIT OS Engineering.md",
-    "WorkTmp/生长动画.excalidraw.md",
     "Plans/OKRs.md",
     "MIT 6.824.md",
     "Resources/Stanford CS143 Compiler-20240507150805159.webp",
