@@ -106,35 +106,38 @@ But they all seems **short-sighted** in some ways, hence the citizens are agains
 9. 人们普遍相信女人拥有母性的本能，这使得她们往往是比爸爸们更好的家长。
 	1. It is wildly believed that women have the maternal instinct, which makes them be better at parenting. 
 
+
 # Phrasal Verbs
 
+- [ ] English Phrasal Verbs In Use  [start:: 2024-05-07]
+- [ ] Say It Better  [start:: 2024-05-07]
 ### Come
 1. expressing an idea of movement or change of state
 
-| come along        | arrive                                                          |                                                                        |
-| ----------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| come apart        | separated into pieces                                           | The antique picture just came apart in my hands                        |
-| come round/around | become conscious again                                          | A nurse was with me when I came round after the operation              |
-| come out          | disappear or become less strong                                 | Let your shirt soak overnight and the stain will probably come out     |
-| come out          | become public knowledge after it has been kept secret(of truth) | If this story comes out about the Prime Minister, he'll have to resign |
-| come out          | be given to people(of results or information)                   | When do you exam results come out?                                     |
-| come out of       |  leave after a period in a place(of hospital/prison)            | Ava's coming out of hospital at the weekend. She's much better now     |
+| come along        | arrive                                                          |                                                                            |
+| ----------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| come apart        | separated into pieces                                           | The antique picture just came apart in my hands                            |
+| come round/around | become conscious again                                          | A nurse was with me when I ==came round after the operation==              |
+| come out          | disappear or become less strong                                 | Let your shirt soak overnight and ==the stain will probably come out==     |
+| come out          | become public knowledge after it has been kept secret(of truth) | If ==this story comes out== about the Prime Minister, he'll have to resign |
+| come out          | be given to people(of results or information)                   | When do you ==exam results come out==?                                     |
+| come out of       |  leave after a period in a place(of hospital/prison)            | ==Ava's coming out of hospital== at the weekend. She's much better now     |
 2. expressing an idea of happen
 
-| come off   | happen successfully or as planned                  | I was planning to arrange a surprise holiday for her birthday, but I am not sure it's going to come off.     |     |
-| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --- |
-| come about | happened, especially unplanned                     | I've had to organize the school fair again this year - I'm not quite sure how that came about.               |     |
-| come up    | is mentioned or discussed                          | Only if the subject comes up in conversation.                                                                |     |
-| come up    | happened, usually a problem or difficult situation | I nearly told him this morning, but something came up and we had to deal with it straight away.              |     |
-| come up    | become available                                   | Mind you, I don't know if a place on this council is going to come up for a while yet, so perhaps I'll wait. |     |
+| come off   | happen successfully or as planned                  | I was planning to arrange a surprise holiday for her birthday, but I am ==not sure it's going to come off.==                   |
+| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| come about | happened, especially unplanned                     | How did that come about? \| I've had to organize the school fair again this year - I'm not quite sure ==how that came about.== |
+| come up    | is mentioned or discussed                          | Only if ==the subject comes up in conversation.==                                                                              |
+| come up    | happened, usually a problem or difficult situation | I nearly told him this morning, but ==something came up== and we had to deal with it straight away.                            |
+| come up    | become available                                   | Mind you, I don't know ==if a place on this council is going to come up for a while== yet, so perhaps I'll wait.               |
 
 1. Other
 
-| come up against | encountered or had to deal with(a difficult situation) | I am doing a research project for my degree, but I've come up against a few problems. | encounter |
-| --------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | --------- |
-| come across     | discover(or meet) by chance                            | I came across someone who's done an almost identical study.                           | find out  |
-| come to         | make(a decision about something)                       | so I've got to come to a decision: do I want to continue with it or not?              | make      |
-| come down to    | depend mostly on or be influenced most by              | I guess in the end my decision will come down to what my professor recommends.        | depend on |
+| come up against | encountered or had to deal with(a difficult situation) | I am doing a research project for my degree, but I've ==come up against a few problems==. | encounter |
+| --------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------- | --------- |
+| come across     | discover(or ==meet==) by chance                        | ==I came across someone who's done an almost identical study.==                           | find out  |
+| come to         | make(a decision about something)                       | so I've ==got to come to a decision==: do I want to continue with it or not?              | make      |
+| come down to    | depend mostly on or be influenced most by              | I guess in the end my decision will ==come down to== what my professor recommends.        | depend on |
 
 ### Get
 
