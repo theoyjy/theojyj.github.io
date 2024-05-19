@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "6e47d068261cdc9f",
+        "id": "9d1c0fde3b81c388",
         "type": "tabs",
         "children": [
           {
-            "id": "740fa4f13e77f74a",
+            "id": "ab8e34555bfdffe6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Task Calendar.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#c++",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 225.5
+    "width": 225.5,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -93,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Task Calendar.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Task Calendar.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Task Calendar.md"
+                "file": "Knowledge/MIT OS Engineering.md"
               }
             }
           },
@@ -198,25 +199,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "740fa4f13e77f74a",
+  "active": "ab8e34555bfdffe6",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
-    "Task Calendar.md",
-    "Plans/OKRs.md",
-    "Doc/exec.md",
     "Pasted Image 20240514185902_353.png",
-    "WorkTmp/D5MeshSync.md",
-    "WorkTmp/2.8视频.md",
-    "WorkTmp/2.7bugs.canvas",
+    "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
     "WorkTmp/生长动画.excalidraw.md",
-    "WorkTmp/无标题-2024-05-14-1817.excalidraw.crswap",
-    "WorkTmp/无标题-2024-05-14-1817.excalidraw",
-    "WorkTmp/生长动画.excalidraw",
-    "WorkTmp/生长动画.excalidraw - 副本.md",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "Knowledge/Spoken.md",
+    "WorkTmp/2.8视频.md",
     "Knowledge/MIT OS Engineering.md",
-    "Plans/Computer.md",
+    "Plans/OKRs.md",
     "MIT 6.824.md",
     "Resources/Stanford CS143 Compiler-20240507150805159.webp",
     "Untitled.md",
@@ -231,9 +221,15 @@
     "Knowledge/TinyRender Notes.md",
     "Knowledge/CMake.md",
     "Knowledge/UE Errors.md",
+    "Knowledge/Spoken.md",
+    "WorkTmp/D5MeshSync.md",
+    "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Resources/3D Info-20240430134641158.webp",
     "Resources/3D Info-20240430135918310.webp",
     "Resources/3D Info-20240430135551269.webp",
+    "Resources/3D Info-20240430134824853.webp",
+    "Plans/Computer.md",
+    "WorkTmp/2.7bugs.canvas",
     "Knowledge/Dev Tips.md",
     "~$L源码剖析_快学笔记.docx",
     "[【ROG幻16】ROG幻16.md",
@@ -241,11 +237,15 @@
     "Plans/Plan Kanban.md",
     "2024-03-29.md",
     "Doc/thread.md",
+    "Doc/signal.md",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
     "TasksCalendar",
     "Plans",
+    "Plan Kanban.md",
     "Excalidraw",
-    "STL源码剖析_快学笔记.docx"
+    "STL源码剖析_快学笔记.docx",
+    "WorkTmp",
+    "Plan"
   ]
 }
