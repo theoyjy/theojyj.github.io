@@ -9,12 +9,12 @@
 ### Personal
 
 #### Health
-- [ ] Lose weight from 67kg to 55kg  [id:: 4ajq9h]  [start:: 2024-05-14]  [due:: 2024-08-06]
-	- [ ] to 63kg  [start:: 2024-05-14]  [due:: 2024-06-14]
-		- [ ] to 66  [start:: 2024-05-14]  [due:: 2024-05-21]
-		- [ ] to 65  [start:: 2024-05-21]  [due:: 2024-05-28]
-		- [ ] to 64  [start:: 2024-05-28]  [due:: 2024-06-04]
-		- [ ] to 63  [start:: 2024-06-04]  [due:: 2024-06-11]
+- [ ] Lose weight from 67kg to 55kg  [id:: 4ajq9h]  [start:: 2024-05-14]
+	- [ ] to 63kg
+		- [ ] to 66
+		- [ ] to 65
+		- [ ] to 64 
+		- [ ] to 63 
 
 - [ ] Gain muscle  [dependsOn:: 4ajq9h]
 	- [ ] On the back
@@ -41,12 +41,13 @@
 #### TO LEARN
 * [ ] [OS: MIT 6.828 Operating System Lab ](https://github.com/SmallPond/MIT6.828_OS)   ([Lectures](https://pdos.csail.mit.edu/6.828/2018/schedule.html))
 	* [ ] [2023版本课程](https://pdos.csail.mit.edu/6.828/2023/tools.html)
-* [ ] https://raytracing.github.io/books/RayTracingInOneWeekend.html
+* [ ] [RayTracingInOneWeek](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 * [ ] docker by myself
 * [ ] [CMU 计算机选课上有什么特别好的课程推荐？](https://www.zhihu.com/question/28249230)
 * [ ] [CS143: Compilers (stanford.edu)](https://web.stanford.edu/class/cs143/)
 * [ ] [6.5840 Schedule: Spring 2024 (mit.edu)](https://pdos.csail.mit.edu/6.824/schedule.html)
 * [ ] English Phrasal Verbs in Use
+* [ ] 
 
 #### Game
 1. Cyberpunk 2077

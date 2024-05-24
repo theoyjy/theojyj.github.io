@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "9d1c0fde3b81c388",
+        "id": "e01f80e2935d6514",
         "type": "tabs",
         "children": [
           {
-            "id": "ab8e34555bfdffe6",
+            "id": "30c0607183d1e5d9",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
                 "file": "Knowledge/MIT OS Engineering.md",
                 "mode": "source",
@@ -77,7 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 225.5,
+    "width": 382.5110321044922,
     "collapsed": true
   },
   "right": {
@@ -199,30 +199,32 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "ab8e34555bfdffe6",
+  "active": "30c0607183d1e5d9",
   "lastOpenFiles": [
+    "Plans/OKRs.md",
+    "Plans/Computer.md",
+    "Knowledge/MIT OS Engineering.md",
+    "WorkTmp/生长动画.excalidraw.md",
+    "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
+    "Excalidraw/Scripts/Downloaded/Auto Layout.md",
+    "Excalidraw/Scripts/Downloaded",
+    "Excalidraw/Scripts",
+    "WorkTmp/Bug Walk Throught.excalidraw.md",
+    "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
     "WorkTmp/生长动画.excalidraw.png",
     "WorkTmp/2.8视频.md",
-    "WorkTmp/生长动画.excalidraw.md",
     "Task Calendar.md",
-    "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
-    "Plans/OKRs.md",
     "Doc/exec.md",
-    "Pasted Image 20240514185902_353.png",
+    "Resources/Pasted Image 20240514185902_353.png",
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/2.7bugs.canvas",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw.crswap",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw",
     "WorkTmp/生长动画.excalidraw",
     "WorkTmp/生长动画.excalidraw - 副本.md",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Knowledge/Spoken.md",
-    "Pasted Image 20240514185902_353.png",
-    "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
-    "WorkTmp/生长动画.excalidraw.md",
+    "Resources/Pasted Image 20240514185902_353.png",
     "WorkTmp/2.8视频.md",
-    "Knowledge/MIT OS Engineering.md",
-    "Plans/OKRs.md",
     "MIT 6.824.md",
     "Resources/Stanford CS143 Compiler-20240507150805159.webp",
     "Untitled.md",
@@ -239,29 +241,11 @@
     "Knowledge/UE Errors.md",
     "Knowledge/Spoken.md",
     "WorkTmp/D5MeshSync.md",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "Resources/3D Info-20240430134641158.webp",
-    "Resources/3D Info-20240430135918310.webp",
-    "Resources/3D Info-20240430135551269.webp",
-    "Resources/3D Info-20240430134824853.webp",
-    "Plans/Computer.md",
     "WorkTmp/2.7bugs.canvas",
-    "Knowledge/Dev Tips.md",
     "~$L源码剖析_快学笔记.docx",
-    "[【ROG幻16】ROG幻16.md",
-    "README.md",
-    "Plans/Plan Kanban.md",
-    "2024-03-29.md",
-    "Doc/thread.md",
-    "Doc/signal.md",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
     "TasksCalendar",
-    "Plans",
-    "Plan Kanban.md",
-    "Excalidraw",
-    "STL源码剖析_快学笔记.docx",
-    "WorkTmp",
-    "Plan"
+    "Plans"
   ]
 }
