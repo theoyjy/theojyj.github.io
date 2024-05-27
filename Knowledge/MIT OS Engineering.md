@@ -1,5 +1,6 @@
 - [ ] OSE Labs  [start:: 2024-05-07]
 	- [x] lab1  [completion:: 2024-05-19]
+		- [x] chapter 1 Operating System Interface  [completion:: 2024-05-27]
 	- [ ] lab2
 	- [ ] lab3
 	- [ ] lab4
@@ -74,7 +75,7 @@ $ find . -name b // recursively find all files which name == "b" from current pa
 >// equals to
 >$ grep hello ./b
 >```
-# Chapter 1
+# Chapter 1 Operating System Interface
 ## 1.1 Process and memory
 >[!INFO] : Process (pid)
 >Consists of :
@@ -202,3 +203,90 @@ $ find . -name b // recursively find all files which name == "b" from current pa
 
 
 ## 1.3 Pipes
+```C
+int p[2];
+char *argv[2];
+argv[0] = "wc";
+argv[1] = 0;
+pipe(p);
+if(fork() == 0)
+{
+	close(0); // release 0
+	dup(p[0]); // fd 0 refer to the read end of the pipe
+	close(p[0]);
+	close(p[1]); // IMPORTANT: close fd write end so that it won't unlimited be blocked when parent does not write anything and has closed its write end
+	
+	exec("bin/wc", argv); // will read from p[0]
+}
+else
+{
+	close(p[0]);
+	write(p[1], "hello world\n", 12);
+	close(p[1]);
+}
+```
+>[!Danger] read block:
+>1. if no data is available
+>2. waits for all fds of writing end to be closed
+
+>[!Important] pipe vs temporary files
+>```shell
+>echo hello world | wc
+>====================
+>echo hello world > /tmp/xyz; wc < /tmp/
+>```
+>Advantages of pips:
+>1. self clean. tmp files need to be carefully removed
+>2. pipe can pass arbitrarily long streams of data, while file redirection requires enough free space on disk
+>3. parallel executing; while file approach requires the first program to finish before the second starts
+
+## 1.4 File System
+
+>[!Tip] a path not starts with "/" would be relative path
+### `chdir` change current directory
+### Create files and directories:
+1. `mkdir("/dir")` create a new directory
+2. `open("/dir/file", O_CREATE | O_WRITE);` creates a new data file
+3. `mknod("/console", 1, 1)` creates a new device file
+	- `mknod(path, MajorNumber, MinorNumber)` major and minor numbers uniquely identify a kernel device
+	- when a process later opens a device file, the kernel diverts `read` and `write` sys calls to the kernel device implementation instead of passing them to the file system
+
+### `inode` holds metadata of a file, which a fd refers to
+```C
+struct stat{
+	int dev; // file system's disk device
+	uint ino; // inode number
+	short type;
+	short nlink; // number of links to file
+	uint64 size; // size of file in bytes
+}
+```
+
+### `link("a", "b")` creates a file name `b` and it refers to the same inode as an existing file
+>[!Tip] `a` and `b` refer to the same underlying content, by inspecting the result of `fstat`, both will return the same inode number(`ino`), and the `nlink` will be set to 2
+### `unlink("a")` removes a name from file sys. 
+>[!INFO] The file's inode and the disk space holding its content are only freed when `nlink == 0` and no `fd` refer to it:
+>```C
+>// creates a temp inode with no name 
+>// that will be cleaned up when the process closes fd or exits
+>fd = open("/tmp/xyz", O_CREATE | O_RDWR); 
+>
+> // will not free inode since fd is not released
+>unlink("/tmp/xyz");
+>```
+
+
+
+>[!Important] most system calls would fork a child process, while `cd` is an exception, since it will not change directory if it let the child to do it
+
+# Chapter 2 OS Organization
+>[!Summary] 3 Requirements:
+>1. multiplexing:
+>	must time-share resources among these processes
+>2. isolation
+>	a bug or malfunction of one process shouldn't affect others that doesn't depend on the buggy process
+>3. interaction
+>	should be possible for intentionally interact: pipelines and so on
+
+## 2.1
+
