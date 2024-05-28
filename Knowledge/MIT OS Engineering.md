@@ -288,5 +288,29 @@ struct stat{
 >3. interaction
 >	should be possible for intentionally interact: pipelines and so on
 
-## 2.1
+## 2.1 Abstracting physical resources
 
+>[!INFO] To achieve strong isolation(since processes tend to not trust each other)
+>OS Abstracts resources into services:
+>* File system provide `open` `read` `write` `close` , instead of process directly accessing hardware resources. So app doesn't have to deal with disk
+>* Unix transparently **switches hardware CPUs** among processes, so app doesn't have to be aware of time sharing
+>* Unix process use `exec` to build up their **memory image**, instead of directly interacting with physical memory 
+
+
+## 2.2 User mode, supervisor mode, and system calls
+
+>[!Danger] If an app in user mode attempts to execute a **privileged instruction(Only supervisor mode can do)**, then the CPU doesn't execute it, but switches to supervisor mode so that supervisor mode can terminate the application
+
+|         | User Mode              | Supervisor Mode                                |
+| ------- | ---------------------- | ---------------------------------------------- |
+| execute | user-mode instructions | privileged instructions                        |
+| space   | user space             | kernel space                                   |
+|         |                        | software running in kernel space called kernel |
+
+>[!INFO] An app wants to invoke a kernel function, must transition to the kernel
+>1. CPU provide a special instruction that switch to supervisor mode and enters the kernel at an entry point specified by the kernel. 
+>2. The kernel needs to validate the arguments of the system call(e.g. check if the addr passed to the sys call is part of app's mem), decide whether the app is allowed to perform the requested operation.
+>3. Deny it or execute it
+>!! It's important for kernel to control the entry point for transitions to supervisor mode. Otherwise a malicious(恶意的) app cloud skip the validation. 
+
+## 2.3 Kernel Organization

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "faec2aaffadd7878",
+        "id": "3710c1423869c4bb",
         "type": "tabs",
         "children": [
           {
-            "id": "1158e9d745b9dc8e",
+            "id": "d996508784b34ece",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 382.5110321044922,
-    "collapsed": true
+    "width": 382.5110321044922
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -199,11 +198,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1158e9d745b9dc8e",
+  "active": "d996508784b34ece",
   "lastOpenFiles": [
+    "Knowledge/OS.md",
+    "Knowledge/MIT OS Engineering.md",
     "WorkTmp/2.8视频.md",
     "Pasted Image 20240527173806_513.png",
-    "Knowledge/MIT OS Engineering.md",
     "Plans/OKRs.md",
     "Plans/Computer.md",
     "WorkTmp/生长动画.excalidraw.md",
@@ -227,7 +227,6 @@
     "Resources/Pasted Image 20240514185902_353.png",
     "MIT 6.824.md",
     "Resources/Stanford CS143 Compiler-20240507150805159.webp",
-    "Untitled.md",
     "Knowledge/Stanford CS143 Compiler.md",
     "Knowledge/3D Info.md",
     "Resources/Stanford CS143 Compiler-20240507143749354.webp",
