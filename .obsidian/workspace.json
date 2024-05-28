@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "e01f80e2935d6514",
+        "id": "2ecc8d2787e43a92",
         "type": "tabs",
         "children": [
           {
-            "id": "30c0607183d1e5d9",
+            "id": "594e61d8c677d9f3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md",
-                "mode": "source",
-                "source": false
+                "file": "WorkTmp/2.8视频.md"
               }
             }
           }
@@ -77,8 +75,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 382.5110321044922,
-    "collapsed": true
+    "width": 382.5110321044922
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -94,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md",
+                "file": "WorkTmp/2.8视频.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md",
+                "file": "WorkTmp/2.8视频.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md"
+                "file": "WorkTmp/2.8视频.md"
               }
             }
           },
@@ -199,11 +196,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "30c0607183d1e5d9",
+  "active": "594e61d8c677d9f3",
   "lastOpenFiles": [
+    "Pasted Image 20240527173806_513.png",
+    "Knowledge/MIT OS Engineering.md",
     "Plans/OKRs.md",
     "Plans/Computer.md",
-    "Knowledge/MIT OS Engineering.md",
     "WorkTmp/生长动画.excalidraw.md",
     "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
     "Excalidraw/Scripts/Downloaded/Auto Layout.md",
