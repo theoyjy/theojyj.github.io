@@ -4,16 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "2ecc8d2787e43a92",
+        "id": "faec2aaffadd7878",
         "type": "tabs",
         "children": [
           {
-            "id": "594e61d8c677d9f3",
+            "id": "1158e9d745b9dc8e",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "WorkTmp/2.8视频.md"
+                "file": "Knowledge/MIT OS Engineering.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -75,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 382.5110321044922
+    "width": 382.5110321044922,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -91,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WorkTmp/2.8视频.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "WorkTmp/2.8视频.md",
+                "file": "Knowledge/MIT OS Engineering.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WorkTmp/2.8视频.md"
+                "file": "Knowledge/MIT OS Engineering.md"
               }
             }
           },
@@ -196,8 +199,9 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "594e61d8c677d9f3",
+  "active": "1158e9d745b9dc8e",
   "lastOpenFiles": [
+    "WorkTmp/2.8视频.md",
     "Pasted Image 20240527173806_513.png",
     "Knowledge/MIT OS Engineering.md",
     "Plans/OKRs.md",
@@ -210,7 +214,6 @@
     "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
     "WorkTmp/生长动画.excalidraw.png",
-    "WorkTmp/2.8视频.md",
     "Task Calendar.md",
     "Doc/exec.md",
     "Resources/Pasted Image 20240514185902_353.png",
@@ -222,7 +225,6 @@
     "WorkTmp/生长动画.excalidraw - 副本.md",
     "Knowledge/Spoken.md",
     "Resources/Pasted Image 20240514185902_353.png",
-    "WorkTmp/2.8视频.md",
     "MIT 6.824.md",
     "Resources/Stanford CS143 Compiler-20240507150805159.webp",
     "Untitled.md",
@@ -232,7 +234,6 @@
     "Resources/Stanford CS143 Compiler-20240507145935033.webp",
     "Resources/Stanford CS143 Compiler-20240507143827618.webp",
     "Resources/Stanford CS143 Compiler-20240507132433440.webp",
-    "Resources/Stanford CS143 Compiler-20240507131428013.webp",
     "Doc/STL.md",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/CMake.md",
