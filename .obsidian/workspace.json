@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "3710c1423869c4bb",
+        "id": "fc66ed14b9e41c6d",
         "type": "tabs",
         "children": [
           {
-            "id": "d996508784b34ece",
+            "id": "dfdac227cce71672",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md",
+                "file": "Knowledge/Dev Tips.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md",
+                "file": "Knowledge/Dev Tips.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md",
+                "file": "Knowledge/Dev Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/MIT OS Engineering.md"
+                "file": "Knowledge/Dev Tips.md"
               }
             }
           },
@@ -198,13 +198,15 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d996508784b34ece",
+  "active": "dfdac227cce71672",
   "lastOpenFiles": [
-    "Knowledge/OS.md",
-    "Knowledge/MIT OS Engineering.md",
-    "WorkTmp/2.8视频.md",
-    "Pasted Image 20240527173806_513.png",
+    "Knowledge/TinyRender Notes.md",
     "Plans/OKRs.md",
+    "Knowledge/MIT OS Engineering.md",
+    "Resources/Pasted Image 20240527173806_513.png",
+    "Resources/MIT OS Engineering-20240528135244522.webp",
+    "Knowledge/OS.md",
+    "WorkTmp/2.8视频.md",
     "Plans/Computer.md",
     "WorkTmp/生长动画.excalidraw.md",
     "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
@@ -232,9 +234,7 @@
     "Resources/Stanford CS143 Compiler-20240507143749354.webp",
     "Resources/Stanford CS143 Compiler-20240507145935033.webp",
     "Resources/Stanford CS143 Compiler-20240507143827618.webp",
-    "Resources/Stanford CS143 Compiler-20240507132433440.webp",
     "Doc/STL.md",
-    "Knowledge/TinyRender Notes.md",
     "Knowledge/CMake.md",
     "Knowledge/UE Errors.md",
     "Knowledge/Spoken.md",
