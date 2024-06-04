@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "fc66ed14b9e41c6d",
+        "id": "f88dc136806f2b32",
         "type": "tabs",
         "children": [
           {
-            "id": "dfdac227cce71672",
+            "id": "b5f18341f6d1be62",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Knowledge/Dev Tips.md",
-                "mode": "source",
-                "source": false
+                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md"
               }
             }
           }
@@ -77,7 +75,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 382.5110321044922
+    "width": 274.5110321044922
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -93,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/Dev Tips.md",
+                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/Dev Tips.md",
+                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/Dev Tips.md"
+                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md"
               }
             }
           },
@@ -198,29 +196,32 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "dfdac227cce71672",
+  "active": "b5f18341f6d1be62",
   "lastOpenFiles": [
-    "Knowledge/TinyRender Notes.md",
+    "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md",
+    "WorkTmp/2.8视频.md",
+    "Task Calendar.md",
+    "Knowledge/3D Info.md",
+    "WorkTmp/D5MeshSync.md",
+    "WorkTmp/Bug Walk Throught.excalidraw.md",
+    "WorkTmp/生长动画.excalidraw.md",
     "Plans/OKRs.md",
+    "WorkTmp/2.7bugs.canvas",
+    "Knowledge/Dev Tips.md",
+    "Knowledge/TinyRender Notes.md",
     "Knowledge/MIT OS Engineering.md",
     "Resources/Pasted Image 20240527173806_513.png",
     "Resources/MIT OS Engineering-20240528135244522.webp",
     "Knowledge/OS.md",
-    "WorkTmp/2.8视频.md",
     "Plans/Computer.md",
-    "WorkTmp/生长动画.excalidraw.md",
     "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
     "Excalidraw/Scripts/Downloaded/Auto Layout.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
     "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
     "WorkTmp/生长动画.excalidraw.png",
-    "Task Calendar.md",
     "Doc/exec.md",
     "Resources/Pasted Image 20240514185902_353.png",
-    "WorkTmp/D5MeshSync.md",
-    "WorkTmp/2.7bugs.canvas",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw.crswap",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw",
     "WorkTmp/生长动画.excalidraw",
@@ -230,7 +231,6 @@
     "MIT 6.824.md",
     "Resources/Stanford CS143 Compiler-20240507150805159.webp",
     "Knowledge/Stanford CS143 Compiler.md",
-    "Knowledge/3D Info.md",
     "Resources/Stanford CS143 Compiler-20240507143749354.webp",
     "Resources/Stanford CS143 Compiler-20240507145935033.webp",
     "Resources/Stanford CS143 Compiler-20240507143827618.webp",
@@ -238,8 +238,6 @@
     "Knowledge/CMake.md",
     "Knowledge/UE Errors.md",
     "Knowledge/Spoken.md",
-    "WorkTmp/D5MeshSync.md",
-    "WorkTmp/2.7bugs.canvas",
     "~$L源码剖析_快学笔记.docx",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",

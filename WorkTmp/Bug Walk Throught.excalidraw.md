@@ -180,7 +180,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 {
 	"type": "excalidraw",
 	"version": 2,
-	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.0.25",
+	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.1.6",
 	"elements": [
 		{
 			"type": "rectangle",
@@ -282,8 +282,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "auto smooth",
-			"lineHeight": 1.25,
-			"baseline": 26
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -354,8 +353,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Linear",
-			"lineHeight": 1.25,
-			"baseline": 26
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -426,8 +424,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Easy In",
-			"lineHeight": 1.25,
-			"baseline": 26
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -498,8 +495,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Easy Out",
-			"lineHeight": 1.25,
-			"baseline": 26
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -551,8 +547,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "每个View的底层数据",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -632,8 +627,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "g2PGRg5t1H_LT-gibJlrf",
 			"originalText": "bSmoothMoveVelocity",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -713,8 +707,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "Rn0pUQKLnam6pZJI15FZM",
 			"originalText": "MoveInTangent",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -794,8 +787,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "zEmGs1kUKdWTmag8pNwqn",
 			"originalText": "MoveOutTangent",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -871,8 +863,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "PiV6cBfDt67LVzBivefdu",
 			"originalText": "true",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -948,8 +939,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "oHV91ISWF_C2hms9ahNdQ",
 			"originalText": "0,0",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1025,8 +1015,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "LxkD21pM9Cy7U7S7tb0i9",
 			"originalText": "1, 1",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1102,8 +1091,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "LN_AGJRxTN6RUX9dNzHoo",
 			"originalText": "false",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1179,8 +1167,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "rVh_9Q8XKIjfp558vA_Jb",
 			"originalText": "0,0",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1256,8 +1243,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "ecIruBwJPUfhFrBmhu57Y",
 			"originalText": "1, 1",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1333,8 +1319,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "IL_ctYgp5Z6rvt_9EuANg",
 			"originalText": "true",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1410,8 +1395,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "yn1x5NQ4HttBv-juwAuB9",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1487,8 +1471,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "obgdO92Qzt9Ju7SHKMzGR",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1564,8 +1547,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "MGXFKwglD3YX_6zIfPL37",
 			"originalText": "true",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1641,8 +1623,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "PZ-iCPnzKHkxNv84T8Jbe",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -1718,13 +1699,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "ypyHIcjor5NxOajqrZnjF",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
-			"version": 2354,
-			"versionNonce": 1050349088,
+			"version": 2356,
+			"versionNonce": 397548503,
 			"isDeleted": false,
 			"id": "HcMl8j5Jji9H7FaYEMdeb",
 			"fillStyle": "solid",
@@ -1749,7 +1729,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125207668,
+			"updated": 1716983379026,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -1778,8 +1758,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 2222,
-			"versionNonce": 260441632,
+			"version": 2224,
+			"versionNonce": 1243632151,
 			"isDeleted": false,
 			"id": "gfL_Aiz9g1Ue1mbeUO8sP",
 			"fillStyle": "solid",
@@ -1804,7 +1784,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125207670,
+			"updated": 1716983379027,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -1833,8 +1813,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 2402,
-			"versionNonce": 1813184032,
+			"version": 2404,
+			"versionNonce": 1856370775,
 			"isDeleted": false,
 			"id": "TE7tssB-aBjHT_1ESWiei",
 			"fillStyle": "solid",
@@ -1859,7 +1839,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125207670,
+			"updated": 1716983379028,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -1923,8 +1903,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "int smooth_move_velocity;",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2000,8 +1979,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "sc2RIMT8RH4fqpu-qmhem",
 			"originalText": "enum MoveVelocity\n\t{\n\t\tNone = -1,\t// template 和 dcc 轨迹 不展示smooth选项\n\t\tLinear = 0,\t\n\t\tAutoSmooth = 1, // 平滑速度 + 线性时间分布\n\t\tUserSmooth = 2  // 平滑曲线 + 用户时间分布\n\t};",
-			"lineHeight": 1.25,
-			"baseline": 166
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2077,8 +2055,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "NoqMgCUPeunS8r29ERbQv",
 			"originalText": "MoveInTangent",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2154,8 +2131,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "FQ84t_9wWaQMspIqCvKgH",
 			"originalText": "MoveOutTangent",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2231,8 +2207,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "gobnv_8AIhw0TPYxRGtaL",
 			"originalText": "-1,-1",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2308,8 +2283,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "vLJzK5WI3UuPu7kPPZUoA",
 			"originalText": "0,0",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2385,8 +2359,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "3E-g8tkypp-iTskkdYOH7",
 			"originalText": "1, 1",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2462,8 +2435,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "8Ct16djmj0hxOmo8QjxHX",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2539,8 +2511,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "xa7SbIdduTfC9JswXq3q5",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2616,8 +2587,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "MDN2vwx7JWBy4J4rT3cId",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2693,8 +2663,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "0AEVowbvH1mlJwAaVmOKY",
 			"originalText": "x, y",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -2733,8 +2702,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "给前端",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -2810,8 +2778,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "FXKCgmAvpGKFbKcPwdlfb",
 			"originalText": "-1,-1",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -2849,8 +2816,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "......",
-			"lineHeight": 1.25,
-			"baseline": 16
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
@@ -3118,8 +3084,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "FUSION-30558",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -3195,13 +3160,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "view",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
-			"version": 1126,
-			"versionNonce": 1048470923,
+			"version": 1128,
+			"versionNonce": 1543518615,
 			"isDeleted": false,
 			"id": "MgG0m5M4wqn9v0cSxVd4b",
 			"fillStyle": "hachure",
@@ -3227,7 +3191,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983638600,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
@@ -3288,8 +3252,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "InTangent",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
@@ -3382,13 +3345,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "OutTangent",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
-			"version": 224,
-			"versionNonce": 151305931,
+			"version": 226,
+			"versionNonce": 756215479,
 			"isDeleted": false,
 			"id": "m_KlOHyln3WEGltNDrNLA",
 			"fillStyle": "hachure",
@@ -3412,7 +3374,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983638601,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
@@ -3476,8 +3438,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Time",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -3516,8 +3477,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "0",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "line",
@@ -3642,13 +3602,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "A6zuhf59cRrShj6f3gKJf",
 			"originalText": "View",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
-			"version": 1142,
-			"versionNonce": 156121632,
+			"version": 1145,
+			"versionNonce": 1884422103,
 			"isDeleted": false,
 			"id": "cZDU5An6jGS-sJtWEAq_G",
 			"fillStyle": "hachure",
@@ -3673,14 +3632,14 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125207672,
+			"updated": 1716983638602,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
 			"endBinding": {
 				"elementId": "A6zuhf59cRrShj6f3gKJf",
-				"gap": 17.789637464003704,
-				"focus": 1.3133534337791504
+				"focus": 1.3133534337791504,
+				"gap": 17.789637464003704
 			},
 			"lastCommittedPoint": null,
 			"startArrowhead": null,
@@ -3738,8 +3697,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "InTangent",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
@@ -3825,8 +3783,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "OutTangent",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -3865,8 +3822,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "3",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "line",
@@ -4349,8 +4305,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 162,
-			"versionNonce": 55696133,
+			"version": 164,
+			"versionNonce": 1473375479,
 			"isDeleted": false,
 			"id": "jl73obvNJ3ka3JduTnORY",
 			"fillStyle": "hachure",
@@ -4374,7 +4330,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983638603,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -4399,8 +4355,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 271,
-			"versionNonce": 2005992395,
+			"version": 273,
+			"versionNonce": 1595356695,
 			"isDeleted": false,
 			"id": "nQ5sBSo0qCWc9A0ExLOvU",
 			"fillStyle": "hachure",
@@ -4424,7 +4380,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983638603,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -4449,8 +4405,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 191,
-			"versionNonce": 1221210725,
+			"version": 193,
+			"versionNonce": 488004407,
 			"isDeleted": false,
 			"id": "-AHZhtBtRGH-XmRRJtonE",
 			"fillStyle": "hachure",
@@ -4474,7 +4430,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983638603,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -4499,8 +4455,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "text",
-			"version": 407,
-			"versionNonce": 636768875,
+			"version": 409,
+			"versionNonce": 112092185,
 			"isDeleted": false,
 			"id": "OyV1GDdW",
 			"fillStyle": "hachure",
@@ -4522,7 +4478,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"frameId": null,
 			"roundness": null,
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983641426,
 			"link": null,
 			"locked": false,
 			"fontSize": 36,
@@ -4533,8 +4489,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Interpolation Of Video Clip:\n1. pre View's OutTangent And next View's InTangent form a bezier curve\n2. pre View's member bSmooth(Move & Rotate) influent the interval\n3. UI adjust for tangents of a single view",
-			"lineHeight": 1.25,
-			"baseline": 167
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -4577,8 +4532,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "bSmooth",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -4616,13 +4570,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "bSmooth",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
-			"version": 291,
-			"versionNonce": 1343397157,
+			"version": 295,
+			"versionNonce": 1313094007,
 			"isDeleted": false,
 			"id": "ytKXm-0koPB2fUYTSwPT3",
 			"fillStyle": "hachure",
@@ -4646,7 +4599,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1712906132576,
+			"updated": 1716983638603,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -4736,8 +4689,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Main Process",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
@@ -4911,8 +4863,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "ZR0Im0-qxo6dGJtnZ4cy6",
 			"originalText": "Actual Load\nthread",
-			"lineHeight": 1.25,
-			"baseline": 77
+			"lineHeight": 1.25
 		},
 		{
 			"type": "arrow",
@@ -5038,8 +4989,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Load Furniture\nThread",
-			"lineHeight": 1.25,
-			"baseline": 77
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -5117,8 +5067,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Spread On Furniture\nThread",
-			"lineHeight": 1.25,
-			"baseline": 77
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -5187,8 +5136,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "mJobs",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "text",
@@ -5226,8 +5174,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "destroy right away\nafter create actual \ndoing-job thread",
-			"lineHeight": 1.25,
-			"baseline": 122
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -5301,13 +5248,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "zSLN1OycRek59E-rZzLA6",
 			"originalText": "AsyncLoadingModelCVs[stdPath];\nAsyncLoadingModelCVMutexs[stdPath];\n\nauto Task = FFunctionGraphTask::CreateAndDispatchWhenReady\n(.....);\nAsyncLoadingModelTasks.emplace(stdPath, task);\nAsyncLoadingModelCVs[stdPath].notify_all();",
-			"lineHeight": 1.2,
-			"baseline": 293
+			"lineHeight": 1.2
 		},
 		{
 			"type": "arrow",
-			"version": 411,
-			"versionNonce": 500181536,
+			"version": 415,
+			"versionNonce": 1317855735,
 			"isDeleted": false,
 			"id": "Nq-LPcndKHF8qfEFoPTGp",
 			"fillStyle": "hachure",
@@ -5329,7 +5275,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125207672,
+			"updated": 1716983379035,
 			"link": null,
 			"locked": false,
 			"startBinding": {
@@ -5482,8 +5428,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "Actual Spread\nThread",
-			"lineHeight": 1.25,
-			"baseline": 77
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -5561,8 +5506,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "If find target Furniture has CV Mutex and CV\n    -> wait for Actual Load Task Created:",
-			"lineHeight": 1.25,
-			"baseline": 77
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -5636,8 +5580,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "_W_1CkbzGMBkT5ljEtGpU",
 			"originalText": "std::unique_lock<std::mutex> lock(FurnitureCVMutex);\nwhile(!TaskArr.find(FurnitureLoadingPath))\n    FurnitureCV.wait();\nauto PreTask = TaskArr.find(...) -> second;",
-			"lineHeight": 1.2,
-			"baseline": 207
+			"lineHeight": 1.2
 		},
 		{
 			"type": "rectangle",
@@ -5801,8 +5744,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": null,
 			"originalText": "Create Task with PreTask",
-			"lineHeight": 1.25,
-			"baseline": 32
+			"lineHeight": 1.25
 		},
 		{
 			"type": "rectangle",
@@ -5931,8 +5873,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "📍FFunctionGraphTask::CreateAndDispatchWhenReady(\n    [[]]{...}, \n    TStatId(), PreTask, \n    ENamedThreads::GameThread);\n)",
-			"lineHeight": 1.2,
-			"baseline": 207
+			"lineHeight": 1.2
 		},
 		{
 			"type": "line",
@@ -6020,8 +5961,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "轨迹",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "ellipse",
@@ -6350,8 +6290,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "线性运动下：位移在25%，50%，75%的位置",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "arrow",
@@ -6455,8 +6394,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 121,
-			"versionNonce": 763953696,
+			"version": 122,
+			"versionNonce": 212568855,
 			"isDeleted": false,
 			"id": "gL-A0ySgqvzOj890M9oLv",
 			"fillStyle": "hachure",
@@ -6480,14 +6419,14 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125221579,
+			"updated": 1716983379037,
 			"link": null,
 			"locked": false,
 			"startBinding": null,
 			"endBinding": {
 				"elementId": "2tMkgyo_qH_3xRQiiqVOq",
-				"focus": -0.6582365003417723,
-				"gap": 9.899118210394477
+				"gap": 9.899118210394477,
+				"focus": -0.6582365003417723
 			},
 			"lastCommittedPoint": null,
 			"startArrowhead": null,
@@ -6539,8 +6478,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "线性运动下：旋转在25%，50%，75%的角度",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "line",
@@ -6628,8 +6566,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "轨迹",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "ellipse",
@@ -6770,8 +6707,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "自动平滑运动下：时间到25%时，位移可能的位置",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "text",
@@ -6809,8 +6745,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "只改变位移的运动模式\n不改变旋转的",
-			"lineHeight": 1.2,
-			"baseline": 77
+			"lineHeight": 1.2
 		},
 		{
 			"type": "arrow",
@@ -6868,8 +6803,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		},
 		{
 			"type": "arrow",
-			"version": 207,
-			"versionNonce": 1766899680,
+			"version": 209,
+			"versionNonce": 1886843223,
 			"isDeleted": false,
 			"id": "WZb5mvqopaNXyLKJRPoXd",
 			"fillStyle": "hachure",
@@ -6878,12 +6813,12 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"roughness": 2,
 			"opacity": 100,
 			"angle": 0,
-			"x": -3400.980218245166,
-			"y": 3580.847610429422,
+			"x": -3400.9869946022973,
+			"y": 3580.8564842304277,
 			"strokeColor": "#1971c2",
 			"backgroundColor": "transparent",
-			"width": 55.639624954663304,
-			"height": 72.86141363110664,
+			"width": 55.64640131179476,
+			"height": 72.87028743211249,
 			"seed": 80816491,
 			"groupIds": [
 				"vrToY5sSLFzJJ1978IJqP"
@@ -6893,18 +6828,18 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 				"type": 2
 			},
 			"boundElements": [],
-			"updated": 1714125221579,
+			"updated": 1716983379037,
 			"link": null,
 			"locked": false,
 			"startBinding": {
 				"elementId": "0pXSmZrhubBxVIS_NumYH",
-				"focus": -0.4347127307541728,
-				"gap": 3.3856511865742975
+				"gap": 3.3856511865742975,
+				"focus": -0.4347127307541728
 			},
 			"endBinding": {
 				"elementId": "C-77uqYdwVw_rDNvtnHTc",
-				"focus": 1.0834780049123922,
-				"gap": 4.364486239226856
+				"gap": 4.364486239226856,
+				"focus": 1.0834780049123922
 			},
 			"lastCommittedPoint": null,
 			"startArrowhead": null,
@@ -6915,8 +6850,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 					0
 				],
 				[
-					55.639624954663304,
-					-72.86141363110664
+					55.64640131179476,
+					-72.87028743211249
 				]
 			]
 		},
@@ -6956,8 +6891,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "top",
 			"containerId": null,
 			"originalText": "时间在25%的时候，旋转在线性模式下的旋转没变",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "ellipse",
@@ -7161,8 +7095,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "2tMkgyo_qH_3xRQiiqVOq",
 			"originalText": "观测物体",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		},
 		{
 			"type": "diamond",
@@ -7240,8 +7173,7 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"verticalAlign": "middle",
 			"containerId": "C-77uqYdwVw_rDNvtnHTc",
 			"originalText": "观测物体",
-			"lineHeight": 1.2,
-			"baseline": 34
+			"lineHeight": 1.2
 		}
 	],
 	"appState": {
@@ -7259,10 +7191,10 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 		"currentItemTextAlign": "left",
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
-		"scrollX": 4922.0695450080275,
-		"scrollY": -1777.5234494098183,
+		"scrollX": 4127.933261586587,
+		"scrollY": 972.6654010599163,
 		"zoom": {
-			"value": 0.44999999999999996
+			"value": 0.7000000000000001
 		},
 		"currentItemRoundness": "round",
 		"gridSize": null,
@@ -7277,7 +7209,8 @@ FFunctionGraphTask::CreateAndDispatchWhenReady(
 			"clip": true,
 			"name": true,
 			"outline": true
-		}
+		},
+		"objectsSnapModeEnabled": false
 	},
 	"files": {}
 }
