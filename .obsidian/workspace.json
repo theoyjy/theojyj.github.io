@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "f88dc136806f2b32",
+        "id": "8accd3696f1873e6",
         "type": "tabs",
         "children": [
           {
-            "id": "b5f18341f6d1be62",
+            "id": "453fa32c642c9423",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -91,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md"
-              }
+              "state": {}
             }
           },
           {
@@ -196,44 +190,46 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "b5f18341f6d1be62",
+  "active": "453fa32c642c9423",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2024-06-03 16.55.53.excalidraw.md",
+    "Plans/Computer.md",
+    "Plans/VR Plans.md",
+    "Plans/OKRs.md",
+    "WorkTmp/生长动画.excalidraw.md",
+    "WorkTmp/视频插值.md",
+    "WorkTmp/视频插值.png",
+    "WorkTmp/D5MeshSync.md",
+    "WorkTmp/Drawing 2024-06-03 16.55.53.excalidraw.md",
+    "Pasted Image 20240605193653_526.png",
+    "Pasted Image 20240605192634_723.png",
+    "Pasted Image 20240605191118_315.png",
+    "Pasted Image 20240605190732_785.png",
+    "WorkTmp/Bug Walk Throught.excalidraw.md",
+    "Pasted Image 20240605183852_407.png",
+    "Pasted Image 20240605183543_147.png",
+    "Pasted Image 20240605183032_300.png",
+    "Pasted Image 20240605181903_476.png",
+    "Pasted Image 20240605181230_612.png",
     "WorkTmp/2.8视频.md",
+    "Excalidraw/Scripts/Downloaded/Auto Layout.md",
     "Task Calendar.md",
     "Knowledge/3D Info.md",
-    "WorkTmp/D5MeshSync.md",
-    "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "WorkTmp/生长动画.excalidraw.md",
-    "Plans/OKRs.md",
     "WorkTmp/2.7bugs.canvas",
     "Knowledge/Dev Tips.md",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/MIT OS Engineering.md",
-    "Resources/Pasted Image 20240527173806_513.png",
-    "Resources/MIT OS Engineering-20240528135244522.webp",
     "Knowledge/OS.md",
-    "Plans/Computer.md",
-    "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
-    "Excalidraw/Scripts/Downloaded/Auto Layout.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
     "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
-    "WorkTmp/生长动画.excalidraw.png",
     "Doc/exec.md",
-    "Resources/Pasted Image 20240514185902_353.png",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw.crswap",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw",
     "WorkTmp/生长动画.excalidraw",
     "WorkTmp/生长动画.excalidraw - 副本.md",
     "Knowledge/Spoken.md",
-    "Resources/Pasted Image 20240514185902_353.png",
     "MIT 6.824.md",
-    "Resources/Stanford CS143 Compiler-20240507150805159.webp",
     "Knowledge/Stanford CS143 Compiler.md",
-    "Resources/Stanford CS143 Compiler-20240507143749354.webp",
-    "Resources/Stanford CS143 Compiler-20240507145935033.webp",
-    "Resources/Stanford CS143 Compiler-20240507143827618.webp",
     "Doc/STL.md",
     "Knowledge/CMake.md",
     "Knowledge/UE Errors.md",
