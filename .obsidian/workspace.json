@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "8accd3696f1873e6",
+        "id": "e88b59529998f6a5",
         "type": "tabs",
         "children": [
           {
-            "id": "453fa32c642c9423",
+            "id": "091659f44abc98da",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -73,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 274.5110321044922
+    "width": 274.5110321044922,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -89,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md"
+              }
             }
           },
           {
@@ -190,33 +199,37 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "453fa32c642c9423",
+  "active": "091659f44abc98da",
   "lastOpenFiles": [
+    "CSE167x Computer Graphics-20240609163243204.webp",
+    "CSE167x Computer Graphics-20240609162309079.webp",
+    "CSE167x Computer Graphics-20240609161559302.webp",
+    "Untitled.md",
+    "Knowledge/CSE167x Computer Graphics.md",
+    "CSE167x Computer Graphics-20240609155159268.webp",
+    "Knowledge/TinyRender Notes.md",
+    "Knowledge/TinyRender Notes 1.md",
+    "Resources/CSE167x Computer Graphics-20240607001355694.webp",
+    "Resources/CSE167x Computer Graphics-20240607001732090.webp",
+    "Resources/CSE167x Computer Graphics-20240607002222038.webp",
+    "Resources/CSE167x Computer Graphics-20240607002750611.webp",
+    "CSE167x Computer Graphics-20240607002448868.webp",
+    "Resources/CSE167x Computer Graphics-20240607001643400.webp",
+    "Resources/CSE167x Computer Graphics-20240607001428324.webp",
     "Plans/Computer.md",
     "Plans/VR Plans.md",
     "Plans/OKRs.md",
     "WorkTmp/生长动画.excalidraw.md",
     "WorkTmp/视频插值.md",
-    "WorkTmp/视频插值.png",
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/Drawing 2024-06-03 16.55.53.excalidraw.md",
-    "Pasted Image 20240605193653_526.png",
-    "Pasted Image 20240605192634_723.png",
-    "Pasted Image 20240605191118_315.png",
-    "Pasted Image 20240605190732_785.png",
     "WorkTmp/Bug Walk Throught.excalidraw.md",
-    "Pasted Image 20240605183852_407.png",
-    "Pasted Image 20240605183543_147.png",
-    "Pasted Image 20240605183032_300.png",
-    "Pasted Image 20240605181903_476.png",
-    "Pasted Image 20240605181230_612.png",
     "WorkTmp/2.8视频.md",
     "Excalidraw/Scripts/Downloaded/Auto Layout.md",
     "Task Calendar.md",
     "Knowledge/3D Info.md",
     "WorkTmp/2.7bugs.canvas",
     "Knowledge/Dev Tips.md",
-    "Knowledge/TinyRender Notes.md",
     "Knowledge/MIT OS Engineering.md",
     "Knowledge/OS.md",
     "Excalidraw/Scripts/Downloaded",
@@ -230,10 +243,6 @@
     "Knowledge/Spoken.md",
     "MIT 6.824.md",
     "Knowledge/Stanford CS143 Compiler.md",
-    "Doc/STL.md",
-    "Knowledge/CMake.md",
-    "Knowledge/UE Errors.md",
-    "Knowledge/Spoken.md",
     "~$L源码剖析_快学笔记.docx",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
