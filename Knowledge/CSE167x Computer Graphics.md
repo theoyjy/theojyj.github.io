@@ -43,4 +43,22 @@
 > 2. Direction determinted by **right-hand rule**
 > 3. Useful in constructing coordinate system
 > 	![[CSE167x Computer Graphics-20240609163243204.webp|370]]
+> 	![[CSE167x Computer Graphics-20240612000950019.webp|370]]
 
+>[!Danger] Orhonormal bases/coordinate frames
+>1. Coordinates Frames: Any set of 3 vectors so that:
+>	||u|| = ||v|| = ||w|| = 1
+>	u * v = v * w = u * w = 0
+>	w = u X v
+>Any vector p can be expressed as:
+> $$ \vec{p} = (\vec{p} · \vec{u}) · \vec{u} + (\vec{p} · \vec{v}) · \vec{v} +(\vec{p} · \vec{w} · \vec{v}
+> $$
+> 2. Constructing a coordinate frame
+>	**通过点乘与叉乘，构建坐标系**
+>	* give any two vector a and b
+>	* get an axis from a vector: $$ w = \frac{a}{\|a\|} $$
+>	* cannot get v right now, there is no proof that a is perpendicular to b, so get third axis by cross product of a b $$ u = \frac{b \times w}{\|b \times w\|} $$
+>	* get the second one by $$ v = w \times u $$
+>	* if a is parallel to b, u's divider would be 0, it cannot construct a coordinate out of it
+>
+>
