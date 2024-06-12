@@ -4,18 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "eab2c46a51a57cb3",
+        "id": "d6e4aad6e789332a",
         "type": "tabs",
         "children": [
           {
-            "id": "eaf9201056597595",
+            "id": "7be8f9f7c4d744d4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Knowledge/CSE167x Computer Graphics.md",
-                "mode": "source",
-                "source": false
+                "file": "WorkTmp/生长动画.excalidraw.md"
               }
             }
           }
@@ -94,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/CSE167x Computer Graphics.md",
+                "file": "WorkTmp/生长动画.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/CSE167x Computer Graphics.md",
+                "file": "WorkTmp/生长动画.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/CSE167x Computer Graphics.md"
+                "file": "WorkTmp/生长动画.excalidraw.md"
               }
             }
           },
@@ -199,10 +197,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "eaf9201056597595",
+  "active": "7be8f9f7c4d744d4",
   "lastOpenFiles": [
-    "Resources/CSE167x Computer Graphics-20240609155159268.webp",
     "Knowledge/CSE167x Computer Graphics.md",
+    "Resources/CSE167x Computer Graphics-20240609155159268.webp",
     "Resources/CSE167x Computer Graphics-20240612000950019.webp",
     "Resources/CSE167x Computer Graphics-20240609163243204.webp",
     "Resources/CSE167x Computer Graphics-20240609162309079.webp",
