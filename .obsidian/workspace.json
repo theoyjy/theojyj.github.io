@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "d6e4aad6e789332a",
+        "id": "7d7f98db75950b4f",
         "type": "tabs",
         "children": [
           {
-            "id": "7be8f9f7c4d744d4",
+            "id": "1339be4cf98d0f70",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -75,8 +73,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 274.5110321044922,
-    "collapsed": true
+    "width": 274.5110321044922
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -92,7 +89,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md",
+                "file": "Resources/CSE167x Computer Graphics-20240619225030404.webp",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +106,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md",
+                "file": "Resources/CSE167x Computer Graphics-20240619225030404.webp",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,7 +129,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md"
+                "file": "Resources/CSE167x Computer Graphics-20240619225030404.webp"
               }
             }
           },
@@ -197,9 +194,15 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "7be8f9f7c4d744d4",
+  "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
+    "Resources/CSE167x Computer Graphics-20240619224832683.webp",
+    "Resources/CSE167x Computer Graphics-20240619224633506.webp",
+    "Resources/CSE167x Computer Graphics-20240619224515305.webp",
+    "Resources/CSE167x Computer Graphics-20240619223826876.webp",
     "Knowledge/CSE167x Computer Graphics.md",
+    "Resources/CSE167x Computer Graphics-20240619225030404.webp",
+    "WorkTmp/生长动画.excalidraw.md",
     "Resources/CSE167x Computer Graphics-20240609155159268.webp",
     "Resources/CSE167x Computer Graphics-20240612000950019.webp",
     "Resources/CSE167x Computer Graphics-20240609163243204.webp",
@@ -208,15 +211,9 @@
     "Untitled.md",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/TinyRender Notes 1.md",
-    "Resources/CSE167x Computer Graphics-20240607001355694.webp",
-    "Resources/CSE167x Computer Graphics-20240607001732090.webp",
-    "Resources/CSE167x Computer Graphics-20240607002222038.webp",
-    "Resources/CSE167x Computer Graphics-20240607002750611.webp",
-    "CSE167x Computer Graphics-20240607002448868.webp",
     "Plans/Computer.md",
     "Plans/VR Plans.md",
     "Plans/OKRs.md",
-    "WorkTmp/生长动画.excalidraw.md",
     "WorkTmp/视频插值.md",
     "WorkTmp/D5MeshSync.md",
     "WorkTmp/Drawing 2024-06-03 16.55.53.excalidraw.md",

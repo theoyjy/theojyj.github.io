@@ -62,3 +62,18 @@
 >	* if a is parallel to b, u's divider would be 0, it cannot construct a coordinate out of it
 >
 >
+
+>[!INFO] Matrix
+>1. matrix-matrix multiplication
+>	* not communitive, but associative and distributive
+>![[CSE167x Computer Graphics-20240619223826876.webp]]
+>2. matrix-vector multiplication 【key for transforming points】
+>	![[CSE167x Computer Graphics-20240619224515305.webp|268]]
+>3. Transpose of a matrix
+>	![[CSE167x Computer Graphics-20240619224633506.webp|235]]
+>4. Identity Matrix and Inverses
+>![[CSE167x Computer Graphics-20240619224832683.webp|191]]
+>5. Dot product and Cross product in Matrix
+>	1. ⭐ Dot: a \* b = b \* a = aTb = bTa
+>	![[CSE167x Computer Graphics-20240619225030404.webp|502]]
+
