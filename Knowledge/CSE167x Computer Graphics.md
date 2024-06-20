@@ -77,3 +77,22 @@
 >	1. ⭐ Dot: a \* b = b \* a = aTb = bTa
 >	![[CSE167x Computer Graphics-20240619225030404.webp|502]]
 
+>[!Tip] Transformation
+>* scale 
+>	 ![[CSE167x Computer Graphics-20240620162949480.webp|415]]
+>* shear
+>	 ![[CSE167x Computer Graphics-20240620163202142.webp|504]]
+>* ⭐Rotate R(X + Y) = R(X) + R(Y) **Not Communative**
+>	* 2D 旋转矩阵推导
+>		![[CSE167x Computer Graphics-20240620164704196.webp|505]]
+>	* Rotations in 3D
+>		![[CSE167x Computer Graphics-20240620175428618.webp|515]]
+>	* Geometric Interpretation 3D Rotations
+>		* u v w为新坐标系的三个单位坐标，相互垂直
+>		![[CSE167x Computer Graphics-20240620175522483.webp]]
+>	* Rotate vec b about an arbitary axis with theta degree:
+
+
+
+
+

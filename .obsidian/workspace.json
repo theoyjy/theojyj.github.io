@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "df489ea42e225c1f",
+        "id": "a8302cd5afb830e8",
         "type": "tabs",
         "children": [
           {
-            "id": "bab9d0486b05cef1",
+            "id": "dbb00f0fe532d329",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -91,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "WorkTmp/生长动画.excalidraw.md"
-              }
+              "state": {}
             }
           },
           {
@@ -196,29 +190,30 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "bab9d0486b05cef1",
+  "active": "dbb00f0fe532d329",
   "lastOpenFiles": [
+    "4_2_RotateArbi.pdf",
+    "WorkTmp/生长动画.excalidraw.md",
+    "Knowledge/CSE167x Computer Graphics.md",
+    "Resources/STL-20240330164037726.webp",
+    "Resources/CSE167x Computer Graphics-20240620162949480.webp",
+    "Resources/CSE167x Computer Graphics-20240620175522483.webp",
+    "Resources/CSE167x Computer Graphics-20240620175428618.webp",
+    "Excalidraw/Drawing 2024-06-20 16.35.01.excalidraw.md",
+    "Resources/CSE167x Computer Graphics-20240620164704196.webp",
+    "Resources/Pasted Image 20240619170747_349.png",
+    "Resources/Pasted Image 20240617134626_763.png",
+    "Resources/CSE167x Computer Graphics-20240620163202142.webp",
     "Resources/CSE167x Computer Graphics-20240619225030404.webp",
     "Resources/CSE167x Computer Graphics-20240619224832683.webp",
-    "Resources/CSE167x Computer Graphics-20240619224633506.webp",
-    "Resources/CSE167x Computer Graphics-20240619224515305.webp",
-    "Resources/CSE167x Computer Graphics-20240619223826876.webp",
     "Untitled.md",
     "Knowledge/3D Info.md",
     "Knowledge/Dev Tips.md",
     "Knowledge/Learn How to Improve.md",
     "Knowledge/CMake.md",
-    "WorkTmp/生长动画.excalidraw.md",
-    "Pasted Image 20240619170747_349.png",
-    "Pasted Image 20240619170647_337.png",
-    "Pasted Image 20240619162752_552.png",
-    "Pasted Image 20240619155737_412.png",
-    "Pasted Image 20240619152822_295.png",
-    "Pasted Image 20240619145937_136.png",
     "WorkTmp/视频插值.md",
     "WorkTmp/显存峰值问题.md",
     "Untitled 1.md",
-    "Knowledge/CSE167x Computer Graphics.md",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/TinyRender Notes 1.md",
     "Plans/Computer.md",
@@ -236,14 +231,12 @@
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
     "Excalidraw/Drawing 2024-05-14 19.58.49.excalidraw.md",
-    "Doc/exec.md",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw.crswap",
     "WorkTmp/无标题-2024-05-14-1817.excalidraw",
     "WorkTmp/生长动画.excalidraw",
     "~$L源码剖析_快学笔记.docx",
     "TasksCalendar/view.js",
     "TasksCalendar/view.css",
-    "TasksCalendar",
-    "Plans"
+    "TasksCalendar"
   ]
 }
