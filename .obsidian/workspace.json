@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "a8302cd5afb830e8",
+        "id": "d8627923fc287502",
         "type": "tabs",
         "children": [
           {
-            "id": "dbb00f0fe532d329",
+            "id": "f3977149d2617e05",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -73,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 274.5110321044922
+    "width": 274.5110321044922,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -89,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Knowledge/CSE167x Computer Graphics.md"
+              }
             }
           },
           {
@@ -190,8 +199,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "dbb00f0fe532d329",
+  "active": "f3977149d2617e05",
   "lastOpenFiles": [
+    "CSE167x Computer Graphics-20240621141126264.webp",
+    "CSE167x Computer Graphics-20240621140957957.webp",
+    "CSE167x Computer Graphics-20240621134542669.webp",
     "4_2_RotateArbi.pdf",
     "WorkTmp/生长动画.excalidraw.md",
     "Knowledge/CSE167x Computer Graphics.md",
@@ -204,8 +216,6 @@
     "Resources/Pasted Image 20240619170747_349.png",
     "Resources/Pasted Image 20240617134626_763.png",
     "Resources/CSE167x Computer Graphics-20240620163202142.webp",
-    "Resources/CSE167x Computer Graphics-20240619225030404.webp",
-    "Resources/CSE167x Computer Graphics-20240619224832683.webp",
     "Untitled.md",
     "Knowledge/3D Info.md",
     "Knowledge/Dev Tips.md",

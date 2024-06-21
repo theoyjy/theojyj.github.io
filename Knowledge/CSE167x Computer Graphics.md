@@ -1,23 +1,22 @@
->[!INFO] History
->1. Overview3D Graphics Pipeline
->	Modeling -> Animation -> Rendering
->2. Modeling: Spline Curves -> More Recently: Triangle meshes
->3. Rendering:
->	1. 1960s: Hidden Line Algorithm | Hiden Surface Algorithm | Visibility 
->	 ![[CSE167x Computer Graphics-20240607001400360.webp|175]]![[CSE167x Computer Graphics-20240607001428324.webp|175]]
->	3. 1970s: Diffuse Lighting(散射光照) | Specular Lighting | Curved Surfaces, Texture | Z-Buffer Hidden Surface
->		1. Diffuse Lighting: make the polygonal outlines smooth
->		![[CSE167x Computer Graphics-20240607001643400.webp|175]]   ![[CSE167x Computer Graphics-20240607001732090.webp|175]]
->		2. Specular Light: enable highlights, makes it more realistic
->		![[CSE167x Computer Graphics-20240607002222038.webp|175]]
->		
->	1. 1980~90s: global illumination: ray tracing | radiosity | the rendering equation
->	![[CSE167x Computer Graphics-20240607002750611.webp|539]]
+# History
+1. Overview 3D Graphics Pipeline
+	Modeling -> Animation -> Rendering
+2. Modeling: Spline Curves -> More Recently: Triangle meshes
+3. Rendering:
+	1. 1960s: Hidden Line Algorithm | Hiden Surface Algorithm | Visibility 
+	 ![[CSE167x Computer Graphics-20240607001400360.webp|175]]![[CSE167x Computer Graphics-20240607001428324.webp|175]]
+	3. 1970s: Diffuse Lighting(散射光照) | Specular Lighting | Curved Surfaces, Texture | Z-BufferHidden Surface
+		1. Diffuse Lighting: make the polygonal outlines smooth
+		![[CSE167x Computer Graphics-20240607001643400.webp|175]]   ![[CSE167x Computer Graphics-20240607001732090.webp|175]]
+		2. Specular Light: enable highlights, makes it more realistic
+		![[CSE167x Computer Graphics-20240607002222038.webp|175]]
+		
+	1. 1980~90s: global illumination: ray tracing | radiosity | the rendering equation
+	![[CSE167x Computer Graphics-20240607002750611.webp|539]]
 
 # Vector
 >[!Tip] Cartesian Coordinates
 >![[CSE167x Computer Graphics-20240609155159268.webp]]
-
 
 >[!Abstract] 
 >* About: length and direction. Absolute position not important
@@ -45,27 +44,25 @@
 > 	![[CSE167x Computer Graphics-20240609163243204.webp|370]]
 > 	![[CSE167x Computer Graphics-20240612000950019.webp|370]]
 
->[!Danger] Orhonormal bases/coordinate frames
+# Orthogonal bases/coordinate frames
 >1. Coordinates Frames: Any set of 3 vectors so that:
 >	||u|| = ||v|| = ||w|| = 1
 >	u * v = v * w = u * w = 0
 >	w = u X v
->Any vector p can be expressed as:
-> $$ \vec{p} = (\vec{p} · \vec{u}) · \vec{u} + (\vec{p} · \vec{v}) · \vec{v} +(\vec{p} · \vec{w} · \vec{v}
-> $$
-> 2. Constructing a coordinate frame
->	**通过点乘与叉乘，构建坐标系**
->	* give any two vector a and b
->	* get an axis from a vector: $$ w = \frac{a}{\|a\|} $$
->	* cannot get v right now, there is no proof that a is perpendicular to b, so get third axis by cross product of a b $$ u = \frac{b \times w}{\|b \times w\|} $$
->	* get the second one by $$ v = w \times u $$
+>2. Any vector p can be expressed as:>$$ \vec{p} = (\vec{p} · \vec{u}) · \vec{u} +(\vec{p} · \vec{v}) · \vec{v} (\vec{p} · \vec{w} · \vec{v}
+ $$
+>3. Constructing a coordinate frame
+>     **通过点乘与叉乘，构建坐标系**:
+>		* give any two vector a and b
+>		* get an axis from a vector: >$$ w = \frac{a}{\|a\|} $$>
+>	* cannot get v right now, there is no proof that a is perpendicular to b, so get third axis by >cross product of a b >$$ u = \frac{b \times w}{\|b \times w\|} $$>
+>	* get the second one by >$$ v = w \times u $$>
 >	* if a is parallel to b, u's divider would be 0, it cannot construct a coordinate out of it
->
->
 
->[!INFO] Matrix
+# Matrix
+>[!INFO] 
 >1. matrix-matrix multiplication
->	* not communitive, but associative and distributive
+>	* not commutative, but associative and distributive
 >![[CSE167x Computer Graphics-20240619223826876.webp]]
 >2. matrix-vector multiplication 【key for transforming points】
 >	![[CSE167x Computer Graphics-20240619224515305.webp|268]]
@@ -78,21 +75,162 @@
 >	![[CSE167x Computer Graphics-20240619225030404.webp|502]]
 
 >[!Tip] Transformation
->* scale 
+>1. scale 
 >	 ![[CSE167x Computer Graphics-20240620162949480.webp|415]]
->* shear
+>2. shear
 >	 ![[CSE167x Computer Graphics-20240620163202142.webp|504]]
->* ⭐Rotate R(X + Y) = R(X) + R(Y) **Not Communative**
->	* 2D 旋转矩阵推导
+>3. ⭐Rotate R(X + Y) = R(X) + R(Y) **Not Communative**
+>	1. 2D 旋转矩阵推导
 >		![[CSE167x Computer Graphics-20240620164704196.webp|505]]
->	* Rotations in 3D
+>	2. Rotations in 3D
 >		![[CSE167x Computer Graphics-20240620175428618.webp|515]]
->	* Geometric Interpretation 3D Rotations
+>	3. Geometric Interpretation 3D Rotations
 >		* u v w为新坐标系的三个单位坐标，相互垂直
 >		![[CSE167x Computer Graphics-20240620175522483.webp]]
->	* Rotate vec b about an arbitary axis with theta degree:
+>	4. Rotate vec b about an arbitary axis with theta degree:
+>		[Rodrigues Rotation Fomula](https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula)
+>		![[CSE167x Computer Graphics-20240621140957957.webp|520]]
+>		![[CSE167x Computer Graphics-20240621141126264.webp]]
 
+>[!DANGER] 逆 与 转置
+>1. 逆矩阵也就是矩阵的还原矩阵：R\*R-1 = I
+>	1. 对于旋转矩阵，它的逆就是把角度在转回来
+>	2. 对于缩放矩阵，它的逆就是把缩放大小再还原回来
+>2. 转置矩阵就是矩阵的翻转菊展，沿着左上到右下的对角线翻转
+>3. 旋转矩阵
+>	1. 旋转矩阵的逆 = 旋转矩阵的转置
+>	2. 旋转矩阵的逆的转置 = 旋转矩阵自身
+>	![[CSE167x Computer Graphics-20240621134542669.webp|619]]
 
+# Homogeneous Coordinates
+>[!ABSTRACT]
+>1. 在齐次坐标中，坐标 (x, y, z, w) 表示的实际点是 (x/w, y/w, z/w)。
+>2. 当 w=1 时，齐次坐标 (x, y, z, w) 直接对应于笛卡尔坐标 (x, y, z)。
+>3. 当 w=0 时，齐次坐标表示的是一个方向而不是一个点，这在表示视线和光线等概念时非常有用。
+>
+>Advantages:
+>1. Unified framework for translation, viewing, rot… 
+>2. Can concatenate any set of transforms to 4x4 matrix 
+>3. No division (as for perspective viewing) till end 
+>4. Simpler formulas, no special cases § Standard in graphics software, hardware
 
+>[!TIP] General Translation Matrix T
+>$$
+>T=
+>\begin{bmatrix}  
+1 & 0 & 0 & t_x \\  
+0 & 1 & 0 & t_y \\  
+0 & 0 & 1 & t_z \\  
+0 & 0 & 0 & 1  
+\end{bmatrix}
+>=
+>\begin{bmatrix}
+>I3 & T \\
+>0 & 1
+>\end{bmatrix}
+>$$
+>$$
+P'=TP = 
+\begin{bmatrix}  
+1 & 0 & 0 & t_x \\  
+0 & 1 & 0 & t_y \\  
+0 & 0 & 1 & t_z \\  
+0 & 0 & 0 & 1  
+\end{bmatrix}  
+\begin{bmatrix}  
+x \\  
+y \\  
+z \\  
+1  
+\end{bmatrix}  
+=  
+\begin{bmatrix}  
+x + t_x \\  
+y + t_y \\  
+z + t_z \\  
+1  
+\end{bmatrix}
+>=P+T
+$$
 
+>[!INFO] Combining Translations, Rotations
+>1. Rotate first, then Translate
+>$$P'=(TR)P=MP=RP+T$$
+>$$
+>T=\begin{bmatrix}I3 & T\\0 & 1\end{bmatrix}
+>\quad 
+>R=\begin{bmatrix}R & 0 \\ 0 & 1 \end{bmatrix}
+>$$
+>$$
+>\begin{align}
+>M &= TR = 
+>	\begin{bmatrix}
+>		I3 & T \\
+>		0 & 1
+>	\end{bmatrix}
+>	\begin{bmatrix}
+>		R & 0 \\
+>		0 & 1
+>	\end{bmatrix}
+>   =
+>	\begin{bmatrix}
+>		R & T \\
+>		0 & 1
+>	\end{bmatrix} \\
+>   &=
+>   \begin{bmatrix}
+>		R11 & R12 & R13 & Tx\\
+>		R21 & R22 & R23 & Ty\\
+>		R31 & R32 & R33 & Tz \\
+>		0 & 0 & 0 & 1
+>	\end{bmatrix}
+>\end{align}
+>$$
+>
+>2. Translate first, then Rotate
+>
+>$$P' = (RT)P = MP = R(P + T) = RP + RT$$
+>$$
+>M = RT = 
+>	\begin{bmatrix}
+>	R & 0 \\
+>	0 & 1
+>	\end{bmatrix}
+>	\begin{bmatrix}
+>	I3 & T \\
+>	0 & 1
+>	\end{bmatrix}
+>   =
+>    \begin{bmatrix}
+>	R_{3 \times 3} & R_{3 \times 3}T_{3 \times 1} \\
+>	0 & 1
+>	\end{bmatrix}
+>$$
+>$$
+>MP = 
+>    \begin{bmatrix}
+>		R & RT \\
+>		0 & 1
+>	\end{bmatrix}
+>	\begin{bmatrix}
+>		P \\
+>		1
+>	\end{bmatrix} 
+>   =
+>   \begin{bmatrix}
+>		RP + RT \\
+>		1
+>	\end{bmatrix}
+>	=
+>   \begin{bmatrix}
+>		R_{3\times3}P_{3\times1} \\
+>		0
+>	\end{bmatrix}
+>	+
+>   \begin{bmatrix}
+>		R_{3\times3}T_{3\times1} \\
+>		1
+>	\end{bmatrix}
+>$$
+>
 
