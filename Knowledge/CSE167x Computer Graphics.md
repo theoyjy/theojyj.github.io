@@ -234,3 +234,11 @@ $$
 >$$
 >
 
+>[!FIRE] Transforming Normals
+> For any point P:
+> * t denotes for tangent of that point
+> * n denotes for the normal, which n is perpendicular to t
+> * After some actions $$t -> Mt, \quad n -> Qn \quad => \quad Q = (M^{-1})^{T}$$
+>![[CSE167x Computer Graphics-20240621193317063.webp]]
+
+![[CSE167x Computer Graphics-20240621194938476.webp]]
