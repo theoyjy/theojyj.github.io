@@ -257,6 +257,13 @@ $$
 >* ![[CSE167x Computer Graphics-20240625164620892.webp|215]]
 >1. Create a coordinate frame for camera [T first]
 >2. Define a rotation matrix [R second]
+>> 在3D图形中，我们通常使用三个正交向量（right、forward、up）来定义一个局部坐标系或者说是一个物体的方向。这三个向量通常被称为物体的基向量（basis vectors）。这三个向量的方向分别对应于物体的右方、前方和上方。  当我们想要在3D空间中旋转一个物体时，我们可以使用这三个基向量来构建一个旋转矩阵。这个旋转矩阵可以将物体从其当前的方向旋转到新的方向。  构建旋转矩阵的方法是将这三个基向量作为旋转矩阵的列（或行，取决于你使用的是行主序还是列主序）。**因此只需获得camera的right, foward,up vector:**
+>> $$R = \begin{bmatrix}
+>> right.x & right.y & right.z & 0 \\
+>> forward.x & forward.y & forward.z & 0 \\
+>> up.x & up.y & up.z & 0 \\
+>> 0 & 0 & 0 & 1
+>> \end{bmatrix}$$
 >$$P'=(TR)P=MP=RP+RT$$
 >4. Apply appropriate translation for camera location
 >![[CSE167x Computer Graphics-20240625165840561.webp|312]]
@@ -403,4 +410,23 @@ Perspective projection will not preserve parallel lines.
 >
 
 
+# Homework 1
+## Basic GLM(OpenGL Mathmatics)
+### Matrix Column Major
+>[!TIP] Caveats on Row vs **Column Major**
+>$$
+>\begin{bmatrix}
+>a & b &c \\ d & e & f \\ g & h & i
+>\end{bmatrix}
+>$$
+>1. **Would be defined as** `glm::mat3(a,d,g,b,e,g,c,f,i)`
+>2. Alternaticely, `glm:mat3 m(a,b,c,d,e,f,g,h,i); m = glm::transpose(m);`
 
+>[!DANGER] 
+>In a typical 3D graphics setup, the coordinate system is right-handed with:
+>1. Right: the X-axis pointing to the right of screen
+>2. Up: the Y-axis pointing up of the screen (This is why the up vector is often initialized as (0, 1, 0)
+>3. Forward: the Z-axis pointing out of the screen. 
+>R = [Right,
+>	Up,
+>	Forwad]
