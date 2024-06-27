@@ -430,3 +430,80 @@ Perspective projection will not preserve parallel lines.
 >R = [Right,
 >	Up,
 >	Forwad]
+
+# OpenGL
+>[!INFO] Benefits
+>1. Encapusulates many basic functions of 2D/3D graphics
+>2. Think of it as high-level language(C++) for graphics
+
+## OpenGL Rendering Pipeline
+
+ >[!IMPORTANT] OpenGl is a scan converter rasterizer
+![[CSE167x Computer Graphics-20240627231411792.webp]]
+ >1. **Geometry Primitive Operations 基本几何运算**
+ >2. **Scan Conversion(Rasterize) 扫描转换(光栅化)** : Decide ==which pixel correspond which part of geomery==
+ >3. **Fragment operations**:  refer to a series of steps that **each fragment (a potential pixel)** undergoes before it is written to the framebuffer. Includingg various tests and manipulations that determine ==whether a fragment should be drawn== and ==how it should be combined with the existing content in the framebuffer==.
+
+### Shader
+
+ >[!Abstract] 
+ >* **Definition**: A small piece of program that runs on the GPU and used to control various stages of the graphics rendering process.
+ >* **The main purpose** of a shader: is to manipulate vertices, pixels(fragments), and geometry to achieve various visual effects.
+ >* Common types:
+ >	* vertex shader
+ >	* fragment shader
+
+ >[!success] Vertex Shader
+ >Translate vertex positions in 3D  -> 2D screen coordiante system and to transform the attributes of vertices (such as colors, normals, textures, etc.)
+ >Core steps:
+ >1. Model Transformation: ==model== coordinate system -> ==world== coordinate system
+ >2. View Transformation: world coordinate system -> ==camera==(view) coordinate system
+ >	* OpenGL always make: ==the camera is the origin, looking down the -z axis==.
+ >3. Projection Transformation: view coord -> ==cropped== space coordinate system
+ >4. Perspective Division: cropped space coord -> ==screen== coordinate system
+ 
+>[!SUCCESS] Fragment Shader
+> Calculate the final colour of each fragment and output it to the frame buffer.
+> The main functions of the fragment shader include:
+>1. Texture sampling: ==obtaining colour== information from the texture.
+>2. Light Calculation: ==calculates the colour== of the fragment based on the ==lighting== model.
+>3. Colour ==mixing==: mixes the calculated colour with the existing frame buffer colour (e.g. to achieve transparency effects)
+>>[!TIP] Fragment operations
+>>```cpp
+>>// Enable depth test
+>>// whether the depth value of the fragment is written to the depth buffer
+>>glEnable(GL_DEPTH_TEST);
+>>glDepthFunc(GL_LESS);
+>>
+>>// Enable stencil test
+>>// The stencil buffer is a per-pixel buffer that can store an integer value. The >stencil test >compares the stencil value with a reference value using a specified >function (like less than, >equal to, etc.). If the test fails, the fragment is >discarded.
+>>glEnable(GL_STENCIL_TEST);
+>>glStencilFunc(GL_EQUAL, 1, 0xFF);  // Pass test if (stencil & 0xFF) == 1
+>>glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);  // Actions based on stencil test result
+>>
+>>// Enable blending
+>>// Blending determines how the fragment's color should be combined with the color >already in >the framebuffer. This is crucial for achieving transparency and other >effects.
+>>// Blending operations combine the source (fragment) color with the destination >(framebuffer) >color based on specified blending factors.
+>>glEnable(GL_BLEND);
+>>glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+>>
+>>// Enable scissor test
+>>// whether the fragment lies within a defined rectangular region. If the fragment >is outside this >region, it is discarded.
+>>glEnable(GL_SCISSOR_TEST);
+>>glScissor(50, 50, 200, 200);  // Define scissor box
+>>
+>>// Configure color mask
+>>// whether the red, green, blue, and alpha components of the fragment are written >to the >framebuffer.
+>>glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+>>
+>>// Configure depth mask
+>>// whether the depth value of the fragment is written to the depth buffer.
+>>glDepthMask(GL_TRUE);
+>>
+>>// Configure stencil mask
+>>// which bits of the stencil value can be written to the stencil buffer.
+>>glStencilMask(0xFF);
+>>```
+>
+
+## BUFFERS AND MATRICES
