@@ -200,8 +200,6 @@ $ find . -name b // recursively find all files which name == "b" from current pa
 > 1. Two file descriptors share and offset if two file derived from the same original file descriptor by a sequence of `fork` or `dup` calls
 > 2. Otherwise they won't share the same one even if they resulted from open calls for the same file.
 
-
-
 ## 1.3 Pipes
 ```C
 int p[2];

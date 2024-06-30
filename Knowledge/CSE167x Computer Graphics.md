@@ -456,11 +456,22 @@ Perspective projection will not preserve parallel lines.
  >[!success] Vertex Shader
  >Translate vertex positions in 3D  -> 2D screen coordiante system and to transform the attributes of vertices (such as colors, normals, textures, etc.)
  >Core steps:
- >1. Model Transformation: ==model== coordinate system -> ==world== coordinate system
- >2. View Transformation: world coordinate system -> ==camera==(view) coordinate system
+ >1. Model Transformation(M): ==model== coordinate system -> ==world== coordinate system
+ >2. View Transformation(V):: world coordinate system -> ==camera==(view) coordinate system
  >	* OpenGL always make: ==the camera is the origin, looking down the -z axis==.
- >3. Projection Transformation: view coord -> ==cropped== space coordinate system
+ >3. Projection Transformation(P):: view coord -> ==cropped== space coordinate system
  >4. Perspective Division: cropped space coord -> ==screen== coordinate system
+ >>[!SUMMARY] Combined Viewing Process
+ >>$$MVP = P \times V \times M$$
+ 
+
+To summarize, the viewing process in computer graphics typically involves the following transformations:
+
+1. **Model Matrix (MMM)**: Positions objects in the world.
+2. **View Matrix (VVV)**: Positions and orients the camera in the world.
+3. **Projection Matrix (PPP)**: Projects the 3D scene onto a 2D viewport.
+
+The final transformation applied to each vertex in the scene is the combination of the model view matrix and the projection matrix (MVP=P×V×MMVP = P \times V \times MMVP=P×V×M).
  
 >[!SUCCESS] Fragment Shader
 > Calculate the final colour of each fragment and output it to the frame buffer.
@@ -506,4 +517,308 @@ Perspective projection will not preserve parallel lines.
 >>```
 >
 
+## Viewing in OpenGL
+>[!Abstract]
+>>
+>1. ==Model Transformation==(Model Local Coordinates -> World)
+	>-> ==View Transformation==(World ->Camera) 
+	>-> ==Projection Transformation==(view  -> cropped space)
+	>$$MVP = P \times V \times M$$
+>2. use ==stack== to push and pop matrix
+>3. ==Camera is always at origin, pointing in -z direction==
+### Initialization code for Viewing
+```cpp
+#include <GL/glut.h>
+#include <stdlib.h>
+int mouseOldX, mouseOldY;
+GLdouble eyeloc = 2.0; // where to look from; intially 0, -2, -2
+
+void init(void)
+{
+	// set clear color as black
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+
+	// init viewing values 
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(0, -eyeloc, eyeloc, 0, 0, 0, 0, 1, 1);
+}
+```
+
 ## BUFFERS AND MATRICES
+>[!Abstract] 
+>**Definition**: Buffers are areas of memory used to store various types of data related to rendering
+>>[!INFO] Types:
+>>* Color Buffers:
+>>	1. Front: the buffer that's being displayed on the screen
+>>	2. Back: Used in **double buffering**. Draw scene to the back buffer, when it's done, swap it with front to display it. Helpful for preventing flickering and tearing
+>>	3. Left and Right Buffers: Used in stereoscopic rendering(立体渲染), Left buffer holds from image of the left eye, right for right eye
+>>* Depth Buffer(Z-Buffer): stores depth info of each pixel. Used to handle occlusion, so that closer objects obscure objects further away
+>>* Accumulation Buffer: render several frames and accumulate their values to create a single, comnbined images. Can be used for effects like motion blur, depth of field or anti-aliasing.
+>>* Stencil Buffer: used for masking certain parts of the image. It allows you to enable or disable drawing per-pixel basis. Useful for effects like outlining, shadow volumns, or constructive solid geometry.
+>
+
+### Window System Interactions
+GLUT, GLFW or SDL. This course talks about GLUT, and its callbacks to implement mouse, keyboard interaction
+
+```cpp
+int main(int argc, char ** argv)
+{
+	// 1. init buffers, windows
+	glutInit(&argc, argv);
+	// Request the type of buffers(Singlr, RGB)
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+
+	glutInitWindowSize(500, 500);
+	glutInitWindowPosition(100, 100);
+	glutCreateWindow("Simple Demo with Shader");
+	glewInit();
+	init(); // always initialize first
+
+	// 2. bind callbacks
+	glutDisplayFunc(display);
+	glutReshapeFunc(reshape);
+	glutKeyboardFunc(keyboard);
+	glutMouseFunc(mouse);
+	glutMotionFunv(mousedrag);
+	
+	glutMainLoop(); // start the main code
+	return 0;
+
+}
+
+void reshape(int w, int h)
+{
+	glViewport(0, 0, (GLsizei)w, (GLsizei) h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+				// fovy, aspect ratio,            near z, far z
+	gluPerspective(30.0, (GLdouble)w/(GLdouble)h, 1.0, 10.0);
+}
+
+
+void keyboard(unsigned char key, int x, int y)
+{
+	switch(key)
+	{
+		case 27: //ESC
+			exit(0);
+			break;
+		default:
+			break;
+	}
+}
+
+void mouse(int button, int state, int x, int y)
+{
+	if(button == GLUT_LEFT_BUTTON)
+	{
+		if(state == GLUT_UP) { // do nothing }
+		else if(state == GLUT_DOWN)
+		{
+			mouseOldX = x;
+			mouseOldY = y;
+		}
+	}
+	else if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+	{ // Reset gluLookAt
+		{ // `glLoadIdentity` 是 OpenGL 的固定功能管线（即旧版 OpenGL）的函数
+			eyeloc = 2.0; // 设置观察者位置的高度 
+			glMatrixMode(GL_MODELVIEW); // 设置当前矩阵模式为模型视图矩阵 
+			glLoadIdentity(); // 重置当前的模型视图矩阵为单位矩阵 
+			gluLookAt(0, -eyeloc, eyeloc, 0, 0, 0, 0, 1, 1); // 设置视图矩阵，
+											// 定义观察者的位置和方向 
+			glutPostRedisplay(); // 请求重新绘制窗口
+		}
+
+		{ //现代 OpenGL（即使用着色器的编程方式）中，矩阵操作通常是通过 GLSL 着色器和线性代数库（如 GLM）来完成的
+			float eyeloc = 2.0f; 
+			// 使用 GLM 库来创建和处理矩阵 
+			glm::mat4 view = glm::lookAt( 
+				glm::vec3(0.0f, -eyeloc, eyeloc), // 观察者位置 
+				glm::vec3(0.0f, 0.0f, 0.0f), // 观察目标 
+				glm::vec3(0.0f, 1.0f, 1.0f) // 观察者的上方向 
+				); 
+				
+			// 获取着色器中 view 矩阵的 uniform 位置 
+			GLuint viewLoc = glGetUniformLocation(shaderProgram, "view"); 
+			
+			// 将 view 矩阵传递给着色器 
+			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view)); 
+			
+			// 请求重新绘制窗口 
+			glutPostRedisplay();
+		}
+	}
+}
+
+void mousedrag(int x, int y)
+{
+	int deltaY = y - mouseOldY;
+	eyeloc += 0.005 * deltaY;
+	if(eyeloc < 0) eyeloc = 0;
+	mouseOldY = y;
+
+	// set eye location:
+	// 使用 GLM 库来创建和处理矩阵 
+	glm::mat4 view = glm::lookAt( 
+		glm::vec3(0.0f, -eyeloc, eyeloc), // 观察者位置 
+		glm::vec3(0.0f, 0.0f, 0.0f), // 观察目标 
+		glm::vec3(0.0f, 1.0f, 1.0f) // 观察者的上方向 
+		); 
+		
+	// 获取着色器中 view 矩阵的 uniform 位置 
+	GLuint viewLoc = glGetUniformLocation(shaderProgram, "view"); 
+	
+	// 将 view 矩阵传递给着色器 
+	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view)); 
+	
+	// 请求重新绘制窗口 
+	glutPostRedisplay();
+}
+```
+
+### Drawing Basic OpenGL Primitives
+#### Primitives
+![[CSE167x Computer Graphics-20240628215304005.webp]]
+* Point: GL_POINTS (in homogenous coordinates)
+* Line Segments: GL_LINES
+* Polygons:
+	* GLU for complex shapes
+	* rectangles: glRect
+##### Face
+A face is defined by its vertices, and in the context of rendering with OpenGL, faces are usually created using primitives like `GL_TRIANGLES`, `GL_TRIANGLE_STRIP`, or `GL_TRIANGLE_FAN`.
+
+#### Vertex Buffer Object
+```cpp
+float vertices[] = {
+    // Positions
+    0.0f, 0.0f, // Vertex 0
+    1.0f, 0.0f, // Vertex 1
+    1.0f, 1.0f, // Vertex 2
+    0.0f, 1.0f  // Vertex 3
+};
+
+unsigned int indices[] = {
+    0, 1, 2, // First triangle
+    2, 3, 0  // Second triangle
+};
+
+
+GLuint VAO, VBO[2], EBO;
+glGenVertexArrays(1, &VAO);
+glGenBuffers(2, VBO);
+glGenBuffers(1, &EBO);
+
+glBindVertexArray(VAO);
+
+// Vertex Buffer
+glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+glEnableVertexAttribArray(0);
+
+// Color Buffer
+glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+glEnableVertexAttribArray(1);
+
+// Element Buffer
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+// Unbind VAO
+glBindVertexArray(0);
+
+// rendering loop:
+glUseProgram(shaderProgram); // Use the shader program
+glBindVertexArray(VAO); // Bind the VAO
+glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0); // Draw the elements
+glBindVertexArray(0); // Unbind the VAO
+```
+
+### Shader Setup
+>[!SUMMARY]
+>1. Create shader(vertex and fragment)
+>2. Compile shader: 
+>	The GPU code is compiled at run-time because the CPU compiler is typically not aware of the GPU architecture of a system.
+>3. Attach shader to program
+>4. Link program
+>5. Use program
+>```cpp
+>// init and compile shader
+>GLuint initshaders (GLenum type, const char *filename) 
+>{
+> 	// Using GLSL shaders, OpenGL book, page 679 
+> 	GLuint shader = glCreateShader(type) ; 
+> 	// Shader source is just sequence of string
+> 	string str = textFileRead (filename) ; 
+> 	GLchar * cstr = new GLchar[str.size()+1] ;
+> 	const GLchar * cstr2 = cstr ; // Weirdness to get a const char 
+> 	strcpy(cstr,str.c_str()) ; 
+> 	glShaderSource (shader, 1, &cstr2, NULL) ; 
+> 	glCompileShader (shader) ; 
+> 	GLint compiled ; 
+> 	glGetShaderiv (shader, GL_COMPILE_STATUS, &compiled) ; 
+> 	if (!compiled) 
+> 	{ 
+> 		shadererrors (shader) ; 
+> 		throw 3 ; 
+> 	} 
+> 	return shader ; 
+>}
+>
+>// Link Shader:
+>GLunit initProgram(GLunit vertexshader, GLunit fragmentshader)
+>{
+>	GLunit program = glCreateProgram();
+>	GLint linked;
+>	glAttatchShader(program, vertextshader);
+>	glAttachShader(program, fragmentshader);
+>	glLinkProgram(program);
+>	glGetProgramiv(program, GL_LINK_STATUS, &linked);
+>	if(linked)
+>		glUseProgram(program);
+>	else
+>	{
+>		programerrors(program);
+>		throw 4;
+>	}
+>	return program;
+>}
+>```
+>
+>Vertex Shader
+>```cpp
+>#version 130
+>
+>in vec4 color;
+>out vec4 fragColor;
+>
+>void main(void)
+>{
+>    // Set the position of the vertex (this part is usually provided by the application)
+>    gl_Position = ...;
+>    // Pass the color to the fragment shader
+>    fragColor = color;
+>}
+>```
+>Fragment Shader
+>```cpp
+>#version 130
+>
+>in vec4 fragColor;
+>out vec4 outColor;
+>
+>void main(void)
+>{
+>    outColor = fragColor;
+>}
+>```
+
+
