@@ -1,6 +1,6 @@
 ### 高优先级（核心考点）
 
-1. 理解模板类型推导、auto类型推导和decltype（Effective Modern C++ 1-4）[link](#01%20Template%20Type%20Deduction) 
+1. 理解模板类型推导、auto类型推导和decltype（Effective Modern C++ 1-4）[Knowledge](#01%20Template%20Type%20Deduction) [Questions](#1%20Template%20Type%20Deduction%20|%20`auto`%20|%20`decltype`%20Questions)
 2. 理解std::move和std::forward（Effective Modern C++ 23-25）
 3. 理解右值引用，移动语义，完美转发（Effective Modern C++ 23-30）
 4. 对于占有性资源使用std::unique_ptr（Effective Modern C++ 18）
@@ -29,9 +29,9 @@
 
 # 01 Template Type Deduction
 
->[!INFO] Definition
->Template type deduction is a fundamental concept in C++ that determines the types of
->template parameters based on arguments passed to a template function. 
+>[!INFO] Definition 
+>Template type deduction is a fundamental concept in C++ that ==**allows compiler to determine the types of template parameters based on arguments passed to a template function.**== 
+>
 >```cpp
 > template <typename T\>
 >void f(ParamType param);
@@ -39,9 +39,9 @@
 >f(expr);
 >```
 >The type deducted for **T is dependent not just on the type of *expr*, but also on the form of *ParamType***, there are 3 cases:
->1. Pointer or reference type(not universal ref)
->2. Universal references.
->3. Neither a pointer nor a reference
+>1. Pass-by-value: strips cvr.
+>2. Pointer or reference type(not universal ref): Preserves cvr,
+>3. Universal references: Preserves cvr, lvalue -> T = P = expr +&, rvalue -> T = ParamType - &&
 
 ## Case 1: *ParamType* is reference or pointer 
 
@@ -221,7 +221,6 @@ f(s2);  // T 和 ParamType 都是 const char*
 >4. `T&&` Universal Reference
 >	1. lvalue: `T = ParamType = &`
 >	2. rvalue: `ParamType - && = T`
-
 
 # 02 auto type deduction
 *Start: 2024-07-01 14:25 End: 2024-07-01 16:09* 
@@ -697,3 +696,358 @@ void f(const T& x)
 >
 >By using `const T&`, the function can also accept rvalues, which would not be possible with `T&` >alone, since non-const lvalue references cannot bind to rvalues.
 
+# 1 Template Type Deduction | `auto` | `decltype` Questions
+
+## Template Type Deduction
+
+- **How does template type deduction work in C++?**
+    
+    - Template type deduction allows the ==**compiler** to determine the **types**== of template parameters ==**based on the provided arguments**==. For example, in `template <typename T> void func(T t);`, calling `func(42);` deduces `T` as `int`.
+
+- **What is the difference between template type deduction for pass-by-value, pass-by-reference, and pass-by-universal-reference (forwarding reference)?**
+    
+    - **Pass-by-value:** ==Strips== `const` and `volatile` qualifiers. E.g., `template <typename T> void func(T t);` with `const int` deduces `T` as `int`.
+    - **Pass-by-reference:** ==Preserves== `const` and `volatile` qualifiers. E.g., `template <typename T> void func(T& t);` with `const int&` deduces `T` as `const int`.
+    - **Universal reference:** Deduces `T&` if passed an lvalue, otherwise deduces `T`. E.g., `template <typename T> void func(T&& t);` with `int` deduces `T` as `int` and with `int&` deduces `T` as `int&`.
+
+- **What are the special rules for template type deduction with arrays and function pointers?**
+    
+    - Arrays and function pointers **decay to pointers** unless the template parameter is a reference. E.g., `template <typename T> void func(T t);` with `int arr[10]` deduces `T` as `int*`. Use `T&` to preserve the array type.
+
+- **How can you prevent type deduction and explicitly specify template arguments?**
+    
+    - Use angle brackets syntax to explicitly specify template arguments. E.g., `func<int>(42);` specifies `T` as `int`.
+
+## `auto` Type Deduction
+
+- **How does `auto` type deduction work in C++?**
+    
+    - ==**`auto` deduces the type from the initializer==.** E.g., `auto x = 42;` deduces `x` as `int`.
+
+- **What are the differences in type deduction between `auto` and template type deduction?**
+    
+    - `auto` deduces type based on initializer expression; templates deduce from function arguments. E.g., `auto x = 42;` deduces `x` as `int`, similar to `template <typename T> void func(T t); func(42);`.
+
+- **How does `auto` handle references and `const` qualifiers?**
+    
+    - `auto` ==**strips `const` and reference**== qualifiers from the initializer. E.g., `const int x = 42; auto y = x;` deduces `y` as `int`.
+
+- **What are the implications of using `auto` with initializer lists?**
+    
+    - `auto` deduces `std::initializer_list<T>` with brace-enclosed initializers. E.g., `auto x = {1, 2, 3};` deduces `x` as `std::initializer_list<int>`.
+
+## `decltype`
+
+- **What is `decltype` and how is it used?**
+    
+    - **==`decltype` deduces the type of an expression without evaluating it==**. E.g., `int x = 42; decltype(x) y = x;` deduces `y` as `int`.
+
+- **How does `decltype` differ from `auto` in terms of type deduction?**
+    
+    - **==`decltype` preserves `const` and reference qualifiers, `auto` may strip them==**. E.g., `const int x = 42; decltype(x) y = x;` deduces `y` as `const int`.
+- **What is the difference between `decltype(expr)` and `decltype((expr))`?**
+    
+    - `decltype(expr)` without parentheses deduces type without reference qualifiers, `decltype((expr))` with parentheses gives enforcing lvalue reference. E.g., `int x = 42; decltype(x) a = x;` deduces `a` as `int`, but `decltype((x)) b = x;` deduces `b` as `int&`.
+- **How can `decltype` be useful in template metaprogramming and generic programming?**
+    
+    - `decltype` is useful for defining return types in template functions. E.g., `template <typename T, typename U> auto add(T t, U u) -> decltype(t + u) { return t + u; }`.
+
+# 2 `std::move` and `std::forward`
+
+## Interview questions
+
+### Questions on `std::move`
+
+1. **What is `std::move` and how does it work?**
+    
+    - `std::move` is a standard library **utility** that **==casts an object to an rvalue reference==**, **==enabling move semantics==**. It does not actually move the object but **==allows the compiler to treat it as a temporary (rvalue)==** so that its **==resources can be transferred instead of copied==**.
+    	```cpp
+    	#include<utility>
+    	std::string str = "hello";
+    	std::string newStr = std::move(str);
+    	```
+	Here, `std::move(str)` casts `str` to an rvalue reference, **==allowing the move constructor==** of `std::string` **==to transfer its contents to `newStr`==** 
+
+2. **When should you use `std::move`?**
+    
+    - Use `std::move` when you **==need to transfer ownership of resources==** from one object to another, particularly when dealing with **==expensive-to-copy resources like dynamic memory, file handle==**s, etc. It is commonly used in move constructors and move assignment operators.
+	```cpp
+	class MyClass{
+	public:
+		MyClass(std::vector<int> && vec) : data(std::move(vec)) {}
+	private:
+		std::vector<int> data;
+	}
+	```
+    
+3. **What are the potential pitfalls of using `std::move`?**
+    
+    - **==After `std::move`, the original object is in a valid but unspecified state. It should not be used except for assignment or destruction.==** Misuse of `std::move` can lead to **undefined behavior if the moved-from object is accessed without being reassigned**.
+    ```cpp
+	std::string str = "hello";
+	std::string newStr = std::move(str);
+	// using str is risky, it's in a valid but unspecified state
+	```
+    
+
+### Questions on `std::forward`
+
+1. **What is `std::forward` and how does it work?**
+    
+    - **==`std::forward` is a utility that preserves the value category (lvalue or rvalue) of its argument==**. It is primarily used in template code to implement **==perfect forwarding, allowing function templates to forward arguments while retaining their original value category==**.
+    ```cpp
+    #include <utility>
+    template <typename T>
+    void wrapper(T&& x)
+    {
+	    fuc(std::forward<T>(arg));
+    }
+	```
+    
+2. **When should you use `std::forward`?**
+    
+    - Use `std::forward` when you are **==implementing forwarding functions==** that **take a forwarding reference (universal reference)** and **==need to pass the argument to another function, preserving its value category==**.
+    
+3. **What is the difference between `std::move` and `std::forward`?**
+    
+    - ==`std::move` **unconditionally** casts its argument to an rvalue reference==, while ==`std::forward` **conditionally casts its argument to an rvalue reference** based on the template parameter type==. **==`std::move` is used for enabling move semantics, and `std::forward` is used for perfect forwarding==**.
+    ```cpp
+    template<typename T>
+    void process(T&& t)
+    {
+	    anotherFunction1(std::move(t)); // forces t to be an rvalue
+	    anotherFunction2(std::forward<T>(t)); // preserves t's value category
+    }
+	```
+    
+
+### Practical Example Questions
+
+1. **Write a simple function template that uses `std::move` to implement a move constructor.**
+    
+    ```cpp
+    class myClass
+    {
+    public:
+		myClass(std::vector<int>&& vec) : data(std::move(vec)) {}
+	private:
+		std::vector<int> data;
+    }
+	```
+
+2. **Write a function template that demonstrates the use of `std::forward` to implement perfect forwarding.**
+    
+	```cpp
+	template<typename T>
+	void wrapper(T&& t)
+	{
+		anotherFunc(std::forward<T>(t));
+	}
+	```
+    
+3. **Explain the behavior of the following code snippet:**
+    
+    ```cpp
+	template <typename T>
+	void f(T&& t) {
+	    g(std::forward<T>(t));
+	}
+	
+	int main() {
+	    int x = 10;
+	    f(x); // lvalue is forwarded as lvalue
+	    f(20); // rvalue is forwarded as rvalue
+	}
+
+	```
+    
+    - `f(x);` forwards `x` as an lvalue to `g`, so `g` receives `int&`.
+    - `f(20);` forwards `20` as an rvalue to `g`, so `g` receives `int&&`.
+
+## 23 `std::move` and `std::forward`
+* They **==both preserves cv==**
+* `move` unconditionally casts values to rvalue ref, it is for movement semantics. `forward` conditionally casts(only cast rvalue to rvalue&&, not deal with lvalue)that keep the value category, and it is for perfect forwarding
+* `&&` is the basis for both move semantics and perfect forwarding.
+* They both do nothing, `move` just tell compiler the ownership can be moved, while `forward` just preserve the value categories.
+* Any value passed into a function, inside that function, it will have a name, no matter it was a lvalue or rvalue, **the param is naturally a lvalue**. To enable move semantics, we need to use `move`.
+### `move`
+* `std::move` 实现
+	```cpp
+	// remove_reference_t 去掉左值引用
+	template<typename T>
+	constexpr std::remove_reference_t<T>&& move(T&& x) noexcepty {
+	    return static_cast<std::remove_reference_t<T>&&>(x);
+	}
+	constexpr int f(const std::string&) { return 1; }
+	constexpr int f(std::string&&) { return 2; }
+	
+	}  // namespace jc
+	
+	int main() {
+	  std::string s;
+	  static_assert(jc::f(s) == 1);
+	  assert(jc::f(std::string{}) == 2);
+	  static_assert(jc::f(static_cast<std::string&&>(s)) == 2);
+	  static_assert(jc::f(jc::move(s)) == 2);
+	  static_assert(jc::f(std::move(s)) == 2);
+	}
+	```
+* 4 Mainly Purpose:
+>[!Success] `move` usages:
+>1. **Move Constructors and Move Assignment Operator**: enable moving resources from one to another rather than copying
+>```cpp
+>MyClass a;
+>MyClass b = std::move(a); // move constructor
+>a = std::move(b); // move assignment operator
+>```
+>
+>2. **Passing to functions**: avoid copying
+>```cpp
+>void process(MyType c);
+>
+>MyClass a;
+>process(std::move(a));
+>```
+>
+>3. **Returning Objects from Functions**: to return a local object from a function, enable move semantics
+>```cpp
+>MyType createMyClass()
+>{
+>	MyClass a;
+>	return std::move(a); // 
+>
+>}
+>```
+>
+>4. **Perfect Forwarding in Generic Programming**
+>```cpp
+>template\<typename T\>
+>void wrapper(T&& arg)
+>{
+>	anotherFunc(std::move(arg));
+>}
+>```
+
+* **`move` preserve `cv` may cause copy operations**:
+	move operations (move constructor and move assignment operator) typically **==require non-const objects because they modify the source object by transferring its resources to the destination object.==** If the source object is **const, it cannot be modified**, which means its resources cannot be transferred. As a result, **the compiler will fall back to using the copy** constructor or copy assignment operator, which do not modify the source object and can work with const objects.
+```cpp
+class MyClass {  
+public:  
+    // Move constructor  
+    MyClass(MyClass&& other) noexcept {  
+        std::cout << "Move constructor called\n";  
+    }  
+  
+    // Copy constructor  
+    MyClass(const MyClass& other) {  
+        std::cout << "Copy constructor called\n";  
+    }  
+};  
+  
+int main() {  
+    const MyClass obj; // obj is const  
+    MyClass obj2 = std::move(obj); // Attempts to move, but will copy instead  
+    return 0;  
+}
+```
+
+### `forward`
+
+- C++11 之前的转发很简单
+
+```cpp
+#include <iostream>
+
+void f(int&) { std::cout << 1; }
+void f(const int&) { std::cout << 2; }
+
+// 用多个重载转发给对应版本比较繁琐
+void g(int& x) { f(x); }
+
+void g(const int& x) { f(x); }
+
+// 同样的功能可以用一个模板替代
+template <typename T>
+void h(T& x) {
+  f(x);
+}
+
+int main() {
+  int a = 1;
+  const int b = 1;
+
+  g(a);
+  h(a);  // 11
+  g(b);
+  h(b);  // 22
+  g(1);  // 2
+  // h(1);  // 错误 C++11无法转发右值
+}
+```
+
+- C++11 引入了右值引用，但原有的模板无法转发右值。如果使用 [std::move](https://en.cppreference.com/w/cpp/utility/move) 则无法转发左值，因此为了方便引入了 [std::forward](https://en.cppreference.com/w/cpp/utility/forward)
+
+```c
+#include <iostream>
+#include <utility>
+
+void f(int&) { std::cout << 1; }
+void f(const int&) { std::cout << 2; }
+void f(int&&) { std::cout << 3; }
+
+// 用多个重载转发给对应版本比较繁琐
+void g(int& x) { f(x); }
+void g(const int& x) { f(x); }
+void g(int&& x) { f(std::move(x)); }
+
+// 用一个模板来替代上述功能
+template <typename T>
+void h(T&& x) {
+  f(std::forward<T>(x));
+}
+
+int main() {
+  int a = 1;
+  const int b = 1;
+
+  g(a);
+  h(a);  // 11
+  g(b);
+  h(b);  // 22
+  g(std::move(a));
+  h(std::move(a));  // 33
+  g(1);
+  h(1);  // 33
+}
+```
+
+## 24 Distinguish universal references from rvalue references.
+
+- 带右值引用符号不一定就是右值引用，这种不确定类型的引用称为转发引用
+
+```cpp
+template <typename T>
+void f(T&&) {}  // T&&不一定是右值引用
+
+int a = 1;
+f(a);  // T 推断为 int&，T&& 是 int& &&，折叠为 int&，是左值引用
+f(1);  // T 推断为 int，T&& 是 int&&，右值引用
+auto&& b = a;  // int& b = a，左值引用
+auto&& c = 1;  // int&& c = 1，右值引用
+```
+
+* **Perfect Forward must use the exact format `T&&` and follow correct type deduction**
+```cpp
+template<typename T>
+void f(std::vector<T>&& ) {} // not T&&, so rvalue reference(or univeral reference)
+
+std::vector<int> v;
+f(v); // error, f only accept rvalue
+
+template<typename T>
+void g(const T&&) {} // const is not movable, so no forwarding, only rvalue ref
+
+int i = 1;
+g(i); // error
+
+```
