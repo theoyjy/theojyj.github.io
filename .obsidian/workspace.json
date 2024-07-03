@@ -170,8 +170,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 7
+        ]
       }
     ],
     "direction": "horizontal",
@@ -191,19 +190,19 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d478af17e7aea3ca",
+  "active": "245b608f8adf1ea2",
   "lastOpenFiles": [
-    "01.md",
+    "Knowledge/C++Everything.md",
+    "Plans/Full Time!!.md",
     "Knowledge/C++ Crucial Knowledge.md",
+    "01.md",
     "Knowledge/CSE167x Computer Graphics.md",
     "Knowledge/Dev Tips.md",
-    "Knowledge/C++Everything.md",
     "Knowledge/Stanford CS143 Compiler.md",
     "Knowledge/MIT OS Engineering.md",
     "Knowledge/Learn How to Improve.md",
     "index.md",
     "excalibrain.md",
-    "Plans/Full Time!!.md",
     "Task Calendar.md",
     "Doc/processIntro.md",
     "Knowledge/UE Errors.md",

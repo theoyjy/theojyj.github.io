@@ -1023,31 +1023,263 @@ int main() {
 
 ## 24 Distinguish universal references from rvalue references.
 
-- 带右值引用符号不一定就是右值引用，这种不确定类型的引用称为转发引用
-
+1. Universal Reference **==must be the format `T&&`==**, `std::vector<T>&&` is rvalue red
+2. Universal Reference must **==doesn't have `const`==**, it makes the param unmodifiable, can't be move. 
+3. Universal Reference must involves **==type deduction==**
+4. **==`template <class... Args> void emplace_back(Args&&... args);` is universal reference==**
+5. **==any `auto&&` is a universal ref==**, but remember pass it rvalue
+6. **==`lambda` can have perfect forwarding==**: Lambdas in C++ can actually be templated, starting from C++14. This feature allows you to use generic lambdas with template type deduction. The `auto` keyword in the lambda parameter list makes the lambda a generic lambda
 ```cpp
-template <typename T>
-void f(T&&) {}  // T&&不一定是右值引用
-
-int a = 1;
-f(a);  // T 推断为 int&，T&& 是 int& &&，折叠为 int&，是左值引用
-f(1);  // T 推断为 int，T&& 是 int&&，右值引用
-auto&& b = a;  // int& b = a，左值引用
-auto&& c = 1;  // int&& c = 1，右值引用
-```
-
-* **Perfect Forward must use the exact format `T&&` and follow correct type deduction**
-```cpp
+// 1. exact format
 template<typename T>
-void f(std::vector<T>&& ) {} // not T&&, so rvalue reference(or univeral reference)
+void f(std::vector<T>&&){} // not T&&, so rvalue reference(or univeral reference)
 
 std::vector<int> v;
 f(v); // error, f only accept rvalue
 
+// 2. no const
 template<typename T>
 void g(const T&&) {} // const is not movable, so no forwarding, only rvalue ref
 
 int i = 1;
 g(i); // error
 
+// 3. Must have type deduction
+
+// 3.1 no type deduction when calling with specific type
+template<typename T>
+void f(T&&){}
+
+f<int>(5); // type is specified, so no univeral red
+
+// 3.2 when calling push_back, there must have been an instance, the T is already decided, so no type deduction during push_back
+template<class T, class Allocator = allocator<T>>
+class vector
+{
+public:
+	void push_back(T&&); // T is already deduced when instantiation, so rvalue ref
+
+	// 4. class.. Args
+	template <class... Args> // Args is independent of vector’s type parameter T, 
+					// so Args must be deduced each time emplace_back is called.
+	void emplace_back(Args&&... args);  // universal ref, because it doesn't 
+}
+
+std::vector<A> v;  // 实例化指定了 T
+
+// 对应的实例化为
+class vector<A, allocator<A>> {
+ public:
+  void push_back(A&& x);  // 不涉及类型推断，右值引用
+
+  template <class... Args>
+  void emplace_back(Args&&... args);  // 转发引用
+};
+
+
+// 5. auto&&
+int a = 1;
+auto&& x = a; // int&
+auto&& y = std::move(a); // int&&
+auto&& z = 7; // int&&
+
+
+// 6. lambda can have perfect forward
+auto f = [](auto&& x) 
+{ 
+	// T is replaced by auto, so use decltype(x) get deduced type
+	return g(std::forward<decltype(x)>(x));
+};
+
+auto f = [](auto&&..args)
+{
+	return g(std::forward<decltype(args)>(args));
+}
+
 ```
+
+## 25 Use `std::move` on rvalue ref, `std::forward` on universal ref
+
+- 右值引用只会绑定到可移动对象上，因此应该使用 [std::move](https://en.cppreference.com/w/cpp/utility/move)。转发引用用右值初始化时才是右值引用，因此应当使用 [std::forward](https://en.cppreference.com/w/cpp/utility/forward)
+-  To Maintain **Strong Exception Safety** which means If the operation **must either complete successfully or have no observable effect**, could use [std::move_if_noexcept](https://en.cppreference.com/w/cpp/utility/move_if_noexcept) instead of [std::move](https://en.cppreference.com/w/cpp/utility/move)```
+
+```cpp
+#include <type_traits>
+struct A{
+	A() = defualt;
+	A(const A&) { std::cout << 1; }
+	A(A&&) { std::cout << 2; }
+}
+
+struct B
+{
+	B()
+	B(const B&) noexcept { std::cout << 3; }
+	B(B&&) {std::cout << 4;}
+}
+
+int main()
+{
+	A a;
+	A a2= std::move_if_noexcept(a); // 1
+
+	B b;
+	B b2 = std::move_if_noexcept(b); // 4
+}
+```
+
+- **==Returning passed-in rvalue ref or universal reference object==**: use `std::move` or `std::forward` to **==cast it accordingly==**. No need to declare the return type as a reference; **==return by value is sufficient==**.
+
+```cpp
+A f(A&& a) {
+  do_something(a);
+  return std::move(a);
+}
+
+template <typename T>
+A g(T&& x) {
+  do_something(x);
+  return std::forward<T>(x);
+}
+```
+
+- **==Return Local Variables==**: **no need to use `move` for optimization**. C++ standard provides **==Return Value Optimization(RVO) which avoids unnecessary copies==**
+
+```cpp
+#include <string>
+std::string createString() 
+{ 
+	std::string local = "Hello, World!"; 
+	return local; // RVO kicks in, no need for std::move 
+}
+```
+*RVO (Return Value Optimization) ensures that local objects are created directly in the memory allocated for the return value, avoiding copy operations. Using `std::move` here would prevent RVO from being applied.*
+
+```cpp
+A make_a() { return A{}; }
+
+auto x = make_a(); // only call default constructor once
+```
+
+## 26 Avoid overloading on universal references
+
+>[!warning] If function param accepts lvalue ref, passing a rvalue still performs a copy
+>
+>```cpp
+>void f(const std::string& s) { // do something }
+>
+>// pass in rvalue -> still triggers copy constructor
+>f("hi");
+>f(std::string("hi));
+>```
+>
+>>[!Success] Universal Ref accepts all types and avoid unnecessary copies
+>>```cpp
+>>template\<typename T\>
+>>void f(T&& a) { // ... }
+>>
+>>f("hi"); // move
+>>f(std::string("hi")); // move
+>>```
+>>
+
+>[!warning] Overloading on universal references leads to ambiguities, 3 scenarios:
+>1. Overloading a universal reference and an lvalue reference.
+>2. Overloading a universal reference and a rvalue reference.
+>3. Ambiguities between template and non-template functions.
+>```cpp
+>std::vector\<std::string\> vec;
+>
+>// 3. Ambiguities between template and non-template functions:
+>template \<typename T\>
+>void f(T&& s){
+>	v.emplace_back(s);
+>}
+>std::string make_string(int n) { return std::string("hi"); }
+>void f(int n) {
+>	v.emplace_back(make_string(n));
+>}
+>// 之前的调用仍然正常 , T&&
+>f(std::string("hi"));
+>f("hi");
+>
+>// overloading works as well
+>f(1);
+>
+>// Universal Ref is more precise than int
+>int i = 1;
+>f(i); // error, call T&&, s is int&& and it calls v.emplace_back(s); v is vector\<string\>
+>     // construct string from s -> error
+> 
+> 
+> ```
+
+>[!Warning] Template Constructor Issues
+>1. Template constructor match more broadly than copy constructor, leading to incorrect behavior
+>2. Template constructor automatically generating default constructor
+>3. More complex when inheritance exist, base class with template constructor 
+>```cpp
+> // 1. Match broadly, incorrect behavior
+> class A{
+> public:
+> 	A() = default;
+> 	template\<typename T\>
+> 	explicit A(T&& x) : s_(std\:\:forward\<T\>(x)) {}
+> 	explicit A(int x) : s_(make_string(x)) {}
+> private:
+> 	std::string s_;
+> }
+> int i = 1;
+> A a{i}; //error: match with T&&, construct s_ with int&
+> A b{"hi"}; // OK
+> A c{b}; // error: match with T&&, construct s_ with A&
+> 
+>class A{
+>public:
+>	template \<typename T\>
+>	void A(T&& x) : s\_(std::forward\<T\>(x)) {}
+>	
+>// 2. prevent compiler automatically generating copy and move constructors
+>// we have to do it by our own 
+>	A(const A& rhs) = default;
+>	A(A&& rhs) = default;
+>private:
+>	std::string s_;
+>}
+>
+> // 1. Match broadly, incorrect behavio
+> int main()
+> {
+> 	A a{"hi"}; // match T&&
+> 	A b{a}; // error, T&& is more general so match T&& rather than copy constructor, but T&& 
+> 			// can construct s_ with A
+> 	const A c{"hi"};
+> 	A d(c); // OK, match copy constructor
+> }
+> 
+>  // 3. inheritance
+>class A {
+> public:
+>  template \<typename T\>
+>  explicit A(T&& n) : s(std::forward\<T\>(n)) {}
+>
+> private:
+>  std::string s;
+>};
+>
+>class B : public A {
+> public:
+>  /*
+>   * 错误：调用基类模板而非拷贝构造函数
+>   * const B 不能转为 std::string
+>   */
+>  B(const B& rhs) : A(rhs) {}
+>
+>  /*
+>   * 错误：调用基类模板而非移动构造函数
+>   * B 不能转为 std::string
+>   */
+>  B(B&& rhs) noexcept : A(std::move(rhs)) {}
+>};
+>```
+

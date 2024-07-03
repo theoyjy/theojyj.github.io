@@ -216,3 +216,69 @@ By following this structured plan, you'll be well-prepared for both Software Eng
 
 ### Summary
 This plan ensures a balanced approach, focusing on the most critical skills and knowledge needed for both Software Engineer and AR/VR Developer roles, with specific time intervals for each set of resources.
+
+
+### Ranked Importance of Skills and Recommended Study Time Allocation
+
+1. **C++ Proficiency (20%)**
+    
+    - **Importance:** Essential for most SDE roles, especially those focused on system-level programming.
+    - **Action:** Deepen understanding of advanced concepts and best practices.
+2. **Data Structures and Algorithms (20%)**
+    
+    - **Importance:** Critical for technical interviews and solving complex problems efficiently.
+    - **Action:** Regular practice on platforms like LeetCode and HackerRank.
+3. **System Design (15%)**
+    
+    - **Importance:** Necessary for designing scalable and reliable systems, a key aspect of SDE roles.
+    - **Action:** Study principles and work on small projects to apply concepts.
+4. **Version Control Systems (Git) (10%)**
+    
+    - **Importance:** Essential for collaborative software development.
+    - **Action:** Practice using Git, contribute to open-source projects.
+5. **Software Engineering Principles and Design Patterns (10%)**
+    
+    - **Importance:** Improves code quality and maintainability.
+    - **Action:** Read relevant literature and apply patterns in projects.
+6. **Cloud Platforms (AWS, Azure, Google Cloud) (10%)**
+    
+    - **Importance:** Increasingly important for deploying and managing applications.
+    - **Action:** Gain hands-on experience through small projects.
+7. **Testing (Unit and Integration Testing) (5%)**
+    
+    - **Importance:** Ensures code quality and reliability.
+    - **Action:** Implement tests in projects, use frameworks like Google Test.
+8. **Operating Systems (Unix/Linux) (5%)**
+    
+    - **Importance:** Useful for system-level programming and development environments.
+    - **Action:** Learn basic command-line skills and system operations.
+9. **Continuous Integration/Continuous Deployment (CI/CD) (5%)**
+    
+    - **Importance:** Facilitates automated testing and deployment.
+    - **Action:** Set up CI/CD pipelines using tools like Jenkins or GitHub Actions.
+
+### Soft Skills (5%)
+
+1. **Communication and Collaboration**
+    
+    - **Importance:** Vital for teamwork and project management.
+    - **Action:** Practice effective communication in team settings.
+2. **Problem-Solving**
+    
+    - **Importance:** Core to the role of an SDE.
+    - **Action:** Engage in regular problem-solving exercises.
+
+### Time Allocation Summary
+
+- **C++ Proficiency:** 20%
+- **Data Structures and Algorithms:** 20%
+- **System Design:** 15%
+- **Version Control Systems (Git):** 10%
+- **Software Engineering Principles and Design Patterns:** 10%
+- **Cloud Platforms:** 10%
+- **Testing:** 5%
+- **Operating Systems (Unix/Linux):** 5%
+- **CI/CD:** 5%
+- **Soft Skills:** 5%
+
+By focusing on these areas proportionally, you can build a comprehensive skill set that aligns with the most common and desired qualifications for SDE roles.
