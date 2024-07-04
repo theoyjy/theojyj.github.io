@@ -77,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 264.5,
-    "collapsed": true
+    "width": 264.5
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -94,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md",
+                "file": "Resources/C++ Crucial Knowledge-20240704204635291.webp",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md",
+                "file": "Resources/C++ Crucial Knowledge-20240704204635291.webp",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md"
+                "file": "Resources/C++ Crucial Knowledge-20240704204635291.webp"
               }
             }
           },
@@ -190,11 +189,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "245b608f8adf1ea2",
+  "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
+    "Resources/C++ Crucial Knowledge-20240704204435316.webp",
+    "Resources/C++ Crucial Knowledge-20240704204635291.webp",
+    "Knowledge/C++ Crucial Knowledge.md",
     "Knowledge/C++Everything.md",
     "Plans/Full Time!!.md",
-    "Knowledge/C++ Crucial Knowledge.md",
     "01.md",
     "Knowledge/CSE167x Computer Graphics.md",
     "Knowledge/Dev Tips.md",
@@ -225,15 +226,12 @@
     "Resources/CSE167x Computer Graphics-20240625212330021.webp",
     "Resources/CSE167x Computer Graphics-20240625212159405.webp",
     "Resources/CSE167x Computer Graphics-20240625164620892.webp",
-    "Resources/CSE167x Computer Graphics-20240625171558662.webp",
-    "CSE167x Computer Graphics-20240625171508265.webp",
     "WorkTmp/生长动画.excalidraw.md",
     "Knowledge/CMake.md",
     "WorkTmp/视频插值.md",
     "WorkTmp/显存峰值问题.md",
     "Knowledge/TinyRender Notes.md",
     "Knowledge/TinyRender Notes 1.md",
-    "Plans/OKRs.md",
     "WorkTmp/2.7bugs.canvas",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",

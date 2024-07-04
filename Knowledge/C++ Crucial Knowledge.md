@@ -1247,7 +1247,7 @@ auto x = make_a(); // only call default constructor once
 >	std::string s_;
 >}
 >
-> // 1. Match broadly, incorrect behavio
+> // 1. Match broadly, incorrect behavior
 > int main()
 > {
 > 	A a{"hi"}; // match T&&
@@ -1282,4 +1282,563 @@ auto x = make_a(); // only call default constructor once
 >  B(B&& rhs) noexcept : A(std::move(rhs)) {}
 >};
 >```
+
+## 27 Alternatives to overloading on universal references
+
+1. The most direct method is not using overloading at all. The second direct method is not using universal references, like C++98. The third is pass-by-value
+
+```cpp
+#include <string>
+
+// no overloading or no unversal references
+class A {
+ public:
+  template <typename T>
+  explicit A(const T& x) : s_(x) {}
+
+ private:
+  std::string s_;
+};
+
+int main() {
+  A a{"hi"};
+  A b{a};  // OK
+}
+
+// pass-by-value
+std::string make_string(int n) { return std::string{"hi"}; }
+
+class A {
+ public:
+  explicit A(std::string s) : s_(std::move(s)) {}
+  explicit A(int n) : s_(make_string(n)) {}
+
+ private:
+  std::string s_;
+};
+
+int main() {
+  int i = 1;
+  A a{i};  // OK，调用 int 版本的构造函数
+}
+
+```
+
+###  ==Tag Dispatching==
+
+Tag dispatch involves creating tag types and using them to differentiate between function overloads, improving clarity and avoiding ambiguities.
+
+**==The existence of a single (unoverloaded) function as the client API. This single function dispatches the work to be done to the implementation functions.==**
+
+1. universal reference is **not overloaded, but get a tag value** to dispatch params to implementations
+2. the **implementation functions are overloaded**, o**ne takes a universal reference parameter, and a tag parameter** so no more than one overload will be **a viable match**.
+3. As a result, it’s the **tag that determines which overload gets called**
+
+```cpp
+
+vector<string> vec;
+
+string make_string(int n)
+{
+	return string("hi");
+}
+
+// universal template, emplace element to vec
+template <typename T> 
+void processImpl(T&& x, std::false_type)
+{
+	v.emplace_back(std::forward<T>(s));
+}
+
+// to have an overload taking an int that's used to look up objects by index, then insert it to vec
+
+string element_from_idx(int idx)
+{
+	if(idx < vec.size())
+		return vec[idex];
+	return "";
+}
+
+void processImpl(int n, std::true_type)
+{
+	process(element_from_idx(n));
+}
+
+template <typename T>
+void process(T && arg)
+{
+	// int&& is not intergral, so we have to remove reference
+	processImpl(forward<T> s, std::is_intergral<remove_reference_t<T>>());
+}
+
+```
+*Notice that we don’t even name those parameters. They serve no purpose at runtime, and in fact we hope that compilers will recognize that the tag parameters are unused and will optimize them out of the program’s execution image. (Some compilers do, at least some of the time.)*
+
+
+### Constraining templates that take universal references `std::enable_if`
+
+>[!Warning] Tag Dispatch issues on Constructor
+>Compilers may generate copy and move constructors themselves, so even if you write only one constructor and use tag dispatch within it, some **constructor calls may be handled by compiler-generated functions that bypass the tag dispatch system**.
+>
+>Providing a constructor taking a universal reference causes the **universal reference constructor** (rather than the copy constructor) **to be called when copying non-const lvalues**. That Item also explains that **when a base class declares a perfect-forwarding constructor, that constructor will typically be called when derived classes implement their copy and move constructors in the conventional fashion, even though the correct behavior is for the base class’s copy and move constructors to be invoked.**
+
+>[!Abstract] `std::enable_if`
+> Gives you a way to ==**force compilers**== to behave as if a particular template didn’t exist. Such **==templates are said to be disabled.==**
+>
+>In our case, we’d like to **enable** the Person perfect-forwarding constructor **==only if the type being passed isn’t Person.==** If the type being passed is Person, we want to disable the perfect-forwarding constructor, because that will cause the class’s copy or move constructor to handle the call, which is what we want when a Person object is initialized with another Person. 
+>
+>when we’re looking at T, **we want to ignore**:
+>1. **Whether it’s a reference**. For the purpose of determining whether the universal reference constructor should be enabled, the types Person, Person&, and Per son&& are all the same as Person. 
+>2. **Whether it’s const or volatile**. As far as we’re concerned, a const Person and a volatile Person and a const volatile Person are all the same as a Person.
+>
+>=> `std::decay<T>::type`:
+>This means we need a way to **==strip any references, consts, and volatiles from T before checking to see if that type is the same as Person==**.
+>=> The condition: `!std::is_same<Person, typename std::decay<T>::type>::value`
+```cpp
+class Person{
+public:
+	template<typename T,
+		typename  = typename std::enable_if<
+					!std::is_same<Person, 
+								typename std::decay<T>::type>
+								>::value			
+					>::type
+	>
+	explicit Person(T&& n);
+}
+
+// issue：
+class SpecialPerson : Person
+{
+	SpecialPerson(const Person& rhs) : Person(rhs) {}
+	
+	//the universal reference constructor in the base class is enabled, and it happily instantiates to perform an exact match for a SpecialPerson argument
+	SpecialPerson(Person&& rhs) :: Person(std::move(rhs)) {} 
+}
+
+// final version C++11
+class Person { 
+public: 
+	template< typename T, 
+			  typename = typename std::enable_if< 
+						  !std::is_base_of<Person, 
+										  typename std::decay<T>::type 
+						                   >::value
+                         >::type 
+           > 
+	explicit Person(T&& n);
+
+// C++14
+class Person
+{
+public:
+	template<
+		typename T,
+		typename = std::enable_if_t<
+					!std::is_base_of<Person,
+									 std::decay_t<T>
+									>::value
+					>		
+	>
+	explicit Person(&& n);
+
+}
+```
+
+#### Final Version
+(1) add a Person constructor overload to handle integral arguments and 
+(2) further constrain the templatized constructor so that it’s disabled for such arguments.
+```cpp
+class Person
+{
+public:
+	template<
+		typename T,
+		typename = std::enable_if_t<
+					!std::is_base_of<Person, std::decay_t<T>>::value
+					&&
+					!std::is_intergral<std::remove_reference_t<T>::value>
+		>
+	>
+	explicit Person(&& n);
+
+	explicit Person(int idx) : name(nameFromIdx)
+	{
+	}
+}
+```
+
+## Item 28: Understand reference collapsing.
+
+>[!INFO] Reference Collapsing rules
+>& + & → &
+>& + && → &
+>&& + & → &
+>&& + && → &&
+>
+>**Reference Collapsing** is the basis for `forward`
+>**==Works in 4 scenarios==**: 
+>1. [Template Instantiation](###Template%20Instantiation%20After%20Template%20Type%20Deduction)
+>2. `auto` type deduction
+>3. `decltype` type deduction
+>4. `typedef` or `using` declaring alternative names
+
+```cpp
+int& & b = a;  // 错误
+```
+
+* **==`std::forward` 实现==**
+	*`static_cast` 是强制让对象编程目标类型，而不是在原有类型上加东西*
+	* **==`static_cast<A&&>(A&)` -> would not cause ref collapsing, but force A be A&&==**
+```cpp
+template<typename T>
+T&& forward(std::remove_reference_t<T>& x)
+{
+	return static_cast<T&&>(x);
+}
+
+// pass lvalue ref A&
+T is A&
+std::remove_reference_T<A&> is A, x is A&
+type of return is A& && -> collapse to A&
+static_cast<A& &&>(A&) -> static_cast<A&>(A&) -> A&
+would return A&
+
+// Template Instantiation to:
+A& forward(A& x)
+{
+	return static_cast<A&>(x);
+}
+
+// pass rvalue ref A&&
+T is A&&
+std::remove_reference_t<A&&> is A, so x is A&
+return type is A&& && -> collapse to A&&
+static_cast<A&& &&>(A&) -> static_cast<A&&> (A&) -> A&&
+would return A&&
+
+// template instantiation to:
+A&& forward(A& x)
+{
+	return static_cast<A&&>(x);
+}
+```
+
+- auto&& 与使用转发引用的模板原理一样
+
+```c
+int a = 1;
+auto&& b = a;  // a 是左值，auto 被推断为 int&，int& && 折叠为 int&
+```
+
+- decltype 同理，如果推断中出现了引用的引用，就会发生引用折叠
+- 如果在 typedef 的创建或求值中出现了引用的引用，就会发生引用折叠
+
+```c
+template <typename T>
+struct A {
+  using RvalueRef = T&&;  // typedef T&& RvalueRef
+};
+
+int a = 1;
+A<int&>::RvalueRef b = a;  // int& && 折叠为 int&，int& b = a
+```
+
+* Can't apply `const` `volatie` to reference, will be ignored
+```c
+using A = const int&;
+using B = int&&;
+static_assert(std::is_same_v<volatile A&&, const int&>);
+static_assert(std::is_same_v<const B&&, int&&>);
+```
+
+### Template Instantiation After Template Type Deduction
+
+* **Template Type Deduction**: is compiler deduce type of parameters based on arguments provided to a template function or class. **==This occurs==** when you call a template function or create an instance of a template class **==without explicitly specifying the template arguments==**
+
+```cpp
+template <typename T> void 
+func(T x) 
+{
+	// Implementation 
+} 
+
+int main() {
+	int a = 42; 
+	func(a); // T is deduced to be int return 0; 
+}
+```
+
+* **Template Instantiation**: the process of generating a concrete function or class from a template by substituting the deduced or explicitly specified types for the template parameters. This **==happens after the template type deduction (or when explicit types are provided), and the compiler generates the actual code for the specific types==**.
+
+```cpp
+template <typename T> 
+class MyClass { 
+public: 
+	T value; 
+	MyClass(T v) : value(v) {} 
+}; 
+
+int main() { 
+	MyClass<int> obj(42); // no deduction, since the type has been specified,
+						// directly Instantiation of MyClass<int> return 0; 
+}
+```
+
+* **Combination**:
+
+```cpp
+#include <iostream>
+#include <utility>
+
+// Template function with type deduction
+template <typename T>
+void printTypeAndValue(T&& t) {
+    std::cout << "Value: " << t << std::endl;
+}
+
+int main() {
+    int a = 42;
+    
+    // T deduced as int&, instantiation of printTypeAndValue<int&>
+    printTypeAndValue(a);
+	
+	// T deduced as int, instantiation of printTypeAndValue<int>
+    printTypeAndValue(42);
+    
+    // T deduced as int&&, instantiation of printTypeAndValue<int&&>
+    printTypeAndValue(std::move(a)); 
+    return 0;
+}
+
+```
+
+
+## Item 29: Assume that move operations are not present, not cheap, and not used.
+
+>[!Abstract] Several Scenarios in which C++11' s move semantics do you no good:
+>1. **No Move Operations**: The obj requires to be moved from fails to offer move operations. The move request therefore becomes a copy request.
+>2. **Move not fast**: for example, `std::array` [Explanation](###No%20truly%20cheap%20way%20to%20move%20their%20contents)
+>3. **Move not usable**: The context in which the moving would take place **requires** a move operation that **emits no exceptions, but that operation isn't declared `noexcept`**
+>4. **Source object is lvalue**: 
+
+
+### No truly cheap way to move their contents
+
+#### `std::array`
+
+* ==The **other standard containers**, each of which stores its **contents on the heap**==. Objects of such container types hold (as data members), conceptually, **only a pointer** to the heap memory storing the contents of the container
+  The existence of this pointer makes it possible to **==move the contents of an entire container in constant time==**: **just copy the pointer** to the container’s contents from the source container to the target, and s**et the source’s pointer to null**:
+	![[C++ Crucial Knowledge-20240704204435316.webp]]
+
+* `std::array` objects lack such a pointer, because the **data** for a std::array’s contents **are stored directly in the std::array object**:
+  ==Even if move `Widget` is faster than copying, both moving and copying a `std::array` have linear-time computational complexity==, because each element in the container must be copied or moved.. This is far from the “moving a container is now as cheap as assigning a couple of pointers” claim that one sometimes hears
+	![[C++ Crucial Knowledge-20240704204635291.webp]]
+
+#### Short String Optimization
+
+>[!INFO] Special example
+>The motivation for the ***SSO(short string optimization)*** is extensive evidence that short strings(usually less than 15 bytes) are the norm for many applications. Using **an internal buffer to store the contents** of such strings **eliminates the need to dynamically allocate memory** for them, and that’s typically an efficiency win. An implication of the win, however, is that moves are no faster than copies.
+
+## Item 30:Familiarize yourself with perfect forwarding failure cases.
+
+>[!Abstract] Perfect Forwarding Fails:
+>**==If calling overload f with a particular argument does one thing, but calling template forwarding function`fwd` with the same function does something else==**
+>```cpp
+>template < typename... Ts >
+>void fwd(Ts&&... params) // variadic template
+>{
+>	f(std::forward< Ts >(params)...);
+>}
+>
+>f(expr); // if this does one thing,
+>fwd(expr); // but this does another thing, fwd fails to perfectly forward expr to f
+>```
+>**==Scenarios that Perfect forwarding Fails occurs:==**
+>1. **Compiler are unable to deduce a type**: such as template type deduction does accept braced initializer.
+>2. **Compiler deduce the "wrong" type**
+
+### Braced Initializer:
+
+```cpp
+void f(const std::vector< int > & v ) ;
+f({1, 2, 3}); // works. "{1, 2, 3}" implicitly converted to std::vector< int>
+
+fwd({1, 2, 3}); // error, doesn't compile
+```
+
+### 0 or NULL as null pointer
+
+```cpp
+void f(int*) {}
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+fwd(NULL);  // T 推断为 int，转发失败
+```
+
+### Declaration-only integral static const data members 
+
+  类内的 static 成员的声明不是定义，**==如果 static 成员声明为 const，则编译器会为这些成员值执行 const propagation，从而不需要为它们保留内存==**。==对整型 static const 成员取址可以通过编译，但会导致链接期的错误。**转发引用也是引用**==，在编译器生成的机器代码中，引用一般会被当成指针处理。程序的二进制代码中，从硬件角度看，指针和引用的本质相同
+  
+```cpp
+class A {
+ public:
+  static const int n = 1;  // 仅声明
+};
+
+void f(int) {}
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+f(A::n);    // OK：等价于 f(1)
+fwd(A::n);  // 错误：fwd 形参是转发引用，需要取址，无法链接
+```
+
+- 但并非所有编译器的实现都有此要求，上述代码可能可以链接。考虑到移植性，最好还是提供定义
+
+```cpp
+// A.h
+class A {
+ public:
+  static const int n = 1;
+};
+
+// A.cpp
+const int A::n;
+```
+
+### Overloaded function names and template names
+
+- 如果转发的是函数指针，可以直接将函数名作为参数，函数名会转换为函数指针
+
+```c
+void g(int) {}
+
+void f(void (*pf)(int)) {}
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+f(g);    // OK
+fwd(g);  // OK
+```
+
+- 但如果要转发的函数名对应多个重载函数，则无法转发，因为模板无法从单独的函数名推断出函数类型
+
+```c
+void g(int) {}
+void g(int, int) {}
+
+void f(void (*)(int)) {}
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+f(g);    // OK
+fwd(g);  // 错误：不知道转发的是哪一个函数指针
+```
+
+- 转发函数模板名称也会出现同样的问题，因为函数模板可以看成一批重载函数
+
+```c
+template <typename T>
+void g(T x) {
+  std::cout << x;
+}
+
+void f(void (*pf)(int)) { pf(1); }
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+f(g);         // OK
+fwd(g<int>);  // 错误
+```
+
+- 要**让转发函数接受重载函数名称或模板名称，只能手动指定需要转发的重载版本或模板实例**。不过完美转发本来就是为了接受任何实参类型，而要传入的函数指针类型一般是未知的
+
+```c
+template <typename T>
+void g(T x) {
+  std::cout << x;
+}
+
+void f(void (*pf)(int)) { pf(1); }
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+using PF = void (*)(int);
+PF p = g;
+fwd(p);                   // OK
+fwd(static_cast<PF>(g));  // OK
+```
+
+### Bitfields
+
+>[!Abstract] Definition of Bitfield
+>```cpp
+>struct Flags {
+>    unsigned int a : 1;  // will occupy exactly 1 bit.
+>    unsigned int b : 3;  // will occupy 3 bits.
+>    unsigned int c : 4;  // will occupy 4 bits.
+};
+>```
+>**Purpose of Bitfields**:
+>
+>Bitfields are used to **pack data into a smaller amount of memory**. Instead of each member occupying the default size of its type (e.g., 4 bytes for an `unsigned int` on most systems), the members only take up the specified number of bits.
+>
+>Bitfields are **useful when memory efficiency is crucial**, such as in embedded systems or when dealing with hardware registers.
+>
+>**Why Can't You Access the Address of a Bitfield?**
+>
+>There are several reasons why you cannot take the address of a bitfield:
+>
+>1. **Non-Addressable Storage**:
+>    
+>    - A bitfield does **not necessarily occupy a whole addressable storage unit (like a byte). It may span across bytes or other bits, making it non-addressable in the typical sense.**
+>2. **Implementation-Dependent Layout**:
+>    
+>    - **The layout and alignment of bitfields are implementation-dependent**. Different compilers may place bitfields differently within the containing storage unit, complicating address computation.
+>3. **Access Mechanics**:
+>    
+>    - **Access** to bitfields usually involves bit manipulation operations, **which do not map cleanly to memory addresses. Taking the address of a bitfield would require exposing these operations, which is not supported by the language**.
+
+- **==转发引用也是引用，实际上需要取址，但位域不允许直接取址==**
+
+```c
+
+
+void f(int) {}
+
+template <typename T>
+void fwd(T&& x) {
+  f(std::forward<T>(x));
+}
+
+Flags x{1, 5, 12};
+f(x.a);    // OK
+fwd(x.a);  // 错误
+```
+
+- **==实际上接受位域实参的函数也只能收到位域值的拷贝，因此不需要使用完美转发==**，换用传值或传 const 引用即可。完美转发中也可以通过强制转换解决此问题，虽然转换的结果是一个临时对象的拷贝而非原有对象，但位域本来就无法做到真正的完美转发
+
+```c
+fwd(static_cast<int>(x.a));  // OK
+```
 
