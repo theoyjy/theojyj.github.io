@@ -1,15 +1,14 @@
 ### 高优先级（核心考点）
 
-1. 理解模板类型推导、auto类型推导和decltype（Effective Modern C++ 1-4）[Knowledge](#01%20Template%20Type%20Deduction) [Questions](#1%20Template%20Type%20Deduction%20|%20`auto`%20|%20`decltype`%20Questions)
-2. 理解std::move和std::forward（Effective Modern C++ 23-25）
-3. 理解右值引用，移动语义，完美转发（Effective Modern C++ 23-30）
-4. 对于占有性资源使用std::unique_ptr（Effective Modern C++ 18）
-5. 对于共享性资源使用std::shared_ptr（Effective Modern C++ 19）
-6. 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）
-7. 对于右值引用使用std::move，对于通用引用使用std::forward（Effective Modern C++ 25）
-8. 确保const成员函数线程安全（Effective Modern C++ 16）
-9. 使用override声明重载函数（Effective Modern C++ 12）
-10. 理解异常处理（More Effective C++ 9-15）
+1. [ ] 理解模板类型推导、auto类型推导和decltype（Effective Modern C++ 1-4）[Knowledge](#01%20Template%20Type%20Deduction) [Questions](#1%20Template%20Type%20Deduction%20|%20`auto`%20|%20`decltype`%20Questions)
+2. [ ] 理解std::move和std::forward，理解右值引用，移动语义，完美转发（Effective Modern C++ 23-30）[Link](#2%20`move`%20and%20`forward`)
+3. [ ] 对于占有性资源使用std::unique_ptr（Effective Modern C++ 18）
+4. [ ] 对于共享性资源使用std::shared_ptr（Effective Modern C++ 19）
+5. 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）
+6. 对于右值引用使用std::move，对于通用引用使用std::forward（Effective Modern C++ 25）
+7. 确保const成员函数线程安全（Effective Modern C++ 16）
+8. 使用override声明重载函数（Effective Modern C++ 12）
+9. 理解异常处理（More Effective C++ 9-15）
 
 ### 中等优先级（重要但不一定常考）
 
@@ -23,8 +22,6 @@
 18. 成对使用new和delete时要采取相同形式（Effective C++ 16）
 19. 以对象管理资源（Effective C++ 13）
 20. 考虑写出一个不抛异常的swap函数（Effective C++ 25）
-
-
 
 
 # 01 Template Type Deduction
@@ -752,7 +749,7 @@ void f(const T& x)
     
     - `decltype` is useful for defining return types in template functions. E.g., `template <typename T, typename U> auto add(T t, U u) -> decltype(t + u) { return t + u; }`.
 
-# 2 `std::move` and `std::forward`
+# 2 `move` and `forward`
 
 ## Interview questions
 
@@ -1842,3 +1839,192 @@ fwd(x.a);  // 错误
 fwd(static_cast<int>(x.a));  // OK
 ```
 
+
+# 3 Smart Pointers
+
+## Pitfalls Drawbacks of raw pointers:
+
+>[!Danger]
+>1. Can't tell if a pointer points to a single object or an array
+>2. Not defined whether should release the resource when you're done using it, i.e. if the pointer owns the thing it points to
+>3. Can't be sure should we use `delete` or other destruction functions
+>4. Even we figure it out that need to apply `delete`, should be extra careful to decide `delete` or `delect[]`, misuse would lead to undefined behaviors
+>5. Difficult to ensure you perform the destruction exactly once along every path in the code. Missing a path leads to resources leaks, while doing the destruction more than once leads to undefined behaviors 
+>6. Can't tell if a pointer dangles, i.e. it points to memory that no longer holds the object the pointer is supposed to point to
+
+## 18 `std::unique_ptr`
+
+* there was `std::auto_ptr` in C++98 which was replaced totally by `std::unique_ptr` in C++11
+
+>[!Abstract]
+>1. `std::unique_ptr` is **==small==** as raw pointer, fast, **==move-only==** pointer for managing resources with **==exclusive-ownership semantics==**
+>2. By default, resource destruction takes places via `delete`, but **custom deleters can be specified**. **Stateful deleters and function pointers as deleters increases the size of `std::unique_ptr` objects.**
+>3. Converting a `std::unique_ptr` to a `std::shared_ptr` is easy
+
+```cpp
+class Investment {}
+class Stock : public Investment {}
+class Bond : public Investment {}
+class RealEstate : public Investment{}
+
+// 1. custom deleter function
+void delInvmt(Investment* pInvestment)
+{
+	// do something
+	delete pInvestment;
+}
+
+// 1. custom deleter lambda, if it captures some variables, unique_str would 
+// increase size, if not, no size rised
+auto delInvmt = [](Investment* pInvestment)
+{
+	// do something
+	delete pInvestment;
+};
+	
+// unique_ptr 常用作工厂函数的返回类型，这样工厂函数生成的对象在需要销毁时会被自动析构，而不需要手动析构
+template<typename..Ts>
+std::unique_ptr<Investment, decltype<delInvmt>> makeInvestment(Ts&&..params)
+{
+
+	
+	// 2. create a null unique_ptr
+	std::unique_ptr<Investment, decltype<delInvmt>> pInv(nullptr, delInvmt);
+
+	// 3. then make it points to an appropriate obj
+	if(/*a stock should be created*/)
+	{
+		pInv.reset(new Stock(std::forward<Ts>(params)..));
+	}
+	else if(/*a Bond should be created*/)
+	{
+		pInv.reset(new Bond(std::forward<Ts>(params)..));
+	}
+	else if(/*a RealEstate should be created*/)
+	{
+		pInv.reset(new RealEstate(std::forward<Ts>(params)..));
+	}
+	
+	return pInv; // return local variable, RVO will optimize it to move
+}
+
+// return type could be simpler and more encapsulated fashion
+template<typename..Ts>
+auto makeInvestment(Ts&&..params)
+{
+	// can define lambda deleter inside factory function, better encapsulation
+	auto delInvmt = [](Investment* pInvestment)
+	{
+		// do something
+		delete pInvestment;
+	};
+	// same as before
+}
+```
+
+* size of `unique_ptr`
+
+```cpp
+struct A {};
+
+auto f = [](A* p) { delete p; };
+
+void g(A* p) { delete p; }
+
+struct X {
+  void operator()(A* p) const { delete p; }
+};
+
+std::unique_ptr<A> p1{new A};
+std::unique_ptr<A, decltype(f)> p2{new A, f};
+std::unique_ptr<A, decltype(g)*> p3{new A, g};
+std::unique_ptr<A, decltype(X())> p4{new A, X{}};
+
+static_assert(sizeof(p1) == sizeof(nullptr));  // 默认尺寸，即一个原始指针的尺寸
+static_assert(sizeof(p2) == sizeof(nullptr));  // 无捕获 lambda 不会浪费尺寸
+static_assert(sizeof(p3) == sizeof(nullptr) * 2);  // 函数指针占一个原始指针尺寸
+static_assert(sizeof(p4) == sizeof(nullptr));  // 无状态的函数对象，但如果函数对象有状态（如数据成员、虚函数）就会增加尺寸
+```
+
+* return `unique_ptr` is convenient to convert to `shared_ptr`
+
+```cpp
+std::shared_ptr<int> p = std::make_unique<int>(42)
+```
+
+- [std::unique_ptr](https://en.cppreference.com/w/cpp/memory/unique_ptr) 针对数组提供了一个特化版本，此版本提供 [operator[]](https://en.cppreference.com/w/cpp/memory/unique_ptr/operator_at)，但不提供[单元素版本的 `operator*` 和 `operator->`](https://en.cppreference.com/w/cpp/memory/unique_ptr/operator*)，这样对其指向的对象就不存在二义性
+
+```c
+#include <cassert>
+#include <memory>
+
+int main() {
+  std::unique_ptr<int[]> p{new int[3]{0, 1, 2}};
+  
+  for (int i = 0; i < 3; ++i) {
+    assert(p[i] == i);
+  }
+}
+```
+
+## 19 `std::shared_ptr` for shared-ownership resource management.
+
+* **`shared_ptr` are twice the size of raw pointer**: they internally contain a raw pointer to the resource as well as a raw pointer to the resource's reference count
+	* **Memory for the reference count must be dynamically allocated**: pointed-to objects know nothing about this. They thus have no place to store a reference count. **The cost of the dynamic allocation is avoided when the `std::shared_ptr` is created by `std::make_shared`**, but there are situations where **`std::make_shared` can’t be used**. Either way, the reference count is stored as dynamically allocated data.
+
+```cpp
+int* p = new int{42};
+auto q = std::make_shared<int>(42);
+static_assert(sizeof(p) == sizeof(nullptr));
+static_assert(sizeof(q) == sizeof(nullptr) * 2);
+```
+
+* **Increments and decrements of the reference count must be atomic**: because there can be simultaneous readers and writers in different threads. Atomic operations are typically slower than non-atomic, even though the counts are usually only one word in size, you should assume that reading and writing them is comparatively costly.
+
+* By default, resource destruction takes places via `delete`, can also have **custom deleters**, but **==no need to declare type in template type, this is for flexible usage==**
+
+```cpp
+class A {};
+auto f = [](A* p) { delete p; };
+
+std::unique_ptr<A, decltype(f)> p{new A, f};
+std::shared_ptr<A> q{new A, f};
+
+// more flexible
+std::shared_ptr<A> a(new A, f);
+std::shared_ptr<A> b(new A, g);
+std::shared_ptr<A> c(new A);
+
+// shared_ptrs with different deleters, can be put in the same vector
+std::vector<std::shared_ptr<A>> vec{a, b, c};
+```
+
+### Control Block
+deleters is on the heap or allocated in mem by self-defined allocator's. **==`shared_ptr` contains a control block, which contains the pointer to reference count and custom deleters, and some other data==**(like weak ref count) , so that **==Custom deleters do not affect the size of `shared_ptr`==**
+![[C++ Crucial Knowledge-20240705205039265.webp]]
+* **==The Scenarios that create a new control blocks==**:
+	1. call **==`std::make_shared`==**: it will generate a raw pointer inside, which can be inside of any other control blocks
+	2. construct `shared_ptr` by **==converting `unique_ptr`==**: because `unique_ptr` doesn't have a control block
+	3. create `shared_ptr` ==**by a raw pointer**==, which means the same raw pointer can create multiple `shared_ptr`, which leads to multiple control block -> multiple pointers of reference counts -> will lead to multiple destructions then undefined behaviors 
+	```cpp
+	#include <memory>
+	int main()
+	{
+		{
+			int *i = new int(42);
+			std::shared_ptr<int> p1{i};
+			std::shared_ptr<int> p2{i};
+		} // error, double destruction on i
+	}
+	```
+
+	* use `make_shared` would not lead to such error
+	```cpp
+	auto p = std::make_shared<int>(42);
+	```
+	* However, `make_shared` does not support pass custom deleters, which can be done by:
+	```cpp
+	auto f = [](int * ptr){ delete ptr; };
+	std::shared_ptr<int> p(new int(42), f);
+	```
+	

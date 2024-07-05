@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 264.5
+    "width": 264.5,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -93,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Resources/C++ Crucial Knowledge-20240704204635291.webp",
+                "file": "Knowledge/C++ Crucial Knowledge.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Resources/C++ Crucial Knowledge-20240704204635291.webp",
+                "file": "Knowledge/C++ Crucial Knowledge.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Resources/C++ Crucial Knowledge-20240704204635291.webp"
+                "file": "Knowledge/C++ Crucial Knowledge.md"
               }
             }
           },
@@ -189,11 +190,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "d478af17e7aea3ca",
+  "active": "245b608f8adf1ea2",
   "lastOpenFiles": [
+    "C++ Crucial Knowledge-20240705205039265.webp",
+    "fold.md",
+    "Knowledge/C++ Crucial Knowledge.md",
     "Resources/C++ Crucial Knowledge-20240704204435316.webp",
     "Resources/C++ Crucial Knowledge-20240704204635291.webp",
-    "Knowledge/C++ Crucial Knowledge.md",
     "Knowledge/C++Everything.md",
     "Plans/Full Time!!.md",
     "01.md",
@@ -231,7 +234,6 @@
     "WorkTmp/视频插值.md",
     "WorkTmp/显存峰值问题.md",
     "Knowledge/TinyRender Notes.md",
-    "Knowledge/TinyRender Notes 1.md",
     "WorkTmp/2.7bugs.canvas",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
