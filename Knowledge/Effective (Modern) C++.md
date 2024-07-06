@@ -1,14 +1,13 @@
 ### 高优先级（核心考点）
 
-1. [ ] 理解模板类型推导、auto类型推导和decltype（Effective Modern C++ 1-4）[Knowledge](#01%20Template%20Type%20Deduction) [Questions](#1%20Template%20Type%20Deduction%20|%20`auto`%20|%20`decltype`%20Questions)
-2. [ ] 理解std::move和std::forward，理解右值引用，移动语义，完美转发（Effective Modern C++ 23-30）[Link](#2%20`move`%20and%20`forward`)
-3. [ ] 对于占有性资源使用std::unique_ptr（Effective Modern C++ 18）
-4. [ ] 对于共享性资源使用std::shared_ptr（Effective Modern C++ 19）
-5. 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）
-6. 对于右值引用使用std::move，对于通用引用使用std::forward（Effective Modern C++ 25）
-7. 确保const成员函数线程安全（Effective Modern C++ 16）
-8. 使用override声明重载函数（Effective Modern C++ 12）
-9. 理解异常处理（More Effective C++ 9-15）
+1. [x] 理解模板类型推导、auto类型推导和decltype（Effective Modern C++ 1-4）[Knowledge](#01%20Template%20Type%20Deduction) [Questions](#1%20Template%20Type%20Deduction%20|%20`auto`%20|%20`decltype`%20Questions)  [priority:: high]  [completion:: 2024-07-06]
+2. [x] 理解std::move和std::forward，理解右值引用，移动语义，完美转发（Effective Modern C++ 23-30）[Link](#2%20`move`%20and%20`forward`)  [completion:: 2024-07-06]
+3. [x] 对于占有性资源使用std::unique_ptr（Effective Modern C++ 18）  [priority:: high]  [completion:: 2024-07-05]
+4. [x] 对于共享性资源使用std::shared_ptr（Effective Modern C++ 19）  [priority:: highest]  [due:: 2024-07-06]  [completion:: 2024-07-06]
+5. [ ] 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）  [priority:: highest]  [due:: 2024-07-06]
+6. [ ] 确保const成员函数线程安全（Effective Modern C++ 16）
+7. [ ] 使用override声明重载函数（Effective Modern C++ 12）
+8. [ ] 理解异常处理（More Effective C++ 9-15）
 
 ### 中等优先级（重要但不一定常考）
 
@@ -483,8 +482,6 @@ if (auto it = v.find(3); it != v.end()) {
 	// do something 
 }
 ```
-
-
 
 # 03 decltype
 *start 2024-07-01 16:10 End: 2024-07-01 18:02*
@@ -1342,9 +1339,9 @@ string make_string(int n)
 
 // universal template, emplace element to vec
 template <typename T> 
-void processImpl(T&& x, std::false_type)
+void processImpl( T&& x, std::false_type)
 {
-	v.emplace_back(std::forward<T>(s));
+	v.emplace_back( std::forward<T>(s) );
 }
 
 // to have an overload taking an int that's used to look up objects by index, then insert it to vec
@@ -1356,16 +1353,17 @@ string element_from_idx(int idx)
 	return "";
 }
 
-void processImpl(int n, std::true_type)
+void processImpl( int n, std::true_type )
 {
 	process(element_from_idx(n));
 }
 
+// wrapper
 template <typename T>
 void process(T && arg)
 {
 	// int&& is not intergral, so we have to remove reference
-	processImpl(forward<T> s, std::is_intergral<remove_reference_t<T>>());
+	processImpl( forward <T> s, std::is_intergral<remove_reference_t> );
 }
 
 ```
@@ -1388,7 +1386,7 @@ void process(T && arg)
 >1. **Whether it’s a reference**. For the purpose of determining whether the universal reference constructor should be enabled, the types Person, Person&, and Per son&& are all the same as Person. 
 >2. **Whether it’s const or volatile**. As far as we’re concerned, a const Person and a volatile Person and a const volatile Person are all the same as a Person.
 >
->=> `std::decay<T>::type`:
+>=> **==`std::decay<T>::type`==**:
 >This means we need a way to **==strip any references, consts, and volatiles from T before checking to see if that type is the same as Person==**.
 >=> The condition: `!std::is_same<Person, typename std::decay<T>::type>::value`
 ```cpp
@@ -1806,12 +1804,12 @@ fwd(static_cast<PF>(g));  // OK
 >
 >There are several reasons why you cannot take the address of a bitfield:
 >
->1. **Non-Addressable Storage**:
+>1. ==**Non-Addressable Storage**==:
 >    
->    - A bitfield does **not necessarily occupy a whole addressable storage unit (like a byte). It may span across bytes or other bits, making it non-addressable in the typical sense.**
+>    - A bitfield does **==not necessarily occupy a whole addressable storage unit== (like a byte). It may span across bytes or other bits, making it non-addressable in the typical sense.**
 >2. **Implementation-Dependent Layout**:
 >    
->    - **The layout and alignment of bitfields are implementation-dependent**. Different compilers may place bitfields differently within the containing storage unit, complicating address computation.
+>    - **The layout and alignment of bitfields are i==mplementation-dependent==**. Different compilers may place bitfields differently within the containing storage unit, complicating address computation.
 >3. **Access Mechanics**:
 >    
 >    - **Access** to bitfields usually involves bit manipulation operations, **which do not map cleanly to memory addresses. Taking the address of a bitfield would require exposing these operations, which is not supported by the language**.
@@ -1819,8 +1817,6 @@ fwd(static_cast<PF>(g));  // OK
 - **==转发引用也是引用，实际上需要取址，但位域不允许直接取址==**
 
 ```c
-
-
 void f(int) {}
 
 template <typename T>
@@ -1849,8 +1845,8 @@ fwd(static_cast<int>(x.a));  // OK
 >2. Not defined whether should release the resource when you're done using it, i.e. if the pointer owns the thing it points to
 >3. Can't be sure should we use `delete` or other destruction functions
 >4. Even we figure it out that need to apply `delete`, should be extra careful to decide `delete` or `delect[]`, misuse would lead to undefined behaviors
->5. Difficult to ensure you perform the destruction exactly once along every path in the code. Missing a path leads to resources leaks, while doing the destruction more than once leads to undefined behaviors 
->6. Can't tell if a pointer dangles, i.e. it points to memory that no longer holds the object the pointer is supposed to point to
+>5. **Difficult to ensure you perform the destruction exactly once along every path** in the code. Missing a path leads to resources leaks, while doing the destruction more than once leads to undefined behaviors 
+>6. Can't tell if a **pointer dangles**, i.e. it points to memory that no longer holds the object the pointer is supposed to point to
 
 ## 18 `std::unique_ptr`
 
@@ -1858,7 +1854,7 @@ fwd(static_cast<int>(x.a));  // OK
 
 >[!Abstract]
 >1. `std::unique_ptr` is **==small==** as raw pointer, fast, **==move-only==** pointer for managing resources with **==exclusive-ownership semantics==**
->2. By default, resource destruction takes places via `delete`, but **custom deleters can be specified**. **Stateful deleters and function pointers as deleters increases the size of `std::unique_ptr` objects.**
+>2. By default, resource destruction takes places via `delete`, but **custom deleters can be specified**. **Stateful deleters and function pointers as deleters increases the size of `std::unique_ptr` objects.**. An extra function pointers required, but no size required for no-capturing lambda 
 >3. Converting a `std::unique_ptr` to a `std::shared_ptr` is easy
 
 ```cpp
@@ -1969,6 +1965,57 @@ int main() {
 
 ## 19 `std::shared_ptr` for shared-ownership resource management.
 
+### Basic Data Structure of `shared_ptr`
+
+```cpp
+template <typename T>
+struct sp_element {
+  using type = T;
+};
+
+template <typename T>
+struct sp_element<T[]> {
+  using type = T;
+};
+
+template <typename T, std::size_t N>
+struct sp_element<T[N]> {
+  using type = T;
+};
+
+class sp_counted_base {
+  int use_count;   // 引用计数
+  int weak_count;  // 弱引用计数
+};
+
+class weak_count {
+  sp_counted_base* pi;
+};
+
+class shared_count {
+  sp_counted_base* pi;
+  int shared_count_id;
+  friend class weak_count;
+};
+
+
+template <typename T>
+class sp_counted_impl_p : public sp_counted_base {
+  T* px;  // 删除器
+};
+
+template <typename T>
+class shared_ptr {
+  using elem_type = typename sp_element<T>::type;
+  elem_type* px;    // 内部指针 ptr to T obj
+  shared_count pn;  // Control block
+  template <typename U>
+  friend class shared_ptr;
+  template <typename U>
+  friend class weak_ptr;
+};
+```
+
 * **`shared_ptr` are twice the size of raw pointer**: they internally contain a raw pointer to the resource as well as a raw pointer to the resource's reference count
 	* **Memory for the reference count must be dynamically allocated**: pointed-to objects know nothing about this. They thus have no place to store a reference count. **The cost of the dynamic allocation is avoided when the `std::shared_ptr` is created by `std::make_shared`**, but there are situations where **`std::make_shared` can’t be used**. Either way, the reference count is stored as dynamically allocated data.
 
@@ -1980,6 +2027,36 @@ static_assert(sizeof(q) == sizeof(nullptr) * 2);
 ```
 
 * **Increments and decrements of the reference count must be atomic**: because there can be simultaneous readers and writers in different threads. Atomic operations are typically slower than non-atomic, even though the counts are usually only one word in size, you should assume that reading and writing them is comparatively costly.
+	`atomic_increment(&count)` `atomic_conditional_increment(&count)` `atomic_decrement`
+
+```cpp
+class sp_counted_base {
+ private:
+  std::atomic_int_least32_t use_count_;  // 即 std::atomic<int>
+  std::atomic_int_least32_t weak_count_;
+
+ public:
+  sp_counted_base() : use_count_(1), weak_count_(1) {}
+  virtual ~sp_counted_base() {}
+  virtual void dispose() = 0;
+  virtual void destroy() { delete this; }
+
+  void add_ref_copy() { atomic_increment(&use_count_); }
+
+  bool add_ref_lock() { return atomic_conditional_increment(&use_count_) != 0; }
+
+  void release() {
+    if (atomic_decrement(&use_count_) == 1) {
+      dispose();
+      weak_release();
+    }
+  }
+
+  void weak_add_ref() { atomic_increment(&weak_count_); }
+
+  long use_count() const { return use_count_.load(std::memory_order_acquire); }
+};
+```
 
 * By default, resource destruction takes places via `delete`, can also have **custom deleters**, but **==no need to declare type in template type, this is for flexible usage==**
 
@@ -2002,29 +2079,474 @@ std::vector<std::shared_ptr<A>> vec{a, b, c};
 ### Control Block
 deleters is on the heap or allocated in mem by self-defined allocator's. **==`shared_ptr` contains a control block, which contains the pointer to reference count and custom deleters, and some other data==**(like weak ref count) , so that **==Custom deleters do not affect the size of `shared_ptr`==**
 ![[C++ Crucial Knowledge-20240705205039265.webp]]
-* **==The Scenarios that create a new control blocks==**:
-	1. call **==`std::make_shared`==**: it will generate a raw pointer inside, which can be inside of any other control blocks
-	2. construct `shared_ptr` by **==converting `unique_ptr`==**: because `unique_ptr` doesn't have a control block
-	3. create `shared_ptr` ==**by a raw pointer**==, which means the same raw pointer can create multiple `shared_ptr`, which leads to multiple control block -> multiple pointers of reference counts -> will lead to multiple destructions then undefined behaviors 
-	```cpp
-	#include <memory>
-	int main()
-	{
-		{
-			int *i = new int(42);
-			std::shared_ptr<int> p1{i};
-			std::shared_ptr<int> p2{i};
-		} // error, double destruction on i
-	}
-	```
 
-	* use `make_shared` would not lead to such error
-	```cpp
-	auto p = std::make_shared<int>(42);
-	```
-	* However, `make_shared` does not support pass custom deleters, which can be done by:
-	```cpp
-	auto f = [](int * ptr){ delete ptr; };
-	std::shared_ptr<int> p(new int(42), f);
-	```
+
+
+### ==The Scenarios that create a new control blocks==:
+
+>[!Info]
+>1. call **==`std::make_shared`==**: it will generate a raw pointer inside, which can be inside of any other control blocks
+>2. construct `shared_ptr` by **==converting `unique_ptr`==**: because `unique_ptr` doesn't have a control block
+>3. create `shared_ptr` ==**by a raw pointer**==, which means the same raw pointer can create multiple `shared_ptr`, which leads to **==multiple control block containing same raw pointer==** -> multiple pointers of reference counts -> will lead to multiple destructions then undefined behaviors 
+
+>[!Warning] Create `shared_ptr` from a raw pointers -> multiple destructons
+>
+>```cpp
+>#include < memory>
+>int main()
+>{
+>	{
+>		int *i = new int(42);
+>		std::shared_ptr< int> p1{i};
+>		std::shared_ptr< int> p2{i};
+>	} // error, double destruction on i
+>}
+>```
+
+>[!Success] Avoiding creating from raw pointers
+>1. Use `make_shared<T>(value)`:
+>```cpp
+>auto p = std::make_shared< int>(42);
+>```
+>2. However, `make_shared` does not support pass custom deleters, so we should pass `new Type()` directly to `shared_ptr` constructor:
+>```cpp
+>auto f = [](int * ptr){ delete ptr; };
+>std::shared_ptr< int> p(new int(42), f);
+>```
+
+>[!ISSUE] When passing `this*` to a `shared_ptr`
+>* **==ERRORS==**:
+>	1. `*this` is a raw pointer -> so multi destructions since it exists in multiple control blocks:
+>	```cpp
+>	# include < memory>
+>	class A
+>	{
+>	public:
+>		std::shared_ptr< A> f()
+>		{
+>			return std::shared_ptr< A>(this); // new control block contains this
+>		}
+>	}
+>	
+>	int main()
+>	{
+>		auto p = std::shared_ptr< A>();
+>		auto q = p->f(); // q creates a new control block contains \*p
+>		assert(p.use_count() == 1);
+>		assert(q.use_count() == 1);
+>		return 0;
+>	} // error, twice destruction on the same raw pointer
+>	```
+>	2. the lifecycle of `shared_ptr` ends, `*this` ends:
+>
+>	```cpp
+>	#include < memory>
+>	
+>	template< typename T>
+>	void callback(const T& p)
+>	{
+>		p->print();
+>	}
+>	
+>	class A
+>	{
+>	public:
+>		void f()
+>		{
+>			callback(shared_ptr< A>(this)); // when this local shared_ptr destructing
+>											// this would be destruct
+>		}
+>		void print() {}
+>	}
+>	
+>	int main()
+>	{
+>		auto p = std::make_shared< A>();
+>		p->f();// after f, A has already been delete since
+>		return 0;
+>	} // ERROR: when the program finished, p will be destructed, and A be destructed ag>ain
+>	
+>	```
+>
+>- **==SOLUTION==**: 
+>	**==`std::enable_shared_from_this<T>` provides `shared_from_this()` retrieving the ownership of  `*this`==**
+>	`shared_from_this()`: will **==create a new `shared_ptr` from existed control block==**
+>
+>	```cpp
+>	# include < memory>
+>	# include < cassert>
+>	using namespace std;
+>	class A : public enable_shared_from_this< A> // the type here is just A
+>	{
+>	public:
+>		shared_ptr< A> f() 
+>		{ 
+>			return shared_from_this(); 
+>		}
+>	}
+>	
+>	int main()
+>	{
+>		auto p = make_shared< A>();
+>		auto q = p->f();
+>		assert(p.use_count() == 2);
+>		assert(q.use_count() == 2);
+>	} // OK
+>	```
+
+>[!Tip] Implementation of `std::enable_shared_from_this`  with `shared_ptr`
+**==`enable_shared_from_this` only creates when a `shared_ptr` creating==** ( with the constrain that T inherit from it ), so **==only `new T()` would not create `weak_ptr`==**
+```cpp
+template<typename T>
+class enable_shared_from_this{
+public:
+	shared_ptr<T> shared_from_this( )
+	{
+		shared_ptr<T> p( weak_this_ ); // raise std::bad_weak_ptr when weak_this_ 
+									// is not intialized
+		return p;
+	}
+
+	// callded when construct a shared_ptr, it's the time to initialize weak_this_
+	template<class X, class Y>
+	void _internal_accept_owner( const shared_ptr<X>* ppx, Y* py )
+	{
+		if(weak_this_.expired()) // not been intialized before
+		{
+			// alias constructor, sharing *ppx's reference count, yet points to py
+			weak_this_ = shared_ptr<T>(*ppx, py);
+		}
+	}
+
+private:
+	weak_ptr<T> weak_this_; // points to the control block of a shared_ptr
+}
+
+template <typename T>
+struct sp_element {
+  using type = T;
+};
+
+template <typename T>
+struct sp_element<T[]> {
+  using type = T;
+};
+
+template <typename T, std::size_t N>
+struct sp_element<T[N]> {
+  using type = T;
+};
+
+template<class T>
+class shared_ptr
+{
+public:
+	// constructor takes a raw pointer
+	template< class Y>
+	explicit shared_ptr(Y* p) : px(p), pn()
+	{
+		// boost::detail::
+		sp_pointer_constructor(this, p, pn);
+	}
+
+	// Construct the shared_ptr with the appropriate control block 
+	template <class T, class Y> 
+	void sp_pointer_construct( shared_ptr< T>* ppx, Y* p, 
+								detail::shared_count& pn) 
+	{ 
+		detail::shared_count(p).swap(pn); 
+		sp_enable_shared_from_this(ppx, p, p); // try construct 
+											// enable_shared_from_this
+	}
+
+	// enables shared_from_this if the objects inherit from enable_from_this
+	// pe is just cast from origin T raw pointer to enlable_shared_from_this<T>
+	// so compiler knows if overload matches
+	template< class X, class Y, class T>
+	void sp_enable_shared_from_this(share_ptr<X> const* ppx, Y const* py,
+									enable_shared_from_this<T> const* pe)
+	{
+		if(pe != nullptr) // T inherit from enable_shared_from_this
+		{
+			pe->_internal_accept_owner(ppx, const_cast<Y*>(py));
+		}
+	}
+
+	// not match above means T does not inherit from enable_ ...
+	// do nothingh
+	void sp_enable_shared_from_this(...) {}
+
+	// Alias constructor: shares the reference count but points to a different object 
+	template <class Y> 
+	shared_ptr(shared_ptr<Y> const& r, element_type* p) 
+	: px(p), pn(r.pn) {}
 	
+private: 
+	element_type* px; // Internal pointer 
+	detail::shared_count pn; // Control block, containing reference counts and deleter
+}
+```
+
+>[!Warning] Avoid `new T()` for type inherits from `enable_shared_from_this`
+```cpp
+#include <memory>
+
+class A : public std::enable_shared_from_this<A> {
+ public:
+  std::shared_ptr<A> f() { return shared_from_this(); }
+};
+
+int main() {
+  auto p = new A; // weak_this_ is not initialized
+  auto q = p->f();  // 抛出 std::bad_weak_ptr 异常
+}
+```
+>[!Success] Make `A()` private
+>T can only create by creating `shared_ptr<T>`
+```cpp
+#include <memory>
+
+class A : public std::enable_shared_from_this<A> {
+ public:
+  static std::shared_ptr<A> create() { return std::shared_ptr<A>(new A); }
+  std::shared_ptr<A> f() { return shared_from_this(); }
+
+ private:
+  A() = default;
+};
+
+int main() {
+  auto p = A::create();  // 构造函数为 private，auto p = new A 将报错
+  auto q = p->f();       // OK
+}
+```
+
+- MSVC 在 [std::enable_shared_from_this](https://en.cppreference.com/w/cpp/memory/enable_shared_from_this) 中定义了一个别名 `_Esft_type`，在 [std::shared_ptr](https://en.cppreference.com/w/cpp/memory/shared_ptr) 中检测 `_Esft_type` 别名，如果存在则说明继承了 [std::enable_shared_from_this](https://en.cppreference.com/w/cpp/memory/enable_shared_from_this)，此时再用 [std::shared_ptr](https://en.cppreference.com/w/cpp/memory/shared_ptr) 初始化基类中名为 `_Wptr` 的 `weak_ptr`
+
+```cpp
+#include <type_traits>
+
+// 1. 检测 T* 能否转为 T::_Esft_type*
+
+// **Primary Template**: defaults to `false_type`, meaning it assumes that `T` does not inherit from `std::enable_shared_from_this`.
+template <class T, class = void>
+struct _enable_shared : false_type {};
+
+// **Specialization**: 
+	// checks if `T` has a nested type alias `_Esft_type`. 
+	// If it does, it further checks if `T*` can be converted to `T::_Esft_type*`. 
+	//If both conditions are met, `_enable_shared` will inherit from `true_type`, indicating that `T` inherits from `std::enable_shared_from_this`.
+template <class T>
+struct _enable_shared<T, void_t<typename T::_Esft_type>>
+    : is_convertible<remove_cv_t<T>*, typename T::_Esft_type*>::type {};
+
+template <class T>
+class shared_ptr {
+ public:
+  template <class Y>
+  explicit shared_ptr(Y* px) {
+    _Set_ptr_rep_and_enable_shared(px, new _Ref_count<Y>(px));
+  }
+
+  template <class Y>
+  void _Set_ptr_rep_and_enable_shared(Y* const px, _Ref_count_base* const pn) {
+    this->_Ptr = px;
+    this->_Rep = pn;
+    // Check if Y inherits from enable_shared_from_this
+    if constexpr (_enable_shared<Y> >) {
+      if (px && px->_Wptr.expired()) {
+		// Initialize the weak_ptr in enable_shared_from_this
+        px->_Wptr =
+            shared_ptr<remove_cv_t<Y>>(*this, const_cast<remove_cv_t<Y>*>(px));
+      }
+    }
+  }
+private: 
+	T* _Ptr; 
+	_Ref_count_base* _Rep;
+}
+```
+
+>[!INFO] `void_t`
+>**==`void_t` is a utility template==** provided in C++ to help with **==SFINAE (Substitution Failure Is Not An Error)==**. It is defined as follows:
+>```cpp
+>template<typename...>
+> using void_t = void;
+>```
+>**takes a variadic number of template arguments and always results in the type `void`**
+>
+>So **if `T` does not have a nested type alias as `_Esft_type`**, `typename T::_Esft_type` **==would result in a compilation error==**. However, **==because of the way the `void_t` template is used, this compilation error is handled in the context of SFINAE (Substitution Failure Is Not An Error).This specialization will not be used==**
+
+>[!Interesting] Self-defined `enable_shared_from_this` in MSVC
+```cpp
+#include <memory>
+#include <cassert>
+
+template<typename T>
+class SelfEnableSharedFromThis
+{
+public:
+	using _Esft_type = B; // must define, for _enable_shared to use 
+
+	std::shared_ptr<T> my_shared_from_this()
+	{
+		return shared_ptr<T>(_Wptr);
+	}
+
+private:
+
+	template<class U>
+	friend class std::shared_ptr;
+
+	std::weak_ptr<T> _Wptr; // weak_this_
+}
+
+class A : public SelfEnableSharedFromThis<A>
+{
+public:
+	std::shared_ptr<A> f() { return my_shared_from_this(); }
+}
+
+int main()
+{
+	auto p = std::make_shared<A>(); // internally call 
+					// _Set_ptr_rep_and_enable_shared which set _Wptr
+	auto q = p->f(); // valid
+	assert(p.use_count() == 2);
+	assert(q.use_count() == 2);
+	return 0;
+}
+```
+
+## 20 Use `std::weak_ptr` for `std::shared_ptr` like pointers that can dangle.
+
+### 1. `std::weak_ptr` is a `shared_ptr` without affecting ref count
+
+* **==`weak_ptr` cannot be dereferenced directly==**. It's not an independent smart pointer but rather an **augmentation(扩展) of `shared_ptr`**. It is **initialized with a `shared_ptr`**, **==sharing the same obj without increasing the ref count==**. Its primary purpose is to **==observe the state of the `shared_ptr` without preventing the managed obj from being destroyed==**.
+
+* When a `weak_ptr` is initialized from a `shared_ptr`, it **==shares the same control block==**, allowing it to **==check whether the obj still exists==** and to **==create a `shared_ptr` when needed using `lock()`==**. Useful for managing resources **without extending their lifetime unintentionally**.
+	* `lock()` creates a new `std::shared_ptr` that shares ownership of the managed object. If there is no managed object, i.e. *this is empty, then the returned `shared_ptr` also is empty.
+		Effectively `returns expired() ? shared_ptr<T>() : shared_ptr<T>(*this)` executed atomically.
+
+
+```cpp
+#include <cassert>
+#include <iostream>
+#include <memory>
+
+std::weak_ptr<int> w;
+
+void f(std::weak_ptr<int> w) {
+  if (auto p = w.lock()) {
+    std::cout << *p;
+  } else {
+    std::cout << "can't get value";
+  }
+}
+
+int main() {
+  {
+    auto p = std::make_shared<int>(42);
+    w = p; // initialize weak_ptr with shared_ptr
+    assert(p.use_count() == 1);
+    assert(w.expired() == false);
+    
+    f(w);  // 42
+    auto q = w.lock(); // so no need to copy shared p by auto q = p in case p is destructed
+    assert(p.use_count() == 2);
+    assert(q.use_count() == 2);
+  }
+  f(w);  // can't get value, because shared p is destructed
+  assert(w.expired() == true);
+  assert(w.lock() == nullptr);
+}
+```
+
+### 2. Solving Circular Reference Problems
+
+>[!IMPROTANT] In scenarios where two or more `std::shared_ptr` instances reference each other, they can create a cycle that prevents the reference count from reaching zero, leading to a memory leak.
+>By using `std::weak_ptr` for one of the references in the cycle, you break the strong ownership chain, allowing the objects to be properly destroyed when no longer in use.
+```cpp
+#include <memory>
+#include <iostream>
+
+using namespace std;
+
+class B;
+class A
+{
+public:
+	shared_ptr<B> b_ptr;
+	~A() { cout << "A destroyed\n"; }
+}
+
+class B
+{
+public:
+	weak_ptr<A> a_ptr; // use weak_ptr to avoid circular reference
+	~B() { cout << "B destroyed\n"; }
+}
+
+int main()
+{
+	shared_ptr<A> a = make_shared<A>();
+	a->b_ptr = a;
+	a->b_ptr->a_ptr = a;
+	std::cout << "Use count of A: " << a.use_count() << std::endl; // Output: 1
+	std::cout << "Use count of B: " << a->b_ptr.use_count() << std::endl; // Output: 1
+}
+```
+
+```mermaid
+classDiagram 
+	class A { 
+		+shared_ptr< B> b_ptr 
+	} 
+	
+	class B { 
+		+weak_ptr< A> a_ptr 
+	} 
+	
+	A "1" *--> "1" B : b_ptr 
+	B "1" *--> "0..1" A : a_ptr
+```
+
+## 21 Prefer `std::make_unique` and `std::make_shared` to direct use of new.
+
+* **C++14** provides `make_unique`, in 11 it's easy to implement one using perfect forwarding. Very basic, does not support arrays or custom deleters.
+
+```cpp
+template<typename T, typname...Args>
+std::unique_ptr<T> make_unique(Args&&... args)
+{
+	return std::unique_ptr<T>(std::forward<Args>(args)...);
+}
+```
+
+* Apart from `make_unique` and `make_shared`, `std::allocate_shared` can also creates a `share_ptr` but with a custom allocator
+
+* **==Benefits==** of the `make` functions:
+	1. **Code Clarity**: Simplifies the code and makes the ownership semantics clear.
+	2. **Exception Safety**: Ensures that the object is managed by the `std::shared_ptr` immediately, avoiding potential memory leaks 
+	   
+		```cpp
+		void f(std::shared_ptr<A> p, int n) {}
+		int g() { return 1; }
+		f(std::shared_ptr<A>{new A}, g());
+		// if g runs before new A return to constructor of sp, 
+		// if g raise an exception at this time, new A is a leaked memory 
+		```
+		
+		To solve this: 1. create `shared_ptr` in a separate statement; 2. use `make`
+		
+		```cpp
+		std::shared_ptr<A> p(new A);  // 如果发生异常，删除器将析构new创建的对象
+		f(std::move(p), g());
+
+		f(std::make_shared<A>(), g());  // 不会发生内存泄漏，且只需要一次内存分配
+		```
+
+
+	1. **Efficiency**: Single allocation for both the control block and the object, improving performance and reducing memory overhead.
+
+

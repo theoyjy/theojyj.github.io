@@ -11,7 +11,7 @@
 #### Health
 - [ ] Lose weight from 67kg to 55kg  [id:: 4ajq9h]  [start:: 2024-05-14]
 	- [ ] to 63kg
-		- [ ] to 66
+		- [x] to 66  [completion:: 2024-07-06]
 		- [ ] to 65
 		- [ ] to 64 
 		- [ ] to 63 
@@ -30,13 +30,13 @@
 
 
 ### Professional
-- [ ] Finish STL  [priority:: highest]  [due:: 2024-05-04]
-	- [ ] Intro & Allocator  [due:: 2024-04-12]
-	- [ ] Iterator & Container  [due:: 2024-04-13]
-	- [ ] Algorithm  [due:: 2024-04-20]
-	- [ ] Functor  [due:: 2024-04-27]
-	- [ ] Adapters  [due:: 2024-05-04]
-- [ ] Learn TinyRender  [start:: 2024-03-23]  [due:: 2024-04-03]
+- [ ] Finish STL  [priority:: highest]
+	- [ ] Intro & Allocator
+	- [ ] Iterator & Container  
+	- [ ] Algorithm  
+	- [ ] Functor  
+	- [ ] Adapters  
+- [ ] Learn TinyRender
 
 #### TO LEARN
 * [ ] [OS: MIT 6.828 Operating System Lab ](https://github.com/SmallPond/MIT6.828_OS)   ([Lectures](https://pdos.csail.mit.edu/6.828/2018/schedule.html))

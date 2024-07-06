@@ -1,6 +1,6 @@
 ##### Upcoming tasks in 7 Days
 ```tasks
-due before 2024-04-16
+due before 2024-07-13
 ```
 
 ##### Full Calendar

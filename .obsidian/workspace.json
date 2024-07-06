@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "3eb71528ce918b3f",
+        "id": "1819aaeb70dda746",
         "type": "tabs",
         "children": [
           {
-            "id": "245b608f8adf1ea2",
+            "id": "fa86b2277864c72e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md",
+                "file": "Knowledge/Effective (Modern) C++.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md",
+                "file": "Knowledge/Effective (Modern) C++.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md",
+                "file": "Knowledge/Effective (Modern) C++.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/C++ Crucial Knowledge.md"
+                "file": "Knowledge/Effective (Modern) C++.md"
               }
             }
           },
@@ -163,18 +163,19 @@
             }
           },
           {
-            "id": "6d2ed1e21a73ebe3",
+            "id": "02bfd4ca3f128268",
             "type": "leaf",
             "state": {
-              "type": "quiet-outline",
+              "type": "calendar",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
-    "width": 218.5,
+    "width": 371.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -190,14 +191,16 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "245b608f8adf1ea2",
+  "active": "fa86b2277864c72e",
   "lastOpenFiles": [
-    "C++ Crucial Knowledge-20240705205039265.webp",
+    "Knowledge/C++Everything.md",
+    "Knowledge/Effective (Modern) C++.md",
+    "Resources/C++ Crucial Knowledge-20240705205039265.webp",
+    "Plans/OKRs.md",
+    "Task Calendar.md",
     "fold.md",
-    "Knowledge/C++ Crucial Knowledge.md",
     "Resources/C++ Crucial Knowledge-20240704204435316.webp",
     "Resources/C++ Crucial Knowledge-20240704204635291.webp",
-    "Knowledge/C++Everything.md",
     "Plans/Full Time!!.md",
     "01.md",
     "Knowledge/CSE167x Computer Graphics.md",
@@ -207,7 +210,6 @@
     "Knowledge/Learn How to Improve.md",
     "index.md",
     "excalibrain.md",
-    "Task Calendar.md",
     "Doc/processIntro.md",
     "Knowledge/UE Errors.md",
     "4_2_RotateArbi.pdf",
@@ -228,12 +230,10 @@
     "Resources/CSE167x Computer Graphics-20240609162309079.webp",
     "Resources/CSE167x Computer Graphics-20240625212330021.webp",
     "Resources/CSE167x Computer Graphics-20240625212159405.webp",
-    "Resources/CSE167x Computer Graphics-20240625164620892.webp",
     "WorkTmp/生长动画.excalidraw.md",
     "Knowledge/CMake.md",
     "WorkTmp/视频插值.md",
     "WorkTmp/显存峰值问题.md",
-    "Knowledge/TinyRender Notes.md",
     "WorkTmp/2.7bugs.canvas",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",

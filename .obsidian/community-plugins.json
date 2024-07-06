@@ -1,5 +1,4 @@
 [
-  "obsidian-git",
   "obsidian-excalidraw-plugin",
   "obsidian-projects",
   "dataview",
@@ -10,6 +9,6 @@
   "obsidian-tasks-plugin",
   "drawio-obsidian",
   "image-converter",
-  "obsidian-quiet-outline",
-  "obsidian-mind-map"
+  "obsidian-mind-map",
+  "calendar"
 ]
