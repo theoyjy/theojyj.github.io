@@ -4,8 +4,8 @@
 2. [x] 理解std::move和std::forward，理解右值引用，移动语义，完美转发（Effective Modern C++ 23-30）[Link](#2%20`move`%20and%20`forward`)  [completion:: 2024-07-06]
 3. [x] 对于占有性资源使用std::unique_ptr（Effective Modern C++ 18）  [priority:: high]  [completion:: 2024-07-05]
 4. [x] 对于共享性资源使用std::shared_ptr（Effective Modern C++ 19）  [priority:: highest]  [due:: 2024-07-06]  [completion:: 2024-07-06]
-5. [ ] 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）  [priority:: highest]  [due:: 2024-07-06]
-6. [ ] 确保const成员函数线程安全（Effective Modern C++ 16）
+5. [x] 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）  [priority:: highest]  [due:: 2024-07-06]  [completion:: 2024-07-09]
+6. [x] 确保const成员函数线程安全（Effective Modern C++ 16）  [completion:: 2024-07-10]
 7. [ ] 使用override声明重载函数（Effective Modern C++ 12）
 8. [ ] 理解异常处理（More Effective C++ 9-15）
 
@@ -2532,7 +2532,7 @@ std::unique_ptr<T> make_unique(Args&&... args)
 		```cpp
 		void f(std::shared_ptr<A> p, int n) {}
 		int g() { return 1; }
-		f(std::shared_ptr<A>{new A}, g());
+		f( std::shared_ptr<A>{new A}, g() );
 		// if g runs before new A return to constructor of sp, 
 		// if g raise an exception at this time, new A is a leaked memory 
 		```
@@ -2540,13 +2540,313 @@ std::unique_ptr<T> make_unique(Args&&... args)
 		To solve this: 1. create `shared_ptr` in a separate statement; 2. use `make`
 		
 		```cpp
-		std::shared_ptr<A> p(new A);  // 如果发生异常，删除器将析构new创建的对象
-		f(std::move(p), g());
+		std::shared_ptr<A> p(new A);  //1. 如果发生异常，删除器将析构new创建的对象
+		f( std::move( p ), g( ) );
 
-		f(std::make_shared<A>(), g());  // 不会发生内存泄漏，且只需要一次内存分配
+		f( std::make_shared<A>(), g() );  // 2. 不会发生内存泄漏，且只需要一次内存分配
 		```
 
 
-	1. **Efficiency**: Single allocation for both the control block and the object, improving performance and reducing memory overhead.
+	3. **Efficiency**: Single allocation for both the control block and the object, improving performance and reducing memory overhead.
+	   *In contrast, directly using `new` with `std::shared_ptr` involves two allocations: one for the control block and one for the object:*
+	   ```cpp
+	   auto sp = std::shared_ptr<Widget>(new Widget()); // Two allocations
+		```
+	
+
+* **==Limitations==** of `make`
+	* Common Limitations:
+		1. Can define custom deleter, can only defined with `shared_ptr`  or `unique_ptr`, also to prevent memory leakage, use a separate statement to create smart 
+		   ```cpp
+		   auto d = [](A * p) { delete p; }
+		   std::shared_ptr<A> p(new A, d);
+		   f( std::move(p), g() );
+			```
+		2. `make` use parentheses() initializer to perform perfect forwarding, when holding a `vector`, initializing with `parentheses()` is not convenient as `brackets{}`, so we might as well construct a `std::initializer_list`
+	   ```cpp
+		auto p = std::unique_ptr<std::vector<int>>(3, 6); // 3个6
+		auto q = std::shared_ptr<std::vector<int>>(3, 6); // 3个6
+	
+		auto x = {1, 2, 3, 4, 5, 6};
+		auto p2 = std::make_unique<std::vector<int>>(x);
+		auto q2 = std::make_shared<std::vector<int>>(x);
+	```
+	
+	* Two More limitations on `make_shared` and `allocate_shared`:
+	  1. If the class override `operator new` and `operator delete`,  it is usually for the allocation and deallocation memory for the class itself, not including `control block`.**==When using `make_shared` or `allocate_shared`, the allocated object and control block are usually together in the memory, overriding `new` and `delete` may not guarantee that.==**
+	 ```cpp
+		class MyClass {
+		public:
+			void* operator new(size_t size) {
+				std::cout << "Custom new for MyClass" << std::endl;
+				return ::operator new(size);
+			}
+		
+			void operator delete(void* ptr) {
+				std::cout << "Custom delete for MyClass" << std::endl;
+				::operator delete(ptr);
+			}
+		};
+		
+		// 使用 std::make_shared 创建 MyClass 实例
+		auto ptr = std::make_shared<MyClass>(); // 可能不适用
+		```
+
+	2.  [std::make_shared](https://en.cppreference.com/w/cpp/memory/shared_ptr/make_shared) make [std::shared_ptr](https://en.cppreference.com/w/cpp/memory/shared_ptr) 's control block and pointing obj allocated in the same area of memory, so that **==when ref count is 0, the pointed obj is destructed but not released yet, not until the control block is released when last `shared_ptr` and `weak_ptr` is destructed==**.
+	```cpp
+	auto ptr1 = std::make_shared<MyClass>(); // 创建一个共享指针
+	std::weak_ptr<MyClass> weakPtr = ptr1; // 创建一个弱指针
+	
+	ptr1.reset(); // 引用计数降为0，对象被析构，但控制块未释放
+	// 由于弱指针 weakPtr 仍然存在，控制块未被释放
+	```
+	
+	So if the size of a `shared_ptr` is quite large, and the time of destruction between the last `shared_ptr` and `weak_ptr` can' be ignored, there would be **==latency from obj destruction to memory release.==**:
+	
+	```cpp
+	auto p = std::make_shared<ReallyBigType>();
+…  // 创建指向该对象的多个 std::shared_ptr 和 std::weak_ptr 并做一些操作
+…  // 最后一个 std::shared_ptr 被析构，但 std::weak_ptr 仍存在
+…  // 此时，大尺寸对象占用内存仍未被回收
+…  // 最后一个 std::weak_ptr 被析构，control block 和对象占用的同一内存块被释放
+	```
+	
+	**==But if constructing `shared_ptr` from new, when the last `shared_ptr` is destructed, the memory cam be released immediately.==**
+	
+	```cpp
+std::shared_ptr<ReallyBigType> p(new ReallyBigType);
+…  // 创建指向该对象的多个 std::shared_ptr 和 std::weak_ptr 并做一些操作
+…  // 最后一个 std::shared_ptr 被析构，std::weak_ptr 仍存在，但 ReallyBigType 占用的内存立即被释放
+…  // 此时，仅 control block 内存处于分配而未回收状态
+…  // 最后一个 std::weak_ptr 被析构，control block 的内存块被释放
+	```
+
+# Item16 Make `const` member functions thread safe By `mutex` and `atomic`
+
+>[!TIP] `std::mutable`
+>A keyword used to indicate that a particular data member of a class can be modified even if it's part of an obj that is declared as `const`.
+>* Usage:
+>  Allowing modification of  certain members within a `const` member function.
+```cpp
+class MyClass
+{
+public:
+	void DoSomething() const
+	{
+		++count; // const member function but able to modift mutable variables
+	}
+private:
+	mutable int count;
+}
+```
+
+## `std::mutex`
+
+>[!INFO] `mutex`
+>C++11, protected shared resources by ensuring only one thread access the shared data at one time, to prevent data race issues
+>* Usages:
+>	* `lock()`: retrieve `mutex`, if occupied, block current thread until get the mutex
+>	* `unlock()`
+>	* `try_lock()`: if `mutex` is occupied, `return false` won't block, else retrieve `mutex` and `return true`
+>
+>**`lock()` is usually not called directly, `unique_lock`, `scoped_lock`, `lock_guard` are used to manage the exclusive locking, but here is an example:**
+```cpp
+#include <mutex>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+int g_num = 0;
+mutex g_num_mutex;
+
+void slow_increment(int id)
+{
+	for(int i = 0; i < 3; ++i)
+	{
+		g_num_mutex.lock();
+		++g_num;
+		cout << "id: " << id << ", g_num: " << g_num << '\n';
+		g_num_mutex.unlock();
+		std::this_thread::sleep_for(std::chrono::milliseconds(234));
+	}
+}
+
+int main()
+{
+	thread t1{slow_increment, 0};
+	thread t2{slow_increment, 2};
+	t1.join();
+	t2.join();
+	return 0;
+}
+```
+
+>[!Important] `lock_guard`
+>The class `lock_guard` is a mutex wrapper that provides a convenient [RAII-style](https://en.cppreference.com/w/cpp/language/raii "cpp/language/raii") mechanism for **==owning a mutex for the duration of a scoped block==**.
+>
+>**==When a `lock_guard` object is created, it attempts to take ownership of the mutex it is given. When control leaves the scope in which the `lock_guard` object was created, the `lock_guard` is destructed and the mutex is released.==**
+>
+>The `lock_guard` class is non-copyable.
+```cpp
+int g_num = 0;
+mutex g_num_mutex;
+
+void slow_increment(int id)
+{
+	for(int i = 0; i < 3; ++i)
+	{
+		lock_guard<mutex> lk(g_num_mutex); // lock and release in 
+										// each iteration
+		++g_num;
+		cout << "id: " << id << ", g_num: " << g_num << '\n';
+		std::this_thread::sleep_for(std::chrono::milliseconds(234));
+	}
+}
+```
 
 
+
+>[!Fire] RAII (Resource Acquisition Is Initialization)
+>It Binds the life cycle of a resource that must be acquired before use to the lifetime of an object.
+>RAII guarantees that the resource is available to any function that may access the object. It also guarantees that all resources are released when the lifetime of their controlling object ends, in reverse order of acquisition.
+>
+>>[!SUMMARY] RAII can be summarized as follows:
+>>- **encapsulate each resource into a class**, where
+>>	- the **constructor acquires** the resource and establishes all class invariants or throws an exception if that cannot be done,
+>>	- the **destructor releases** the resource and never throws exceptions;
+>>
+>>- always **use the resource via an instance of a RAII-class** that either
+>>	- has automatic storage duration or temporary lifetime itself, or
+>>	- has lifetime that is bounded **==by==** the lifetime of an automatic or temporary object.
+
+
+* Suppose `std::vector<double> roots() const` is used to calculate the roots of a polynomial, which won't change overtime, so we create a **cache: `mutable std::vector<double> rootVals`.**
+  Furthermore, to prevent **data race** among threads and ensure **safe thread**, using a `std::mutex`
+
+  ```cpp
+	using namespace std;
+	
+	class Polynomial
+	{
+	public:
+		using RootType = std::vector<double>;
+		RootType roots() const
+		{
+			lock_guard<mutex> lk(m);
+			if(!rootsAreValid)
+			{
+				// calculation ...
+				rootsAreValid = true;
+			}
+			return rootVals;
+		}
+	
+	private:
+		mutable bool rootsAreValid{false}; // has been calculated before
+		mutable RootType<double> rootVals{}; // cache
+
+		mutable mutex m;
+	}
+	```
+
+## `std::atomic`
+
+>[!INFO]
+>It is a template class introduced in C++11 to implement atomic operations. 
+>An atomic operation is an operation that **==can't be interrupted or split in a multi-threaded environment==**, which **==guarantees atomicity and thread safety==**. It provides a set of methods to perform atomic load, store, swap, modify operations, thus avoiding data contention problems
+>
+>#### `std::atomic` Basic Functions:
+>* `load()` : read | `store()`: write
+>* `exchange()`: swap value
+>* `compare_exchange_weak()` `compare_exchange_strong()`: swap with compare
+>* `fetch_add()`: add value and return origin value | 
+>  `fetch_sub()`: subtract and return origin value
+>* Bits operations: `fetch_and()`, `fetch_or()`, `fetch_xor()`
+
+
+* For some simple operations with just increments, decrements, replace `mutex` with `atomic` would cost much less, and get rid of the risk of dead lock by forgetting calling `unlock`:|
+  ```cpp
+	class Point {
+	public:
+	double distance_from_origin() const noexcept {
+		++call_count_;  // 计算调用次数
+		return std::sqrt((x_ * x_) + (y_ * y_));
+	}
+	
+	private:
+		mutable std::atomic<unsigned> call_count_{0};
+		double x_;
+		double y_;
+	};
+	```
+
+ * Avoiding overusing `atomic`: Once you get to **==two or more variables or memory locations that require manipulation as a unit, you should reach for a mutex==**
+   * Issue Example 1:
+     Before calculation of `res_` for the first time to be finished, `flag_` is `false`, could leads to multiple threads calculating, the `flag_` doesn't work and waste time  
+	```cpp
+	class A {
+	public:
+		int f() const {
+			if (flag_) {
+				return res_;
+			} else {
+				auto x = expensive_computation1();
+				auto y = expensive_computation2();
+				res_ = x + y;
+				flag_ = true;  // 设置标记
+				return res_;
+			}
+		}
+	
+	private:
+		mutable std::atomic<bool> flag_{false};
+		mutable std::atomic<int> res_;
+	};
+	```
+
+   * Issue Example 2:
+	   set `flag_` to `true` right after goes into the branch of `!flag_`, but before `res_=x+y`, if other threads retrieve the `res_`, they would get undefined value
+	```cpp
+	class A {
+	public:
+		int f() const {
+			if (flag_) {
+				return res_;
+			} else {
+				flag_ = true;  // 设置标记
+				auto x = expensive_computation1();
+				auto y = expensive_computation2();
+				res_ = x + y;
+				return res_;
+			}
+		}
+	
+	private:
+		mutable std::atomic<bool> flag_{false};
+		mutable std::atomic<int> res_;
+	};
+	```
+	
+	*  It is for the best that we use `mutex` in this scenario
+	```cpp
+	class A {
+	 public:
+	  int f() const {
+	    std::lock_guard<std::mutex> lk{m_}; // lock_guard RAII
+	    if (flag_) {
+			return res_;
+	    } else {
+			auto x = expensive_computation1();
+			auto y = expensive_computation2();
+			res_ = x + y;
+			flag_ = true;
+			return res_;
+	    }
+	  }
+	
+	 private:
+		mutable std::mutex m_;
+		mutable bool flag_{false};
+		mutable int res_;
+	};
+	```
