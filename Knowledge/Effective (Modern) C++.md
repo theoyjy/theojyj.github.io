@@ -6,8 +6,8 @@
 4. [x] 对于共享性资源使用std::shared_ptr（Effective Modern C++ 19）  [priority:: highest]  [due:: 2024-07-06]  [completion:: 2024-07-06]
 5. [x] 优先考虑使用std::make_unique和std::make_shared而非new（Effective Modern C++ 21）  [priority:: highest]  [due:: 2024-07-06]  [completion:: 2024-07-09]
 6. [x] 确保const成员函数线程安全（Effective Modern C++ 16）  [completion:: 2024-07-10]
-7. [ ] 使用override声明重载函数（Effective Modern C++ 12）
-8. [ ] 理解异常处理（More Effective C++ 9-15）
+7. [x] 使用override声明重载函数（Effective Modern C++ 12）  [completion:: 2024-07-12]
+8. [x] 理解异常处理（More Effective C++ 9-15）  [completion:: 2024-07-12]
 
 ### 中等优先级（重要但不一定常考）
 
@@ -2850,3 +2850,581 @@ void slow_increment(int id)
 		mutable int res_;
 	};
 	```
+
+
+# 9 Prefer alias declaration `using` to typedef C++11
+
+* Easier to write and understand:
+```cpp
+using F = void(*)(int); // a pointer to a function
+
+typedef void(*F)(int)
+```
+
+* **alias declarations may be templatized** (in which case they’re called alias templates), while typedefs cannot
+```cpp
+template<typename T>
+using Vector = std::vector<T>;
+
+// in C++98 had to be hacked together with typedefs nested inside templatized structs:
+
+template<typename T>
+struct V{  // V<int> is equivalent to std::vector<int>  
+	typedef std::vector<T> type;
+}
+
+// using above two in other template class
+template<typename T>
+struct A{
+	Vector<T> a; // alias is easy to use
+	typename V<T>::type b; // have to use `typename...::type` 
+			// have to precede the typedef name with typename
+}
+
+
+// typename can be misleaded when there is a actual declared `type`
+template<typename T>
+struct V{  // V<int> is equivalent to std::vector<int>  
+	typedef std::vector<T> type;
+}
+```
+
+* `typename V<T>::type` is a **dependent type** on a template type parameter `T`. one of C++’s many endearing rules is that the names of dependent types must be preceded by `typename`.
+  If only use `V<T>::type`, the compiler still can't know for sure that it names a type, because there might be a specialization of `V` that they haven’t yet seen where `V::type` refers to something other than a type. For example:
+  
+  ```cpp
+	class Wine { … }; 
+
+	// MyAllocList specialization 
+	template<>                
+	class MyAllocList<Wine> {       // for when T is Wine 
+	private: 
+		enum class WineType   // see Item 10 for info on 
+		{ White, Red, Rose }; // "enum class" 
+		
+		WineType type;        // in this class, type is 
+		…                     // a data member! 
+	};
+
+	// MyAllocList general template definition
+	template<typename T>
+	class MyAllocList {       // for when T is Wine 
+	private: 
+		// does not have a variable named `type`
+	};
+	```
+	*`MyAllocList<Wine>::type` doesn’t refer to a type. If Widget were to be instantiated with Wine*
+	
+* for alias template, compiler knows `Vector<T>` is the name of a type, so it's a non-dependent type, the `typename` specifier is neither required nor permitted.
+
+* C++11 introduced `type traits`, apply a transformation, the resulting type is `std::transformation ::type`
+  ```CPP
+	std::remove_const::type // yields T from const T 
+	std::remove_reference::type // yields T from T& and T&& 
+	std::add_lvalue_reference::type // yields T& from T
+	```
+  * **the C++11 type traits are implemented as nested typedefs inside templatized structs**
+  ```cpp
+	template<typename T>
+	struct remove_reference{
+		using type = T;
+	}
+	
+	template<typename T>
+	struct remove_reference<T&>{
+		using type = T;
+	}
+	
+	template<typename T>
+	struct remove_reference<T&&>{
+		using type = T;
+	}
+
+	template <typename T>
+	using remove_reference_t = typename remove_reference<T>::type;
+
+	```
+
+	* **for each C++11 transformation `std::transformation::type`, there’s a corresponding C++14 alias template named `std::transformation_t`**, which is quite easy:
+  ```cpp
+	std::add_lvalue_reference::type // C++11: T → T& 
+	std::add_lvalue_reference_t // C++14 equivalent
+
+	// C++14 implementation type traits by alias template
+	template<class T>
+	using add_lvalue_reference_t = typename add_lvalue_reference<T>::type;
+	```
+
+
+# 10 Prefer scoped `enums` to unscoped `enums`
+
+
+1. *Avoiding namespace pollution**:
+  ==Curly braces limits the visibility of any name that is declared inside it, to the scope defined by the braces==. 
+	* Yet not true for **enumerators in C++98-style(*==unscoped==*): The names of such enumerators belong to the scope containing the `enum`**, that means nothing else in that scope may have the same name: 
+  ```cpp
+	enum Color{ black, white, red };  // enum in C++98 style
+	auto white = false; // ERROR!names inside enum has the same scope that 
+						// contains the enum. So here, white is already declared
+	```
+
+	* C++11 counterparts, *scoped `enums`*, **`enum class`** , don't leak names in this way:
+  ```cpp
+	enum class Color {black, white, red}; // names are scoped to Color
+	auto white = false; // fine
+
+	Color c = white; // ERROR: no enumerator name "white" is in this scope
+	Color c = Color::white; // OK
+	auto c = Color::white;
+	```
+
+2. **Scoped `enums`** are much **==more strongly typed==**
+  Unscoped `enums`** implicitly convert to integral types(and, from there, to floating-point types).
+  ```cpp
+  enum X { a, b, c };
+	X x = a;
+	if (x < 3.14) {  // shouldn't but valid by implicit convertion
+	}
+	
+	enum class Y { a, b, c };
+	Y y = Y::a;
+	if (x < 3.14) {  // ERROR
+	}
+	
+	if (static_cast<double>(x) < 3.14) {  // OK：enum class 允许强制转换为其他类型
+	}
+```
+
+3. **Scoped `enum` may be forward-declared**, i.e. names can be declared without specifying their enumerators:
+	  ```cpp
+	  enum Color; // ERROR
+	  enum class Color; // fine
+		```
+ 
+	* Compiler wants to save memory, so it would pick smallest type as underlying-type for a unscoped `enum`
+		```cpp
+		enum X { a, b, c };  // 编译器选择底层类型为 char
+		enum Status {        // 编译器选择比 char 更大的底层类型
+		  good = 0,
+		  failed = 1,
+		  incomplete = 100,
+		  corrupt = 200,
+		  indeterminate = 0xFFFFFFFF
+		};
+		```
+		
+	* **==The drawback of can't forward-declared: compiling dependency==**
+	  If an `enum` is very basic for entire system that makes its header is included by many files, modification would result in heavy recompilation.
+
+	* The underlying type of C++11 Scope `enum class` is known, can be retrieved by calling `std::underlying_type`. Can be assigned manually, if no specification, it would be `int` .
+	  However, **unscoped `enum`** does not have default underlying type
+		```cpp
+		enum class X : std::uint32_t;
+		// 也可以在定义中指定
+		enum class Y : std::uint32_t { a, b, c };
+		```
+
+* Only pro scenario of unscoped `enum` is when we want to implicitly converting types:
+	```cpp
+enum X { name, age, number };
+auto t = std::make_tuple("downdemo", 6, "42");
+auto x = std::get<name>(t);  // name 可隐式转换为 get 的模板参数类型 size_t
+	```
+
+	* need forcefully conversion for `enum class`
+	  ```cpp
+enum class X { name, age, number };
+auto t = std::make_tuple("downdemo", 6, "13312345678");
+auto x = std::get<static_cast<std::size_t>(X::name)>(t);
+		```
+	* could build a function to cast type but won't be easier much
+	  ```cpp
+template <typename E>
+constexpr auto f(E e) noexcept {
+  return static_cast<std::underlying_type_t<E>>(e);
+}
+
+auto x = std::get<f(X::name)>(t);
+	```
+
+
+# 11 Prefer deleted functions to private undefined ones.
+
+>[!IMPORTANT] Comparison with Private Undefined Functions
+>
+>While private undefined functions can still be used within the class or by friends, deleted functions provide a clear, compiler-enforced way to disable functions, preventing all potential misuse.
+
+#### Pre-C++11 Method: Private Undefined Functions
+
+Before C++11, one common way to disable copying of objects was to declare the copy constructor and copy assignment operator in the private section of the class without defining them.
+```cpp
+class A {
+private:
+    A(const A&);            // Copy constructor
+    A& operator=(const A&); // Copy assignment operator
+};
+```
+
+**Drawbacks:**
+
+1. **Runtime Errors:** If these private members were ever accidentally called, **the error would only be detected at runtime when the linker failed to find their definitions**.
+2. **Member and Friend Access:** Private members can still be accessed by the class's member functions and friends, **potentially leading to unintended usage**.
+
+#### C++11 Method: Deleted Functions
+
+C++11 introduced a more robust way to disable functions using the ` = delete` syntax. This explicitly marks the functions as deleted, **preventing them from being used at compile time**.
+
+```cpp
+class A {
+public:
+    A(const A&) = delete;            // Copy constructor
+    A& operator=(const A&) = delete; // Copy assignment operator
+};
+```
+
+**Advantages:**
+
+1. **Clear Diagnostics:** If a deleted function is called, **the compiler immediately issues a diagnostic message**, making it clear that the function is deleted.
+2. **Visibility:** It's common practice to **==declare deleted functions in the `public` section==**. This **==ensures that any attempt to use them is caught by the compiler before access control is checked, resulting in clearer error messages==**.
+
+#### Ensuring Total Disabling
+
+Deleted functions are **fully disabled and cannot be called by any means**, unlike private members that could still be accessed by **friends or member functions**.
+
+#### Deleting Function Overloads
+
+You can use `= delete` to disallow certain function overloads, preventing specific types of arguments.
+```cpp
+void process(int);
+void process(double) = delete;  // Disallow double arguments
+
+process(10);    // OK
+process(3.14);  // Error: use of deleted function 'void process(double)
+```
+
+#### Deleting Template Specializations
+
+Deleted functions can also prevent template instantiations for specific types.
+```cpp
+template <typename T>
+void func(T) {}
+
+template <>
+void func<int>(int) = delete; // Disallow int specialization
+
+func(1);   // Error: use of deleted function 'void func<int>(int)'
+func('a'); // OK
+```
+
+* Class Template
+```cpp
+class C {
+public:
+    template <typename T>
+    void g(T) {}
+
+    template <>
+    void g<int>(int) = delete; // Disallow int specialization
+};
+
+C c;
+c.g(10);    // Error: use of deleted function 'void C::g<int>(int)'
+c.g(3.14);  // OK
+```
+
+
+# 12 Declare overriding function `override`
+
+#### Virtual Function Overriding Requirements
+
+To override a virtual function in a derived class, several conditions must be met:
+1. **Base Class Virtual Function**: func must be declared as `virtual` in base
+2. The Following parts must be **exact the same**:
+	1. Function Name
+	2. Parameter Types
+	3. Constness
+	4. Return Type and Exception Specification
+	5. Reference Qualifiers: & or &&(new requirement in C++11)
+	   ```cpp
+		namespace jc 
+		{ 
+			struct A 
+			{ 
+				constexpr int f() & { return 1; } // Only callable on lvalue objects 
+				constexpr int f() && { return 2; } // Only callable on rvalue objects 
+			}; 
+			
+			constexpr A make_a() { return A{}; } 
+		} // namespace jc 
+		
+		int main() 
+		{ 
+			jc::A a; 
+			static_assert(a.f() == 1); 
+			static_assert(jc::make_a().f() == 2); 
+		}
+		```
+
+#### Pitfalls of Overriding
+
+Due to these stringent requirements, it's easy to make mistakes when overriding functions. For instance, consider the following example where no functions are actually overridden:
+
+```cpp
+struct A {
+public:
+  virtual void f1() const;
+  virtual void f2(int x);
+  virtual void f3() &;
+  void f4() const;
+};
+
+struct B : A {
+  virtual void f1();            // Missing const qualifier
+  virtual void f2(unsigned int x); // Parameter type mismatch
+  virtual void f3() &&;         // Reference qualifier mismatch
+  void f4() const;              // Not virtual in base class
+};
+```
+
+#### Using `override` to Ensure Correctness
+C++11 introduced the `override` keyword to address these issues. **By marking a function with `override`, you explicitly state your intention to override a base class virtual function**. **==If the function does not actually override a base class function, the compiler will generate an error, ensuring correctness.==**
+```cpp
+struct A {
+  virtual void f1() const;
+  virtual void f2(int x);
+  virtual void f3() &;
+  void f4() const;
+};
+
+struct B : A {
+  void f1() const override;
+  void f2(int x) override;
+  void f3() & override;
+  void f4() const override; // Error: 'f4' is not virtual in 'A'
+};
+
+```
+
+#### `override` as a Contextual Keyword
+
+`override` is a contextual keyword, meaning it only has special meaning in specific contexts. It can still be used as an identifier in other contexts without causing issues:
+```cpp
+struct A {
+  void override(); // Legal in both C++98 and C++11
+};
+```
+
+#### The `final` Keyword
+
+C++11 also introduced the `final` keyword, which can be used to **prevent further overriding** of a virtual function:
+```cpp
+struct A {
+  virtual void f() final;
+  // void g() final; // Error: 'final' can only be used with virtual functions
+};
+
+struct B : A {
+  // virtual void f() override; // Error: 'f' cannot be overridden as it is final in 'A'
+};
+```
+
+`final` can also be used to prevent inheritance from a class:
+```cpp
+struct A final {};
+// struct B : A {}; // Error: 'A' cannot be inherited from as it is final
+```
+
+### Benefits of Using `override` and `final`
+
+- **Clarity:** Clearly indicates the programmer's intent to override a base class function.
+- **Error Prevention:** Helps prevent subtle bugs caused by incorrectly overridden functions.
+- **Maintenance:** Makes the code easier to maintain and understand, especially in large codebases.
+
+# 13 Prefer `const_iterators` to iterators.
+
+>[!Tip] using `const_iterator` when iterating over a container without modifying its elements
+
+#### Basic Usage of `const_iterator`
+```cpp
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+int main() {
+    std::vector<int> v{2, 3};
+    auto it = std::find(std::cbegin(v), std::cend(v), 2);  // C++14
+    v.insert(it, 1);
+}
+```
+
+#### Using `const_iterator` in Templates
+```cpp
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+template <typename C, typename T>
+void f(C& container, const T& anchor, const T& value) {
+    auto it = std::find(std::cbegin(container), std::cend(container), anchor);
+    c.insert(it, value);
+}
+
+int main() {
+    std::vector<int> v{2, 3};
+    f(v, 2, 1);
+}
+```
+
+#### Implementing `std::cbegin` and `std::cend` in C++11
+```cpp
+#include <vector>
+#include <iterator>
+
+template <typename C>
+auto cbegin(const C& c) -> decltype(std::begin(c)) {
+    return std::begin(c);  // c is const, so this returns const_iterator
+}
+
+template <typename C>
+auto cend(const C& c) -> decltype(std::end(c)) {
+    return std::end(c);  // c is const, so this returns const_iterator
+}
+
+int main() {
+    std::vector<int> v{2, 3};
+    auto it = std::find(cbegin(v), cend(v), 2);
+    v.insert(it, 1);
+}
+```
+
+### Summary
+
+- **Use `const_iterator` when you do not need to modify elements during iteration.**
+- **Utilize `std::cbegin` and `std::cend` for obtaining `const_iterator`s.**
+- **Implement `cbegin` and `cend` manually in C++11 if needed.**
+- **Enforce const-correctness to prevent unintended modifications and enable potential optimizations.**
+- **Clearly communicate your intent to other developers, improving code readability and maintainability.**:the iteration process will not modify the container’s elements, making the code easier to understand and maintain
+
+By following these guidelines, you ensure that your code is robust, maintainable, and optimized for performance.
+
+# 14 Declare functions `noexcept` if they won’t emit exceptions
+
+### C++98 `throw()` vs C++11 `noexcept`
+
+- In C++98 ，You **had to summarize the exception types a function might emit**, so if the **function’s implementation was modified**, **the exception specification might require revision**, too. This **could break client code**, because **==callers might be dependent on the original exception specification==**.
+- In C++11, a consensus emerged(达成了一个共识) that only need to care about whether a function has exception-emitting or not. Either a function might emit an exception or it guaranteed that it wouldn’t, This **==maybe-or-never==** dichotomy forms the basis of C++11’s exception specifications
+
+```cpp
+int f(int x) throw();  // no exception from C++98 style
+int f(int x) noexcept; // no exception from C++11 style
+```
+
+#### Stack Unwound and Code Optimization
+
+>[!Success] This alone is sufficient reason to declare functions `noexcep` whenever you know they won't produce exceptions
+
+1. In C++98, if a `throw()` function emit an exception, the runtime system will perform a call **==stack unwind==**. This means it will clean up the func's stack frame, ensuring that destructors are called in reverse order of their construction, and then it will terminate the program if the exception is not caught.
+   
+	* **Stack Unwinding:** the **==compiler must generate code that ensures the stack is properly unwound==**. This involves calling destructors in the reverse order and cleaning up stack frames to prevent resource leaks
+	
+	* **Optimization Constraints:** **==optimizers cannot make certain aggressive optimizations==**. For example, optimizations that *might disrupt the order of destructor calls or assume that the stack is not unwoundable are not allowed.*
+   
+2. In C++11, if a `noexcept` function throws an exception. The stack is **only "possibly unwound"**, which means that the compiler has more flexibility in optimizing code because it **doesn't need to guarantee that the stack will be in a state where it can be unwound**.
+   
+	* ==**Possibly Unwindin==g**: the compiler is allowed more leeway. It can assume that the function will not throw exceptions and might optimize accordingly.
+	* **Optimization Flexibility:** Since the compiler can assume that the function will not throw exceptions, it can **optimize code more aggressively**. For instance, it might not keep the stack in a state that supports unwinding or might not ensure that destructors are called in a specific order. This can lead to more efficient code generation.
+
+```cpp
+RetType function(params) noexcept;  // most optimizable
+RetType function(params) throw();   // less optimizable
+RetType function(params);           // less optimizable
+```
+
+### Desiring `noexcept` Cases
+
+##### 1. strong exception safety -- `std::vector` 's `push_back`
+
+>[!Info] When vector lacks of space, i.e. its size  is equal to its capacity.`std::vector` will allocate new, larger chunk  of memory, and transfers the elements:
+
+1. In C++98, the transfer was accomplished by **copying** each element, then destroying the objects in the old memory. Which offers the **==strong exception safety guarantee: if an exception was thrown during the copying of the elements, the state of the `std::vec `tor remained unchanged, because none of the elements in the old memory were destroyed until all elements had been successfully copied into the new memory 
+   ==**
+2. In C++11, it **can't silently replace copy  operations with moves unless it's known that the ==`move` operations won't emit exception==,** which is declared by `noexcept`. Otherwise, it runs the risks of violating `pupsh_back` 's exception safety guarantee.
+   *If an exception is thrown moving `n+1`, the operation can't run to complete. But the original `vector` has been modified, restoring them may yield an exception as well.*
+
+##### 2. Conditionally `noexcept` -- `swap`
+
+>[!Abstract] whether they are `noexcept` depends on whether the expressions inside the `noexcept` clauses are `noexcept`
+
+```cpp
+/*
+ * 1. 数组的 swap 
+ * 由元素类型决定 noexcept 结果
+ * 比如元素类型是 class A
+ * 如果 swap(A, A) 不抛异常则该数组的 swap 也不抛异常
+ */
+template<class T, size_t N>
+void swap(T (&a) [N], T (&b) [N]) noexcept(noexcept(swap(*a, *b)));
+
+// 2. std::pair 的 swap
+template <typename T, typename U>
+struct pair {
+  void swap(pair& p) noexcept(
+      noexcept(swap(first, p.first)) && noexcept(swap(second, p.second)));
+};
+
+```
+
+##### 3. Deallocating memory
+
+For some functions, being `noexcept` is so important, they’re that way by default.
+
+>[!Info] In 11, memory deallocation functions and all destructors—both user-defined and compiler-generated—are implicitly `noexcept`. There’s thus no need to declare them `noexcept`.
+
+The only time a destructor is not implicitly `noexcept` is when a data member of the class (including inherited members and those contained inside other data members) is of a type that expressly states that its destructor may emit exceptions (e.g., declares it “`noexcept(false)`”). Such destructors are uncommon.
+
+### Most functions are ==exception-neutral==
+
+>[!Abstract] Such functions throw no exceptions themselves, but functions they call might emit one.
+>When that happens, the exception-neutral function allows the emitted exception to **pass through on its way to a handler further up the call chain**.
+>
+>Most functions, therefore, quite properly lack the `noexcept` designation.
+
+>[!Tip] Twisting a function’s implementation to permit a `noexcept` declaration is the tail wagging the dog. Is putting the cart before the horse. Is not seeing the forest for the trees
+>
+>If a straightforward function implementation might yield exceptions, the hoops you’ll jump through to hide that from callers (e.g., ==**catching all exceptions and replacing them with status codes or special return values**) will **not only complicate your function’s implementation**, it will typically **complicate code at call sites**==, too. 
+>
+>For example, callers may have to check for status codes or special return values. **==The runtime cost of those complications (e.g., extra branches, larger functions that put more pressure on instruction caches, etc.) could exceed any speedup you’d hope to achieve via `noexcept`==**, plus you’d be saddled with source code that’s **more difficult to comprehend and maintain**. That’d be poor software engineering
+
+#### "wide contracts" vs "narrow contracts"
+
+1. **wide contracts**: ==no preconditions==. Can be called ==regardless of the state of program==, and it imposes ==no constrains on arguments== that callers pass it. Such functions ==never exhibit undefined behavior==.
+   
+2. **narrow contracts**: ==if a precondition is violated, results are undefined==.
+    Function is under no obligation to check this precondition, because functions may assume that their preconditions are satisfied, suppose then declare it with `noexcept`
+	```cpp
+	void f(const std::string& s) noexcept; // precondition: // s.length() <= 3
+	```
+	**Debugging an exception that’s been thrown is generally easier than trying to track down the cause of undefined behavior**. But how should a precondition violation be reported? A straightforward approach would be to ==**throw a “precondition was violated”** exception, **but if `f` is declared `noexcept`, that would be impossible**==
+
+>[!Summary]
+>Generally reserve `noexcept` for functions with wide contracts.
+
+#### compilers typically offer no help in identifying inconsistencies between function implementations and their exception specifications
+
+```cpp
+void setup(); // functions defined elsewhere 
+void cleanup(); 
+
+void doWork() noexcept 
+{ 
+	setup(); // set up work to be done 
+	… // do the actual work 
+	cleanup(); // perform cleanup actions 
+}
+```
+
+A `noexcept` function calls `non-except` functions. This seems contradictory, but it could be that setup and cleanup document that they never emit exceptions, even though they’re not declared that way. For example, they might be part of a library written in C. Or they could be part of a C++98 library that decided not to use C++98 exception specifications and hasn’t yet been revised for C++11.
+
+>[!Summary]
+>Because there are legitimate reasons for `noexcept` functions to rely on code lacking the `noexcept` guarantee, C++ permits such code, and compilers generally don’t issue warnings about it.
+
