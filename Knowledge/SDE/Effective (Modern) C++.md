@@ -3319,7 +3319,7 @@ int f(int x) throw();  // no exception from C++98 style
 int f(int x) noexcept; // no exception from C++11 style
 ```
 
-#### Stack Unwound and Code Optimization
+#### ==Stack Unwound and Code Optimization==
 
 >[!Success] This alone is sufficient reason to declare functions `noexcep` whenever you know they won't produce exceptions
 

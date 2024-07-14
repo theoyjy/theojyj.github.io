@@ -1,5 +1,9 @@
 {
   "accentColor": "#009dff",
   "theme": "moonstone",
-  "cssTheme": "GitHub Theme"
+  "cssTheme": "GitHub Theme",
+  "enabledCssSnippets": [
+    "snippets"
+  ],
+  "baseFontSize": 17
 }

@@ -4,35 +4,34 @@
     "type": "split",
     "children": [
       {
-        "id": "84963c083e13563c",
+        "id": "eeecee5bcfb4f312",
         "type": "tabs",
         "children": [
           {
-            "id": "cf7c4ca63ceb8f73",
+            "id": "f7c2a8d70afb5889",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plans/Full Time!!.md",
+                "file": "Knowledge/SDE/Distributed system.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "a109e9709180ed3b",
+            "id": "56ae09ce24a0944a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "System Design Interview.md",
+                "file": "Must-learn in Distribution.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -90,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 264.5
+    "width": 264.5,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -106,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "System Design Interview.md",
+                "file": "Knowledge/SDE/Distributed system.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "System Design Interview.md",
+                "file": "Knowledge/SDE/Distributed system.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "System Design Interview.md"
+                "file": "Knowledge/SDE/Distributed system.md"
               }
             }
           },
@@ -175,7 +175,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -196,10 +196,27 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "a109e9709180ed3b",
+  "active": "f7c2a8d70afb5889",
   "lastOpenFiles": [
+    "Must-learn in Distribution.md",
+    "Knowledge/SDE/Distributed system.md",
+    "Distributed system-20240714220408357.webp",
+    "Distributed system-20240714220316062.webp",
+    "Distributed system-20240714215920786.webp",
+    "Distributed system-20240714213739243.webp",
+    "Distributed system-20240714213721448.webp",
+    "Resources/Distributed system-20240714165217619.webp",
+    "Resources/Distributed system-20240714212345377.webp",
+    "Resources/Distributed system-20240714211922409.webp",
+    "Resources/Distributed system-20240714211605722.webp",
+    "Resources/Distributed system-20240714204950684.webp",
+    "Knowledge/SDE/System Design Interview.md",
+    "Knowledge/SDE/Effective (Modern) C++.md",
+    "Use Of Obsidian.md",
+    "Knowledge/SDE",
     "Plans/Full Time!!.md",
-    "System Design Interview.md",
+    "Untitled Kanban.md",
+    "snippets.css",
     "Task Calendar.md",
     "Plans/Computer.md",
     "Knowledge/MIT OS Engineering.md",
@@ -215,7 +232,6 @@
     "tasksCalendar",
     "WorkTmp/显存峰值问题.md",
     "C++ Basic.md",
-    "Knowledge/Effective (Modern) C++.md",
     "Knowledge/3D Info.md",
     "Knowledge/C++Everything.md",
     "Plans/VR Plans.md",
@@ -226,25 +242,9 @@
     "01.md",
     "2024-W28.md",
     "Untitled 1.md",
-    "Resources/C++ Crucial Knowledge-20240705205039265.webp",
-    "Resources/C++ Crucial Knowledge-20240704204435316.webp",
-    "Resources/C++ Crucial Knowledge-20240704204635291.webp",
-    "Knowledge/CSE167x Computer Graphics.md",
-    "Knowledge/Dev Tips.md",
-    "Knowledge/Learn How to Improve.md",
-    "Doc/processIntro.md",
     "4_2_RotateArbi.pdf",
     "Untitled.canvas",
     "EffectModernC++ 3.xmind",
-    "EffectModernC++ 2.xmind",
-    "EffectModernC++ 1.xmind",
-    "Resources/CSE167x Computer Graphics-20240628215304005.webp",
-    "Resources/CSE167x Computer Graphics-20240627231411792.webp",
-    "Resources/CSE167x Computer Graphics-20240621141126264.webp",
-    "Resources/CSE167x Computer Graphics-20240625203953203.webp",
-    "Resources/CSE167x Computer Graphics-20240609162309079.webp",
-    "Resources/CSE167x Computer Graphics-20240625212330021.webp",
-    "Resources/CSE167x Computer Graphics-20240625212159405.webp",
     "WorkTmp/2.7bugs.canvas"
   ]
 }
