@@ -3428,3 +3428,154 @@ A `noexcept` function calls `non-except` functions. This seems contradictory, bu
 >[!Summary]
 >Because there are legitimate reasons for `noexcept` functions to rely on code lacking the `noexcept` guarantee, C++ permits such code, and compilers generally don’t issue warnings about it.
 
+
+# 15 Use `constexpr` whenever possible
+
+* `constexpr` indicates a value that's not only **constant**, it's **known during compilation**.
+* Of broader application, the integral compilation-time constant value(*integral constant expression*), can be used in contexts including ==specification of array sizes==, ==integral template arguments==, ==enumerator values==, ==alignment specifiers==
+* Values known during compilation may be placed in **read-only memory**.
+
+```cpp
+int sz;  // no-constexpr
+constexpr auto arraySize = sz; // error, sz is not known at compilation
+std:array<int, sz> data1; // error
+
+constexpr auto arraySize2 = 10; // fine
+std::array<int, arraySize2> daata2;  // fine
+```
+
+* **`const`** doesn't offer the same guarantee as `constexpr`, because `const` objects need not be initialized with values known during compilation.
+  All `constexpr` objects are const, but not all const objects are `constexpr`.
+```cpp
+int sz; // non-constexxpr
+const auto arraySize = sz; // fine, const can be init at runtime
+std::array<int, arraySize> data; // error
+```
+
+* **==`constexpr` function==**:
+  It produces compile-time constants when they are called with compile-time constants. If they’re called with one or more arguments not known until runtime, they produce runtime values.
+  *Can't assume the results of `constexpt` functions are `const`, nor can you take for granted that their values are known during compilation.*
+  *This means you don’t need two functions to perform the same operation, one for compile-time constants and one for all other values. The `constexpr` function does it all.*
+  ```cpp
+	#define CPP98 199711L
+	#define CPP11 201103L
+	#define CPP14 201402L
+	#define CPP17 201703L
+	#define CPP20 202002L
+	
+	// #if ((defined(_MSVC_LANG) && _MSVC_LANG > CPP11) || __cplusplus > CPP11)
+	// #define JC_HAS_CXX14
+	// #endif
+	
+	#ifndef JC_HAS_CXX14
+	  #ifdef _MSVC_LANG
+	    #if _MSVC_LANG > CPP11
+	      #define JC_HAS_CXX14 1
+	    #else
+	      #define JC_HAS_CXX14 0
+	    #endif
+	  #else
+	    #if __cplusplus > CPP11
+	      #define JC_HAS_CXX14 1
+	    #else
+	      #define JC_HAS_CXX14 0
+	    #endif
+	  #endif
+	#endif  // JC_HAS_CXX14
+	
+	namespace jc {
+	
+	constexpr int pow(int base, int exp) noexcept {
+	#ifdef JC_HAS_CXX14
+	  auto res = 1;
+	  for (int i = 0; i < exp; ++i) {
+	    res *= base;
+	  }
+	  return res;
+	#else  // C++11 中，constexpr 函数只能包含一条语句
+	  return (exp == 0 ? 1 : base * pow(base, exp - 1));
+	#endif
+	}
+	
+	}  // namespace jc
+	
+	int main() {
+	  constexpr auto n = 4;
+	  static_assert(jc::pow(3, n) == 81);
+	}
+```
+* C++11, requires `constexpr` function may contain no more than a single executable statement: a return. But it can cope with "?:" and recursion
+  C++14, loosen the restrictions
+  
+* `constexpr` functions are limited to taking and returning **==literal types==** which essentially means types that **can have values determined during compilation**: ==All build-in types except `void`, and user-defined types that have at least a `constexpr` constructor==.
+	* In **C++11, two restrictions prevent Point’s member functions `setX` and `setY` from being declared `constexpr`**. First, they ==modify the object they operate on==, and in C++11, ==`constexpr` member functions are implicitly const==. Second, they have ==void return types==, and void isn’t a literal type in C++11.
+	* Both these restrictions are lifted in C++14, so **==in C++14, even Point’s setters can be `constexpr`==**
+```cpp
+class Point
+{
+public:
+	// constexpr constructor
+	constexpr Point(double xVal = 0, double yValue = 0) noexcept
+	: x(xVal), y(yVal) {}
+
+	constexpr double xValue() const noexcept { return x; }
+	constexpr double yValue() const noexcept { return y; }
+
+	#ifdef JC_HAS_CXX14
+	
+		constexpr void setX(double newX) noexcept { x = newX; }
+		constexpr void setY(double newY) noexcept { y = newY; }
+		
+	#else  // C++11 constexpr function 不接受返回void，也不可以modify value
+	
+	  void setX(double newX) noexcept { x = newX; } 
+	  void setY(double newY) noexcept { y = newY; }
+	  
+	#endif
+
+
+private:
+	double x, y;
+}
+
+
+constexpr Point p1(9.4, 27.7); // fine
+
+// in C++14 it's possible to write function like this:
+constexpr Point(const Point& p) noexcept
+{
+	Point result;
+	result.setX(-p.xValue());
+	result.setY(-p.yValue());
+	return result;
+}
+
+constexpr Point p1(9.4, 27.7); // as above 
+constexpr Point p2(28.8, 5.3); 
+constexpr auto mid = midpoint(p1, p2); 
+constexpr auto reflectedMid = reflection(mid); // reflectedMid's value is  
+						// (-19.1 -16.5) and known during compilation
+
+```
+
+* the member functions can be `constexpr`, such as getters above. If they are called by a `constexpr` Point object, the value of data members x and y can be known during compilation.
+  
+  That makes it possible to write ==`constexpr` functions that call Point’s getters and to initialize `constexpr` objects with the results of such functions==: 
+	```cpp
+	constexpr Point midPoint(const Point& p1, const Point& p2)
+	{
+		return { (p1.xValue() + p2.xValue()) / 2,
+				 (p1.yValue() + p2.yValue()) / 2};
+	}
+	
+	constexpr auto mid = midpPoint(p1, p2);
+	```
+
+>[!Summary] Why use `constexpr` whenever possible:
+>Both `constexpr` objects and `constexpr` functions can be employed in a wide range of contexts than `non-constexpr` objects and functions, which can maximize the range of situations in which your objects and functions may be used.
+
+
+
+
+
+

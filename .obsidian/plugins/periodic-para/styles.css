@@ -2,9 +2,62 @@
 .periodic-para-create-note {
   overflow: hidden !important;
 }
+.periodic-para-create-note * {
+  font-family: var(--font-interface);
+}
 .periodic-para-create-note button:not(.ant-btn) {
   background-color: unset;
   box-shadow: unset;
+}
+.periodic-para-create-note .ant-picker-cell-selected .ant-picker-cell-inner .cell-container .chinese-cal {
+  color: #fff;
+}
+.periodic-para-create-note .ant-picker-cell-inner {
+  display: flex !important;
+  width: 100% !important;
+  height: 100% !important;
+  align-items: center;
+  justify-content: center;
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container {
+  position: relative;
+  border-radius: 10px;
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container .chinese-cal {
+  display: block;
+  line-height: initial;
+  font-size: 11px;
+  color: rgba(153, 153, 153, 0.45);
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container .dot {
+  position: relative;
+  height: 2px;
+  color: var(--interactive-accent);
+  display: block;
+  margin: auto;
+  top: -15px;
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container .week-dot {
+  position: fixed;
+  height: 2px;
+  left: 20px;
+  color: var(--interactive-accent);
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container .label {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  color: #fff;
+  width: 13px;
+  line-height: 13px;
+  border-radius: 8px;
+  font-size: 8px;
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container .label.workday {
+  background-color: rgba(153, 153, 153, 0.45);
+}
+.periodic-para-create-note .ant-picker-cell-inner .cell-container .label.holiday {
+  background-color: var(--interactive-accent);
 }
 .periodic-para-create-note .ant-btn-primary {
   color: #fff;
@@ -49,3 +102,5 @@
 .is-phone .periodic-para .ant-tabs-tab + .ant-tabs-tab {
   margin: 0 0 0 24px;
 }
+
+/* src/component/SettingTab/index.less */

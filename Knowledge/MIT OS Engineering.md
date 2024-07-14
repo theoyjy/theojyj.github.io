@@ -1,4 +1,4 @@
-- [ ] OSE Labs  [start:: 2024-05-07]
+- [ ] OSE Labs  [start:: 2024-05-07] ⏬
 	- [x] lab1  [completion:: 2024-05-19]
 		- [x] chapter 1 Operating System Interface  [completion:: 2024-05-27]
 	- [ ] lab2

@@ -6,9 +6,9 @@
   "table-editor-obsidian",
   "obsidian-outliner",
   "obsidian-task-progress-bar",
-  "obsidian-tasks-plugin",
   "drawio-obsidian",
   "image-converter",
   "obsidian-mind-map",
-  "calendar"
+  "heatmap-calendar",
+  "obsidian-tasks-plugin"
 ]

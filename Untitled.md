@@ -1,4 +1,0 @@
-qualifier
-identifier
-keyword
-specifier
