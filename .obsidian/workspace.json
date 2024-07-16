@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f7c2a8d70afb5889",
+            "id": "e7ac405970666960",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,12 +20,22 @@
             }
           },
           {
-            "id": "56ae09ce24a0944a",
+            "id": "64d50652054b31d6",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Knowledge/SDE/Distributed System Mindmap.md"
+              }
+            }
+          },
+          {
+            "id": "a3f3d29bc4f5c371",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Must-learn in Distribution.md",
+                "file": "Knowledge/SDE/Must-learn in Distribution.md",
                 "mode": "source",
                 "source": false
               }
@@ -196,20 +206,24 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "f7c2a8d70afb5889",
+  "active": "e7ac405970666960",
   "lastOpenFiles": [
-    "Must-learn in Distribution.md",
+    "Resources/Distributed system-20240716151307000.webp",
     "Knowledge/SDE/Distributed system.md",
-    "Distributed system-20240714220408357.webp",
-    "Distributed system-20240714220316062.webp",
-    "Distributed system-20240714215920786.webp",
-    "Distributed system-20240714213739243.webp",
-    "Distributed system-20240714213721448.webp",
-    "Resources/Distributed system-20240714165217619.webp",
-    "Resources/Distributed system-20240714212345377.webp",
-    "Resources/Distributed system-20240714211922409.webp",
-    "Resources/Distributed system-20240714211605722.webp",
-    "Resources/Distributed system-20240714204950684.webp",
+    "Resources/Distributed system-20240716202607312.webp",
+    "Resources/Distributed system-20240716202248686.webp",
+    "Knowledge/SDE/Distributed System Mindmap.md",
+    "Knowledge/SDE/Must-learn in Distribution.md",
+    "Resources/Distributed system-20240716191854492.webp",
+    "Resources/Distributed system-20240716191615897.webp",
+    "Resources/Distributed system-20240716190949495.webp",
+    "Resources/Distributed system-20240716190549061.webp",
+    "Resources/Distributed system-20240716185828798.webp",
+    "Resources/Distributed system-20240716170615185.webp",
+    "Resources/Distributed system-20240716161853119.webp",
+    "Excalidraw/Drawing 2024-06-20 16.35.01.excalidraw.md",
+    "Resources/Distributed system-20240716151724901.webp",
+    "Untitled.md",
     "Knowledge/SDE/System Design Interview.md",
     "Knowledge/SDE/Effective (Modern) C++.md",
     "Use Of Obsidian.md",
@@ -238,10 +252,6 @@
     "README.md",
     "index.md",
     "excalibrain.md",
-    "fold.md",
-    "01.md",
-    "2024-W28.md",
-    "Untitled 1.md",
     "4_2_RotateArbi.pdf",
     "Untitled.canvas",
     "EffectModernC++ 3.xmind",

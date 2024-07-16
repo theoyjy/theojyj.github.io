@@ -2,11 +2,11 @@
 
 1. **Basics of Distributed Systems:**
     
-    - Definition and key characteristics (scalability, fault tolerance, consistency, etc.)
+    - Definition and key characteristics (~~scalability, fault tolerance, consistency~~, etc.)
 2. **Consistency Models:**
     
-    - CAP Theorem (Consistency, Availability, Partition Tolerance)
-    - Types of consistency (eventual, strong, causal, etc.)
+    - ~~CAP Theorem (Consistency, Availability, Partition Tolerance)~~
+    - ~~Types of consistency (eventual, strong, causal, etc.)~~
 3. **Common Architectures:**
     
     - Client-server model
@@ -68,3 +68,21 @@
 2. **Common Architectures and Concurrency**
 3. **Data Storage, Replication, and Fault Tolerance**
 4. **Distributed Algorithms and Transactions**
+
+```mermaid
+mindmap
+	root
+	 ACID Transaction
+		 Atomicity
+		 Consistency
+		 Isolation
+		 Durability
+	 PACELC
+		 CAP Theorem
+			 Consistency
+			 Avaiability
+			 Partition
+		 Else
+			 Latency
+			 Consistency
+```
