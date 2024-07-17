@@ -7,14 +7,14 @@
 This website is reading my brain to show all I know which is this 🤏 much of useful info.
 
 ### Contents:
-
-1. [Linux Library Create](libraryLinkage.md)
-2. [Makefile](makefile.md)
-3. [GDB](gdb.md)
-4. [Linux I/O](Linux_I_O.md)
-5. [Process Introduction](processIntro.md)
-6. [Linux Process Functions](processLinux.md)
-7. IPC
+1. [[Algorithm Index]]
+2. [Linux Library Create](libraryLinkage.md)
+3. [Makefile](makefile.md)
+4. [GDB](gdb.md)
+5. [Linux I/O](Linux_I_O.md)
+6. [Process Introduction](processIntro.md)
+7. [Linux Process Functions](processLinux.md)
+8. IPC
 	1. [Inter Process Communication](InterProcessCommunication.md)
 	2. [Signal](signal.md)
 	3. [Share Memory](shareMemory.md)
