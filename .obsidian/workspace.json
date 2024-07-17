@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Doc/Algorithm/Algorithm Index.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Algorithm/1 Array.md",
+                "file": "Doc/Algorithm/Array.md",
                 "mode": "source",
                 "source": false
               }
@@ -105,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "Doc/Algorithm/Algorithm Index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
+                "file": "Doc/Algorithm/Algorithm Index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md"
+                "file": "Doc/Algorithm/Algorithm Index.md"
               }
             }
           },
@@ -197,10 +197,10 @@
   },
   "active": "d0883d6e8e2a9dfd",
   "lastOpenFiles": [
+    "index.md",
+    "Doc/Algorithm/Array.md",
     "Doc/Algorithm/Algorithm Index.md",
     "Doc/C++/cn.md",
-    "Doc/Algorithm/1 Array.md",
-    "index.md",
     "Doc/C++/STL.md",
     "Doc/C++/makefile.md",
     "Doc/C++/libraryLinkage.md",
