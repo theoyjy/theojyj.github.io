@@ -168,7 +168,7 @@ Multiple deliveries might lead to multiple processing on recipient side, can cre
 **So multiple deliveries -> multiple Idempotent operations(Processing) -> result correct**
 ##### Tight Constrains make it hard to make all operations idempotent
 
-
+============
 #### 2. De-duplication approach
 
 >[!Definition]

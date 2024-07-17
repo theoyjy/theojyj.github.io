@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Knowledge/SDE/Distributed system.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               }
@@ -99,8 +99,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 264.5,
-    "collapsed": true
+    "width": 264.5
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -116,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Knowledge/SDE/Distributed system.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Knowledge/SDE/Distributed system.md",
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Knowledge/SDE/Distributed system.md"
+                "file": "index.md"
               }
             }
           },
@@ -208,8 +207,10 @@
   },
   "active": "e7ac405970666960",
   "lastOpenFiles": [
-    "Resources/Distributed system-20240716151307000.webp",
+    "C++.md",
+    "index.md",
     "Knowledge/SDE/Distributed system.md",
+    "Resources/Distributed system-20240716151307000.webp",
     "Resources/Distributed system-20240716202607312.webp",
     "Resources/Distributed system-20240716202248686.webp",
     "Knowledge/SDE/Distributed System Mindmap.md",
@@ -222,7 +223,6 @@
     "Resources/Distributed system-20240716170615185.webp",
     "Resources/Distributed system-20240716161853119.webp",
     "Excalidraw/Drawing 2024-06-20 16.35.01.excalidraw.md",
-    "Resources/Distributed system-20240716151724901.webp",
     "Untitled.md",
     "Knowledge/SDE/System Design Interview.md",
     "Knowledge/SDE/Effective (Modern) C++.md",
@@ -250,7 +250,6 @@
     "Knowledge/C++Everything.md",
     "Plans/VR Plans.md",
     "README.md",
-    "index.md",
     "excalibrain.md",
     "4_2_RotateArbi.pdf",
     "Untitled.canvas",
