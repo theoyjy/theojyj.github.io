@@ -8,21 +8,21 @@ This website is reading my brain to show all I know which is this 🤏 much of u
 
 ### Contents:
 
-1. [Linux Library Create](Doc/libraryLinkage)
-2. [Makefile](Doc/makefile.md)
-3. [GDB](Doc/gdb.md)
-4. [Linux I/O](Doc/Linux_I_O.md)
-5. [Process Introduction](/Doc/processIntro.md)
-6. [Linux Process Functions](/Doc/processLinux.md)
+1. [Linux Library Create](libraryLinkage.md)
+2. [Makefile](makefile.md)
+3. [GDB](gdb.md)
+4. [Linux I/O](Linux_I_O.md)
+5. [Process Introduction](processIntro.md)
+6. [Linux Process Functions](processLinux.md)
 7. IPC
-	1. [Inter Process Communication](/Doc/InterProcessCommunication.md)
-	2. [Signal](/Doc/signal.md)
-	3. [Share Memory](/Doc/shareMemory.md)
+	1. [Inter Process Communication](InterProcessCommunication.md)
+	2. [Signal](signal.md)
+	3. [Share Memory](shareMemory.md)
 
-8. [Daemon](/Doc/daemon.md) 
-9. [Thread](/Doc/thread.md)
-10. [Computer Network](/Doc/cn.md)
-11. [STL Source Analysis](/Doc/STL.md)
+8. [Daemon](daemon.md) 
+9. [Thread](thread.md)
+10. [Computer Network](cn.md)
+11. [STL Source Analysis](STL.md)
 12. ...
 
 
