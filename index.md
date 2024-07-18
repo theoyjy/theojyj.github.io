@@ -8,23 +8,22 @@ This website is reading my brain to show all I know which is this 🤏 much of u
 
 ## Contents:
 1. Algorithm
-	1. [Array](Algorithm/Array.md)
+	1. [Array](Doc/Algorithm/Array.md)
 2. C++
-	1. [Linux Library Create](C++/libraryLinkage.md)
-	2. [Makefile](C++/makefile.md)
-	3. [GDB](C++/gdb.md)
-	4. [Linux I/O](C++/Linux_I_O.md)
-	5. [Process Introduction](C++/processIntro.md)
-	6. [Linux Process Functions](C++/processLinux.md)
+	1. [Linux Library Create](Doc/C++/libraryLinkage.md)
+	2. [Makefile](Doc/C++/makefile.md)
+	3. [GDB](Doc/C++/gdb.md)
+	4. [Linux I/O](Doc/C++/Linux_I_O.md)
+	5. [Process Introduction](Doc/C++/processIntro.md)
+	6. [Linux Process Functions](Doc/C++/processLinux.md)
 	7. IPC
-		1. [Inter Process Communication](C++/InterProcessCommunication.md)
-		2. [Signal](C++/signal.md)
-		3. [Share Memory](C++/shareMemory.md)
-	8. [Daemon](C++/daemon.md) 
-	9. [Thread](C++/thread.md)
-	10. [Computer Network](C++/cn.md)
-	11. [STL Source Analysis](STL.md)
-1. ...
+		1. [Inter Process Communication](Doc/C++/InterProcessCommunication.md)
+		2. [Signal](Doc/C++/signal.md)
+		3. [Share Memory](Doc/C++/shareMemory.md)
+	8. [Daemon](Doc/C++/daemon.md) 
+	9. [Thread](Doc/C++/thread.md)
+	10. [Computer Network](Doc/C++/cn.md)
+	11. [STL Source Analysis](Doc/STL.md)
 
 
 
