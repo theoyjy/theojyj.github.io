@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "8e2bcfd2b8c2b7ea",
+        "id": "e084ffdefcc91f17",
         "type": "tabs",
         "children": [
           {
-            "id": "e01418c4ed2f71d8",
+            "id": "36fa955ec2904f45",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Doc/Algorithm/Array.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -89,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Doc/Algorithm/Array.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Doc/Algorithm/Array.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Doc/Algorithm/Array.md"
+              }
             }
           },
           {
@@ -175,14 +183,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e01418c4ed2f71d8",
+  "active": "36fa955ec2904f45",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.png",
+    "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.md",
+    "README.md",
+    "Untitled.canvas",
+    "Array-20240718174307980.webp",
+    "Doc/Algorithm/Array.md",
+    "Excalidraw",
     "Doc/C++/libraryLinkage.md",
     "index.md",
-    "Doc/Algorithm/Array.md",
     "Doc/Algorithm/Algorithm Index.md",
     "Algorithm/Algorithm.md",
-    "README.md",
     "Algorithm",
     "Doc/C++/cn.md",
     "Doc/C++/STL.md",
@@ -215,15 +228,9 @@
     "Resources/Distributed system-20240716190949495.webp",
     "Resources/Distributed system-20240716190549061.webp",
     "Resources/Distributed system-20240716185828798.webp",
-    "Resources/Distributed system-20240716170615185.webp",
-    "Resources/Distributed system-20240716161853119.webp",
     "Knowledge/SDE/System Design Interview.md",
     "Knowledge/SDE/Effective (Modern) C++.md",
-    "Knowledge/SDE",
     "Untitled Kanban.md",
-    "Plans/Computer.md",
-    "Knowledge/MIT OS Engineering.md",
-    "Untitled.canvas",
     "WorkTmp/2.7bugs.canvas"
   ]
 }
