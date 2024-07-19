@@ -71,6 +71,11 @@ Implement the `MyLinkedList` class:
 - `void deleteAtIndex(int index)` Delete the `indexth` node in the linked list, if the index is valid.
 
 #### Singly Linked List
+
+>[!Caution] Using dummy head as a data member, please pay attention to **initialization of `cur`**:
+> 1. when `addAtIndex(index)`, we want to do `cur->next = new ..`, suppose `index = 0`, the `cur` has to be `dummyHead`, so `ListNode* cur = dummy`
+> 2. when `get(index)`, we wanna `return cur->value;`, when `index = 0`, the `cur` has to be at true head, so `ListNode* cur = dummyHead->next;`
+
 ```cpp
 class MyLinkedList {
 public:

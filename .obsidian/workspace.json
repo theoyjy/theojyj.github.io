@@ -4,29 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "d51165868f0b826d",
+        "id": "a640d3fae3740770",
         "type": "tabs",
         "children": [
           {
-            "id": "5acd8da388dc23ce",
+            "id": "f6be5c9785e6616a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/Algorithm/Linked List.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "45a2c2e68569a9eb",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Algorithm.md"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -87,8 +73,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -104,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/Linked List.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/Linked List.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Doc/Algorithm/Linked List.md"
-              }
+              "state": {}
             }
           },
           {
@@ -194,22 +175,23 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "5acd8da388dc23ce",
+  "active": "f6be5c9785e6616a",
   "lastOpenFiles": [
-    "Linked List-20240719212436279.webp",
-    "Linked List-20240719212436125.webp",
-    "Linked List-20240719212435943.webp",
-    "Excalidraw/Algorithm.md",
+    "Resource/Array-20240718174307980.webp",
+    "Resource/Linked List-20240719193708368.webp",
+    "Untitled.canvas",
     "Doc/Algorithm/Linked List.md",
-    "Linked List-20240719211242047.webp",
-    "Linked List-20240719210712128.webp",
+    "Resource",
+    "Excalidraw/Algorithm.md",
+    "Resource/Linked List-20240719212436125.webp",
+    "Resource/Linked List-20240719212435943.webp",
+    "Resource/Linked List-20240719211242047.webp",
+    "Resource/Linked List-20240719212436279.webp",
+    "Resource/Linked List-20240719210712128.webp",
     "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.png",
-    "Array-20240718174307980.webp",
-    "Linked List-20240719193708368.webp",
     "index.md",
     "Doc/Algorithm/Array.md",
     "README.md",
-    "Untitled.canvas",
     "Excalidraw",
     "Doc/C++/libraryLinkage.md",
     "Doc/Algorithm/Algorithm Index.md",
@@ -230,7 +212,6 @@
     "TaskView",
     "Use Of Obsidian.md",
     "Excalidraw/Drawing 2024-06-20 16.35.01.excalidraw.md",
-    "4_2_RotateArbi.pdf",
     "Knowledge/SDE/Distributed System Mindmap.md",
     "Plans/VR Plans.md",
     "Plans/OKRs.md",
@@ -239,7 +220,6 @@
     "Knowledge/SDE/Distributed system.md",
     "Resources/Distributed system-20240716151307000.webp",
     "Resources/Distributed system-20240716202607312.webp",
-    "Resources/Distributed system-20240716202248686.webp",
     "Knowledge/SDE/Must-learn in Distribution.md",
     "Knowledge/SDE/System Design Interview.md",
     "Knowledge/SDE/Effective (Modern) C++.md",
