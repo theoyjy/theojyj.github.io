@@ -4,18 +4,28 @@
     "type": "split",
     "children": [
       {
-        "id": "e084ffdefcc91f17",
+        "id": "d51165868f0b826d",
         "type": "tabs",
         "children": [
           {
-            "id": "36fa955ec2904f45",
+            "id": "5acd8da388dc23ce",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Algorithm/Array.md",
+                "file": "Doc/Algorithm/Linked List.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "45a2c2e68569a9eb",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Algorithm.md"
               }
             }
           }
@@ -77,7 +87,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -93,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/Array.md",
+                "file": "Doc/Algorithm/Linked List.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/Array.md",
+                "file": "Doc/Algorithm/Linked List.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Algorithm/Array.md"
+                "file": "Doc/Algorithm/Linked List.md"
               }
             }
           },
@@ -183,15 +194,22 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "36fa955ec2904f45",
+  "active": "5acd8da388dc23ce",
   "lastOpenFiles": [
+    "Linked List-20240719212436279.webp",
+    "Linked List-20240719212436125.webp",
+    "Linked List-20240719212435943.webp",
+    "Excalidraw/Algorithm.md",
+    "Doc/Algorithm/Linked List.md",
+    "Linked List-20240719211242047.webp",
+    "Linked List-20240719210712128.webp",
+    "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.png",
+    "Array-20240718174307980.webp",
+    "Linked List-20240719193708368.webp",
     "index.md",
     "Doc/Algorithm/Array.md",
-    "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.png",
-    "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.md",
     "README.md",
     "Untitled.canvas",
-    "Array-20240718174307980.webp",
     "Excalidraw",
     "Doc/C++/libraryLinkage.md",
     "Doc/Algorithm/Algorithm Index.md",
@@ -223,14 +241,8 @@
     "Resources/Distributed system-20240716202607312.webp",
     "Resources/Distributed system-20240716202248686.webp",
     "Knowledge/SDE/Must-learn in Distribution.md",
-    "Resources/Distributed system-20240716191854492.webp",
-    "Resources/Distributed system-20240716191615897.webp",
-    "Resources/Distributed system-20240716190949495.webp",
-    "Resources/Distributed system-20240716190549061.webp",
-    "Resources/Distributed system-20240716185828798.webp",
     "Knowledge/SDE/System Design Interview.md",
     "Knowledge/SDE/Effective (Modern) C++.md",
-    "Untitled Kanban.md",
     "WorkTmp/2.7bugs.canvas"
   ]
 }
