@@ -338,3 +338,156 @@ Simulation of the recursion
 ![[Linked List-20240719212436125.webp]]
 
 
+### 24 Swap Nodes in Pairs
+Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
+
+![[Linked List-20240721163754727.webp]]
+
+```cpp
+ListNode* swapPairs(ListNode* head) {
+
+	if(!head || !head->next)    return head;
+	ListNode* dummyHead = new ListNode(0, head);
+
+	ListNode * cur = dummyHead;
+	ListNode* Swap1Node;
+	ListNode* NextPair;
+
+	while(cur->next && cur->next->next)
+	{
+		Swap1Node = cur->next;
+		NextPair = cur->next->next->next;
+		cur->next = cur->next->next; // Swap2Node
+		cur->next->next = Swap1Node;
+		cur->next->next->next = NextPair;
+		cur = Swap1Node;
+	}
+	return dummyHead->next;
+
+}
+```
+
+## Dual Pointers Method in Linked List
+### 19 Remove Nth Node From End of List -- fast and slow
+Given the `head` of a linked list, remove the `nth` node from the end of the list and return its head.
+
+```cpp
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+
+	ListNode* dummyHead = new ListNode(0, head);
+	ListNode* slow = dummyHead;
+	ListNode* fast = dummyHead;
+	while(n-- > -1 && fast) // fast move one more, 
+	{						//since slow has to be front of the last-nth
+		fast = fast->next;
+	}
+	
+	while(fast) // when fast gets to the tail, slow is at the front of
+	{           // the last n-th node
+		fast = fast->next;
+		slow = slow->next;
+	}
+	
+	ListNode* tmp = slow->next;
+	slow->next = tmp->next;
+	delete tmp;
+
+	return dummyHead->next;
+
+}
+```
+
+### 02.07 Intersection of Two Linked Lists LCCI
+Given two (singly) linked lists, determine if the two lists intersect. Return the inter­secting node. Note that the intersection is defined based on reference, not value. That is, if the kth node of the first linked list is the exact same node (by reference) as the `jth` node of the second linked list, then they are intersecting.
+
+```cpp
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+
+	// 1. get lengths of two lists
+	int lenA = 0, lenB = 0;
+	{
+		ListNode* curA = headA;
+		ListNode* curB = headB;
+		while(curA)
+		{
+			++lenA;
+			curA = curA->next;
+		}
+
+		while(curB)
+		{
+			++lenB;
+			curB = curB->next;
+		}
+	}
+
+	// 2. distinguish which list is longer
+	ListNode* longer, * shorter;
+	int diff = 0;
+	if(lenA < lenB)
+	{
+		diff = lenB - lenA;
+		longer = headB;
+		shorter = headA;
+	}
+	else
+	{
+		diff = lenA - lenB;
+		longer = headA;
+		shorter = headB;
+	}
+	
+	// 3. move longer pointer in the longer list, to make longer and shorter 
+	// pointers at the same distance to tail
+	while(diff-- && longer)
+	{
+		longer = longer->next;
+	}
+
+	// 4. move dual pointers together until they meet
+	while(longer && shorter && longer != shorter)
+	{
+		longer = longer->next;
+		shorter = shorter->next;
+	}
+	
+	// 5. there might be no intersetion at all, so be careful when returning
+	return longer == shorter ? longer : NULL;
+}
+```
+
+### 142 Linked List Cycle II
+Given the `head` of a linked list, return _the node where the cycle begins. If there is no cycle, return_ `null`.
+
+**Do not modify** the linked list.
+![[Linked List-20240721192115648.webp]]
+```c
+2 * (x + y) = x + n * (y + z) + y
+x + y = n * (y + z)
+x = (n - 1) * (y + z) + z // (y + z) is the length of circle.
+```
+
+```cpp
+ListNode *detectCycle(ListNode *head) {
+	ListNode* fast = head, *slow = head;
+	while(fast && fast->next)
+	{
+		fast = fast->next->next;
+		slow = slow->next;
+		if(fast == slow) // get to meeting point
+		{
+			break;
+		}
+	}
+
+	if(!fast || !fast->next)    return NULL;
+
+	fast = head;
+	while(fast != slow) // x = z, so fast and slow will eventually meet at 
+	{                   // the start of intersection
+		fast = fast->next;
+		slow = slow->next;
+	}
+	return fast;
+}
+```
