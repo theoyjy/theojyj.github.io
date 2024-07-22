@@ -1,3 +1,5 @@
+_[homepage](index.md)_
+
 >[!Definition] Linked List is a linear structure linked by pointers. It consists of nodes where each node contains **data** and a **reference (link)** to the next node in the sequence. 
 >
 >This allows for dynamic memory allocation and efficient **insertion** and **deletion** operations compared to arrays.

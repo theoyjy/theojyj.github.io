@@ -1,3 +1,5 @@
+_[homepage](index.md)_
+
 >[!Info] An array is a collection of the same type of data stored on a contiguous memory space
 
 # Binary Search

@@ -4,28 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "a640d3fae3740770",
+        "id": "909d254b953b54da",
         "type": "tabs",
         "children": [
           {
-            "id": "f6be5c9785e6616a",
+            "id": "02d831392e090d95",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Algorithm/Linked List.md",
+                "file": "Doc/C++/Linux_I_O.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "2dd00352e9c4f44f",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Algorithm.md"
               }
             }
           }
@@ -87,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -104,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/Linked List.md",
+                "file": "Doc/C++/Linux_I_O.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/Linked List.md",
+                "file": "Doc/C++/Linux_I_O.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Algorithm/Linked List.md"
+                "file": "Doc/C++/Linux_I_O.md"
               }
             }
           },
@@ -194,11 +183,23 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "f6be5c9785e6616a",
+  "active": "d478af17e7aea3ca",
   "lastOpenFiles": [
-    "Linked List-20240721192115648.webp",
+    "Doc/C++/InterProcessCommunication.md",
+    "Doc/C++/exec.md",
+    "Doc/C++/daemon.md",
+    "Doc/Algorithm/1 Array.md",
+    "Doc/Algorithm/2 Linked List.md",
+    "Doc/Algorithm/3 Hash Table.md",
+    "Doc/C++/makefile.md",
+    "Doc/C++/STL.md",
+    "Doc/C++/libraryLinkage.md",
+    "Doc/C++/Eight buts.md",
+    "Doc/C++/cn.md",
+    "index.md",
+    "Untitled.md",
     "Excalidraw/Algorithm.md",
-    "Doc/Algorithm/Linked List.md",
+    "Linked List-20240721192115648.webp",
     "Linked List-20240721163754727.webp",
     "Resource/Array-20240718174307980.webp",
     "Resource/Linked List-20240719193708368.webp",
@@ -210,17 +211,11 @@
     "Resource/Linked List-20240719212436279.webp",
     "Resource/Linked List-20240719210712128.webp",
     "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.png",
-    "index.md",
-    "Doc/Algorithm/Array.md",
     "README.md",
     "Excalidraw",
-    "Doc/C++/libraryLinkage.md",
     "Doc/Algorithm/Algorithm Index.md",
     "Algorithm/Algorithm.md",
     "Algorithm",
-    "Doc/C++/cn.md",
-    "Doc/C++/STL.md",
-    "Doc/C++/makefile.md",
     "Doc/C++",
     "Doc/Algorithm",
     "Knowledge/Spoken.md",
@@ -237,12 +232,6 @@
     "Plans/VR Plans.md",
     "Plans/OKRs.md",
     "Plans/Full Time!!.md",
-    "C++.md",
-    "Knowledge/SDE/Distributed system.md",
-    "Resources/Distributed system-20240716151307000.webp",
-    "Knowledge/SDE/Must-learn in Distribution.md",
-    "Knowledge/SDE/System Design Interview.md",
-    "Knowledge/SDE/Effective (Modern) C++.md",
     "WorkTmp/2.7bugs.canvas"
   ]
 }
