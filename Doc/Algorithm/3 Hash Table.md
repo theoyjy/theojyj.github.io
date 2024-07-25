@@ -81,6 +81,31 @@ bool isAnagram(string s, string t) {
 }
 ```
 
+### 383. Ransom Note
+Given two strings `ransomNote` and `magazine`, return `true` _if_ `ransomNote` _can be constructed by using the letters from_ `magazine` _and_ `false` _otherwise_.
+
+Each letter in `magazine` can only be used once in `ransomNote`.
+
+>[!Tip] please notice the range of key is limited to lowercase letters, so we can achieve the hash table with array to save space and time.
+
+```cpp
+bool canConstruct(string ransomNote, string magazine) {
+	int record[26] = {0};
+	for(char c : magazine)
+	{
+		++record[c - 'a'];
+	}
+
+	for(char c : ransomNote)
+	{
+		if(record[c - 'a'] <= 0)
+			return false;
+		--record[c - 'a'];
+	}
+	return true;
+}
+```
+
 ## `unordered_set` and `unordered_map` as Hash Table
 
 >[!Tip] If the hashes are relatively small, particularly scattered, and span a very large area, using an array results in a huge waste of space. 
@@ -173,5 +198,147 @@ vector<int> twoSum(vector<int>& nums, int target) {
 		map.emplace(nums[i], i);
 	}
 	return {-1, -1};
+}
+```
+
+### 454 4Sum II
+Given four integer arrays `nums1`, `nums2`, `nums3`, and `nums4` all of length `n`, return the number of tuples `(i, j, k, l)` such that:
+- `0 <= i, j, k, l < n`
+- `nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0`
+#### Steps
+1. using an `unordered_map` records the sum from an element from `nums1` and another from `nums2` as key, and the occurrence of the sum as value
+2. Iterating `nums3` and `nums4`, find if `0 - nums3[i] - nums4[j]` exists in the map.
+
+```cpp
+int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+	unordered_map<int, int> sum12;
+	for(int i : nums1)
+		for(int j : nums2)
+			++sum12[i+j];
+
+	int count = 0;
+	for(int i : nums3)
+	{
+		for(int j : nums4)
+		{
+			auto iter = sum12.find(0 - i - j);
+			if(iter != sum12.end())
+			{
+				count += iter->second;
+			}
+		}
+	}
+	return count;
+}
+```
+
+## Hash alike questions
+### 15 3Sum
+Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+
+Notice that the solution set must not contain duplicate triplets.
+
+>[!caution] It's easy to be mislead to use hash table to record the sum of first two numbers.
+>But the question requires **unique triplets**, which could cost checking duplication every time we find a new combination. As a result, we better solve this by dual pointers.
+
+1. Since it doesn't require the indexes of the elements, we can `sort` the array firstly
+2. we have i starts from `0` towards `nums.size() - 3`
+	1. make sure that `nums[i]` is different from `nums[i-1]` to prevent duplication
+3. we have `left = i+1; right = nums.size() - 1`
+4. Keeps testing if `nums[i] + nums[left] + nums[right] == 0`
+	1. if equals, that means we find a unique result, record it, then moves `left` and `right` till unidentical value
+	2. if greater than 0, `--right`
+	3. if lesser than 0, `++left`
+
+```cpp
+vector<vector<int>> threeSum(vector<int>& nums) {
+	vector<vector<int>> res;
+	sort(nums.begin(), nums.end());
+	for(int i = 0; i < nums.size() - 2; ++i)
+	{
+		// remove duplication of i
+		if(i > 0 && nums[i - 1]==nums[i])
+			continue;
+
+		int left = i + 1, right = nums.size() - 1;
+		while(left < right)
+		{
+			int sum = nums[i] + nums[left] + nums[right];
+			if(sum == 0)
+			{
+				res.push_back({nums[i], nums[left], nums[right]});
+				// remove duplications of left and right
+				while (right > left && nums[right] == nums[right - 1]) --right;
+				while (right > left && nums[left] == nums[left + 1]) ++left;
+				--right;
+				++left;
+			}
+			else if(sum < 0)
+				++left;
+			else
+				--right;
+		}
+	}
+	return res;
+}
+```
+
+### 18 4Sum
+Given an array `nums` of `n` integers, return _an array of all the **unique** quadruplets_ `[nums[a], nums[b], nums[c], nums[d]]` such that:
+
+- `0 <= a, b, c, d < n`
+- `a`, `b`, `c`, and `d` are **distinct**.
+- `nums[a] + nums[b] + nums[c] + nums[d] == target`
+
+You may return the answer in **any order**.
+
+>[!Tip] Still use dual pointers as above one
+
+```cpp
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+	vector<vector<int>> res;
+	sort(nums.begin(), nums.end());
+	
+	// be careful size() return uint, should convert to int for minus
+	int size = nums.size(); 
+	for(int i = 0; i < size - 3; ++i)
+	{
+		// pruning
+		if(nums[i] > target && target >= 0)
+			break;
+		// avoid duplication
+		if(i > 0 && nums[i] == nums[i - 1])
+			continue;
+		for(int j = i + 1; j < size - 2; ++j)
+		{
+			// pruning
+			if(nums[i] + nums[j] > target && target >= 0)
+				break;
+			// avoiding duplication
+			if(j > i + 1 && nums[j] == nums[j - 1])
+				continue;
+
+			int left = j + 1, right = size - 1;
+			while(left < right)
+			{
+				// sum may be out of int's range
+				long sum = (long)nums[i] + nums[j] + nums[left] + nums[right];
+				if(sum == target)
+				{
+					res.push_back({nums[i], nums[j], nums[left], nums[right]});
+					// avoiding duplication
+					while(left < right && nums[right] == nums[right - 1]) --right;
+					while(left < right && nums[left] == nums[left + 1]) ++left;
+					--right;
+					++left;
+				}
+				else if(sum < target)
+					++left;
+				else
+					--right;
+			}
+		}
+	}
+	return res;
 }
 ```

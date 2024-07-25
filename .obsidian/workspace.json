@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "909d254b953b54da",
+        "id": "dea0f2e12857ffb2",
         "type": "tabs",
         "children": [
           {
-            "id": "02d831392e090d95",
+            "id": "24784685b1564fec",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/C++/Linux_I_O.md",
+                "file": "Doc/Algorithm/3 Hash Table.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/C++/Linux_I_O.md",
+                "file": "Doc/Algorithm/3 Hash Table.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/C++/Linux_I_O.md",
+                "file": "Doc/Algorithm/3 Hash Table.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/C++/Linux_I_O.md"
+                "file": "Doc/Algorithm/3 Hash Table.md"
               }
             }
           },
@@ -183,14 +183,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d478af17e7aea3ca",
+  "active": "24784685b1564fec",
   "lastOpenFiles": [
+    "Resource/Linked List-20240721192115648.webp",
+    "Resource/Linked List-20240721163754727.webp",
+    "Doc/Algorithm/3 Hash Table.md",
+    "Doc/C++/Linux_I_O.md",
     "Doc/C++/InterProcessCommunication.md",
     "Doc/C++/exec.md",
     "Doc/C++/daemon.md",
     "Doc/Algorithm/1 Array.md",
     "Doc/Algorithm/2 Linked List.md",
-    "Doc/Algorithm/3 Hash Table.md",
     "Doc/C++/makefile.md",
     "Doc/C++/STL.md",
     "Doc/C++/libraryLinkage.md",
@@ -199,8 +202,6 @@
     "index.md",
     "Untitled.md",
     "Excalidraw/Algorithm.md",
-    "Linked List-20240721192115648.webp",
-    "Linked List-20240721163754727.webp",
     "Resource/Array-20240718174307980.webp",
     "Resource/Linked List-20240719193708368.webp",
     "Untitled.canvas",
@@ -230,8 +231,6 @@
     "Excalidraw/Drawing 2024-06-20 16.35.01.excalidraw.md",
     "Knowledge/SDE/Distributed System Mindmap.md",
     "Plans/VR Plans.md",
-    "Plans/OKRs.md",
-    "Plans/Full Time!!.md",
     "WorkTmp/2.7bugs.canvas"
   ]
 }
