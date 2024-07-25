@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "dea0f2e12857ffb2",
+        "id": "760f45b779e8cac1",
         "type": "tabs",
         "children": [
           {
-            "id": "24784685b1564fec",
+            "id": "e82f77799a141d47",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Algorithm/3 Hash Table.md",
+                "file": "Doc/Algorithm/4 String.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/3 Hash Table.md",
+                "file": "Doc/Algorithm/4 String.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/3 Hash Table.md",
+                "file": "Doc/Algorithm/4 String.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Algorithm/3 Hash Table.md"
+                "file": "Doc/Algorithm/4 String.md"
               }
             }
           },
@@ -183,24 +183,24 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "24784685b1564fec",
+  "active": "e82f77799a141d47",
   "lastOpenFiles": [
-    "Resource/Linked List-20240721192115648.webp",
-    "Resource/Linked List-20240721163754727.webp",
     "Doc/Algorithm/3 Hash Table.md",
+    "Doc/Algorithm/4 String.md",
+    "Doc/Algorithm/2 Linked List.md",
+    "Resource/Linked List-20240721163754727.webp",
+    "Resource/Linked List-20240721192115648.webp",
     "Doc/C++/Linux_I_O.md",
     "Doc/C++/InterProcessCommunication.md",
     "Doc/C++/exec.md",
     "Doc/C++/daemon.md",
     "Doc/Algorithm/1 Array.md",
-    "Doc/Algorithm/2 Linked List.md",
     "Doc/C++/makefile.md",
     "Doc/C++/STL.md",
     "Doc/C++/libraryLinkage.md",
     "Doc/C++/Eight buts.md",
     "Doc/C++/cn.md",
     "index.md",
-    "Untitled.md",
     "Excalidraw/Algorithm.md",
     "Resource/Array-20240718174307980.webp",
     "Resource/Linked List-20240719193708368.webp",

@@ -82,5 +82,13 @@
       ],
       "key": "L"
     }
+  ],
+  "callout-integrator:callout-integrate": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": "."
+    }
   ]
 }
