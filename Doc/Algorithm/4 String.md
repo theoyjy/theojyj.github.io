@@ -158,7 +158,11 @@ int main()
 }
 ```
 
-### 28 Find the Index of the First Occurrence in a String(**KMP**)
+## KMP
+
+> [!info] KMP is used in finding substrings with excellent performance O(M+N) 
+
+### 28 Find the Index of the First Occurrence in a String
 Given two strings `needle` and `haystack`, return the index of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.
 
 > [!Warning] `next` array
@@ -240,5 +244,44 @@ int strStr(string haystack, string needle) {
 			return i - j + 1;
 	}
 	return -1;
+}
+```
+
+### 459 Repeated Substring Pattern
+Given a string `s`, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.
+> [!core]
+> if the string is repeated, suppose the substring with length `n`, so after first occurrence of the substring patter(range from `0` to `n - 1`), the values in `next` array should keep growing 1 by 1. Which means the last value of `next` is the length of total length of s minus one pattern. So we can easily get the length of repeated substring `n = s.size() - next.back()`. What's left is just to make sure `s` is actually repeating the pattern by `s.size() % n == 0`
+> 
+> ##### For example:
+> 
+> ```cpp
+>  string s = "aabaabaab";
+>  string substring = "aab";
+>  // a a b a a b a a b
+>  // 0 1 0 1 2 3 4 5 6
+>  int totalLen = 9;
+>  int subStringLen = 9 - next.back() = 9 - 6 = 3;
+>  bool isRepeating = totalLen % subStringLen == 0;
+> ```
+
+```cpp
+bool repeatedSubstringPattern(string s) {
+	int len = s.size();
+	vector<int> next(s.size());
+	next[0] = 0;
+	for(int i = 1, j = 0; i < s.size(); ++i)
+	{
+		while(j > 0 && s[j] != s[i])
+		{
+			j = next[j - 1];
+		}
+
+		if(s[i] == s[j])
+		{
+			++j;
+		}
+		next[i] = j;
+	}
+	return next.back() == 0 ? false : len % (len - next.back()) == 0;
 }
 ```
