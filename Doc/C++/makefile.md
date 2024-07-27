@@ -2,7 +2,7 @@
 finished: false
 ---
 
-_[homepage](index.md)_
+_[homepage](../../index.md)_
 
 # Makefile
 **自动编译，自动检测文件更新

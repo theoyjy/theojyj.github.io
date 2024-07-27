@@ -2,7 +2,7 @@
 finished: false
 ---
 
-[homepage](index.md)
+_[homepage](../../index.md)_
 
 # STL源码剖析
 SGI source code: https://github.com/SilverMaple/STLSourceCodeNote/blob/master/

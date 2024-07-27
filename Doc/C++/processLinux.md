@@ -2,7 +2,7 @@
 finished: false
 ---
 
-_[homepage](index.md)_
+_[homepage](../../index.md)_
 # Linux 进程操作
 
 ## 进程创建 `pid_t fork(void);`

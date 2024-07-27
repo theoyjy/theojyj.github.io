@@ -1,4 +1,4 @@
-_[homepage](index.md)_
+_[homepage](../../index.md)_
 
 >[!Definition] Linked List is a linear structure linked by pointers. It consists of nodes where each node contains **data** and a **reference (link)** to the next node in the sequence. 
 >

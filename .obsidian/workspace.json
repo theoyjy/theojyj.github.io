@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "760f45b779e8cac1",
+        "id": "60b4486d4c728ef4",
         "type": "tabs",
         "children": [
           {
-            "id": "e82f77799a141d47",
+            "id": "3db558b3e90ae674",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Algorithm/4 String.md",
+                "file": "Doc/Algorithm/5_Stack_&_Queue.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/4 String.md",
+                "file": "Doc/Algorithm/5_Stack_&_Queue.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/4 String.md",
+                "file": "Doc/Algorithm/5_Stack_&_Queue.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Algorithm/4 String.md"
+                "file": "Doc/Algorithm/5_Stack_&_Queue.md"
               }
             }
           },
@@ -184,24 +184,32 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "e82f77799a141d47",
+  "active": "3db558b3e90ae674",
   "lastOpenFiles": [
-    "Doc/Algorithm/3 Hash Table.md",
-    "Doc/Algorithm/4 String.md",
-    "Doc/Algorithm/2 Linked List.md",
+    "5_Stack_&_Queue-20240728021446094.webp",
+    "Doc/Algorithm/4_String.md",
+    "Doc/Algorithm/5_Stack_&_Queue.md",
+    "Doc/Algorithm/3_Hash_Table.md",
+    "Doc/Algorithm/2_Linked_List.md",
+    "Doc/Algorithm/1_Array.md",
+    "Doc/C++/processLinux.md",
+    "Doc/C++/processIntro.md",
+    "Doc/C++/makefile.md",
+    "Doc/C++/Linux_I_O.md",
+    "Doc/C++/libraryLinkage.md",
+    "Doc/C++/InterProcessCommunication.md",
+    "Doc/C++/gdb.md",
+    "Doc/C++/exec.md",
+    "Doc/C++/Eight buts.md",
+    "Doc/C++/daemon.md",
+    "Doc/C++/cn.md",
+    "Doc/C++/thread.md",
+    "Doc/C++/STL.md",
+    "Doc/C++/signal.md",
+    "Doc/C++/shareMemory.md",
+    "index.md",
     "Resource/Linked List-20240721163754727.webp",
     "Resource/Linked List-20240721192115648.webp",
-    "Doc/C++/Linux_I_O.md",
-    "Doc/C++/InterProcessCommunication.md",
-    "Doc/C++/exec.md",
-    "Doc/C++/daemon.md",
-    "Doc/Algorithm/1 Array.md",
-    "Doc/C++/makefile.md",
-    "Doc/C++/STL.md",
-    "Doc/C++/libraryLinkage.md",
-    "Doc/C++/Eight buts.md",
-    "Doc/C++/cn.md",
-    "index.md",
     "Excalidraw/Algorithm.md",
     "Resource/Array-20240718174307980.webp",
     "Resource/Linked List-20240719193708368.webp",
@@ -220,18 +228,11 @@
     "Algorithm",
     "Doc/C++",
     "Doc/Algorithm",
-    "Knowledge/Spoken.md",
     "EffectModernC++ 3.xmind",
     "EffectModernC++ 2.xmind",
     "EffectModernC++ 1.xmind",
     "EffectModernC++.xmind",
-    "TaskView/Task Calendar.md",
-    "TaskView/taskIdo.md",
     "TaskView",
-    "Use Of Obsidian.md",
-    "Excalidraw/Drawing 2024-06-20 16.35.01.excalidraw.md",
-    "Knowledge/SDE/Distributed System Mindmap.md",
-    "Plans/VR Plans.md",
     "WorkTmp/2.7bugs.canvas"
   ]
 }

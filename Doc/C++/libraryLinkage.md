@@ -2,7 +2,7 @@
 finished: false
 ---
 
-_[homepage](index.md)_
+_[homepage](../../index.md)_
 
 # 静态链接：
 ```

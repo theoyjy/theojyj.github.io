@@ -86,7 +86,7 @@
   "callout-integrator:callout-integrate": [
     {
       "modifiers": [
-        "Shift"
+        "Mod"
       ],
       "key": "."
     }

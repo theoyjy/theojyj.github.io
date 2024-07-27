@@ -2,7 +2,7 @@
 finished: false
 ---
 
-[homepage](index.md)
+_[homepage](../../index.md)_
 
 # IPC:Inter Processes Communication
 

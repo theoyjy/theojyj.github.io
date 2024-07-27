@@ -2,7 +2,7 @@
 finished: false
 ---
 
-_[homepage](index.md)_
+_[homepage](../../index.md)_
 
 ## Liunx I/O
 <img width="1230" alt="image" src="https://user-images.githubusercontent.com/41602569/156598820-2420e45d-912c-4e93-a4df-7268ba5422da.png">

@@ -2,7 +2,7 @@
 finished: true
 ---
 
-[homepage](index.md)
+_[homepage](../../index.md)_
 
 # Thread
 

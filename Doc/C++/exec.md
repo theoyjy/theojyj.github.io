@@ -2,7 +2,7 @@
 finished: false
 ---
 
-[homepage](index.md)
+_[homepage](../../index.md)_
 # exec
 ## 作用
 - exec 函数族的作用是根据指定的文件名找到可执行文件，并用它来**取代调用进程的内容**，换句话说，就是**在调用进程内部执行一个可执行文件**。

@@ -2,7 +2,7 @@
 finished: false
 ---
 
-[homepage](index.md)
+_[homepage](../../index.md)_
 
 # 信号
 

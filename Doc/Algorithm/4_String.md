@@ -1,4 +1,4 @@
-_[homepage](index.md)_
+_[homepage](../../index.md)_
 
 ### 344.Reverse String
 Write a function that reverses a string. The input string is given as an array of characters `s`.
@@ -177,8 +177,8 @@ Given two strings `needle` and `haystack`, return the index of the first occu
 > // j i
 > 
 > // a a b a a f
-> // 0 1              while(j > 0 && s[j] != s[i]) j = next[j - 1] = 0; next[2] = 0; ++i
-> //   j i
+> // 0 1              while(j > 0 && s[j] != s[i]) j = next[j - 1] = 0; 
+> //   j i              next[2] = 0; ++i
 > 
 > // a a b a a f
 > // 0 1 0            s[j] == s[i]; ++j; next[3] = 1; ++i
@@ -189,8 +189,8 @@ Given two strings `needle` and `haystack`, return the index of the first occu
 > //   j     i
 > 
 > // a a b a a f
-> // 0 1 0 1 2        while(j > 0 && s[j] != s[i]) j = next[j - 1] = 0; next[5] = 0; ++i
-> //   j       i
+> // 0 1 0 1 2        while(j > 0 && s[j] != s[i]) j = next[j - 1] = 0;
+> //   j       i            next[5] = 0; ++i
 > 
 > // a a b a a f
 > // 0 1 0 1 2 0

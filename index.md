@@ -8,9 +8,11 @@ This website is reading my brain to show all I know which is this 🤏 much of u
 
 ## Contents:
 1. Algorithm
-	1. [Array](1%20Array.md)
-	2. [Linked List](2%20Linked%20List.md)
-	3. [Hash Table](Doc/Algorithm/3%20Hash%20Table.md)
+	1. [Array](Doc/Algorithm/1_Array.md)
+	2. [Linked List](Doc/Algorithm/2_Linked_List.md)
+	3. [Hash Table](Doc/Algorithm/3_Hash_Table.md)
+	4. [String](Doc/Algorithm/4_String.md)
+	5. [Stack & Queue](Doc/Algorithm/5_Stack_&_Queue)
 2. C++
 	1. [Linux Library Create](Doc/C++/libraryLinkage.md)
 	2. [Makefile](Doc/C++/makefile.md)
