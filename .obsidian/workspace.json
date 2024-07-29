@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "60b4486d4c728ef4",
+        "id": "196eb84791f9b7c2",
         "type": "tabs",
         "children": [
           {
-            "id": "3db558b3e90ae674",
+            "id": "797a0cedd8193361",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Doc/Algorithm/5_Stack_&_Queue.md",
+                "file": "Doc/Algorithm/6_Binary_Tree.md",
                 "mode": "source",
                 "source": false
               }
@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -94,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/5_Stack_&_Queue.md",
+                "file": "Doc/Algorithm/6_Binary_Tree.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/5_Stack_&_Queue.md",
+                "file": "Doc/Algorithm/6_Binary_Tree.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Doc/Algorithm/5_Stack_&_Queue.md"
+                "file": "Doc/Algorithm/6_Binary_Tree.md"
               }
             }
           },
@@ -184,11 +185,17 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3db558b3e90ae674",
+  "active": "797a0cedd8193361",
   "lastOpenFiles": [
-    "5_Stack_&_Queue-20240728021446094.webp",
-    "Doc/Algorithm/4_String.md",
+    "6_Binary_Tree-20240729231838838.webp",
+    "6_Binary_Tree-20240729222641757.webp",
+    "6_Binary_Tree-20240729192041229.webp",
+    "6_Binary_Tree-20240729190108875.webp",
+    "index.md",
+    "Doc/Algorithm/6_Binary_Tree.md",
     "Doc/Algorithm/5_Stack_&_Queue.md",
+    "Resource/5_Stack_&_Queue-20240728021446094.webp",
+    "Doc/Algorithm/4_String.md",
     "Doc/Algorithm/3_Hash_Table.md",
     "Doc/Algorithm/2_Linked_List.md",
     "Doc/Algorithm/1_Array.md",
@@ -207,7 +214,6 @@
     "Doc/C++/STL.md",
     "Doc/C++/signal.md",
     "Doc/C++/shareMemory.md",
-    "index.md",
     "Resource/Linked List-20240721163754727.webp",
     "Resource/Linked List-20240721192115648.webp",
     "Excalidraw/Algorithm.md",
@@ -217,14 +223,9 @@
     "Resource",
     "Resource/Linked List-20240719212436125.webp",
     "Resource/Linked List-20240719212435943.webp",
-    "Resource/Linked List-20240719211242047.webp",
-    "Resource/Linked List-20240719212436279.webp",
-    "Resource/Linked List-20240719210712128.webp",
-    "Excalidraw/Drawing 2024-07-18 17.34.34.excalidraw.png",
     "README.md",
     "Excalidraw",
     "Doc/Algorithm/Algorithm Index.md",
-    "Algorithm/Algorithm.md",
     "Algorithm",
     "Doc/C++",
     "Doc/Algorithm",
