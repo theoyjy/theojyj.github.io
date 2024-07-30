@@ -539,26 +539,18 @@ Node* connect(Node* root) {
 root at depth 1, get the max depth
 
 ```cpp
- void traversal(TreeNode* node, int& maxDepth, int depth)
-    {
-        if(!node)   return;
-        if(maxDepth < depth)
-            maxDepth = depth;
-        traversal(node->left, maxDepth, depth + 1);
-        traversal(node->right, maxDepth, depth + 1);
-    }
-
-    int maxDepth(TreeNode* root) {
-        int maxDepth = 0;
-        traversal(root, maxDepth, 1);
-        return maxDepth;
-    }
+int maxDepth(TreeNode* root) {
+	if(!node)   return 0;
+	return max(maxDepth(node->left), maxDepth(node->right)) + 1;
+}
 ```
 
 ### 111 Minimum Depth of Binary Tree
 The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
 
 **Note:** A leaf is a node with no children. So when we reach the first leave, return its depth.
+
+#### Iteration
 
 ```cpp
 int minDepth(TreeNode* root) {
@@ -581,5 +573,83 @@ int minDepth(TreeNode* root) {
 	}
 
 	return 0;
+}
+```
+
+#### Recursion
+
+```cpp
+int minDepth(TreeNode* root) {
+	if(!root)   return 0; // this is a leave
+	
+	if(!root->left && root->right) // not leave
+		return 1 + minDepth(root->right);
+
+	if(root->left && !root->right)
+		return 1 + minDepth(root->left);
+
+	return 1 + min(minDepth(root->left),  minDepth(root->right));  
+
+}
+```
+## Operations on the BT
+
+### 226 Invert Binary Tree
+![[6_Binary_Tree-20240730182555131.webp]]
+
+>[!caution]
+>preordered and postordered traversal would both be fine, except the inordered. Since it will invert the left subtree first, then swap it to the right, then invert the right subtree
+>which leads to original left subtree inverted twice while the original right isn't inverted at all.
+> 
+> However, we can invert the left subtree(original right subtree) again after swap in the inordered traversal LOL.
+
+```cpp
+void traversal(TreeNode* root)
+{
+	if(!root)   return;
+	// preorder
+	swap(root->left, root->right);
+	traversal(root->left);
+	traversal(root->right);
+
+	// postorder
+	swap(root->left, root->right);
+	traversal(root->left);
+	traversal(root->right);
+
+	// inorder
+	traversal(root->left);
+	swap(root->left, root->right);
+	traversal(root->left); // do the trick
+}
+
+TreeNode* invertTree(TreeNode* root) {
+	traversal(root);
+	return root;
+}
+```
+
+### 101 Symmetric Tree
+![[6_Binary_Tree-20240730184706878.webp]]
+>[!caution] it's not checking every two children of a node as above question, it only compares the left subtree and right subtree of the root.
+>Plus we are comparing:
+>- the outside part: `left->left` to `right->right`
+>- the inside part: `left->right` to `right->left`
+
+```cpp
+bool compare(TreeNode* left, TreeNode* right)
+{
+	if(!left && !right)  return true;
+	
+	else if((left && !right) || (!left && right) 
+			|| (left->val != right->val)) 
+		return false; 
+	
+	return compare(left->left, right->right) 
+		&& compare(left->right, right->left);
+}
+
+bool isSymmetric(TreeNode* root) {
+	return compare(root->left, root->right);
 }
 ```
