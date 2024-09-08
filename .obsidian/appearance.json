@@ -1,7 +1,7 @@
 {
-  "accentColor": "#009dff",
-  "theme": "moonstone",
-  "cssTheme": "GitHub Theme",
+  "accentColor": "#546392",
+  "theme": "obsidian",
+  "cssTheme": "Border",
   "enabledCssSnippets": [
     "snippets"
   ],

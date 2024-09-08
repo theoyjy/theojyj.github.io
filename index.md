@@ -14,6 +14,7 @@ This website is reading my brain to show all I know which is this 🤏 much of u
 	4. [String](Doc/Algorithm/4_String.md)
 	5. [Stack & Queue](Doc/Algorithm/5_Stack_&_Queue)
 	6. [Binary Tree](/Doc/Algorithm/6_Binary_Tree)
+	7. [Backtracking](/Doc/Algorithm/7_Backtracking)
 2. C++
 	1. [Linux Library Create](Doc/C++/libraryLinkage.md)
 	2. [Makefile](Doc/C++/makefile.md)
