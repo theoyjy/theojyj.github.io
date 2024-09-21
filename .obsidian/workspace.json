@@ -19,6 +19,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "27aaf00f2397996f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Algo Plan.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
         ]
       }
@@ -182,8 +195,15 @@
   },
   "active": "86b0b3c101a648bb",
   "lastOpenFiles": [
-    "index.md",
+    "7_Backtracking-20240920225734298.webp",
+    "7_Backtracking-20240920215626327.webp",
+    "Algo Plan.md",
     "Doc/Algorithm/7_Backtracking.md",
+    "17 Letter Combinations of a Phone Number.md",
+    "7_Backtracking-20240920212144499.webp",
+    "Untitled.canvas",
+    "7_Backtracking-20240920204750475.webp",
+    "index.md",
     "Doc/Algorithm/6_Binary_Tree.md",
     "Resource/6_Binary_Tree-20240731162727866.webp",
     "Doc/Algorithm/4_String.md",
@@ -200,9 +220,7 @@
     "Resource/6_Binary_Tree-20240730182555131.webp",
     "Resource/6_Binary_Tree-20240729231838838.webp",
     "Resource/6_Binary_Tree-20240729222641757.webp",
-    "Resource/6_Binary_Tree-20240729192041229.webp",
     "Doc/Algorithm/5_Stack_&_Queue.md",
-    "Resource/5_Stack_&_Queue-20240728021446094.webp",
     "Doc/Algorithm/3_Hash_Table.md",
     "Doc/Algorithm/1_Array.md",
     "Doc/C++/processLinux.md",
@@ -214,11 +232,6 @@
     "Doc/C++/exec.md",
     "Doc/C++/Eight buts.md",
     "Doc/C++/cn.md",
-    "Doc/C++/thread.md",
-    "Doc/C++/STL.md",
-    "Doc/C++/signal.md",
-    "Resource/Linked List-20240721163754727.webp",
-    "Untitled.canvas",
     "Resource",
     "Excalidraw",
     "Algorithm",
