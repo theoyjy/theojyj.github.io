@@ -37,8 +37,14 @@ void backtracking(param)
 - 切割问题：一个字符串按一定规则有几种切割方式
 - 子集问题：一个N个数的集合里有多少符合条件的子集
 - 排列问题：N个数按一定规则全排列，有几种排列方式
+	- 全排列，不可以剪枝
+	- 是否有顺序要求
 - 棋盘问题：N皇后，解数独等等
+	- *内部遍历二维数组，涉及`isValid(row, col, value)`的函数, 成立才进行回溯*
+	- 注意**停止条件有可能在循环内部**
+	- 回溯函数返回值可能是`bool`
 
+![[7_Backtracking-20240921173734792.webp]]
 ## 集合
 
 >[!tip] 每次从集合中选取元素，可选择的范围随着选择的进行而收缩，调整可选择的范围。
@@ -588,5 +594,255 @@ private:
 
     vector<int> path;
     vector<vector<int>> results;
+};
+```
+
+### 47 Permutations II
+Given a collection of numbers, `nums`, that might contain duplicates, return _all possible unique permutations **in any order**._
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<bool> used(nums.size(), false);
+        backtracking(nums, used);
+        return results;
+    }
+private:
+    vector<vector<int>> results;
+    vector<int> path;
+    
+    void backtracking(const vector<int>& nums, vector<bool>& used)
+    {
+        if(path.size() == nums.size())
+        {
+            results.push_back(path);
+            return;
+        }
+
+        for(int i = 0; i < nums.size(); ++i)
+        {
+            if(i > 0 && nums[i] == nums[i - 1] && !used[i - 1])
+            {
+                continue;
+            }
+
+            if(used[i])
+                continue;
+
+            path.push_back(nums[i]);
+            used[i] = true;
+            backtracking(nums, used);
+            used[i] = false;
+            path.pop_back();
+        }
+    }
+};
+```
+
+### ⭐332 Reconstruct Itinerary
+You are given a list of airline `tickets` where `tickets[i] = [fromi, toi]` represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.
+
+All of the tickets belong to a man who departs from `"JFK"`, thus, the itinerary must begin with `"JFK"`. If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.
+
+- For example, the itinerary `["JFK", "LGA"]` has a smaller lexical order than `["JFK", "LGB"]`.
+
+You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
+
+>[!important]
+>`unordered_map` 底层的 `hash` 会自动对string进行大小排序，所以可以插入它，然后使用迭代器遍历
+
+```cpp
+class Solution {
+public:
+    vector<string> findItinerary(vector<vector<string>>& tickets)
+    {
+        for(auto& ticket : tickets)
+        {
+            ++graph[ticket[0]][ticket[1]]; // 自动排序
+        }
+        vector<string> result;
+        result.push_back("JFK");
+        backtracking(tickets.size(), result);
+        return result;
+    }
+
+private:
+    unordered_map<string, map<string, int>> graph;  // adjacency list to maintain lexicographical order
+
+    bool backtracking(int totalTickets, vector<string>& result)
+    {
+        // 找到的第一条就是排序最小的那一条，所以直接return就好，不用全遍历
+        if(result.size() == totalTickets + 1)
+        {
+            return true;
+        }
+
+        for(pair<const string, int>& airport : graph[result.back()])
+        {
+            if(airport.second <= 0)
+                continue;
+
+            airport.second--;
+            result.push_back(airport.first);
+            if(backtracking(totalTickets, result))
+                return true;
+            result.pop_back();
+            airport.second++;
+        }
+        return false;
+    }
+};
+```
+
+### 51 N-Queens
+The **n-queens** puzzle is the problem of placing `n` queens on an `n x n` chessboard such that no two queens attack each other.
+
+Given an integer `n`, return _all distinct solutions to the **n-queens puzzle**_. You may return the answer in **any order**.
+
+Each solution contains a distinct board configuration of the n-queens' placement, where `'Q'` and `'.'` both indicate a queen and an empty space, respectively.
+
+>[!tip] 思路
+>[递归] 一行一行的向下assign，这样 `row` 肯定不会有冲突。
+>[for 循环]每一行从第0列开始检查该位置是否valid
+>	1. 上面几行的当前`col`是否已有`Q`
+>	2. 左斜向上 `row - 1, col - 1`
+>	3. 右斜向上`row - 1, col + 1`
+
+```cpp
+class Solution {
+public:
+    vector<vector<string>> solveNQueens(int n) {
+
+        vector<string> chessboard(n, string(n, '.'));
+        backtracking(n, 0, chessboard);
+        return results;
+    }
+
+private:
+    vector<vector<string>> results;
+
+    bool isValid(int row, int col, int n, const vector<string>& chessboard)
+    {
+        // 前面几行的这一列是否被assign过q
+        for (int i = 0; i < row; i++) { // 这是一个剪枝
+            if (chessboard[i][col] == 'Q') {
+                return false;
+            }
+        }
+        // 检查 45度角是否有皇后
+        for (int i = row - 1, j = col - 1; i >=0 && j >= 0; i--, j--) {
+            if (chessboard[i][j] == 'Q') {
+                return false;
+            }
+        }
+        // 检查 135度角是否有皇后
+        for(int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+            if (chessboard[i][j] == 'Q') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void backtracking(int n, int row, vector<string>& chessboard)
+    {
+        if(row == n)
+        {
+            results.push_back(chessboard);
+            return;
+        }
+
+        for(int j = 0; j < n; ++j)
+        {
+            if(isValid(row, j, n, chessboard))
+            {
+                chessboard[row][j] = 'Q';
+                backtracking(n, row + 1, chessboard);
+                chessboard[row][j] = '.';
+            }
+        }
+    }
+
+};
+```
+
+### 37 Sudoku Solver
+Write a program to solve a Sudoku puzzle by filling the empty cells.
+
+A sudoku solution must satisfy **all of the following rules**:
+
+1. Each of the digits `1-9` must occur exactly once in each row.
+2. Each of the digits `1-9` must occur exactly once in each column.
+3. Each of the digits `1-9` must occur exactly once in each of the 9 `3x3` sub-boxes of the grid.
+
+The `'.'` character indicates empty cells.
+
+>[!important] 二维递归
+>一次递归内部是，二维for循环地位一个没被填过数字的位置，然后回溯它的所有可能性
+
+>[!tip] 注意确定一个位置后，如果每个值都试完了，都不行，那证明这个解法不成立，应该立即return false，不然就会死循环。这也是为什么这个回溯函数，不需要终止条件的原因。
+
+```cpp
+class Solution {
+public:
+    void solveSudoku(vector<vector<char>>& board) {
+        backstracking(board);
+    }
+
+private:
+    bool isValid(const vector<vector<char>>& board, int row, int col, char value)
+    {
+        for(int i = 0; i < 9; ++i)
+        {
+            if(board[i][col] == value)
+                return false;
+        }
+
+        for(int j = 0; j < 9; ++j)
+        {
+            if(board[row][j] == value)
+                return false;
+        }
+
+        int startRow = (row / 3) * 3;
+        int startCol = (col / 3) * 3;
+        for(int i = startRow; i < startRow + 3; ++i)
+        {
+            for(int j = startCol; j < startCol + 3; ++j)
+            {
+                if(board[i][j] == value)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+
+    bool backstracking(vector<vector<char>>& board)
+    {
+        for(int i = 0; i < 9; ++i)
+        {
+            for(int j = 0; j < 9; ++j)
+            {
+                if(board[i][j] != '.')
+                    continue;
+
+                for(int val = 1; val < 10; ++val)
+                {
+                    if(isValid(board, i, j, static_cast<char>(val + '0')))
+                    {
+                        board[i][j] = val + '0';
+                        if(backstracking(board))
+                            return true;
+                        board[i][j] = '.';
+                    }
+                }
+                return false;        
+            }
+        }
+        return true;
+    }
 };
 ```
