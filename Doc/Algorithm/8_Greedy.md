@@ -324,3 +324,102 @@ int eraseOverlapIntervals(vector<vector<int>>& intervals) {
 	```
 
 2. 从前到后遍历，更新右边界为当前区间内所有字符的最远边界
+
+
+### 56 合并区间
+合并重叠区间
+
+```cpp
+vector<vector<int>> merge(vector<vector<int>>& intervals) {
+	vector<vector<int>> result;
+	if (intervals.size() == 0) return result; // 区间集合为空直接返回
+	
+	// 排序的参数使用了lambda表达式
+	sort(intervals.begin(), intervals.end(), 
+		[](const vector<int>& a, const vector<int>& b){return a[0] < b[0];});
+
+	// 第一个区间就可以放进结果集里，后面如果重叠，在result上直接合并
+	result.push_back(intervals[0]); 
+
+	for (int i = 1; i < intervals.size(); i++) {
+		if (result.back()[1] >= intervals[i][0]) { // 发现重叠区间
+			// 合并区间，只更新右边界就好，因为result.back()的左边界一定是最小值，因为我们按照左边界排序的
+			result.back()[1] = max(result.back()[1], intervals[i][1]); 
+		} else {
+			result.push_back(intervals[i]); // 区间不重叠 
+		}
+	}
+	return result;
+}
+```
+
+### 78 单调递增的数字
+和分糖果一个思路，这个题只用从后向前遍历。
+
+题解：
+- 如果前一位比后一位笑，要保证数字小于N，是不可能让后一位+1的，只可能是让后一位变成9，前一位再 -1
+
+```cpp
+int monotoneIncreasingDigits(int N) {
+	string strNum = to_string(N);
+	// flag用来标记赋值9从哪里开始
+	// 设置为这个默认值，为了防止第二个for循环在flag没有被赋值的情况下执行
+	int flag = strNum.size();
+	for (int i = strNum.size() - 1; i > 0; i--) {
+		if (strNum[i - 1] > strNum[i] ) {
+			flag = i;
+			strNum[i - 1]--;
+		}
+	}
+	for (int i = flag; i < strNum.size(); i++) {
+		strNum[i] = '9'; // 9999 
+	}
+	return stoi(strNum);
+}
+```
+
+>[!info]
+>`string s = to_string(i)`
+>`int i = stoi(s);`
+
+### 96 监控二叉树
+给定一个二叉树，我们在树的节点上安装摄像头。节点上的每个摄影头都可以监视其父对象、自身及其直接子对象。
+计算监控树的所有节点所需的最小摄像头数量。
+
+>[!important] 头结点放不放摄像头也就省下一个摄像头， 叶子节点放不放摄像头省下了的摄像头数量是指数阶别的。
+
+使用后序遍历也就是左右中的顺序
+- 0：该节点无覆盖
+- 1：本节点有摄像头
+- 2：本节点有覆盖
+* 空节点就属于有覆盖 无摄像头
+
+```cpp
+int result = 0;
+int traversal(TreeNode* cur) {
+
+    // 空节点，该节点有覆盖
+    if (!cur) return 2;
+
+    int left = traversal(cur->left);    // 左
+    int right = traversal(cur->right);  // 右
+
+    // 逻辑处理                            // 中
+    
+    // 任何一个子节点无覆盖，都需要加摄像头
+    if(left == 0 || right == 0) 
+    {
+	    ++result;
+	    return 1;
+    }
+
+	// 任何一个子节点有摄像头，本节点都属被覆盖
+	if(left == 1 || right == 1)
+	{
+		return 2;
+	}
+
+	// 两个子节点都被覆盖，那本节点要空下来，等父节点摄像头
+    return 0;
+}
+```
