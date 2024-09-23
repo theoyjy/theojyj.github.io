@@ -8,32 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ddb7728aaf1be0d8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/Algorithm/8_Greedy.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7b81eae037294422",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Doc/Algorithm/9_Dynamic_Programming.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "86b303f74955462f",
             "type": "leaf",
             "state": {
@@ -45,9 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "f87297660848462e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "HackerRank.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -105,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5478f96a86d2afbd",
@@ -148,7 +136,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Doc/Algorithm/11_Graph.md",
+                "file": "HackerRank.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -165,7 +153,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Doc/Algorithm/11_Graph.md",
+                "file": "HackerRank.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -206,25 +194,26 @@
       "random-note:Open random note": false
     }
   },
-  "active": "86b303f74955462f",
+  "active": "f87297660848462e",
   "lastOpenFiles": [
+    "Doc/Algorithm/11_Graph.md",
+    "HackerRank.md",
+    "11_Graph-20240923213827532.webp",
+    "11_Graph-20240923212638700.webp",
     "Algo Plan.md",
+    "Doc/Algorithm/9_Dynamic_Programming.md",
     "Resource/11_Graph-20240922234308142.webp",
     "17 Letter Combinations of a Phone Number.md",
     "Resource/9_Dynamic_Programming-20240922173041444.webp",
-    "Doc/Algorithm/11_Graph.md",
     "Resource/11_Graph-20240922233532314.webp",
     "Resource/11_Graph-20240922233438782.webp",
-    "Doc/Algorithm/9_Dynamic_Programming.md",
     "Resource/9_Dynamic_Programming-20240922181323142.webp",
     "Resource/9_Dynamic_Programming-20240922181030263.webp",
     "Resource/9_Dynamic_Programming-20240922174829864.webp",
     "Doc/Algorithm/8_Greedy.md",
     "Resource/8_Greedy-20240921180459444.webp",
-    "Resource/8_Greedy-20240921174701224.webp",
     "Doc/Algorithm/7_Backtracking.md",
     "Untitled.canvas",
-    "Resource/7_Backtracking-20240921173734792.webp",
     "index.md",
     "Doc/Algorithm/6_Binary_Tree.md",
     "Doc/Algorithm/4_String.md",
