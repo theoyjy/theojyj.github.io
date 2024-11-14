@@ -85,3 +85,13 @@ try {
 		std::cout << "Caught an unknown exception!" << std::endl; 
 	}
 ```
+
+#### Overrider `ostream`
+
+```cpp
+std::ostream& operator<<(std::ostream& os, const Person& person) 
+{ 
+	os << "Name: " << person.getName() << ", Age: " << person.getAge(); 
+	return os; 
+}
+```
