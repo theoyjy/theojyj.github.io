@@ -5,6 +5,16 @@ _[homepage](../../index.md)_
 >This allows for dynamic memory allocation and efficient **insertion** and **deletion** operations compared to arrays.
 >The entry node of the list is `head`
 
+>[!info] 
+>The Linked List Cycle head question, after the fast and slow pointers meets, it becomes the Intersection of Two Linked List question!! And x = z, so they would meet with same steps!
+>```txt
+>slow: x + y
+>fast: x + n(y+z) + y
+>2(x+y) = x + y+ n(y+z)
+>x+y = n(y+z)
+>x = (n-1)(y+z) + z
+>```
+>![[2_Linked_List-20250123091957916.webp]]
 ### Linked List Vs Arrays:
 
 |                    | Array                                                  | Linked List                                                 |
