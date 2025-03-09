@@ -749,3 +749,443 @@ for(int v = 1; v <= n; ++v)
 		minDist[v] = minDist[cur] + grid[cur][v];
 }
 ```
+
+## dijkstra 堆优化
+
+1. 用邻接表 构建图 `vector<list<edge>> graph(n);`
+	1. 定义Edge 结构体
+2. 用`priority_queue<pair<int, int>, vector<pair<int, int>, mycomparer>>`自动排序当前可接触到的最短edge
+	1. 比较functor
+3. 状态数组`vector<int> minDis(n, INT_MAX); vector<bool> visited(n, false);`
+4. 初始化： 
+	1. `minDis[start] = 0; visited[start] = true; que.push({start, 0});`
+5. 遍历：
+	1. `auto cur = top(); pop();`  get min dis edge
+	2. 如果连接的新节点遍历过，`continue`
+	3. iterate all edges start from `cur` in graph, update `minDis`, for each updated, push into the heap
+	   `for(auto & edge : graph[cur.first])`
+```cpp
+struct Edge {
+    int to;
+    int weight;
+    Edge(int t, int w) : to(t), weight(w) {}
+};
+
+class Compare {
+public:
+    // We want the smallest distance at the top, hence > comparison
+    bool operator()(const pair<int,int> &lhs, const pair<int,int> &rhs) {
+        return lhs.second > rhs.second;
+    }
+};
+
+int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+    // 1-based indexing: create adjacency list of size (n+1)
+    vector<vector<Edge>> graph(n+1);
+    
+    // Build the graph
+    for (auto &edge : times) {
+        int from = edge[0], to = edge[1], w = edge[2];
+        graph[from].push_back(Edge(to, w));
+    }
+
+    // Min-heap (priority queue) to retrieve the next closest node
+    priority_queue<pair<int,int>, vector<pair<int,int>>, Compare> pq;
+    // minDist[v] will hold the shortest distance from k to v
+    vector<int> minDist(n+1, INT_MAX);
+    // Keep track of visited nodes to avoid unnecessary processing
+    vector<bool> visited(n+1, false);
+
+    // Start from node k with distance 0
+    minDist[k] = 0;
+    pq.push({k, 0});
+
+    // Standard Dijkstra's
+    while (!pq.empty()) {
+        auto [u, distU] = pq.top();
+        pq.pop();
+
+        // If this node is already processed, skip
+        if (visited[u]) continue;
+        visited[u] = true;
+
+        // Relax edges
+        for (auto &edge : graph[u]) {
+            int v = edge.to;
+            int w = edge.weight;
+            if (!visited[v] && distU + w < minDist[v]) {
+                minDist[v] = distU + w;
+                pq.push({v, minDist[v]});
+            }
+        }
+    }
+
+    // Find the maximum time to reach any node
+    int answer = *max_element(minDist.begin() + 1, minDist.end());
+    return (answer == INT_MAX) ? -1 : answer;
+}
+```
+
+# 负边最短路径 Bellman ford O(N\*E)
+[explanation](https://programmercarl.com/kamacoder/0094.%E5%9F%8E%E5%B8%82%E9%97%B4%E8%B4%A7%E7%89%A9%E8%BF%90%E8%BE%93I.html#%E4%BB%80%E4%B9%88%E5%8F%AB%E5%81%9A%E6%9D%BE%E5%BC%9B)
+>[!info] 对所有边松弛一次，相当于计算 起点到达 与起点一条边相连的节点 的最短距离
+>节点数量为n，那么起点到终点，最多是 n-1 条边相连。
+>那么无论图是什么样的，边是什么样的顺序，我们对所有边松弛 n-1 次 就一定能得到 起点到达 终点的最短距离。
+
+所以只需要遍历n-1次，所有的边！
+```cpp
+vector<vector<int>> grid;
+
+// 将所有边保存起来
+for(int i = 0; i < m; i++){
+	cin >> p1 >> p2 >> val;
+	// p1 指向 p2，权值为 val
+	grid.push_back({p1, p2, val});
+}
+
+int start = 1;
+int end = n;
+
+vector<int> minDist(n + 1 , INT_MAX);
+minDist[start] = 0;
+
+
+for(int i = 1; i < n; ++i)
+{
+	for(vector<int>& edge : grid)
+	{
+		int from = edge[0];
+		int to = edge[1];
+		int price = edge[2];
+		// prevent never been to from node
+		if(minDis[from] != INT_MAX && 
+			minDis[to] > minDis[from] + price)
+			minDis[to] = minDis[from] + price;
+	}
+}
+
+if(minDis[end] == INT_MAX)
+	cout << "unconnected" << endl;
+else
+	cout << minDis[end] << endl;
+```
+
+## 优化：SPFA Shortest Path Faster Algorithm O(N \* K) 
+>[!info] K is average inDegree of all nodes
+n - 1次遍历中，每次只更新起点为上一轮更新了最短距离的点的边
+```cpp
+// 邻接表
+vector<list<Edge>> grid(n + 1); 
+for(int i = 0; i < m; i++){
+	cin >> p1 >> p2 >> val;
+	// p1 指向 p2，权值为 val
+	grid[p1].push_back(Edge(p2, val));
+}
+
+// 辅助数据
+vector<bool> isInQueue(n + 1, false);
+vector<int> minDis(n + 1, INT_MAX);
+queue<int> que;
+
+// 初始化
+que.push(start);
+minDis[start] = 0;
+isInQueue[start] = true;
+
+// 遍历
+while(!que.empty())
+{
+	int cur = que.top();
+	que.pop();
+	isInQueue[cur] = false;
+
+	for(auto & edge : grid[cur])
+	{
+		int to = edge.to;
+		int value = edge.val;
+		if(minDis[to] > minDis[from] + value)
+		{
+			minDis[to] = minDis[from] + value;
+			if(!isInQueue[to])
+			{
+				que.push(to);
+				isInQueue[to] = false;
+			}
+		}
+	}
+
+}
+
+return minDis[end] == INT_MAX ? -1 : minDis[end];
+```
+
+## 判断是否存在负权回路
+
+### 1. Bellman ford
+```cpp
+bool flag = false;
+for (int i = 1; i <= n; i++) { // 这里我们松弛n次，最后一次判断负权回路
+	for (vector<int> &side : grid) {
+		int from = side[0];
+		int to = side[1];
+		int price = side[2];
+		if (i < n) {
+			if (minDist[from] != INT_MAX && minDist[to] > minDist[from] + price) minDist[to] = minDist[from] + price;
+		} else { // 多加一次松弛判断负权回路
+			if (minDist[from] != INT_MAX && minDist[to] > minDist[from] + price) flag = true;
+
+		}
+	}
+
+}
+
+if (flag) cout << "circle" << endl;
+else if (minDist[end] == INT_MAX) {
+	cout << "unconnected" << endl;
+} else {
+	cout << minDist[end] << endl;
+}
+```
+
+### 2. SPFA
+```cpp
+vector<int> count(n+1, 0); // 记录节点加入队列几次
+count[start]++;
+
+bool flag = false;
+while (!que.empty()) {
+
+	int node = que.front(); que.pop();
+
+	for (Edge edge : grid[node]) {
+		int from = node;
+		int to = edge.to;
+		int value = edge.val;
+		if (minDist[to] > minDist[from] + value) { // 开始松弛
+			minDist[to] = minDist[from] + value;
+			que.push(to);
+			count[to]++; 
+			if (count[to] == n) {// 如果加入队列次数超过 n-1次 就说明该图与负权回路
+				flag = true;
+				while (!que.empty()) que.pop();
+				break;
+			}
+		}
+	}
+}
+
+if (flag) cout << "circle" << endl;
+else if (minDist[end] == INT_MAX) {
+	cout << "unconnected" << endl;
+} else {
+	cout << minDist[end] << endl;
+}
+```
+
+# 单源有限最短路问题: %%存在负权回路的情况下，最多经过k节点到达end的最小距离%%
+
+### 1. use minDis from last iteration to update cur
+>[!tip] 
+>1. 经过k个节点，会路过k+1条边，所以就是遍历k+1次就行了
+>2. minDist_copy 保证了，第x轮松弛，每个节点都最多松弛了x次，不会被回路影响
+>3. 不同的边的排序会影响每一轮的松弛结果，而使用上一轮的就规避了这个问题
+
+
+```cpp
+vector<int> minDist(n + 1 , INT_MAX);
+minDist[src] = 0;
+vector<int> minDist_copy(n + 1); // 用来记录上一次遍历的结果
+
+for (int i = 1; i <= k + 1; i++) {
+	// 获取上一次计算的结果
+	minDist_copy = minDist; 
+	
+	for (vector<int> &side : grid) {
+		int from = side[0];
+		int to = side[1];
+		int price = side[2];
+		// 注意使用 minDist_copy 来计算 minDist 
+		if (minDist_copy[from] != INT_MAX && minDist[to] > minDist_copy[from] + price) {  
+			minDist[to] = minDist_copy[from] + price;
+		}
+	}
+}
+
+if (minDist[dst] == INT_MAX) 
+	cout << "unreachable" << endl; // 不能到达终点
+else 
+	cout << minDist[dst] << endl; // 到达终点最短路径
+```
+
+### 2. SPFA
+>[!tip] 每一轮松弛中，控制节点不用重复入队列
+
+```cpp
+cin >> start >> end >> k;
+
+k = k + 1;
+
+vector<int> minDist(n + 1 , INT_MAX);
+vector<int> minDist_copy(n + 1); // 用来记录每一次遍历的结果
+
+minDist[start] = 0;
+
+queue<int> que;
+que.push(start); // 队列里放入起点
+
+int que_size;
+while (k-- && !que.empty()) {
+	// 每一轮松弛中，控制节点不用重复入队列
+	vector<bool> visited(n + 1, false); 
+	minDist_copy = minDist; 
+	que_size = que.size(); 
+	while (que_size--) { 
+		int node = que.front(); que.pop();
+		for (Edge edge : grid[node]) {
+			int from = node;
+			int to = edge.to;
+			int price = edge.val;
+			if (minDist[to] > minDist_copy[from] + price) {
+				minDist[to] = minDist_copy[from] + price;
+				if(visited[to]) continue; // 不用重复放入队列，但需要重复松弛，所以放在这里位置
+				visited[to] = true;
+				que.push(to);
+			}
+		}
+
+	}
+}
+
+if (minDist[end] == INT_MAX) 
+	cout << "unreachable" << endl;
+else 
+	cout << minDist[end] << endl;
+```
+
+# 多源最短路问题 Floyd
+
+>[!danger] grid[i][j][k] = m，表示 **节点i 到 节点j 以[1...k] 集合中的一个节点为中间节点的最短距离为m**。
+
+```cpp
+vector<vector<vector<int>>> grid(n + 1, 
+	vector<vector<int>>(n + 1, vector<int>(n + 1, 10005)));  // 因为边的最大距离是10^4
+    for(int i = 0; i < m; i++){
+        cin >> p1 >> p2 >> val;
+        grid[p1][p2][0] = val;
+        grid[p2][p1][0] = val; // 注意这里是双向图
+    }
+    
+    // 开始 floyd
+    for (int k = 1; k <= n; k++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                grid[i][j][k] = min(grid[i][j][k-1], grid[i][k][k-1] + grid[k][j][k-1]);
+            }
+        }
+    }
+    // 输出结果
+    int z, start, end;
+    cin >> z;
+    while (z--) {
+        cin >> start >> end;
+        if (grid[start][end][n] == 10005) cout << -1 << endl;
+        else cout << grid[start][end][n] << endl;
+    }
+```
+
+## Space Optimization
+It's fine to use better `grid[i][k]` from this iteration. So just get rid of the whole 3rd dimension. But time is still O(n^3)
+```cpp
+vector<vector<int>> grid(n + 1, vector<int>(n + 1, 10005));
+// read values ...
+
+for(int k = 1; k <= n; ++k)
+{
+	for(int i = 1; i <= n; ++i)
+	{
+		for(int j = 1; j <= n; ++j)
+		{
+			grid[i][j] = min(grid[i][k] + grid[k][j], gird[i][j]);
+		}
+	}
+}
+
+```
+
+
+# A\* heuristic function 启发
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <string.h>
+using namespace std;
+int moves[1001][1001];
+int dir[8][2]={-2,-1,-2,1,-1,2,1,2,2,1,2,-1,1,-2,-1,-2};
+int b1, b2;
+// F = G + H
+// G = 从起点到该节点路径消耗
+// H = 该节点到终点的预估消耗
+
+struct Knight{
+    int x,y;
+    int g,h,f;
+    bool operator < (const Knight & k) const{  // 重载运算符， 从小到大排序
+     return k.f < f;
+    }
+};
+
+priority_queue<Knight> que;
+
+int Heuristic(const Knight& k) { // 欧拉距离
+    return (k.x - b1) * (k.x - b1) + (k.y - b2) * (k.y - b2); // 统一不开根号，这样可以提高精度
+}
+void astar(const Knight& k)
+{
+    Knight cur, next;
+	que.push(k);
+	while(!que.empty())
+	{
+		cur=que.top(); que.pop();
+		if(cur.x == b1 && cur.y == b2)
+		break;
+		for(int i = 0; i < 8; i++)
+		{
+			next.x = cur.x + dir[i][0];
+			next.y = cur.y + dir[i][1];
+			if(next.x < 1 || next.x > 1000 || next.y < 1 || next.y > 1000)
+			continue;
+			if(!moves[next.x][next.y])
+			{
+				moves[next.x][next.y] = moves[cur.x][cur.y] + 1;
+
+                // 开始计算F
+				next.g = cur.g + 5; // 统一不开根号，这样可以提高精度，马走日，1 * 1 + 2 * 2 = 5
+                next.h = Heuristic(next);
+                next.f = next.g + next.h;
+                que.push(next);
+			}
+		}
+	}
+}
+
+int main()
+{
+    int n, a1, a2;
+    cin >> n;
+    while (n--) {
+        cin >> a1 >> a2 >> b1 >> b2;
+        memset(moves,0,sizeof(moves));
+        Knight start;
+        start.x = a1;
+        start.y = a2;
+        start.g = 0;
+        start.h = Heuristic(start);
+        start.f = start.g + start.h;
+		astar(start);
+        while(!que.empty()) que.pop(); // 队列清空
+		cout << moves[b1][b2] << endl;
+	}
+	return 0;
+}
+```

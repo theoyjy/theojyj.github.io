@@ -1,0 +1,17 @@
+{
+  "edges": [
+  ],
+  "nodes": [
+    {
+      "height": 260,
+      "id": "12db42a3e83d70ae",
+      "styleAttributes": {
+      },
+      "text": "### Nim question\n\n```cpp\nbool canWinNim(int n) {\n\t// n is between 1 ~ 3: first player win\n\t// n == 4: second player win, 1P lose\n\t// 5 <= n <= 7, 1P can ensure 2P face the n == 4, so 1P win\n\t// n == 8, 1P would be forced to face n == 4 situation, 2P win,  1P lose\n\treturn n % 4 != 0;\n}\n```",
+      "type": "text",
+      "width": 720,
+      "x": -400,
+      "y": -380
+    }
+  ]
+}
